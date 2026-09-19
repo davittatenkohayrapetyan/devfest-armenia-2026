@@ -43,6 +43,11 @@ provided lockups as designed.
 
 ## Aligning the two marks
 
+Sizing in the strip is per-mark and deliberately unequal: `.collab-mark--aua` is 1.55x
+`.collab-mark--gdg`. The AUA file is ~68% empty vertical padding, so equal heights shrink it
+to a third of GDG's size. Do not "fix" this by cropping their file — that padding may be
+their clear-space requirement, and we have no brand rules from them.
+
 AUA's lockup is roughly 3.5:1; GDG Yerevan's is closer to square. Align by **optical
 cap-height of the letterforms**, not by bounding box — matching container heights makes
 AUA look oversized. The strip sets a fixed cap-height and lets widths fall where they land.

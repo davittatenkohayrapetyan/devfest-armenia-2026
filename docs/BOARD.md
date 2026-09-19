@@ -351,6 +351,22 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-09-19 · DF-09 · Claude Code (task manager)
+The two marks in the collaboration strip were badly mismatched in size, and the cause was not
+the CSS. Measured from the files: the GDG wordmark's caps are 117px of a 240px canvas, while
+AUA's are 192px of a 610px canvas — that file is roughly 68% empty vertical padding. Equal
+CSS heights therefore rendered AUA at about a third of GDG's size, which is the opposite of
+what the original comment in `style.css` predicted.
+
+Fixed with per-mark classes at a 1.55x ratio, which is exactly the measured cap-height
+difference, so the two wordmarks now sit at the same letterform height. Verified by
+compositing both at the rendered sizes on `#f0f0f0` before changing any code.
+
+The padding was deliberately **not** cropped. We have no AUA brand rules — DF-11 was
+cancelled because they have nothing further to send — so that margin may well be their
+mandated clear space. Compensating in CSS costs nothing and leaves a partner's file untouched,
+which is the same principle as the standing ban on `filter: invert()`.
+
 ### 2026-09-19 · DF-08, DF-09 · Claude Code (task manager)
 Davit supplied GDG Yerevan marks and asked for "Armenia 2026" inside the lockup. Both done,
 and his phone screenshot exposed a defect worth recording: the `{ DevFest }` mark was

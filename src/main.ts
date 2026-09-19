@@ -51,9 +51,9 @@ function collaboration(): string {
   <div class="wrap py-8 flex flex-col md:flex-row items-center gap-6 md:gap-12">
     <p class="text-sm text-[#5f6368] shrink-0">Organized by</p>
     <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14">
-      <img class="collab-mark" src="${base}assets/logos/gdg-yerevan.png"
+      <img class="collab-mark collab-mark--gdg" src="${base}assets/logos/gdg-yerevan.png"
            alt="GDG Yerevan" onerror="this.style.display='none'">
-      <img class="collab-mark" src="${base}assets/logos/aua-acse-navy.png"
+      <img class="collab-mark collab-mark--aua" src="${base}assets/logos/aua-acse-navy.png"
            alt="Akian College of Science and Engineering, American University of Armenia">
     </div>
     <p class="text-sm text-[#5f6368] md:ml-auto text-center md:text-right">

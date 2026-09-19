@@ -83,15 +83,23 @@ body {
   border-block: 1px solid rgba(30, 30, 30, 0.08);
 }
 
-/* Align the two marks by letterform height, not bounding box — the AUA lockup is ~3.5:1
-   while the GDG mark is near-square, so equal container heights oversize AUA. */
+/* Align the two marks by letterform height, not bounding box.
+   Measured from the files: the GDG wordmark's caps are 117px of a 240px canvas (0.49), while
+   AUA's caps are 192px of a 610px canvas (0.31) — that canvas is ~68% empty padding. Equal
+   CSS heights therefore render AUA at about a third of GDG's size. The 1.55x difference below
+   is exactly that ratio, so the two wordmarks land at the same cap height.
+   The padding is left in place rather than cropped: we have no AUA brand rules (DF-11 was
+   cancelled), and that margin may be their mandated clear space. Compensate in CSS, never by
+   editing a partner's file. */
 .collab-mark {
-  height: 2.25rem;
   width: auto;
   object-fit: contain;
 }
+.collab-mark--gdg { height: 2.25rem; }
+.collab-mark--aua { height: 3.5rem; }
 @media (min-width: 768px) {
-  .collab-mark { height: 2.75rem; }
+  .collab-mark--gdg { height: 2.75rem; }
+  .collab-mark--aua { height: 4.25rem; }
 }
 
 .btn {
