@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predev": "npm run build:board",
     "build": "tsc --noEmit && vite build",
+    "prebuild": "npm run build:board",
+    "build:board": "node scripts/build-board.mjs",
     "preview": "vite preview",
     "validate:content": "node scripts/validate-content.mjs",
     "check:brand": "node scripts/check-brand.mjs"
