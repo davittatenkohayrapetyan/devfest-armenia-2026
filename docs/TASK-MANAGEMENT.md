@@ -132,8 +132,8 @@ Weekly, and at any handover:
 
 Two fixed checkpoints:
 
-- **14 October** — CFP closes. Verify DF-27 (CFP block auto-hides) the same day. Phase 2
-  opens.
+- **8 November** — CFP closes (pushed from 14 October on 20 Sep). Verify DF-27 the same day.
+  Note this now sits *inside* the agenda phase, not before it.
 - **21 November** — event. Phase 4 items must be `done`, not `review`.
 
 ## 8. Escalate, never attempt
@@ -170,7 +170,7 @@ Inherited from `CLAUDE.md` and non-negotiable. The manager enforces them in task
 2. The Google DevFest 2026 palette is the only design system.
 3. No combined DevFest + AUA lockup.
 4. The collaboration strip stays `#f0f0f0` in both themes; no filters on a partner's mark.
-5. Never invent content — empty states are the deliverable until 14 October.
+5. Never invent content — empty states are the deliverable until the CFP closes on 8 November.
 6. No ACSE building photo on the site at all; never source one from `cse.aua.am`.
 7. No Sessionize wiring until the embed ID is known. It is not the CFP slug.
 

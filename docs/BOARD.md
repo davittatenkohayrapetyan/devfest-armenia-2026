@@ -65,7 +65,7 @@ infrastructure decision.
 | DF-52 | Decide: primary button contrast vs the kit blue | done | Davit | 26 Sep | ADR-010 — large-text threshold, kit blue kept |
 | DF-21 | Announce site on GDG Community platform and socials | todo | Davit | 30 Sep | |
 
-## Phase 2 — Speakers (15–25 Oct)
+## Phase 2 — Speakers (rolling, Oct–Nov)
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
@@ -73,19 +73,19 @@ infrastructure decision.
 | DF-23 | Wire `loadSpeakers()` to Sessionize API | cancelled | — | — | Superseded by DF-50 — sync on demand, not fetch at runtime |
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
 | DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 5 speakers live at 20 Sep |
-| DF-51 | Extend the sync to talks — session mapping | todo | Davit | 1 Nov | Needs DF-50. Blocks DF-28. See brief |
+| DF-51 | Extend the sync to talks — session mapping | todo | Davit | 10 Nov | Needs DF-50. Blocks DF-28. See brief |
 | DF-25 | Verify 9+ compact grid state with real data | todo | Davit | 20 Oct | 20+ expected |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
-| DF-27 | Hide CFP block after 14 Oct — verify | todo | Davit | 15 Oct | Also check the Speakers CTA and note disappear |
+| DF-27 | Hide CFP block after 8 Nov — verify | todo | Davit | 9 Nov | Also check the Speakers CTA and note disappear |
 | DF-39 | Decide how content gets published in October | todo | Davit | 9 Oct | Decision task — see brief |
 
-## Phase 3 — Agenda (1–10 Nov)
+## Phase 3 — Agenda (9–14 Nov, after the CFP closes)
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
-| DF-28 | Three-track agenda section | todo | Davit | 5 Nov | Placeholder section live since 19 Sep; fill it from DF-51 data |
-| DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 5 Nov | Only embed retained |
-| DF-30 | Workshop section if workshops are accepted | todo | Davit | 5 Nov | Limited number |
+| DF-28 | Three-track agenda section | todo | Davit | 12 Nov | Placeholder live; cannot be complete before the CFP closes 8 Nov |
+| DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 12 Nov | Only embed retained |
+| DF-30 | Workshop section if workshops are accepted | todo | Davit | 12 Nov | Limited number |
 | DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers — one flat list. InTech.am added 19 Sep |
 | DF-32 | Organizers section — "Meet the team" | done | Davit | 7 Nov | Type, loader and validation added; Davit listed |
 
@@ -515,10 +515,11 @@ go well.
 
 | ID | Risk | Impact | Mitigation |
 |---|---|---|---|
-| R-3 | Too few accepted talks to fill three tracks | A third track is visibly thin, or has to be dropped late | Three tracks needs roughly 30 sessions, not 20. 5 accepted as of 19 Sep, CFP closes 14 Oct. Monitor weekly from 1 Oct; decide by 16 Oct whether it is three tracks or two |
+| R-3 | Too few accepted talks to fill three tracks | A third track is visibly thin, or has to be dropped late | Three tracks needs roughly 30 sessions. 5 accepted at 20 Sep; CFP now closes 8 Nov. Monitor weekly from 1 Oct and decide on the **trend by 1 November** — waiting for the close leaves 12 days to build a schedule |
 | R-4 | Sessionize API shape changes | Speakers section breaks | DF-24 snapshot fallback |
 | R-5 | Content edits still require git, so they still require a developer | Bottleneck on one person in the busiest weeks | The JSON model and CI validation cover the format only; the workflow is unsolved. DF-39, decide by 9 Oct |
 | R-6 | AUA colors leak into the design system | Brand drift | CI guard in DF-06 |
+| R-8 | CFP closes 8 Nov, event is 21 Nov | 13 days to accept, schedule, publish and let speakers plan travel; any slip lands in the final week | Decide the track count on trend by 1 Nov (R-3); build DF-51 and DF-28 against partial data *before* the close, so 9 Nov is a data refresh and not a build |
 
 **Closed.** IDs are not reused.
 
@@ -535,6 +536,32 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-20 · schedule · Claude Code (task manager)
+**The CFP deadline moved from 14 October to 8 November.** Davit's call. Updated in `event.json`,
+both hardcoded strings in `main.ts`, `CLAUDE.md`, `HANDOVER.md`, `PLAN.md` and the role charter —
+it appeared in ten places across code and docs, and a countdown disagreeing with the Sessionize
+page is the kind of error that costs submissions.
+
+The schedule consequences matter more than the copy change:
+
+- **13 days from close to event.** Accept, schedule, publish, and give speakers time to arrange
+  travel, all inside the fortnight that already holds the final production push. Registered as
+  **R-8**.
+- **Phase 3 no longer fit.** The agenda phase was 1–10 Nov, which now sits *before* the CFP
+  closes. Moved to 9–14 Nov; DF-28, DF-29 and DF-30 to 12 Nov, DF-51 to 10 Nov.
+- **R-3's decision date is the sharp one.** Three tracks needs roughly 30 sessions and there are
+  5. Waiting for the close to decide the track count leaves 12 days to build a schedule, so that
+  call has to be made on the **submission trend by 1 November**, not on the final number.
+- **DF-27 moves to 9 November.** The CFP block, the Speakers CTA and the "more to come" note all
+  flip then, not in October.
+
+One mitigation worth acting on early, recorded on R-8: build DF-51 and DF-28 against *partial*
+data before 8 November, so the close becomes a data refresh rather than a build. The alternative
+is starting agenda work with 13 days left.
+
+Phase 2 retitled "Speakers (rolling, Oct–Nov)". It read "15–25 Oct", which assumed the lineup was
+final once the CFP closed; speakers are now published continuously as sessions are accepted.
 
 ### 2026-09-20 · DF-50 · Claude Code (task manager)
 Ran the sync. One new accepted speaker: **Ankur Roy**, Solutions Architect at Online Partner AB.

@@ -45,7 +45,7 @@ body of `loadSpeakers()` in `src/content.ts` and nothing else.
    or any other transform on a partner's logo.
 5. **Never invent content.** Empty `speakers.json`, `partners.json` and `organizers.json`
    are intentional. The empty states are the deliverable until the CFP closes on
-   14 October 2026.
+   8 November 2026.
 6. **The site carries no ACSE building photo.** AUA's complete asset set is the two PNG
    lockups in `public/assets/logos/`; there is no licensed photo and none is coming. Do not
    take one from `cse.aua.am` — copyrighted, and this is a co-branded site — and do not

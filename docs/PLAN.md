@@ -3,13 +3,13 @@
 **Event:** 21 November 2026 · American University of Armenia, Yerevan
 **Organizers:** GDG Yerevan, in collaboration with the Zaven P. & Sonia Akian College of Science & Engineering (ACSE) at AUA
 **Scale:** 350+ participants · 20+ speakers · 3 tracks plus workshops
-**CFP:** opened 3 Sep 2026 · closes 14 Oct 2026, 23:59 (UTC+04:00)
+**CFP:** opened 3 Sep 2026 · closes 8 Nov 2026, 23:59 (UTC+04:00)
 
 ---
 
 ## 1. Objective
 
-Ship a single-page site whose primary job, between now and 14 October, is **driving CFP
+Ship a single-page site whose primary job, between now and 8 November, is **driving CFP
 submissions and registrations**. Everything else — speakers, agenda, day-of information — is
 layered on as the content becomes real.
 
@@ -20,7 +20,7 @@ a speaker or a partner logo does not require a developer.
 
 | | |
 |---|---|
-| Before 14 Oct | CFP call is the most prominent action on the page; countdown visible |
+| Before 8 Nov | CFP call is the most prominent action on the page; countdown visible |
 | Before 21 Nov | Speakers, agenda and venue information are complete and accurate |
 | Throughout | Any co-organizer can publish content by editing a JSON file |
 | Throughout | Google DevFest brand compliance — no local color inventions |
@@ -100,14 +100,14 @@ Full detail in [BRAND.md](./BRAND.md).
 
 1. Hero — lockup, date, venue, dual CTA (Register primary / Submit a talk secondary)
 2. Collaboration strip — GDG Yerevan + AUA ACSE
-3. Call for speakers — countdown to 14 Oct, formats, topics, selection principles
+3. Call for speakers — countdown to 8 Nov, formats, topics, selection principles
 4. About — the event, the collaboration, the tracks
 5. Speakers — empty state until October
 6. Partners — placeholder grid + "Become a partner"
 7. Venue — AUA, map, address
 8. Footer — GDG Community platform, socials, Meetup migration note
 
-Sections 3 and 5 are date-aware: the CFP block hides itself after 14 Oct, and the speakers
+Sections 3 and 5 are date-aware: the CFP block hides itself after 8 Nov, and the speakers
 section switches from empty state to grid based on `speakers.json` length.
 
 ---
@@ -139,7 +139,7 @@ shareable HTTPS URL for co-organizers.
 |---|---|---|
 | 20–24 Sep | Repo, scaffold, content model, v1 sections running on :3026 | Reviewed on phone |
 | 25–30 Sep | Venue section, OG/SEO, accessibility, deploy | Site public |
-| 1–14 Oct | CFP promotion period | Submissions tracked |
+| 1 Oct – 8 Nov | CFP promotion period | Submissions tracked |
 | 15–25 Oct | Speakers section live, Sessionize API wired | 20+ speakers published |
 | 1–10 Nov | Agenda grid, three-track schedule | GridSmart embedded |
 | 21 Nov | Day-of mode: live schedule, wifi, floor plan | — |

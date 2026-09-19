@@ -107,7 +107,7 @@ function callForSpeakers(e: EventContent): string {
     <div>
       <p class="text-6xl md:text-7xl font-bold" style="color:var(--df-red)">${left}</p>
       <p class="text-lg">days left to submit</p>
-      <p class="mt-1 text-sm hero-muted">Closes 14 October, 23:59 (UTC+04:00)</p>
+      <p class="mt-1 text-sm hero-muted">Closes 8 November, 23:59 (UTC+04:00)</p>
       <ul class="mt-8 flex flex-wrap gap-2">${topics}</ul>
     </div>
   </div>
@@ -148,7 +148,7 @@ function speakers(list: Speaker[], e: EventContent): string {
       ? `<p class="mt-3 text-[var(--ink-muted)] prose-measure">${esc(e.speakers.noteWhileCfpOpen)}</p>`
       : "";
   // Only alongside a populated grid: the empty state carries its own call, and after the CFP
-  // closes there is nothing to submit to. DF-27 checks this flips on 14 October.
+  // closes there is nothing to submit to. DF-27 checks this flips on 8 November.
   const cta =
     list.length > 0 && cfpOpen
       ? `<a class="btn btn-primary mt-10" href="${esc(cfpUrl)}" rel="noopener">Become a speaker</a>`
@@ -156,7 +156,7 @@ function speakers(list: Speaker[], e: EventContent): string {
   const body =
     list.length === 0
       ? `<div class="mt-8 rounded-2xl p-10 text-center" style="background:var(--surface-alt)">
-           <p class="text-lg">Speakers are announced after the call closes on 14 October.</p>
+           <p class="text-lg">Speakers are announced after the call closes on 8 November.</p>
            <a class="btn btn-primary mt-6" href="${esc(cfpUrl)}" rel="noopener">Submit a talk</a>
          </div>`
       : `<div class="mt-8 grid gap-6 ${list.length > 8 ? "sm:grid-cols-3 lg:grid-cols-4" : "sm:grid-cols-2 lg:grid-cols-3"}">

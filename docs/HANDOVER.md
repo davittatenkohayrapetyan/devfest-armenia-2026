@@ -13,12 +13,12 @@ Armenia, Yerevan. Organized by GDG Yerevan in collaboration with the Zaven P. & 
 Akian College of Science & Engineering (ACSE) at AUA.
 
 - 20+ speakers, three tracks plus workshops, 350+ participants expected
-- CFP open 3 Sep, **closes 14 October 2026, 23:59 (UTC+04:00)**
+- CFP open 3 Sep, **closes 8 November 2026, 23:59 (UTC+04:00)** — pushed from 14 Oct on 20 Sep
 - Registration: https://gdg.community.dev/events/details/google-gdg-yerevan-presents-devfest-armenia-2026/
 - CFP: https://sessionize.com/devfest-armenia-2026/
 - Chapter: https://gdg.community.dev/gdg-yerevan/
 
-Between now and 14 October the site's primary job is **driving CFP submissions**, not
+Between now and 8 November the site's primary job is **driving CFP submissions**, not
 displaying an agenda that does not exist yet.
 
 ## 2. State on handover
