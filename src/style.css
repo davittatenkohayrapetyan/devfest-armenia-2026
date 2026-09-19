@@ -163,6 +163,74 @@ body {
   box-shadow: inset 0 0 0 2px rgba(240, 240, 240, 0.55);
 }
 
+
+/* Internal progress view (/implementation-progress, DF-48).
+   Kept in this stylesheet so it inherits the same tokens — the page must never grow its own
+   palette. Status colour is always paired with the status word in the markup; nothing here
+   may become the sole carrier of meaning. */
+.prog-wrap {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+}
+.prog-title { font-size: 1.875rem; font-weight: 700; }
+.prog-header { padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+.prog-meta { color: var(--ink-muted); font-size: 0.875rem; }
+.prog-code {
+  background: var(--surface-alt);
+  border-radius: 0.25rem;
+  padding: 0.05rem 0.3rem;
+  font-size: 0.85em;
+}
+
+.prog-bar {
+  display: flex;
+  height: 0.75rem;
+  margin-top: 1.25rem;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: var(--surface-alt);
+}
+.prog-seg { height: 100%; }
+.prog-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+}
+.prog-legend-item { display: flex; align-items: center; gap: 0.4rem; }
+.prog-dot { width: 0.6rem; height: 0.6rem; border-radius: 9999px; }
+
+.prog-phase { margin-top: 2.5rem; }
+.prog-phase-title { font-size: 1.25rem; font-weight: 700; }
+.prog-window { color: var(--ink-muted); font-weight: 400; font-size: 0.875rem; }
+
+.prog-tasks, .prog-log { margin-top: 1rem; display: grid; gap: 0.75rem; }
+.prog-task {
+  border: 1px solid var(--rule);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+}
+.prog-task-cancelled { opacity: 0.55; }
+.prog-task-head { display: flex; align-items: center; gap: 0.6rem; }
+.prog-id { font-weight: 700; font-size: 0.875rem; }
+.prog-task-name { margin-top: 0.35rem; }
+.prog-notes { margin-top: 0.35rem; color: var(--ink-muted); font-size: 0.875rem; }
+
+.prog-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.05rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px var(--chip);
+}
+.prog-entry { border-left: 3px solid var(--rule); padding-left: 0.875rem; }
+.prog-entry-body { margin-top: 0.25rem; white-space: pre-wrap; }
+
 .rule-blue { background: var(--df-blue); }
 .rule-red { background: var(--df-red); }
 .rule-yellow { background: var(--df-yellow); }
