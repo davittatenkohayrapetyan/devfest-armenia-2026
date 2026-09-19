@@ -42,6 +42,8 @@ infrastructure decision.
 | DF-42 | Commit `package-lock.json`, switch CI to `npm ci` with node cache | done | Davit | 22 Sep | Dockerfile switched too — see log |
 | DF-45 | 2025 photos as hero and CFP backgrounds | done | Davit | 22 Sep | Two photos, downscaled, EXIF stripped |
 | DF-46 | Re-cut hero art if the 2026 kit becomes available | todo | Davit | 10 Oct | ADR-007 runs on 2024-vintage assets |
+| DF-47 | Generate `board.json` from `BOARD.md` at build time | todo | Davit | 28 Sep | Internal, not launch-blocking. See brief |
+| DF-48 | Board view at `/implementation-progress` | todo | Davit | 28 Sep | Needs DF-47. Unlinked page. See brief |
 | DF-43 | Add `.dockerignore` | todo | Davit | 24 Sep | Build hygiene, not a bug — see log. Low priority |
 
 ## Phase 1 — Content and launch (25–30 Sep)
@@ -178,6 +180,88 @@ table; the contrast figures for muted ink in both themes are written down.
 
 ---
 
+### DF-47 · Generate `board.json` from `BOARD.md` at build time
+
+**Context.** Read `docs/TASK-MANAGEMENT.md` §5 for the board's conventions, then ADR-006:
+`docs/BOARD.md` is the only tracker. DF-48 renders the board as a web page, and that page
+must read generated data — if anyone hand-edits a JSON copy of the board, the repo has two
+trackers again, which is the exact failure ADR-006 exists to prevent.
+
+**Goal.** Produce `public/content/board.json` from `docs/BOARD.md` as a build step.
+
+**Steps.**
+1. Write `scripts/build-board.mjs`. Parse from `docs/BOARD.md`:
+   - phase sections (`## Phase N — Title (dates)`) and the task rows beneath each, as
+     `{ id, task, status, owner, due, notes, phase }`;
+   - the risk register table, including the "Closed" list under it;
+   - the comments log, split on `### YYYY-MM-DD · IDs · author`;
+   - the "Last updated" date from the top.
+2. Write the result to `public/content/board.json`.
+3. Add `"build:board": "node scripts/build-board.mjs"` to `package.json`, and call it from
+   `prebuild` and `predev` so the file is never stale and never hand-edited.
+4. Add `public/content/board.json` to `.gitignore`. It is a build artifact; committing it
+   would let it drift from `BOARD.md`.
+5. Verify: change a status in `BOARD.md`, re-run, confirm the JSON changes.
+
+**Constraints.** The parser reads `BOARD.md`; it never writes to it. Do not "fix" board rows
+from the script. Do not commit the generated JSON. Do not inline board content into anything
+under `src/` — the comments log quotes both forbidden AUA hex values, so generating a `.ts`
+file from it would fail `check:brand` and tempt someone to weaken the guard; keep the data
+runtime-fetched, exactly as ADR-001 does for event content. If a row is malformed, fail with
+the offending line rather than emitting a half-parsed board.
+
+**Definition of done.** `npm run build:board` writes `public/content/board.json` containing
+every task row currently in `BOARD.md` with the correct count per phase; the file is
+gitignored; `npm run build` regenerates it automatically; all three checks pass.
+
+**Commit message.** `DF-47: generate board.json from BOARD.md`
+
+---
+
+### DF-48 · Board view at `/implementation-progress`
+
+**Context.** Needs DF-47. Davit wants to see build progress visually, at
+`/implementation-progress`, with **no link to it from anywhere on the site**.
+
+**Goal.** A read-only page that renders the generated board.
+
+**Steps.**
+1. Add `implementation-progress/index.html` as a second Vite entry — `nginx.conf` does
+   `try_files $uri $uri/ /index.html`, so a real directory with its own `index.html`
+   resolves, while a client-side route would silently serve the event page instead. Wire it
+   through `build.rollupOptions.input` in `vite.config.ts`, keeping `index.html` as the
+   first entry.
+2. Put `<meta name="robots" content="noindex,nofollow">` in its head. No OG tags.
+3. Render from `board.json`: tasks grouped by phase, with status, owner, due and notes; a
+   count per status; the risk register including closed risks; and the comments log.
+4. Show "Last updated" and the count of tasks by status at the top, so the page answers
+   "where is this project" without scrolling.
+5. Verify `http://localhost:3026/implementation-progress` returns 200 and renders, and that
+   the event page is unchanged.
+
+**Constraints.** Do not link it: no nav entry, no footer link, no `sitemap.xml` entry when
+DF-16 writes one, no OG tags, and do not add it to any PWA precache list. Do not duplicate
+the site's content components — this page is a table, not a marketing page, and it should
+not grow a hero. Use only the palette in `docs/BRAND.md`; DevFest red for a `blocked` status
+is fine, but never encode status by colour alone — pair every colour with its text label,
+since `done` and `blocked` must be distinguishable in greyscale and by colourblind readers.
+No AUA hex values in CSS, as everywhere else.
+
+Note for whoever builds it: unlinked is not private, and this page will be publicly
+reachable once DF-20 deploys. That is acceptable here only because `BOARD.md` is already
+public in the GitHub repo, so the page exposes nothing new. If the board ever starts
+carrying something that is not public — a sponsor negotiation, a person's contact details —
+this page becomes a disclosure and needs gating. Raise it then; do not assume obscurity.
+
+**Definition of done.** `/implementation-progress` returns 200 in the container and lists
+every task from `BOARD.md`; `grep -r "implementation-progress" src/main.ts` returns nothing;
+the page carries a noindex meta; all three checks pass; the event page is byte-identical in
+behaviour.
+
+**Commit message.** `DF-48: board view at /implementation-progress`
+
+---
+
 ### DF-12 · Venue section — remove the pending-photo path
 
 **Context.** `docs/BRAND.md` for the asset inventory. The venue section already renders
@@ -266,6 +350,27 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-47, DF-48 · Claude Code (task manager)
+Davit asked for a visual board at `/implementation-progress`, unlinked from the site. Split
+in two because the data path and the page are independently verifiable: DF-47 generates
+`board.json` from `BOARD.md`, DF-48 renders it.
+
+The split exists for a second reason. A board page fed by a hand-maintained JSON file would
+be a second tracker within a week, which is what ADR-006 decided against — so the generator
+is the task, and the page is downstream of it. The JSON is gitignored deliberately: a
+committed artifact can drift from its source, a generated one cannot.
+
+Two traps recorded so the implementing session does not hit them. `nginx.conf` falls back to
+`/index.html` for unknown paths, so a client-side route would serve the event page at
+`/implementation-progress` and look like it worked; it needs a real second Vite entry. And
+the comments log quotes both forbidden AUA hex values, so generating anything under `src/`
+from board text would fail `check:brand` — which is the moment someone decides the guard is
+the problem. The data stays runtime-fetched.
+
+Also flagged in DF-48: unlinked is not private. It is acceptable only because `BOARD.md` is
+already public in the repo. If the board ever holds something that is not, the page needs
+gating rather than obscurity.
 
 ### 2026-09-19 · DF-07, DF-08, DF-09, DF-45 · Claude Code (task manager)
 Davit released the "official 2026 kit only" constraint, so the visual identity now comes
