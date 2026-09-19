@@ -17,7 +17,7 @@ if (event) {
   for (const k of ["name", "date", "dateLabel", "venue", "cta", "cfp", "about"]) {
     if (!(k in event)) errors.push(`event.json: missing "${k}"`);
   }
-  for (const k of ["register", "cfp", "chapter"]) {
+  for (const k of ["register", "cfp", "chapter", "lastYear"]) {
     if (!event.cta?.[k]) errors.push(`event.json: missing cta.${k}`);
   }
   if (event.date && Number.isNaN(Date.parse(event.date)))

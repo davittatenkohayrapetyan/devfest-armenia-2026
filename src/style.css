@@ -137,6 +137,16 @@ body {
   .collab-x { font-size: 2.5rem; }
 }
 
+.link-arrow {
+  color: var(--df-blue);
+  font-weight: 500;
+  text-underline-offset: 0.2em;
+  text-decoration: underline;
+}
+.link-arrow::after {
+  content: " 92";
+}
+
 .btn {
   display: inline-flex;
   align-items: center;

@@ -351,6 +351,20 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-09-19 · DF-45, DF-15 · Claude Code (task manager)
+Davit supplied three stronger photos and asked for a link to last year's event. Hero is now
+the full-room shot with a speaker mid-talk; the CFP band is the standing, applauding crowd.
+Hero deliberately got the calmer of the two: its left third is where the white headline sits,
+and the applause frame is bright there, which would have fought the type. The third photo —
+speaker from behind, seated audience — is not used; it is the obvious candidate if the About
+section ever wants a background.
+
+The 2025 link went into `event.json` as `cta.lastYear` rather than into `main.ts`. A URL is
+content, and ADR-001 exists so that changing one is a JSON edit. It is also now a required key
+in `validate-content.mjs`, verified by deleting it and confirming CI-level failure — a link
+the page renders unconditionally should break the build, not the page. Rendered in the About
+section, where somebody deciding whether to attend is actually reading.
+
 ### 2026-09-19 · DF-09 · Claude Code (task manager)
 Davit's call: keep "Organized by" over GDG Yerevan, drop "In collaboration with" over AUA.
 The `×` between the marks now carries the relationship on its own.

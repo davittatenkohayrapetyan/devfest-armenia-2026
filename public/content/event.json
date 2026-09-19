@@ -12,29 +12,57 @@
   "cta": {
     "register": "https://gdg.community.dev/events/details/google-gdg-yerevan-presents-devfest-armenia-2026/",
     "cfp": "https://sessionize.com/devfest-armenia-2026/",
-    "chapter": "https://gdg.community.dev/gdg-yerevan/"
+    "chapter": "https://gdg.community.dev/gdg-yerevan/",
+    "lastYear": "https://devfest.am/2025/"
   },
   "cfp": {
     "opens": "2026-09-03",
     "closes": "2026-10-14T23:59:00+04:00",
     "formats": [
-      { "name": "Technical talk", "length": "20 minutes" },
-      { "name": "Workshop", "length": "up to 60 minutes" }
+      {
+        "name": "Technical talk",
+        "length": "20 minutes"
+      },
+      {
+        "name": "Workshop",
+        "length": "up to 60 minutes"
+      }
     ],
     "topics": [
-      "AI & Generative AI", "Agentic AI", "Cloud", "Google Cloud", "Web",
-      "Android", "Flutter", "Angular", "Backend Engineering",
-      "Distributed Systems", "DevOps", "Infrastructure", "Data",
-      "Security", "Developer Tooling", "Software Architecture"
+      "AI & Generative AI",
+      "Agentic AI",
+      "Cloud",
+      "Google Cloud",
+      "Web",
+      "Android",
+      "Flutter",
+      "Angular",
+      "Backend Engineering",
+      "Distributed Systems",
+      "DevOps",
+      "Infrastructure",
+      "Data",
+      "Security",
+      "Developer Tooling",
+      "Software Architecture"
     ],
     "note": "A limited number of workshop proposals may be selected depending on the agenda and available space."
   },
   "about": {
     "lead": "A full day of technical talks, knowledge sharing, networking and community, organized by GDG Yerevan in collaboration with the Zaven P. & Sonia Akian College of Science & Engineering at the American University of Armenia.",
     "stats": [
-      { "value": "~20", "label": "speakers" },
-      { "value": "2", "label": "parallel tracks" },
-      { "value": "300–350", "label": "attendees expected" }
+      {
+        "value": "~20",
+        "label": "speakers"
+      },
+      {
+        "value": "2",
+        "label": "parallel tracks"
+      },
+      {
+        "value": "300–350",
+        "label": "attendees expected"
+      }
     ]
   }
 }

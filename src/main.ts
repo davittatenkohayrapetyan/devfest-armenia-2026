@@ -118,6 +118,9 @@ function about(e: EventContent): string {
   <div class="wrap">
     <h2 class="text-3xl md:text-4xl font-bold">About the event</h2>
     <p class="mt-4 prose-measure text-lg text-[var(--ink-muted)]">${esc(e.about.lead)}</p>
+    <p class="mt-4">
+      <a class="link-arrow" href="${esc(e.cta.lastYear)}" rel="noopener">See how DevFest Armenia 2025 went</a>
+    </p>
     <div class="mt-10 flex flex-wrap gap-12">${stats}</div>
   </div>
 </section>`;

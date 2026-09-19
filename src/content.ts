@@ -46,7 +46,7 @@ export type EventContent = {
     mapUrl: string;
     photo: string | null;
   };
-  cta: { register: string; cfp: string; chapter: string };
+  cta: { register: string; cfp: string; chapter: string; lastYear: string };
   cfp: {
     opens: string;
     closes: string;
