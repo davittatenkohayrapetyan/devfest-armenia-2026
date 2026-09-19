@@ -39,26 +39,16 @@ board that is true.
 If implementation work is genuinely trivial and unblocks a task, do it and say so in the
 comments log. Otherwise write the task and stop.
 
-## 3. First action — resolve the tracking system
+## 3. Tracking system — settled
 
-**Do this before creating or editing anything.**
+**Resolved 19 September 2026. Do not re-open this.** Davit chose `docs/BOARD.md` as the
+authoritative tracker; GitHub Issues are not used for `DF-xx` status. `gh` is not installed
+on the build machine, this is a one-maintainer project, and the risk register and comments
+log have no good home in Issues anyway. Reasoning is in ADR-006.
 
-`docs/BOARD.md` was written for a chat session with no shell. Claude Code has `gh`, which
-makes GitHub Issues a better home for status. Maintaining both by hand will drift, and a
-board that trails the repo stops being read within about two sessions.
-
-Proposed ADR-006 in `docs/HANDOVER.md` §7 sets out the options. **Ask Davit which he
-wants. Do not decide unilaterally** — it changes his daily workflow, not just yours.
-
-Then implement the answer fully. A half-migrated tracker is worse than either option:
-
-- **Issues authoritative** → run `./scripts/bootstrap-issues.sh <owner/repo>`, then
-  reduce `BOARD.md` to the risk register and comments log, with a generated task snapshot
-  if wanted. Delete the hand-maintained status tables so nobody reads stale rows.
-- **Board authoritative** → do not run the bootstrap script. Note the decision in
-  `DECISIONS.md` so a future session does not re-raise it.
-
-Record the outcome as ADR-006 either way.
+`scripts/bootstrap-issues.sh` was deleted as part of implementing that decision, so there is
+no half-migration path left to take by accident. If Issues are ever opened on the repo, they
+are for external bug reports only.
 
 ## 4. Task authoring standard
 
@@ -87,8 +77,8 @@ at 390px and 1440px" is.
 ### Sizing
 
 One task = one session = one commit, ideally under two hours. If a task has an "and" in
-its goal sentence, split it. DF-07 through DF-09 are correctly sized; DF-33 (day-of mode)
-is not and should be split before November.
+its goal sentence, split it. DF-07 through DF-09 are correctly sized. DF-33 (day-of mode)
+was not — split on 19 September into DF-33, DF-40 and DF-41.
 
 ## 5. Board conventions
 
@@ -170,8 +160,10 @@ clone, commit, push. If content publishing is genuinely to be delegated in Octob
 is unbuilt work: a CMS-backed JSON source, or a GitHub web-editor flow on a protected
 branch.
 
-Create this as a task now with a decision date before 10 October. Retrofitting it during
-speaker-announcement week will not go well.
+Tracked as **DF-39**, decision date 9 October, with a brief on the board. It is a decision
+task, not an implementation task: "status quo, Davit publishes" is a legitimate answer and
+retires R-5. What is not acceptable is discovering the answer during
+speaker-announcement week.
 
 ## 10. Standing constraints
 

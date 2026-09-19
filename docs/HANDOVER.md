@@ -104,27 +104,16 @@ arrangement with the GDG regional lead), DF-17 (deployment target, which fixes
 | Deployment target | WordPress subfolder as in 2025, or standalone? Decides `VITE_BASE_PATH` |
 | Analytics | Tool not chosen |
 
-## 7. Proposed ADR-006 — task tracking moves to GitHub Issues
+## 7. ADR-006 — resolved 19 September: the board stays authoritative
 
-**Not yet decided. Raise it with Davit before acting.**
+**Decided. Do not re-raise.** Davit chose `docs/BOARD.md` as the single source of truth for
+task status. GitHub Issues are not used for `DF-xx` tracking. `scripts/bootstrap-issues.sh`
+has been deleted so the tracker cannot end up half-migrated. Full reasoning in
+`docs/DECISIONS.md` → ADR-006.
 
-`docs/BOARD.md` was written for a chat session with no shell. Claude Code has `gh`, which
-makes GitHub Issues the better home: comments thread properly, status is queryable,
-and issues link to the commits that close them.
-
-Keeping both in sync by hand will drift, and a board that lags the repo stops being worth
-reading within about two sessions. Recommendation:
-
-- Run `./scripts/bootstrap-issues.sh <owner/repo>` once to seed issues from the board.
-- GitHub Issues become authoritative for **status**.
-- `docs/BOARD.md` is either regenerated from `gh issue list` as a committed snapshot, or
-  reduced to the risk register and comments log — the two parts that have no good home in
-  Issues.
-- `docs/PLAN.md`, `docs/BRAND.md` and `docs/DECISIONS.md` stay as they are. They are
-  reference material, not task state.
-
-The alternative — keep the board as the single source and skip Issues entirely — is also
-defensible for a one-maintainer project. What is not defensible is maintaining both.
+Practical effect for any session reading this: task status is a file in this repo. Edit the
+row, add a comments-log entry when something moves to `blocked`, `cancelled` or `done`, and
+update "Last updated" at the top of the board.
 
 ## 8. Going forward
 

@@ -2,19 +2,36 @@
 
 **Last updated:** 2026-09-19
 
-Status key: `todo` · `doing` · `blocked` · `review` · `done`
-Each task has a stable ID. Discussion goes in the [Comments log](#comments-log) at the
-bottom, keyed by ID, newest first. Keep rows terse; put reasoning in the log.
+This board is the authoritative record of task status (ADR-006). There is no second
+tracker — do not mirror rows into GitHub Issues.
 
-To mirror this board into GitHub Issues: `./scripts/bootstrap-issues.sh`
+Status key: `todo` · `doing` · `blocked` · `review` · `done` · `cancelled`
+IDs are stable and never reused. Keep rows terse; reasoning goes in the
+[Comments log](#comments-log) at the bottom, newest first. Tasks needing more than a row
+have a brief in [Task briefs](#task-briefs).
 
 ---
+
+## Critical path
+
+```
+DF-01 ──► DF-07, DF-08, DF-09 ──► DF-10 (phone review)
+                                      │
+DF-11 (ACSE assets) ──► DF-12, DF-13  │
+DF-14 (regional lead) ────────────────┼──► DF-20 (public deploy, 30 Sep)
+DF-17 (base path) ────────────────────┘
+DF-22 (embed ID) ──► DF-23 ──► DF-24, DF-25
+```
+
+Target: public site by **30 September**. DF-11 and DF-14 are external waits — every day
+they sit untouched is schedule loss, not slack. Draft messages for both are in
+`docs/OUTREACH.md`; they need a human to send them.
 
 ## Phase 0 — Foundation (20–24 Sep)
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
-| DF-01 | Create `devfest-armenia-2026` repo on GitHub, push scaffold | todo | Davit | 20 Sep | Public, MIT |
+| DF-01 | Create `devfest-armenia-2026` repo on GitHub, push scaffold | todo | Davit | 20 Sep | Public, MIT. Needs the remote URL; `gh` is not installed, use plain git |
 | DF-02 | Vite + TS + Tailwind skeleton building clean | done | Davit | 20 Sep | Scaffolded |
 | DF-03 | Design tokens from DevFest 2026 kit in `style.css` | done | Davit | 20 Sep | See BRAND.md |
 | DF-04 | JSON content model + loader + types | done | Davit | 21 Sep | `src/content.ts` |
@@ -23,22 +40,23 @@ To mirror this board into GitHub Issues: `./scripts/bootstrap-issues.sh`
 | DF-07 | Download DevFest 2026 landing-page headers (2650/1440/640×500) | todo | Davit | 22 Sep | From brand deck |
 | DF-08 | Create DevFest Armenia lockup from editable-location asset | todo | Davit | 22 Sep | Google Drawings |
 | DF-09 | Source GDG Yerevan logo SVG | todo | Davit | 22 Sep | |
-| DF-10 | Review v1 on phone via :3026 | todo | Davit | 24 Sep | Port-forward |
+| DF-10 | Review v1 on phone via :3026 | todo | Davit | 24 Sep | Port-forward. Needs DF-07/08/09 |
+| DF-42 | Commit `package-lock.json`, switch CI to `npm ci` with node cache | todo | Davit | 22 Sep | Lockfile already generated locally, untracked — see log |
 
 ## Phase 1 — Content and launch (25–30 Sep)
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
-| DF-11 | Request AUA/ACSE assets: SVG, reversed mark, building photo, brand rules | todo | Davit | 22 Sep | Blocks DF-12, DF-13 |
-| DF-12 | Venue section with licensed ACSE building photo | blocked | — | 29 Sep | Blocked by DF-11 |
-| DF-13 | Swap AUA PNG for SVG in collaboration strip | blocked | — | 29 Sep | Blocked by DF-11 |
-| DF-14 | Confirm logo lockup arrangement with GDG regional lead | todo | Davit | 23 Sep | Risk item |
+| DF-11 | Request AUA/ACSE assets: SVG, reversed mark, building photo, brand rules | todo | Davit | 22 Sep | Draft in `docs/OUTREACH.md`. Blocks DF-12, DF-13. Chase 25 Sep |
+| DF-12 | Venue section with licensed ACSE building photo | blocked | Davit | 29 Sep | Blocker: DF-11. Follow up 26 Sep |
+| DF-13 | Swap AUA PNG for SVG in collaboration strip | blocked | Davit | 29 Sep | Blocker: DF-11. Follow up 26 Sep |
+| DF-14 | Confirm logo lockup arrangement with GDG regional lead | todo | Davit | 23 Sep | Draft in `docs/OUTREACH.md`. Blocks DF-20. Chase 26 Sep |
 | DF-15 | Final About / CFP copy review | todo | Davit | 26 Sep | |
 | DF-16 | OG image, meta tags, sitemap, robots.txt | todo | Davit | 28 Sep | |
-| DF-17 | Decide deployment target and `VITE_BASE_PATH` | todo | Davit | 26 Sep | WP subfolder vs standalone |
+| DF-17 | Decide deployment target and `VITE_BASE_PATH` | todo | Davit | 26 Sep | WP subfolder vs standalone. Blocks DF-20 |
 | DF-18 | Analytics | todo | Davit | 28 Sep | Which tool? |
 | DF-19 | Accessibility pass: contrast, focus, reduced motion, keyboard | todo | Davit | 29 Sep | |
-| DF-20 | Public deploy | todo | Davit | 30 Sep | |
+| DF-20 | Public deploy | todo | Davit | 30 Sep | Needs DF-14, DF-17 |
 | DF-21 | Announce site on GDG Community platform and socials | todo | Davit | 30 Sep | |
 
 ## Phase 2 — Speakers (15–25 Oct)
@@ -50,7 +68,8 @@ To mirror this board into GitHub Issues: `./scripts/bootstrap-issues.sh`
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | todo | Davit | 16 Oct | |
 | DF-25 | Verify 9+ compact grid state with real data | todo | Davit | 20 Oct | ~20 expected |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
-| DF-27 | Hide CFP block after 14 Oct — verify | todo | Davit | 15 Oct | Date-aware |
+| DF-27 | Hide CFP block after 14 Oct — verify | todo | Davit | 15 Oct | Date-aware. Checkpoint task |
+| DF-39 | Decide how content gets published in October | todo | Davit | 9 Oct | Decision task — see brief |
 
 ## Phase 3 — Agenda (1–10 Nov)
 
@@ -66,8 +85,10 @@ To mirror this board into GitHub Issues: `./scripts/bootstrap-issues.sh`
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
-| DF-33 | Day-of mode: live "now/next", wifi, floor plan | todo | Davit | 19 Nov | |
-| DF-34 | PWA offline verified on real devices | todo | Davit | 19 Nov | Needs HTTPS |
+| DF-33 | Day-of mode: live "now / next" from the agenda data | todo | Davit | 17 Nov | Rescoped — see log 19 Sep. Needs DF-28 |
+| DF-40 | Practical info card: wifi, rooms, catering, emergency contact | todo | Davit | 18 Nov | Content from GDG team |
+| DF-41 | Floor plan section | todo | Davit | 18 Nov | Needs a plan image from AUA |
+| DF-34 | PWA offline verified on real devices | todo | Davit | 19 Nov | Needs HTTPS tunnel (ADR-005) |
 | DF-35 | Feedback form link | todo | Davit | 20 Nov | |
 
 ## Phase 5 — Post-event
@@ -80,6 +101,45 @@ To mirror this board into GitHub Issues: `./scripts/bootstrap-issues.sh`
 
 ---
 
+## Task briefs
+
+Only for tasks a row cannot carry. Everything else is self-evident from its row.
+
+### DF-39 · Decide how content gets published in October
+
+**Context.** Read `docs/HANDOVER.md`, then `docs/TASK-MANAGEMENT.md` §9. ADR-001 moved
+content into `public/content/*.json` so that publishing a speaker would not require a
+developer. That is true of the file *format* and false of the *workflow*: publishing still
+means clone, commit, push. Nobody has confirmed that a co-organizer will actually do that.
+
+**Goal.** Decide, and record as an ADR, how speaker and partner content reaches the live
+site in October.
+
+**Steps.**
+1. Establish who will publish content in October — Davit alone, or a co-organizer.
+2. If Davit alone: record the ADR as "status quo, git workflow", close this task, and
+   retire R-5 from the risk register. No code changes.
+3. If a co-organizer: choose between (a) GitHub web editor on a protected branch with CI
+   validation as the gate, (b) a CMS-backed JSON source, (c) a forms-to-JSON bridge.
+4. Record the choice as ADR-007 with its cost.
+5. If the choice is not status quo, create the implementation tasks with due dates before
+   **16 October** — DF-23's date, when speakers land.
+
+**Constraints.** Do not build anything under this task; it is a decision. Do not weaken
+`validate:content` or `check:brand` to make a publishing path easier — those guards are the
+reason a non-developer can be trusted to edit content at all. Do not add a runtime admin UI
+to a statically served site.
+
+**Definition of done.** ADR-007 exists in `docs/DECISIONS.md`; if it is not status quo,
+every follow-on task has a board row with an owner and a due date before 16 October.
+
+**Decision date: 9 October.** Retrofitting this during speaker-announcement week will not
+go well.
+
+**Commit message.** `DF-39: record ADR-007, content publishing workflow`
+
+---
+
 ## Risk register
 
 | ID | Risk | Impact | Mitigation |
@@ -88,14 +148,56 @@ To mirror this board into GitHub Issues: `./scripts/bootstrap-issues.sh`
 | R-2 | Logo lockup violates GDG brand guide | Rework after launch | DF-14 — confirm with regional lead before public deploy |
 | R-3 | Fewer than ~20 accepted talks | Two tracks become unfillable | Monitor submissions weekly from 1 Oct; extend CFP if thin |
 | R-4 | Sessionize API shape changes | Speakers section breaks | DF-24 snapshot fallback |
-| R-5 | Content edits require a developer | Bottleneck on one person | JSON content model + CI validation (DF-04, DF-06) |
+| R-5 | Content edits still require git, so they still require a developer | Bottleneck on one person in the busiest weeks | The JSON model and CI validation cover the format only; the workflow is unsolved. DF-39, decide by 9 Oct |
 | R-6 | AUA colors leak into the design system | Brand drift | CI guard in DF-06 |
+| R-7 | Repo exists only on Davit's machine | Total loss of scaffold, docs and history | DF-01 — push to GitHub. Open since 19 Sep; the only mitigation is doing it |
 
 ---
 
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-42 · Claude Code (task manager)
+New. Running the mandatory checks needed `npm install`, which revealed there is no
+committed lockfile and CI runs `npm install`, not `npm ci`, against caret ranges. So the
+versions CI resolves are not the versions that passed locally, and a transitive release
+between now and November can turn a green build red with no commit to blame it on — during
+the week the site has to go live. The generated `package-lock.json` is sitting untracked in
+the working tree; it is left for this task rather than smuggled into a docs commit. Local
+run today was clean: brand guard, content validation and `tsc --noEmit && vite build` all
+passed, 89 packages, vite 5.4.21.
+
+### 2026-09-19 · DF-11, DF-14 · Claude Code (task manager)
+Both are external waits on the critical path and neither has been sent. Drafted both
+messages in `docs/OUTREACH.md` so the remaining work is a human pressing send, not
+composing one from scratch. Chase dates set: 25 Sep for ACSE, 26 Sep for the regional lead.
+DF-12 and DF-13 were `blocked` with a named blocker but no follow-up date, which the role
+charter calls a bug in the board — both now carry 26 Sep.
+
+### 2026-09-19 · DF-33 · Claude Code (task manager)
+Split. "Live now/next, wifi, floor plan" was three unrelated deliverables in one row: one
+needs agenda data and date logic, one needs copy from the GDG team, one needs an image from
+AUA. Bundled, the whole row would have stalled on whichever dependency arrived last — on
+19 November. DF-33 keeps the now/next behaviour; DF-40 takes practical info; DF-41 takes the
+floor plan. Dates pulled to 17–18 Nov because day-of work that lands the night before
+cannot be tested on a real phone.
+
+### 2026-09-19 · DF-39 · Claude Code (task manager)
+New. `docs/TASK-MANAGEMENT.md` §9 flags a gap that is easy to miss because the code looks
+finished: ADR-001's premise is that a co-organizer can publish content without a developer,
+but the workflow is still clone/commit/push. Either that premise is dropped or it is built,
+and the decision has to land before DF-23 on 16 October. Written as a decision task, not an
+implementation task — the answer may well be "status quo", which is a legitimate outcome and
+retires R-5.
+
+### 2026-09-19 · ADR-006 · Claude Code (task manager)
+Tracker resolved: the board stays authoritative, GitHub Issues are not used for `DF-xx`.
+`gh` turned out not to be installed on the build machine, which weakened the original case
+for Issues. Deleted `scripts/bootstrap-issues.sh` rather than leaving it — a bootstrap
+script sitting in the repo is an invitation to half-migrate, and a half-migrated tracker is
+worse than either option. Also set `core.fileMode=false` locally: extracting the tarball on
+Windows showed all three scripts as modified when only their permission bits had changed.
 
 ### 2026-09-19 · DF-06 · Davit
 Added a brand-color guard to CI rather than relying on review discipline. It greps

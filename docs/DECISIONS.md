@@ -49,3 +49,24 @@ not LAN port-forwarding.
 
 **Why:** Service workers require a secure context. A LAN IP over plain HTTP silently skips
 registration, so offline behaviour would appear to work in review and fail in production.
+
+## ADR-006 · 2026-09-19 · `docs/BOARD.md` is the authoritative tracker
+
+**Decision:** Task status lives in `docs/BOARD.md` and nowhere else. GitHub Issues are not
+used for task tracking. `scripts/bootstrap-issues.sh` has been deleted and the board's
+"mirror into Issues" pointer removed.
+
+**Why:** Davit's call, 19 September. Three things supported it: `gh` is not installed on
+the build machine, so Issues would have added a toolchain dependency before DF-01 could
+even run; this is a one-maintainer project, so the threading and assignment that Issues
+buys are mostly unused; and the two parts of the board with real long-term value — the
+risk register and the comments log — have no good home in Issues anyway.
+
+**Cost:** Status is not queryable from outside the repo, and issues will not auto-link to
+the commits that close them. Accepted: the board is read by sessions that have the repo
+checked out, which is all of them.
+
+**Consequence:** Do not re-raise this. If Issues are ever opened on the repo, they are for
+external bug reports, not for `DF-xx` tracking. The bootstrap script was removed rather
+than left in place precisely so a future session cannot half-migrate the tracker — which
+the role charter (§3) correctly calls worse than either option.

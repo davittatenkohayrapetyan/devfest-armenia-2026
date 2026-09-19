@@ -63,12 +63,9 @@ file and never in CSS; `npm run check:brand` enforces this in CI. Read
 
 ## Tracking
 
-The board lives in `docs/BOARD.md`. To mirror it into GitHub Issues:
-
-```bash
-gh auth login
-./scripts/bootstrap-issues.sh davittatenkohayrapetyan/devfest-armenia-2026
-```
+The board in `docs/BOARD.md` is the only tracker (ADR-006). Task status is a row in that
+file — GitHub Issues are not used for `DF-xx` work. Update the row, and add a comments-log
+entry whenever something moves to `blocked`, `cancelled` or `done`.
 
 ## License
 
