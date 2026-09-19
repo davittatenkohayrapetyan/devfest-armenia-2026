@@ -59,10 +59,10 @@ infrastructure decision.
 | DF-16 | OG image, meta tags, sitemap, robots.txt | todo | Davit | 28 Sep | |
 | DF-17 | Decide deployment target and `VITE_BASE_PATH` | done | Davit | 26 Sep | Standalone at root, ADR-008 |
 | DF-18 | Analytics | todo | Davit | 28 Sep | Which tool? |
-| DF-19 | Accessibility pass: contrast, focus, reduced motion, keyboard | done | Davit | 29 Sep | One AA failure fixed; button colour raised as DF-52 |
+| DF-19 | Accessibility pass: contrast, focus, reduced motion, keyboard | done | Davit | 29 Sep | All measured pairs now pass AA |
 | DF-20 | Public deploy | todo | Davit | 30 Sep | `npm run build:deploy`, copy `dist/` to the host |
 | DF-49 | Deploy build that omits the internal board page | done | Davit | 26 Sep | `npm run build:deploy`, verified |
-| DF-52 | Decide: primary button contrast vs the kit blue | todo | Davit | 26 Sep | AA failure inherent to `#4285f4`. See brief |
+| DF-52 | Decide: primary button contrast vs the kit blue | done | Davit | 26 Sep | ADR-010 — large-text threshold, kit blue kept |
 | DF-21 | Announce site on GDG Community platform and socials | todo | Davit | 30 Sep | |
 
 ## Phase 2 — Speakers (15–25 Oct)
@@ -496,6 +496,23 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-52 · Claude Code (task manager)
+Davit delegated the choice. Took option 2 — button labels to 19px/700 — and recorded ADR-010.
+
+Reasoning for preferring it over `#1a73e8`, which would have given a better raw number (4.6:1
+against 3.56:1): the typographic fix needs no exception to constraint 2, while a colour
+exception does, and an exception is precedent. ADR-003 exists because "just this one accessible
+variant" is exactly how a second palette starts. The large-text threshold is also not a
+loophole — 19px bold genuinely is more legible at 3.56:1 than 16px medium, which is why the
+standard draws the line there.
+
+With this, **every colour pair measured in DF-19 passes AA**, so the caveat about not claiming
+conformance is lifted.
+
+Cost, recorded so nobody "tidies" it later: the two hero CTAs now wrap to separate lines on a
+narrow phone instead of sitting side by side. Reducing `.btn` font-size or weight to fix that
+would silently reintroduce the failure, and no check in this repo would catch it.
 
 ### 2026-09-19 · DF-19 · Claude Code (task manager)
 Accessibility pass done. The scaffold was in better shape than expected: `:focus-visible` with a

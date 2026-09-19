@@ -127,3 +127,26 @@ snapshot is the only source. Speaker images are downloaded locally by the same j
 hotlinked, so the site carries no third-party dependency for faces either. Talks and the agenda
 stay out until explicitly asked for; the sync writes `sessions: []` deliberately, not
 accidentally.
+
+## ADR-010 · 2026-09-19 · Button labels are sized to the WCAG large-text threshold
+
+**Decision:** `.btn` labels are `1.1875rem` (19px) at weight `700`. The DevFest kit blue
+`#4285f4` stays exactly as it is.
+
+**Why:** White on `#4285f4` is **3.56:1**. WCAG AA requires 4.5:1 for normal-size text but 3:1
+for large text — 18.66px bold or larger. At 16px/500 the primary button failed; at 19px/700 it
+passes, and it passes because the text genuinely is more legible, which is the reason the
+threshold exists. Not a loophole.
+
+**Alternative rejected:** `#1a73e8`, Google's own accessible blue, gives 4.6:1 and would have
+been the cleaner number. It is not in the DevFest 2026 kit. Constraint 2 makes the kit the only
+design system, and ADR-003 exists because a partner or "accessible variant" colour adopted as an
+exception becomes a second palette within weeks. A typographic fix costs nothing and sets no
+precedent; a colour exception sets one that others will cite.
+
+**Cost:** Buttons are visually heavier, and on a narrow phone the two hero CTAs wrap to separate
+lines rather than sitting side by side. Acceptable on a page whose primary job is to get people
+to click one of them.
+
+**Consequence:** Do not reduce `.btn` font-size or weight without re-measuring. Dropping either
+below the threshold silently reintroduces an AA failure that no test in this repo would catch.
