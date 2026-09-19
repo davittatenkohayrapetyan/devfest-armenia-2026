@@ -218,6 +218,12 @@ function venue(e: EventContent): string {
     <p class="text-[var(--ink-muted)]">${esc(e.venue.detail)}</p>
     <p class="mt-2 text-[var(--ink-muted)]">${esc(e.venue.address)}</p>
     <a class="btn btn-secondary mt-6" href="${esc(e.venue.mapUrl)}" rel="noopener">Open in Maps</a>
+    <iframe
+      class="venue-map mt-8"
+      src="${esc(e.venue.mapEmbedUrl)}"
+      title="Map of ${esc(e.venue.name)}, ${esc(e.venue.address)}"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>`;
 }

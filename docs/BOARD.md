@@ -49,7 +49,7 @@ infrastructure decision.
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
 | DF-11 | Request AUA/ACSE assets: SVG, reversed mark, building photo, brand rules | cancelled | — | — | Nothing to request — AUA has only the two PNGs already in the repo |
-| DF-12 | Venue section — name, address, map link, no photo | done | Davit | 26 Sep | Photo path removed from code, types and content |
+| DF-12 | Venue section — name, address, map, no photo | done | Davit | 26 Sep | Embedded map added 19 Sep, pointed at the PAB |
 | DF-13 | Swap AUA PNG for SVG in collaboration strip | cancelled | — | — | No SVG exists; the 2130×610 navy PNG is the master |
 | DF-14 | Confirm logo lockup arrangement with GDG regional lead | cancelled | — | — | Davit is the GDG Yerevan organizer; the call is his and he has made it |
 | DF-15 | Final About / CFP copy review | done | Davit | 26 Sep | Approved 19 Sep; scale updated to 20+/3 tracks/350+ |
@@ -535,6 +535,26 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-12, DF-18 · Claude Code (task manager)
+Embedded map added under the venue text, and both the link and the embed now point where Davit
+asked rather than at a generic AUA search.
+
+Resolving his short link was worth doing: it points at the **AUA Paramaz Avedisian Building**,
+not the university as a whole. The embed uses the `q=…&output=embed` form derived from it, which
+needs no API key, and it is stored as `venue.mapEmbedUrl` in `event.json` — repointing the map is
+a JSON edit, per ADR-001. Both venue URLs are now validated, so neither can go missing silently.
+
+**Worth flagging against ADR-012.** We chose cookieless analytics specifically to avoid a consent
+banner, and a Google Maps iframe partly undoes that: it is a Google origin and can set cookies
+once loaded. It is `loading="lazy"`, so nothing is requested until a visitor actually reaches the
+venue section, which limits it to people who scroll that far — but it is not zero. If the
+no-banner position matters, the fix is a click-to-load placeholder. Davit's call; raised, not
+assumed.
+
+Open question for him, not changed: the venue text still reads "Zaven P. & Sonia Akian College of
+Science & Engineering" while the map now points at the Paramaz Avedisian Building. If the event
+is actually in the PAB, the detail line should probably say so.
 
 ### 2026-09-19 · DF-15 · Claude Code (task manager)
 Added a "Become a speaker" button to the Speakers section, at Davit's request.

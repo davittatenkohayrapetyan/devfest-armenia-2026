@@ -40,6 +40,7 @@ export type EventContent = {
     detail: string;
     address: string;
     mapUrl: string;
+    mapEmbedUrl: string;
   };
   cta: { register: string; cfp: string; chapter: string; lastYear: string };
   cfp: {

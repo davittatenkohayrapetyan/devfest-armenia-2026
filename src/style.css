@@ -125,6 +125,21 @@ main:focus { outline: none; }
    artwork they give us — InTech's is black on transparent, which disappears against the dark
    surface-alt — and recolouring or inverting someone else's mark is not an option. Same
    reasoning as the collaboration strip. */
+/* Embedded map. loading="lazy" is not only a performance choice: the iframe is a Google
+   origin, so deferring it until the venue section is actually reached keeps it off the initial
+   page load for anyone who never scrolls that far. */
+.venue-map {
+  display: block;
+  width: 100%;
+  height: 22rem;
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+@media (min-width: 768px) {
+  .venue-map { height: 26rem; }
+}
+
 .partner-chip {
   display: inline-flex;
   align-items: center;

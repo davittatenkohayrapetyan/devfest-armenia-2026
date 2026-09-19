@@ -20,6 +20,8 @@ if (event) {
   for (const k of ["register", "cfp", "chapter", "lastYear"]) {
     if (!event.cta?.[k]) errors.push(`event.json: missing cta.${k}`);
   }
+  for (const k of ["name", "detail", "address", "mapUrl", "mapEmbedUrl"])
+    if (!event.venue?.[k]) errors.push(`event.json: missing venue.${k}`);
   if (!event.speakers?.noteWhileCfpOpen)
     errors.push("event.json: missing speakers.noteWhileCfpOpen");
   if (event.date && Number.isNaN(Date.parse(event.date)))
