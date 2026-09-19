@@ -62,11 +62,16 @@ AUA look oversized. The strip sets a fixed cap-height and lets widths fall where
 | `gdg-yerevan-square.png` | Supplied by Davit, 19 Sep | Stacked variant, for square placements |
 
 `devfest-armenia-lockup.svg` was built from `devfest-lockup.svg` by recolouring the wordmark
-to `#FFFFFF` — the 2024 file is `#1E1E1E`, which is invisible on the hero scrim — and adding
-"Armenia 2026" beneath it. That line is Roboto Bold at 15.5 units with 1.15 units of
-tracking, **converted to outlines**, so the lockup carries no font dependency and renders
-identically whether it is inlined or loaded through `<img>`. To change the wording, regenerate
-from the mark rather than typing into the file; there is no live text in it.
+to `#FFFFFF` — the 2024 file is `#1E1E1E`, which is invisible on the hero scrim — and setting
+"Armenia 2026" **inside the braces**, on a second line under "DevFest".
+
+That slot is not improvised. In the 2024 mark the braces span y 0–66 while the letters occupy
+only y 0.6–33.7, leaving a deliberate empty band inside the brackets: it is the editable
+location slot the kit's lockup is built around. The line is Roboto Bold at 22.5 units with
+1.5 units of tracking, optically centred at (116.1, 48.8) in the 232×67 viewBox, and
+**converted to outlines** — so the lockup carries no font dependency and renders identically
+inlined or through `<img>`. There is no live text in the file: to change the wording,
+regenerate from `devfest-lockup.svg` rather than editing it.
 
 The GDG Yerevan files were supplied as RGB on white. The white was keyed to alpha so they sit
 on the strip without a visible box. They are PNG, not vector — if an SVG ever appears, prefer it.

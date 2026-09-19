@@ -351,6 +351,23 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-09-19 · DF-08, DF-09 · Claude Code (task manager)
+Two corrections from Davit's phone review.
+
+The lockup now sets "Armenia 2026" **inside** the braces rather than below them. Measuring the
+2024 mark explained why that works: the braces span y 0–66 but the letters only reach y 33.7,
+so there is a deliberate empty band inside the brackets — the editable location slot the kit
+lockup is designed around. The line is centred in it at 22.5 units. So DF-08's original
+wording, "create the lockup from the editable-location asset", turned out to be achievable
+after all; the slot was in the file the whole time.
+
+The collaboration strip had a labelling error worth more than the cosmetics. A single
+"Organized by" sat above both marks, which put AUA under a claim that is false — they are a
+collaborating institution, not an organizer, and `docs/HANDOVER.md` says so in its first
+paragraph. Each mark now carries its own label: "Organized by" over GDG Yerevan, "In
+collaboration with" over AUA. The long sentence underneath is deleted rather than reworded,
+because it repeated what the AUA lockup already says in its own type.
+
 ### 2026-09-19 · DF-09 · Claude Code (task manager)
 The two marks in the collaboration strip were badly mismatched in size, and the cause was not
 the CSS. Measured from the files: the GDG wordmark's caps are 117px of a 240px canvas, while

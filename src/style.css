@@ -78,6 +78,22 @@ body {
  * roughly 1.5:1 against the dark surface. #f0f0f0 is already in the Google palette, so
  * this costs nothing in brand terms and needs no filter on the partner's logo.
  */
+/* Each mark carries its own label. Previously one "Organized by" sat above both, which put
+   AUA's mark under a claim that is not true — they are a collaborating institution, not an
+   organizer. The long sentence that used to follow is gone: it repeated what the AUA lockup
+   already says in its own type. */
+.collab-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.collab-label {
+  font-size: 0.8125rem;
+  color: #5f6368;
+  letter-spacing: 0.02em;
+}
+
 .collab-strip {
   background: var(--df-surface-light);
   border-block: 1px solid rgba(30, 30, 30, 0.08);
@@ -145,12 +161,15 @@ body {
 }
 /* Two lines now — the mark plus "Armenia 2026" — so it needs more height than a
    wordmark-only lockup would. */
+/* "Armenia 2026" now sits inside the braces, in the slot the 2024 mark left empty, so the
+   lockup is back to its original 232x67 proportions — but it needs more height than a
+   wordmark alone would, or the second line stops being legible on a phone. */
 .hero-lockup {
-  height: 4.25rem;
+  height: 4rem;
   width: auto;
 }
 @media (min-width: 768px) {
-  .hero-lockup { height: 5.5rem; }
+  .hero-lockup { height: 5.25rem; }
 }
 
 /* Decorative kit elements. Hidden below md — at phone width they crowd the type rather
