@@ -47,6 +47,25 @@ AUA's lockup is roughly 3.5:1; GDG Yerevan's is closer to square. Align by **opt
 cap-height of the letterforms**, not by bounding box — matching container heights makes
 AUA look oversized. The strip sets a fixed cap-height and lets widths fall where they land.
 
+## DevFest and GDG Yerevan logo files
+
+| File | Source | Use |
+|---|---|---|
+| `devfest-armenia-lockup.svg` | Derived — see below | Hero. Light-on-dark only |
+| `devfest-lockup.svg` | `devfest.am/2024` | The `{ DevFest }` mark alone, dark ink, for light surfaces |
+| `gdg-yerevan.png` | Supplied by Davit, 19 Sep | Collaboration strip |
+| `gdg-yerevan-square.png` | Supplied by Davit, 19 Sep | Stacked variant, for square placements |
+
+`devfest-armenia-lockup.svg` was built from `devfest-lockup.svg` by recolouring the wordmark
+to `#FFFFFF` — the 2024 file is `#1E1E1E`, which is invisible on the hero scrim — and adding
+"Armenia 2026" beneath it. That line is Roboto Bold at 15.5 units with 1.15 units of
+tracking, **converted to outlines**, so the lockup carries no font dependency and renders
+identically whether it is inlined or loaded through `<img>`. To change the wording, regenerate
+from the mark rather than typing into the file; there is no live text in it.
+
+The GDG Yerevan files were supplied as RGB on white. The white was keyed to alpha so they sit
+on the strip without a visible box. They are PNG, not vector — if an SVG ever appears, prefer it.
+
 ## AUA logo files
 
 | File | Source | Colors | Use |

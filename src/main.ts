@@ -25,7 +25,7 @@ function hero(e: EventContent): string {
   <img class="hero-art hero-art-a" src="${base}assets/art/element1.svg" alt="" aria-hidden="true">
   <img class="hero-art hero-art-b" src="${base}assets/art/se-1.svg" alt="" aria-hidden="true">
   <div class="wrap py-20 md:py-28 relative">
-    <img class="hero-lockup" src="${base}assets/logos/devfest-lockup.svg" alt="" aria-hidden="true">
+    <img class="hero-lockup" src="${base}assets/logos/devfest-armenia-lockup.svg" alt="" aria-hidden="true">
     <p class="mt-6 text-sm hero-muted">Google Developer Groups Yerevan presents</p>
     <h1 class="mt-3 text-5xl md:text-7xl font-bold tracking-tight">DevFest Armenia 2026</h1>
     <div class="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-lg">
@@ -51,8 +51,8 @@ function collaboration(): string {
   <div class="wrap py-8 flex flex-col md:flex-row items-center gap-6 md:gap-12">
     <p class="text-sm text-[#5f6368] shrink-0">Organized by</p>
     <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14">
-      <img class="collab-mark" src="${base}assets/logos/gdg.svg"
-           alt="Google Developer Groups" onerror="this.style.display='none'">
+      <img class="collab-mark" src="${base}assets/logos/gdg-yerevan.png"
+           alt="GDG Yerevan" onerror="this.style.display='none'">
       <img class="collab-mark" src="${base}assets/logos/aua-acse-navy.png"
            alt="Akian College of Science and Engineering, American University of Armenia">
     </div>

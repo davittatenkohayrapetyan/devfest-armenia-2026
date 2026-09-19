@@ -135,12 +135,14 @@ body {
 .hero-muted {
   color: rgba(240, 240, 240, 0.78);
 }
+/* Two lines now — the mark plus "Armenia 2026" — so it needs more height than a
+   wordmark-only lockup would. */
 .hero-lockup {
-  height: 2.5rem;
+  height: 4.25rem;
   width: auto;
 }
 @media (min-width: 768px) {
-  .hero-lockup { height: 3.25rem; }
+  .hero-lockup { height: 5.5rem; }
 }
 
 /* Decorative kit elements. Hidden below md — at phone width they crowd the type rather
