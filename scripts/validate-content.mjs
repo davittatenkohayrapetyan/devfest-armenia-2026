@@ -14,12 +14,14 @@ const read = (f) => {
 
 const event = read("event.json");
 if (event) {
-  for (const k of ["name", "date", "dateLabel", "venue", "cta", "cfp", "about"]) {
+  for (const k of ["name", "date", "dateLabel", "venue", "cta", "cfp", "about", "speakers"]) {
     if (!(k in event)) errors.push(`event.json: missing "${k}"`);
   }
   for (const k of ["register", "cfp", "chapter", "lastYear"]) {
     if (!event.cta?.[k]) errors.push(`event.json: missing cta.${k}`);
   }
+  if (!event.speakers?.noteWhileCfpOpen)
+    errors.push("event.json: missing speakers.noteWhileCfpOpen");
   if (event.date && Number.isNaN(Date.parse(event.date)))
     errors.push("event.json: date is not parseable");
   if (event.cfp?.closes && Number.isNaN(Date.parse(event.cfp.closes)))

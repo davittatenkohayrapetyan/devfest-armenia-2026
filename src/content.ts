@@ -53,6 +53,7 @@ export type EventContent = {
     topics: string[];
     note: string;
   };
+  speakers: { noteWhileCfpOpen: string };
   about: {
     lead: string;
     stats: { value: string; label: string }[];

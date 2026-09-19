@@ -134,7 +134,14 @@ function about(e: EventContent): string {
 </section>`;
 }
 
-function speakers(list: Speaker[], cfpUrl: string): string {
+function speakers(list: Speaker[], e: EventContent): string {
+  const cfpUrl = e.cta.cfp;
+  // While the call is open the published list is a first cut, not the lineup. Saying so
+  // avoids four names reading as the whole programme of a two-track, ~20-speaker event.
+  const note =
+    list.length > 0 && daysUntil(e.cfp.closes) >= 0
+      ? `<p class="mt-3 text-[var(--ink-muted)] prose-measure">${esc(e.speakers.noteWhileCfpOpen)}</p>`
+      : "";
   const body =
     list.length === 0
       ? `<div class="mt-8 rounded-2xl p-10 text-center" style="background:var(--surface-alt)">
@@ -156,6 +163,7 @@ function speakers(list: Speaker[], cfpUrl: string): string {
 <section id="speakers" class="py-20">
   <div class="wrap">
     <h2 class="text-3xl md:text-4xl font-bold">Speakers</h2>
+    ${note}
     ${body}
   </div>
 </section>`;
@@ -234,7 +242,7 @@ async function render() {
       `<main id="main" tabindex="-1">`,
       callForSpeakers(event),
       about(event),
-      speakers(speakerList, event.cta.cfp),
+      speakers(speakerList, event),
       partners(partnerData.tiers, partnerData.contactUrl),
       venue(event),
       `</main>`,

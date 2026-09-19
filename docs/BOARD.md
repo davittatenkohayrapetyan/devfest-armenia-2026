@@ -52,13 +52,13 @@ infrastructure decision.
 | DF-12 | Venue section — name, address, map link, no photo | done | Davit | 26 Sep | Photo path removed from code, types and content |
 | DF-13 | Swap AUA PNG for SVG in collaboration strip | cancelled | — | — | No SVG exists; the 2130×610 navy PNG is the master |
 | DF-14 | Confirm logo lockup arrangement with GDG regional lead | cancelled | — | — | Davit is the GDG Yerevan organizer; the call is his and he has made it |
-| DF-15 | Final About / CFP copy review | todo | Davit | 26 Sep | |
+| DF-15 | Final About / CFP copy review | review | Davit | 26 Sep | Facts and links verified; one addition needs your eye |
 | DF-44 | Document the neutral ramp in BRAND.md | done | Davit | 26 Sep | Neutrals table with measured contrast |
 | DF-45 | 2025 photos as hero and CFP backgrounds | done | Davit | 22 Sep | Two photos, downscaled, EXIF stripped |
 | DF-46 | Re-cut hero art if the 2026 kit becomes available | todo | Davit | 10 Oct | Contingent on the kit; due date sits past this phase's window |
 | DF-16 | OG image, meta tags, sitemap, robots.txt | done | Davit | 28 Sep | Needs `VITE_SITE_URL` set at deploy — guarded |
 | DF-17 | Decide deployment target and `VITE_BASE_PATH` | done | Davit | 26 Sep | Standalone at root, ADR-008 |
-| DF-18 | Analytics | todo | Davit | 28 Sep | Which tool? |
+| DF-18 | Analytics | todo | Davit | 28 Sep | Decision task — see brief |
 | DF-19 | Accessibility pass: contrast, focus, reduced motion, keyboard | done | Davit | 29 Sep | All measured pairs now pass AA |
 | DF-20 | Public deploy | todo | Davit | 30 Sep | `VITE_SITE_URL=https://devfest.am/2026 npm run build:deploy` |
 | DF-49 | Deploy build that omits the internal board page | done | Davit | 26 Sep | `npm run build:deploy`, verified |
@@ -408,6 +408,45 @@ made and the button pair re-measured above 4.5:1 (or above 3:1 at the large-text
 
 ---
 
+### DF-18 · Analytics — choose a tool, or choose none
+
+**Context.** Nothing is installed. The site currently loads no third-party script except Google
+Fonts. Whatever goes here is a decision about other people's data, not a technical preference,
+so it is Davit's to make.
+
+**What the site actually needs to know.** Realistically three things: how many people saw the
+page, how many clicked *Register*, and how many clicked *Submit a talk*. Registration numbers
+already come from the GDG Community platform and submissions from Sessionize — so analytics
+here answers "how many people did the site convert", not "how many attended".
+
+**Options.**
+1. **Nothing.** Zero scripts, no consent banner, no processor agreement. The CFP and
+   registration platforms already report the numbers that matter. Cost: no visibility into how
+   people reach the page or where they drop.
+2. **A cookieless, aggregate tool** — Plausible, or self-hosted Umami. No cookies means no
+   consent banner under GDPR, and no personal data leaves the EU/your host. Plausible is paid
+   (~$9/mo); Umami is free but is another thing to run and keep up on event weekend.
+3. **Google Analytics 4.** Free, familiar, integrates with what GDG reporting already uses.
+   Cost: it sets cookies and processes personal data, which means a consent banner done
+   properly — and a banner on a landing page whose entire job is a single click is a real
+   conversion cost, on top of the compliance work.
+
+**Recommendation: option 2, Plausible** — or option 1 if nobody will actually read the numbers.
+A DevFest landing page does not need session recordings or funnels, and avoiding a consent
+banner on a page with two CTAs is worth more than the extra dimensions GA4 would give.
+
+**Constraints.** Whatever is chosen, do not add it inline in `index.html` where it cannot be
+switched off — gate it behind an env var so a local or preview build runs clean. Do not ship
+anything that sets a cookie without a consent mechanism. Do not add a second tool "temporarily".
+
+**Definition of done.** The decision is recorded as an ADR. If a tool is chosen, it loads only
+when its env var is set, the site still works with it blocked, and the privacy consequence is
+written down in the ADR rather than implied.
+
+**Commit message.** `DF-18: record the analytics decision`
+
+---
+
 ### DF-12 · Venue section — remove the pending-photo path
 
 **Context.** `docs/BRAND.md` for the asset inventory. The venue section already renders
@@ -496,6 +535,27 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-15, DF-18 · Claude Code (task manager)
+DF-15 to `review` — the objective half is done, the judgement half is Davit's.
+
+Verified: all four outbound links return 200, the CFP close date and timezone match the handover
+everywhere they appear, the AUA address is correct, and the en dash in "300–350" is genuinely
+UTF-8 in the file. That last one looked like mojibake in two of my own checks; the file was
+always right and my console was decoding as cp1252. Worth remembering before "fixing" an
+encoding based on terminal output.
+
+One real problem, created by publishing speakers today: the Speakers section listed four names
+with no context, while About says "~20 speakers" and the call is still open. Four names under a
+bare "Speakers" heading reads as the lineup of a two-track event. Added a note that renders only
+while the CFP is open, sourced from `event.json` so Davit can reword it without touching code,
+and validated so it cannot go missing. **The wording is his to approve** — that is why DF-15 is
+`review` rather than `done`.
+
+DF-18 written up as a decision brief rather than picked unilaterally. It is a choice about other
+people's data: GA4 means cookies, a consent banner, and a conversion cost on a page whose whole
+job is one click. Recommended a cookieless tool, or nothing at all given that registration and
+submission numbers already come from the GDG platform and Sessionize.
 
 ### 2026-09-19 · DF-17, DF-20 · Claude Code (task manager)
 Davit gave the domain: `devfest.am/2026`. That **contradicted ADR-008**, which recorded
