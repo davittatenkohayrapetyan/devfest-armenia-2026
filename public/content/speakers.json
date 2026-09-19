@@ -1,1 +1,76 @@
-[]
+[
+  {
+    "id": "ba8de9c7-f2d2-458a-b678-9270ab8def5d",
+    "fullName": "Arman Gyulbudaghyan",
+    "tagLine": "Staff DevOps Engineer",
+    "bio": "Staff DevOps Engineer and Head of DevOps at Grid Dynamics",
+    "profilePicture": "assets/speakers/ba8de9c7-f2d2-458a-b678-9270ab8def5d.png",
+    "links": [],
+    "sessions": []
+  },
+  {
+    "id": "75f479eb-c660-4511-8445-8ead525d09f1",
+    "fullName": "Davit Siradeghyan",
+    "tagLine": "Engineering Manager at Softr",
+    "bio": "Davit Siradeghyan is an Engineering Manager and entrepreneur with over 16 years of experience building software and leading engineering teams across fintech, SaaS, and mobile technology.\r\n\r\nHe currently leads a distributed engineering team at Softr, where he combines hands-on software development with engineering leadership to build products used by more than one million users. Throughout his career, Davit has worked across the full software stack—from high-performance C++ trading systems and native mobile applications to modern cloud platforms and AI-powered products.\r\n\r\nBeyond his day job, Davit is the founder of GoBuild Technologies, where he explores how AI is reshaping software development, product creation, and entrepreneurship. He is passionate about helping engineers and engineering leaders leverage AI to build better products, move faster, and create greater impact.\r\n\r\nA frequent speaker at technology conferences and community events, Davit shares practical insights on engineering leadership, distributed teams, software architecture, and the future of AI-powered software development.",
+    "profilePicture": "assets/speakers/75f479eb-c660-4511-8445-8ead525d09f1.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/davit-siradeghyan/",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
+    "id": "8b52910b-edcd-42d4-b415-57fffcb06ead",
+    "fullName": "Liana Darbinyan",
+    "tagLine": "Cybersecurity Engineer | Security Infrastructure, Application Security & Threat Detection",
+    "bio": "Liana Darbinyan is a cybersecurity professional working across security infrastructure, application and API security, threat detection, and security operations. Her hands-on experience includes designing and implementing security solutions involving WAFs, firewalls, SIEM platforms, DDoS protection, network security, vulnerability management, and security monitoring.\r\n\r\nWith a background in Data Science, she is particularly interested in the intersection of cybersecurity, AI, and data-driven security — and in understanding how emerging technologies change both the way we build systems and the way we need to defend them.\r\n\r\nLiana is also an active member of the cybersecurity community and has contributed through technical talks, workshops, cybersecurity trainings, and international events. She focuses on making security practical and understandable, connecting real-world attack scenarios with the decisions developers and security professionals make when building and protecting modern applications.",
+    "profilePicture": "assets/speakers/8b52910b-edcd-42d4-b415-57fffcb06ead.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/lianadarbinyan/",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
+    "id": "1f2ba26b-921a-4b3a-ba24-1e8208f935b8",
+    "fullName": "Max Kachinkin",
+    "tagLine": "Android Tech Lead, Dodo Brands",
+    "bio": "Android Tech Lead, Dodo Brands\r\n\r\nI have over 10 years of experience in Android development and currently work as an Android Tech Lead at Dodo Brands. I led the development of Dodo Pizza (with 9 million MAU across 20 countries) and am now working on another project, Drinkit, a new digital coffee shop network by Dodo Brands.\r\n\r\n- I run a Telegram channel on mobile development, \"Mobile Fiction\"\r\n- I speak at conferences such as Mobius and Codefest.\r\n- I write articles on platforms like Habr, Medium (ProAndroidDev, BetterProgramming), HackerNoon.\r\n- I teach Android development in the Android Professional course at OTUS.\r\n- I created an Android Architecture course for GeekBrains Online School.\r\n- I participate in the program committee for the Android Podlodka Crew conference.\r\n- I also engage in various community activities, such as conducting an open interview, DevZen podcast.",
+    "profilePicture": "assets/speakers/1f2ba26b-921a-4b3a-ba24-1e8208f935b8.jpg",
+    "links": [
+      {
+        "title": "X (Twitter)",
+        "url": "https://twitter.com/makzimi",
+        "linkType": "Twitter"
+      },
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/maxkachinkin/",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Blog",
+        "url": "https://medium.com/@maxkachinkin",
+        "linkType": "Blog"
+      },
+      {
+        "title": "Company Website",
+        "url": "https://dodobrands.io/",
+        "linkType": "Company_Website"
+      },
+      {
+        "title": "Sessionize",
+        "url": "https://sessionize.com/maxkachinkin",
+        "linkType": "Sessionize"
+      }
+    ],
+    "sessions": []
+  }
+]

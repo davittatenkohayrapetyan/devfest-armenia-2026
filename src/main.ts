@@ -10,6 +10,13 @@ import {
 } from "./content";
 
 const base = import.meta.env.BASE_URL;
+
+/**
+ * Speaker photos are synced to repo-relative paths ("assets/speakers/x.png") so the site
+ * carries no third-party dependency for faces. Absolute URLs are still tolerated, in case a
+ * record is ever hand-written against the Sessionize CDN.
+ */
+const asset = (path: string): string => (/^https?:\/\//.test(path) ? path : `${base}${path}`);
 const esc = (s: string) =>
   s.replace(/[&<>"']/g, (c) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!,
@@ -137,7 +144,7 @@ function speakers(list: Speaker[], cfpUrl: string): string {
            ${list
              .map(
                (s) => `<article class="rounded-2xl p-5" style="background:var(--surface-alt)">
-               <img class="h-20 w-20 rounded-full object-cover" src="${esc(s.profilePicture)}" alt="" loading="lazy">
+               <img class="h-20 w-20 rounded-full object-cover" src="${esc(asset(s.profilePicture))}" alt="" loading="lazy">
                <h3 class="mt-4 font-bold">${esc(s.fullName)}</h3>
                <p class="text-sm text-[var(--ink-muted)]">${esc(s.tagLine)}</p>
              </article>`,

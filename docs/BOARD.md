@@ -71,7 +71,7 @@ infrastructure decision.
 | DF-22 | Retrieve Sessionize embed ID for 2026 | done | Davit | 10 Oct | `2d3htmgm` — recorded in CLAUDE.md |
 | DF-23 | Wire `loadSpeakers()` to Sessionize API | cancelled | — | — | Superseded by DF-50 — sync on demand, not fetch at runtime |
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
-| DF-50 | On-demand speaker sync from Sessionize | todo | Davit | 10 Oct | `npm run sync:speakers`. See brief |
+| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 4 speakers live |
 | DF-51 | Extend the sync to talks — session mapping | todo | Davit | 1 Nov | Needs DF-50. Blocks DF-28. See brief |
 | DF-25 | Verify 9+ compact grid state with real data | todo | Davit | 20 Oct | ~20 expected |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
@@ -457,6 +457,27 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-50 · Claude Code (task manager)
+Done. `npm run sync:speakers` rewrites `speakers.json` from Sessionize and downloads each photo
+into `public/assets/speakers/`. Four speakers are live; the empty state is gone.
+
+Refusals built in, because the failure that matters is the quiet one: the job exits non-zero and
+leaves `speakers.json` untouched on a non-200, a non-JSON body, a missing `speakers` array, or
+**zero speakers upstream**. That last case is the dangerous one — an empty array is valid JSON
+and would silently wipe the speaker section on a run made an hour before the event.
+
+Photos are downloaded, not hotlinked. A face that 404s on the day because a CDN moved is not a
+risk worth carrying, and local files are what let the PWA work offline. `main.ts` gained an
+`asset()` helper: synced paths are repo-relative so they follow `VITE_BASE_PATH`, while an
+absolute URL still passes through untouched.
+
+Idempotency verified properly — photos are compared byte-wise before writing, and a second run
+leaves no unstaged change. My first check was worthless: I had staged everything beforehand, so
+`git status` showed my own additions and told me nothing about the rerun.
+
+`sessions: []` is emitted deliberately and says so in the file's comment, so nobody reads it as
+an oversight and "fixes" it ahead of DF-51.
 
 ### 2026-09-19 · DF-51 · Claude Code (task manager)
 Created for the talk/session mapping DF-50 defers. Separate task rather than a step inside

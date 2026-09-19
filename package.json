@@ -11,6 +11,7 @@
     "build:board": "node scripts/build-board.mjs",
     "build:deploy": "node scripts/build-deploy.mjs",
     "preview": "vite preview",
+    "sync:speakers": "node scripts/sync-speakers.mjs",
     "validate:content": "node scripts/validate-content.mjs",
     "check:brand": "node scripts/check-brand.mjs"
   },
