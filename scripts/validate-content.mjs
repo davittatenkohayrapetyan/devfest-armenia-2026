@@ -52,7 +52,16 @@ if (partners) {
 }
 
 read("tracks.json");
-read("organizers.json");
+
+const organizers = read("organizers.json");
+if (organizers) {
+  if (!Array.isArray(organizers)) errors.push("organizers.json: must be an array");
+  else
+    organizers.forEach((o, i) => {
+      for (const k of ["name", "role", "photo"])
+        if (!o?.[k]) errors.push(`organizers.json[${i}]: missing "${k}"`);
+    });
+}
 
 if (errors.length) {
   console.error("Content validation failed:");

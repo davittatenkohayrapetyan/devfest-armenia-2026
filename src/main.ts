@@ -2,9 +2,11 @@ import "./style.css";
 import {
   daysUntil,
   loadEvent,
+  loadOrganizers,
   loadPartners,
   loadSpeakers,
   type EventContent,
+  type Organizer,
   type Partner,
   type Speaker,
 } from "./content";
@@ -179,6 +181,27 @@ function speakers(list: Speaker[], e: EventContent): string {
 </section>`;
 }
 
+function organizers(list: Organizer[]): string {
+  if (list.length === 0) return "";
+  return `
+<section id="team" class="py-20">
+  <div class="wrap">
+    <h2 class="text-3xl md:text-4xl font-bold">Meet the team</h2>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      ${list
+        .map(
+          (o) => `<article class="rounded-2xl p-5" style="background:var(--surface-alt)">
+            <img class="h-20 w-20 rounded-full object-cover" src="${esc(asset(o.photo))}" alt="" loading="lazy">
+            <h3 class="mt-4 font-bold">${esc(o.name)}</h3>
+            <p class="text-sm text-[var(--ink-muted)]">${esc(o.role)}</p>
+          </article>`,
+        )
+        .join("")}
+    </div>
+  </div>
+</section>`;
+}
+
 function partners(list: Partner[], contactUrl: string): string {
   // One flat list — there are no partner tiers. `role` describes the relationship where one
   // needs describing; it is not a rank and must never be sorted on.
@@ -272,10 +295,11 @@ function wireMapButton(root: HTMLElement): void {
 async function render() {
   const root = document.querySelector<HTMLDivElement>("#app")!;
   try {
-    const [event, partnerData, speakerList] = await Promise.all([
+    const [event, partnerData, speakerList, organizerList] = await Promise.all([
       loadEvent(),
       loadPartners(),
       loadSpeakers(),
+      loadOrganizers(),
     ]);
     root.innerHTML = [
       `<a class="skip-link" href="#main">Skip to content</a>`,
@@ -285,6 +309,7 @@ async function render() {
       callForSpeakers(event),
       about(event),
       speakers(speakerList, event),
+      organizers(organizerList),
       partners(partnerData.partners, partnerData.contactUrl),
       venue(event),
       `</main>`,

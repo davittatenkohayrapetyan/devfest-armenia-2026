@@ -87,7 +87,7 @@ infrastructure decision.
 | DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 5 Nov | Only embed retained |
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 5 Nov | Limited number |
 | DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers — one flat list. InTech.am added 19 Sep |
-| DF-32 | Organizers section | todo | Davit | 7 Nov | `organizers.json` has no type, loader or schema check yet — add them |
+| DF-32 | Organizers section — "Meet the team" | done | Davit | 7 Nov | Type, loader and validation added; Davit listed |
 
 ## Phase 4 — Day of (21 Nov)
 
@@ -535,6 +535,24 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-32 · Claude Code (task manager)
+"Meet the team" section built, with Davit as GDG Yerevan Organizer. Placed after Speakers and
+before Partners: both are people, and the team reads naturally after the programme it assembled.
+
+This closed the gap flagged during the DF-02..DF-05 verification. `organizers.json` was an empty
+array with **no type, no loader and no structural validation** — the validator only checked it
+parsed. All three now exist, so the second organizer added cannot quietly be missing a role or a
+photo. The shape is `{ name, role, photo, links? }`, reusing the speaker link type.
+
+The section renders nothing at all when the array is empty, rather than an empty-state panel. A
+"Meet the team" heading over nothing says less than no heading.
+
+Photo cropped square from Davit's original, 400x400, re-encoded to drop EXIF as with the speaker
+and event photographs.
+
+Not added, because he did not ask and it is his personal profile: the 2025 site lists a LinkedIn
+for him. If team cards should carry links, the `links` field already exists and is empty.
 
 ### 2026-09-19 · DF-12 · Claude Code (task manager)
 UI bug from the phone: the loaded map sat flush against the "Open in Maps" button while the

@@ -23,6 +23,13 @@ export type Speaker = {
   sessions?: { id: string; name: string }[];
 };
 
+export type Organizer = {
+  name: string;
+  role: string;
+  photo: string;
+  links?: SpeakerLink[];
+};
+
 export type Partner = {
   name: string;
   logo: string;
@@ -83,6 +90,8 @@ export const loadPartners = () =>
  * Nothing downstream changes. Tracked as DF-23.
  */
 export const loadSpeakers = () => load<Speaker[]>("speakers.json");
+
+export const loadOrganizers = () => load<Organizer[]>("organizers.json");
 
 /** Days remaining until the CFP closes. Negative once it has closed. */
 export function daysUntil(iso: string): number {
