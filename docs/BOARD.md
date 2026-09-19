@@ -38,7 +38,7 @@ infrastructure decision.
 | DF-07 | Download DevFest 2026 landing-page headers (2650/1440/640×500) | todo | Davit | 22 Sep | From brand deck |
 | DF-08 | Create DevFest Armenia lockup from editable-location asset | todo | Davit | 22 Sep | Google Drawings |
 | DF-09 | Source GDG Yerevan logo SVG | todo | Davit | 22 Sep | |
-| DF-10 | Review v1 on phone via :3026 | todo | Davit | 24 Sep | Port-forward. Needs DF-07/08/09 |
+| DF-10 | Review v1 on phone via :3026 | todo | Davit | 24 Sep | `http://<lan-ip>:3026`, container left up after each task. Needs DF-07/08/09 |
 | DF-42 | Commit `package-lock.json`, switch CI to `npm ci` with node cache | done | Davit | 22 Sep | Dockerfile switched too — see log |
 | DF-43 | Add `.dockerignore` | todo | Davit | 24 Sep | Build hygiene, not a bug — see log. Low priority |
 
@@ -264,6 +264,20 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · working agreement · Claude Code (task manager)
+Davit reviews from his phone, so the container is now left **running** at the end of every
+task rather than torn down. DF-01's brief said to bring it up, verify, then
+`docker compose down`; that was treated as a verification step when it should have been the
+handover state. Rule added to `CLAUDE.md`.
+
+Two practical notes for whoever reports the URL. It must be the LAN address, not
+`localhost` — a phone cannot resolve the host's loopback. The Ethernet interface is
+currently `192.168.31.198`, but it is DHCP, so read it at the time rather than copying it
+from a doc. And Windows classifies this network as **Public**, which would normally block
+inbound 3026; it works because Docker Desktop installs its own enabled inbound allow rules
+scoped to the Public profile. If a future session finds the phone cannot connect, that is
+the thing to check first — the container being up is not sufficient evidence.
 
 ### 2026-09-19 · DF-02, DF-03, DF-04, DF-05 · Claude Code (task manager)
 All four were marked `done` by a session with no shell, so they were claims rather than

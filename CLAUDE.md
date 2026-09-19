@@ -59,6 +59,14 @@ body of `loadSpeakers()` in `src/content.ts` and nothing else.
 - Record anything surprising — a failed check, a needed pin, a doc that contradicts the
   code — in the comments log rather than only in the commit message.
 - Commit messages start with the task ID: `DF-01: push scaffold, verify build on :3026`.
+- **Leave the site running after every task.** Finish with
+  `docker compose up -d --build` and confirm it answers, so Davit can review from his phone
+  without asking. Do not `docker compose down` at the end of a task — DF-01's brief did, and
+  that was wrong. Report the LAN URL, not `localhost`: a phone cannot resolve localhost.
+  Today that is `http://192.168.31.198:3026`, but the address is DHCP — re-read it with
+  `Get-NetIPAddress -AddressFamily IPv4` rather than trusting this line.
+- Phone review over the LAN is HTTP, so service workers will not register. Layout and copy
+  review only; PWA behaviour needs the HTTPS tunnel in ADR-005 (DF-34).
 
 ## Reference
 
