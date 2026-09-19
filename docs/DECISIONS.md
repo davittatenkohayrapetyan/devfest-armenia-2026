@@ -90,7 +90,7 @@ carries the DevFest mark alone and AUA remains in the collaboration strip.
 key art, the hero needs re-cutting — DF-46. `hero-image.svg` from 2024 was deliberately not
 used: it has a "2024" pill baked into the artwork. Only the year-neutral elements were taken.
 
-## ADR-008 · 2026-09-19 · Standalone deployment at the domain root
+## ADR-008 · 2026-09-19 · Standalone deployment (path superseded by ADR-011)
 
 **Decision:** The site deploys standalone at a domain root, not into a WordPress subfolder as
 in 2025. `VITE_BASE_PATH` stays `/`. Davit's call, 19 September, closing DF-17.
@@ -150,3 +150,24 @@ to click one of them.
 
 **Consequence:** Do not reduce `.btn` font-size or weight without re-measuring. Dropping either
 below the threshold silently reintroduces an AA failure that no test in this repo would catch.
+
+## ADR-011 · 2026-09-19 · The site lives at `devfest.am/2026`, so the base path is `/2026/`
+
+**Decision:** Deploy to `https://devfest.am/2026`, matching `devfest.am/2025`.
+`VITE_BASE_PATH` is `/2026/`, **not** `/`. Supersedes the path half of ADR-008; the rest of
+ADR-008 — standalone, not a WordPress install — still holds.
+
+**Why ADR-008 was wrong on this point:** "standalone" was read as "at a domain root". It is not.
+The site is standalone in that it does not live inside WordPress, but it is still served from a
+subfolder of `devfest.am`, one per year. Built with base `/`, every asset would have requested
+`/assets/...` and 404'd at `/2026/`.
+
+**How the mistake is prevented from recurring:** `build:deploy` derives the base path from
+`VITE_SITE_URL`'s own pathname rather than taking a second variable that could disagree with it,
+and then verifies that every asset reference in the built `index.html` actually starts with that
+base. A build whose paths do not match its origin fails instead of shipping.
+
+**Consequence — `robots.txt`:** it is only honoured at an origin root, so the copy at
+`devfest.am/2026/robots.txt` will be ignored by crawlers. The `Sitemap:` line must be added to
+the `robots.txt` at `devfest.am`'s root instead. The deploy build prints this reminder whenever
+the base path is not `/`. The sitemap itself is fine where it is.

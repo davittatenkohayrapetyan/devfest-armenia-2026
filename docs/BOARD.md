@@ -60,7 +60,7 @@ infrastructure decision.
 | DF-17 | Decide deployment target and `VITE_BASE_PATH` | done | Davit | 26 Sep | Standalone at root, ADR-008 |
 | DF-18 | Analytics | todo | Davit | 28 Sep | Which tool? |
 | DF-19 | Accessibility pass: contrast, focus, reduced motion, keyboard | done | Davit | 29 Sep | All measured pairs now pass AA |
-| DF-20 | Public deploy | todo | Davit | 30 Sep | `npm run build:deploy`, copy `dist/` to the host |
+| DF-20 | Public deploy | todo | Davit | 30 Sep | `VITE_SITE_URL=https://devfest.am/2026 npm run build:deploy` |
 | DF-49 | Deploy build that omits the internal board page | done | Davit | 26 Sep | `npm run build:deploy`, verified |
 | DF-52 | Decide: primary button contrast vs the kit blue | done | Davit | 26 Sep | ADR-010 — large-text threshold, kit blue kept |
 | DF-21 | Announce site on GDG Community platform and socials | todo | Davit | 30 Sep | |
@@ -496,6 +496,25 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-17, DF-20 · Claude Code (task manager)
+Davit gave the domain: `devfest.am/2026`. That **contradicted ADR-008**, which recorded
+"standalone at a domain root" with `VITE_BASE_PATH` staying `/`. Standalone is true — it is not
+inside WordPress — but it is still a subfolder, one per year, as `devfest.am/2025` is. Built with
+base `/`, every asset would have requested `/assets/...` and 404'd. Recorded as ADR-011, and
+ADR-008's title now says its path half is superseded rather than leaving two decisions that
+disagree.
+
+The mechanism matters more than the correction. `build:deploy` now **derives** the base path from
+`VITE_SITE_URL`'s pathname instead of accepting a second variable that could drift from it, then
+verifies every asset reference in the built HTML starts with that base. Confirmed: asset refs are
+`/2026/assets/...`, the runtime base is `/2026/`, and `og:`, canonical and sitemap all read
+`https://devfest.am/2026/`.
+
+One thing Davit has to do outside this repo: `robots.txt` is only honoured at an origin root, so
+the copy at `devfest.am/2026/robots.txt` will be ignored. The `Sitemap:` line belongs in the
+`robots.txt` at `devfest.am`'s root. The deploy build prints that reminder whenever the base path
+is not `/`.
 
 ### 2026-09-19 · DF-16 · Claude Code (task manager)
 Done. OG card at `public/assets/og-image.jpg` — 1200x630, 71 KB, composed from the hero
