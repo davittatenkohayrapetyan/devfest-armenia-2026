@@ -57,10 +57,11 @@ infrastructure decision.
 | DF-45 | 2025 photos as hero and CFP backgrounds | done | Davit | 22 Sep | Two photos, downscaled, EXIF stripped |
 | DF-46 | Re-cut hero art if the 2026 kit becomes available | todo | Davit | 10 Oct | Contingent on the kit; due date sits past this phase's window |
 | DF-16 | OG image, meta tags, sitemap, robots.txt | todo | Davit | 28 Sep | |
-| DF-17 | Decide deployment target and `VITE_BASE_PATH` | todo | Davit | 26 Sep | WP subfolder vs standalone. Blocks DF-20 |
+| DF-17 | Decide deployment target and `VITE_BASE_PATH` | done | Davit | 26 Sep | Standalone at root, ADR-008 |
 | DF-18 | Analytics | todo | Davit | 28 Sep | Which tool? |
 | DF-19 | Accessibility pass: contrast, focus, reduced motion, keyboard | todo | Davit | 29 Sep | Must include text-on-photo contrast in the two new bands |
-| DF-20 | Public deploy | todo | Davit | 30 Sep | Needs DF-17 |
+| DF-20 | Public deploy | todo | Davit | 30 Sep | `npm run build:deploy`, copy `dist/` to the host |
+| DF-49 | Deploy build that omits the internal board page | done | Davit | 26 Sep | `npm run build:deploy`, verified |
 | DF-21 | Announce site on GDG Community platform and socials | todo | Davit | 30 Sep | |
 
 ## Phase 2 — Speakers (15–25 Oct)
@@ -350,6 +351,25 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-17, DF-49 · Claude Code (task manager)
+DF-17 closed: standalone at a domain root, recorded as ADR-008. No code change — every asset
+path already resolves from `/` and `VITE_BASE_PATH` defaults to it. That was the last external
+dependency on the critical path to DF-20.
+
+Davit also asked that the hosting build exclude `/implementation-progress`. Built now rather
+than during launch week, as DF-49. `npm run build:deploy` omits the entry point, deletes the
+`board.json` it reads, and then **verifies** — it walks the output and exits non-zero if either
+appears or if any file so much as mentions the path. Confirmed the failure path fires by
+pointing the check at a file that does exist.
+
+Two mechanics worth keeping. Node cannot `execFile` a `.cmd` shim on Windows without a shell,
+so the script invokes `tsc` and `vite` JS entrypoints directly; that also skips the `prebuild`
+hook, so a deploy build never generates board data in the first place and the deletion is only
+a safety net. And the normal `npm run build` still includes the page, so local review is
+unaffected.
+
+Current deploy output: 20 files, 1.08 MB.
 
 ### 2026-09-19 · DF-09 · Claude Code (task manager)
 Uneven spacing around the `×` reported from the phone. The gap was already symmetric — `gap`

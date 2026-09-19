@@ -89,3 +89,20 @@ carries the DevFest mark alone and AUA remains in the collaboration strip.
 **Cost and consequence:** These are 2024-vintage files. If the 2026 kit specifies different
 key art, the hero needs re-cutting — DF-46. `hero-image.svg` from 2024 was deliberately not
 used: it has a "2024" pill baked into the artwork. Only the year-neutral elements were taken.
+
+## ADR-008 · 2026-09-19 · Standalone deployment at the domain root
+
+**Decision:** The site deploys standalone at a domain root, not into a WordPress subfolder as
+in 2025. `VITE_BASE_PATH` stays `/`. Davit's call, 19 September, closing DF-17.
+
+**Why:** No dependency on the WordPress install, and every asset path the site already ships
+is root-relative, so the default needs no change.
+
+**Consequence:** Deployment is a file copy. `npm run build:deploy` produces `dist/` for the
+hosting provider; serve its contents at the root. That build deliberately omits the internal
+board view at `/implementation-progress` and the `board.json` it reads, and fails if either
+leaks. Unlinked and `noindex` are adequate for the local container; not publishing at all is
+the only version of private that does not depend on obscurity.
+
+If the target ever changes to a subfolder, set `VITE_BASE_PATH` to that path and rebuild —
+nothing else needs touching, which is why the variable exists.

@@ -9,6 +9,7 @@
     "build": "tsc --noEmit && vite build",
     "prebuild": "npm run build:board",
     "build:board": "node scripts/build-board.mjs",
+    "build:deploy": "node scripts/build-deploy.mjs",
     "preview": "vite preview",
     "validate:content": "node scripts/validate-content.mjs",
     "check:brand": "node scripts/check-brand.mjs"
