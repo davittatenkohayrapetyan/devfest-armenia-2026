@@ -140,9 +140,16 @@ function speakers(list: Speaker[], e: EventContent): string {
   const cfpUrl = e.cta.cfp;
   // While the call is open the published list is a first cut, not the lineup. Saying so
   // avoids four names reading as the whole programme of a 20+ speaker, three-track event.
+  const cfpOpen = daysUntil(e.cfp.closes) >= 0;
   const note =
-    list.length > 0 && daysUntil(e.cfp.closes) >= 0
+    list.length > 0 && cfpOpen
       ? `<p class="mt-3 text-[var(--ink-muted)] prose-measure">${esc(e.speakers.noteWhileCfpOpen)}</p>`
+      : "";
+  // Only alongside a populated grid: the empty state carries its own call, and after the CFP
+  // closes there is nothing to submit to. DF-27 checks this flips on 14 October.
+  const cta =
+    list.length > 0 && cfpOpen
+      ? `<a class="btn btn-primary mt-10" href="${esc(cfpUrl)}" rel="noopener">Become a speaker</a>`
       : "";
   const body =
     list.length === 0
@@ -167,6 +174,7 @@ function speakers(list: Speaker[], e: EventContent): string {
     <h2 class="text-3xl md:text-4xl font-bold">Speakers</h2>
     ${note}
     ${body}
+    ${cta}
   </div>
 </section>`;
 }

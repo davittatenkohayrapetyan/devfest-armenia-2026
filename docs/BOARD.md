@@ -76,7 +76,7 @@ infrastructure decision.
 | DF-51 | Extend the sync to talks — session mapping | todo | Davit | 1 Nov | Needs DF-50. Blocks DF-28. See brief |
 | DF-25 | Verify 9+ compact grid state with real data | todo | Davit | 20 Oct | 20+ expected |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
-| DF-27 | Hide CFP block after 14 Oct — verify | todo | Davit | 15 Oct | Date-aware. Checkpoint task |
+| DF-27 | Hide CFP block after 14 Oct — verify | todo | Davit | 15 Oct | Also check the Speakers CTA and note disappear |
 | DF-39 | Decide how content gets published in October | todo | Davit | 9 Oct | Decision task — see brief |
 
 ## Phase 3 — Agenda (1–10 Nov)
@@ -535,6 +535,19 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-15 · Claude Code (task manager)
+Added a "Become a speaker" button to the Speakers section, at Davit's request.
+
+Two conditions on it, both deliberate. It renders only **alongside a populated grid**, because
+the empty state already carries its own "Submit a talk" call and two buttons saying the same
+thing in one section is noise. And it renders only **while the CFP is open** — after 14 October
+it would send people to a closed form, which is worse than no button.
+
+That second condition means the Speakers section now has two date-aware pieces: this CTA and the
+"more speakers to come" note. DF-27's row now says to check both flip on 14 October, not just the
+CFP block. A date-aware element nobody remembers to verify is how a site ends up advertising a
+closed call.
 
 ### 2026-09-19 · DF-31 · Claude Code (task manager)
 Davit: no tiers for partners. `partners.json` is now a flat `partners[]` array — the
