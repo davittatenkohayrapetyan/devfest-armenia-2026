@@ -106,3 +106,24 @@ the only version of private that does not depend on obscurity.
 
 If the target ever changes to a subfolder, set `VITE_BASE_PATH` to that path and rebuild —
 nothing else needs touching, which is why the variable exists.
+
+## ADR-009 · 2026-09-19 · Speakers are synced on demand, not fetched at runtime
+
+**Decision:** `public/content/speakers.json` is written by a job Davit runs —
+`npm run sync:speakers`, DF-50 — which reads
+`https://sessionize.com/api/v2/2d3htmgm/view/All`. The site never calls Sessionize at runtime.
+Supersedes the delivery mechanism in ADR-004; DF-23 and DF-24 are cancelled.
+
+**Why:** Davit's call, 19 September. A runtime fetch makes every page view depend on a third
+party being up, including on event day, and it publishes whatever Sessionize holds at the
+moment a visitor loads the page. A job makes publishing deliberate: he runs it when the data is
+ready to be public, reviews the diff, and commits it.
+
+**What ADR-004 keeps:** the field shape. `speakers.json` still mirrors Sessionize's records, so
+the card component never has to change. That was always the valuable half of ADR-004.
+
+**Consequence:** DF-24's "snapshot as offline fallback" is meaningless under this model — the
+snapshot is the only source. Speaker images are downloaded locally by the same job rather than
+hotlinked, so the site carries no third-party dependency for faces either. Talks and the agenda
+stay out until explicitly asked for; the sync writes `sessions: []` deliberately, not
+accidentally.

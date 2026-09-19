@@ -68,9 +68,10 @@ infrastructure decision.
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
-| DF-22 | Retrieve Sessionize embed ID for 2026 | todo | Davit | 10 Oct | Not the CFP slug |
-| DF-23 | Wire `loadSpeakers()` to Sessionize API | todo | Davit | 16 Oct | Swap data source only |
-| DF-24 | Build-time speaker JSON snapshot as offline fallback | todo | Davit | 16 Oct | |
+| DF-22 | Retrieve Sessionize embed ID for 2026 | done | Davit | 10 Oct | `2d3htmgm` — recorded in CLAUDE.md |
+| DF-23 | Wire `loadSpeakers()` to Sessionize API | cancelled | — | — | Superseded by DF-50 — sync on demand, not fetch at runtime |
+| DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
+| DF-50 | On-demand speaker sync from Sessionize | todo | Davit | 10 Oct | `npm run sync:speakers`. See brief |
 | DF-25 | Verify 9+ compact grid state with real data | todo | Davit | 20 Oct | ~20 expected |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
 | DF-27 | Hide CFP block after 14 Oct — verify | todo | Davit | 15 Oct | Date-aware. Checkpoint task |
@@ -263,6 +264,56 @@ behaviour.
 
 ---
 
+### DF-50 · On-demand speaker sync from Sessionize
+
+**Context.** Read ADR-004, then ADR-009. The 2026 embed ID is `2d3htmgm`; the endpoint is
+`https://sessionize.com/api/v2/2d3htmgm/view/All`. Davit has accepted speakers and wants them
+on the site now. He runs this job when he wants the site updated — it is not automatic, and
+not a runtime fetch.
+
+**What the endpoint actually returns** (checked 19 Sep): `sessions`, `speakers`, `questions`,
+`categories`, `rooms`. Four speakers, five sessions, every session `status: "Accepted"` with
+`startsAt: null` and `roomId: null` — there is no schedule yet. `questions`, `categories` and
+`rooms` are all empty.
+
+**Goal.** `npm run sync:speakers` rewrites `public/content/speakers.json` from Sessionize.
+
+**Steps.**
+1. Write `scripts/sync-speakers.mjs`. Fetch the endpoint; fail loudly on a non-200 or on a
+   payload with no `speakers` array — never write a partial or empty file over good data.
+2. Keep only speakers whose sessions are all `status: "Accepted"`. The endpoint appears to
+   return accepted entries only; assert it rather than trusting it, and report anything
+   filtered.
+3. Emit each speaker in the existing `speakers.json` shape: `id`, `fullName`, `tagLine`,
+   `bio`, `profilePicture`, `links[]`. Trim whitespace on `tagLine` and `bio` — at least one
+   record has trailing spaces.
+4. **Set `sessions` to `[]`.** Do not publish talk titles yet — Davit's instruction. Note the
+   shape mismatch this avoids: in `/view/All` a speaker's `sessions` is an array of numeric
+   session *ids*, not the `{ id, name }` objects `src/content.ts` declares. Whoever adds talks
+   later must map ids through the top-level `sessions` array; they are not interchangeable.
+5. Download each `profilePicture` into `public/assets/speakers/<id>.<ext>` and rewrite the
+   field to the local path. A face that 404s on event day because a third-party CDN moved is
+   not a risk worth carrying, and local files are what make the PWA work offline.
+6. Sort by `fullName` so reruns produce readable diffs, and make the job idempotent: running
+   it twice with unchanged upstream data must leave the working tree clean.
+7. Run all three checks, then rebuild the container and review the speaker grid.
+
+**Constraints.** Do not touch `tracks.json`, `organizers.json` or `partners.json`. Do not add
+an agenda, session cards or talk titles anywhere — that is later work, and "while I am in
+here" is how it arrives early. Do not weaken `validate:content` if a record fails it; a
+speaker missing `fullName` or `profilePicture` is a real problem to report, not to skip past.
+Do not schedule this job, and do not call Sessionize at runtime — ADR-009. Do not commit
+credentials; this endpoint is public and needs none.
+
+**Definition of done.** `npm run sync:speakers` writes four speakers into
+`public/content/speakers.json` with local image paths, no `sessions` content, and all three
+checks passing; running it again produces no diff; the speaker section renders the four cards
+in place of the empty state.
+
+**Commit message.** `DF-50: sync accepted speakers from Sessionize`
+
+---
+
 ### DF-12 · Venue section — remove the pending-photo path
 
 **Context.** `docs/BRAND.md` for the asset inventory. The venue section already renders
@@ -351,6 +402,30 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-22, DF-23, DF-24, DF-50 · Claude Code (task manager)
+Davit supplied the embed ID: `2d3htmgm`. DF-22 closed, and the standing "do not wire
+Sessionize" constraint in CLAUDE.md is now satisfied rather than pending.
+
+Analysed `view/All` before writing the task. Four speakers, five sessions, all
+`status: "Accepted"`, and every session has `startsAt: null` and `roomId: null` — no schedule
+exists yet, so there is no agenda to leak by accident. `questions`, `categories` and `rooms`
+are empty.
+
+Three findings the implementing session needs. A speaker's `sessions` field in `/view/All` is
+an array of numeric **ids**, not the `{ id, name }` objects `src/content.ts` declares — that
+shape comes from `/view/Speakers`. DF-50 sidesteps it by emitting `sessions: []`, but whoever
+adds talks later must map ids through the top-level array. At least one record carries trailing
+whitespace in `tagLine` and `bio`. And every session is `isConfirmed: false`, which in
+Sessionize means the speaker has not confirmed; publishing is Davit's call and he has made it,
+but it is worth knowing that a name on the site is not yet a commitment.
+
+DF-23 and DF-24 are cancelled, superseded by DF-50. This is a genuine change of approach and is
+recorded as ADR-009: ADR-004 planned a runtime fetch with a build-time snapshot as fallback.
+Davit asked instead for a job he runs when he wants the site updated. That is better — the site
+keeps no runtime dependency on Sessionize being up, publishing becomes deliberate rather than
+automatic, and the snapshot DF-24 described becomes the only source, so there is nothing left
+to fall back from.
 
 ### 2026-09-19 · DF-17, DF-49 · Claude Code (task manager)
 DF-17 closed: standalone at a domain root, recorded as ADR-008. No code change — every asset

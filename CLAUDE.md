@@ -50,7 +50,9 @@ body of `loadSpeakers()` in `src/content.ts` and nothing else.
    lockups in `public/assets/logos/`; there is no licensed photo and none is coming. Do not
    take one from `cse.aua.am` — copyrighted, and this is a co-branded site — and do not
    substitute a stock photo of a different building.
-7. **Do not wire Sessionize until the embed ID is known.** It is not the CFP slug.
+7. **The Sessionize embed ID is `2d3htmgm`** — not the CFP slug. Speakers come from
+   `npm run sync:speakers`, a job run on demand (ADR-009). The site never calls Sessionize at
+   runtime, and the sync deliberately writes no talk titles or agenda.
 
 ## Working agreement
 
