@@ -69,6 +69,7 @@ AUA look oversized. The strip sets a fixed cap-height and lets widths fall where
 | `devfest-armenia-lockup.svg` | Derived — see below | Hero. Light-on-dark only |
 | `devfest-lockup.svg` | `devfest.am/2024` | The `{ DevFest }` mark alone, dark ink, for light surfaces |
 | `gdg-yerevan.png` | Supplied by Davit, 19 Sep | Collaboration strip |
+| `google-for-developers.png` | Supplied by Davit, 19 Sep — reversed variant | Hero, top corner |
 | `gdg-yerevan-square.png` | Supplied by Davit, 19 Sep | Stacked variant, for square placements |
 
 `devfest-armenia-lockup.svg` was built from `devfest-lockup.svg` by recolouring the wordmark
@@ -82,6 +83,12 @@ location slot the kit's lockup is built around. The line is Roboto Bold at 22.5 
 **converted to outlines** — so the lockup carries no font dependency and renders identically
 inlined or through `<img>`. There is no live text in the file: to change the wording,
 regenerate from `devfest-lockup.svg` rather than editing it.
+
+`google-for-developers.png` is a **reversed** variant, derived for the dark hero. The supplied
+file has "for Developers" in neutral grey, which sits at roughly 2:1 against the hero scrim.
+Only pixels that are near-neutral and dark were taken to white; the multicolour Google wordmark
+is saturated and is untouched, pixel for pixel. This matches Google's own reversed lockup, but
+it is derived rather than official — if the official reversed asset turns up, prefer it.
 
 The GDG Yerevan files were supplied as RGB on white. The white was keyed to alpha so they sit
 on the strip without a visible box. They are PNG, not vector — if an SVG ever appears, prefer it.

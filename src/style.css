@@ -203,6 +203,19 @@ body {
   .hero-lockup { height: 5.25rem; }
 }
 
+/* Google for Developers mark, top corner of the hero. Inset matches .wrap's 1.25rem gutter so
+   it lines up with the content below it. Reversed variant — see docs/BRAND.md. */
+.hero-badge {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  height: 1rem;
+  width: auto;
+}
+@media (min-width: 768px) {
+  .hero-badge { height: 1.25rem; }
+}
+
 /* Decorative kit elements. Hidden below md — at phone width they crowd the type rather
    than frame it, and they carry no information. */
 .hero-art {

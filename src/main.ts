@@ -29,6 +29,7 @@ function hero(e: EventContent): string {
   return `
 <header class="hero relative overflow-hidden"
         style="background-image:linear-gradient(180deg,rgba(30,30,30,.78),rgba(30,30,30,.94)),url('${photo}')">
+  <img class="hero-badge" src="${base}assets/logos/google-for-developers.png" alt="Google for Developers">
   <img class="hero-art hero-art-a" src="${base}assets/art/element1.svg" alt="" aria-hidden="true">
   <img class="hero-art hero-art-b" src="${base}assets/art/se-1.svg" alt="" aria-hidden="true">
   <div class="wrap py-20 md:py-28 relative">

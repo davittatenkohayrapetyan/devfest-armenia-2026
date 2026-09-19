@@ -458,6 +458,21 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-09-19 · DF-07 · Claude Code (task manager)
+Google for Developers mark added to the top corner of the hero, at Davit's request.
+
+Used a reversed variant rather than the supplied file. The supplied lockup sets "for
+Developers" in neutral grey, which lands around 2:1 against the hero scrim — legible on the
+white background it was drawn for, muddy on ours. Only near-neutral dark pixels were taken to
+white; the multicolour Google wordmark is saturated and is untouched pixel for pixel, so the
+brand mark itself is unaltered. That is the same reasoning applied to AUA, with the opposite
+outcome: AUA's file needed no recolour, only a different size, and recolouring it would have
+altered the mark. Here the recolour is confined to the grey text and reproduces Google's own
+reversed lockup. If the official reversed asset appears, swap it in — noted in BRAND.md.
+
+Placed top-right rather than top-left so it does not stack directly above the DevFest lockup.
+Inset matches `.wrap`'s gutter so it aligns with the content beneath it.
+
 ### 2026-09-19 · DF-50 · Claude Code (task manager)
 Done. `npm run sync:speakers` rewrites `speakers.json` from Sessionize and downloads each photo
 into `public/assets/speakers/`. Four speakers are live; the empty state is gone.
