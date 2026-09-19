@@ -24,17 +24,28 @@ const esc = (s: string) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!,
   );
 
-/** Whole days, hours and minutes until `iso`, or null once it has passed. */
-function countdownParts(iso: string): { days: number; hours: number; minutes: number } | null {
+/** Whole days, hours, minutes and seconds until `iso`, or null once it has passed. */
+function countdownParts(
+  iso: string,
+): { days: number; hours: number; minutes: number; seconds: number } | null {
   const ms = new Date(iso).getTime() - Date.now();
   if (ms <= 0) return null;
-  const totalMinutes = Math.floor(ms / 60_000);
+  const total = Math.floor(ms / 1000);
   return {
-    days: Math.floor(totalMinutes / 1440),
-    hours: Math.floor((totalMinutes % 1440) / 60),
-    minutes: totalMinutes % 60,
+    days: Math.floor(total / 86_400),
+    hours: Math.floor((total % 86_400) / 3600),
+    minutes: Math.floor((total % 3600) / 60),
+    seconds: total % 60,
   };
 }
+
+/**
+ * A per-second counter is auto-updating content. Readers who ask for reduced motion get the
+ * same countdown without the seconds cell, ticking once a minute instead — their system setting
+ * is the stop mechanism, rather than a pause button parked in the hero.
+ */
+const showSeconds = (): boolean =>
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const pad = (n: number): string => String(n).padStart(2, "0");
 
@@ -50,8 +61,9 @@ function countdown(iso: string): string {
       <span class="countdown-value" data-countdown="${label}">${value}</span>
       <span class="countdown-label">${label}</span>
     </div>`;
+  const seconds = showSeconds() ? cell(pad(p.seconds), "seconds") : "";
   return `<div class="countdown mt-8" data-countdown-to="${esc(iso)}" aria-hidden="true">
-    ${cell(String(p.days), "days")}${cell(pad(p.hours), "hours")}${cell(pad(p.minutes), "minutes")}
+    ${cell(String(p.days), "days")}${cell(pad(p.hours), "hours")}${cell(pad(p.minutes), "minutes")}${seconds}
   </div>`;
 }
 
@@ -342,8 +354,9 @@ function wireCountdown(root: HTMLElement): void {
     set("days", String(p.days));
     set("hours", pad(p.hours));
     set("minutes", pad(p.minutes));
+    set("seconds", pad(p.seconds));
   };
-  const timer = window.setInterval(tick, 15_000);
+  const timer = window.setInterval(tick, showSeconds() ? 1000 : 15_000);
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden) tick();
   });

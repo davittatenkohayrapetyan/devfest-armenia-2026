@@ -291,7 +291,10 @@ main:focus { outline: none; }
 .countdown {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.75rem;
+  gap: 1.25rem;
+}
+@media (min-width: 768px) {
+  .countdown { gap: 1.75rem; }
 }
 .countdown-cell {
   display: flex;
@@ -299,18 +302,20 @@ main:focus { outline: none; }
   line-height: 1;
 }
 .countdown-value {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #ffffff;
   font-variant-numeric: tabular-nums;
 }
 @media (min-width: 768px) {
   .countdown-value { font-size: 3.25rem; }
+  .countdown-label { font-size: 0.8125rem; letter-spacing: 0.08em; }
 }
+/* Four cells have to fit a 390px phone: the labels, not the digits, are the constraint. */
 .countdown-label {
   margin-top: 0.4rem;
-  font-size: 0.8125rem;
-  letter-spacing: 0.08em;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: rgba(240, 240, 240, 0.78);
 }

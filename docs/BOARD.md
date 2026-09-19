@@ -537,6 +537,21 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-09-20 · DF-15, DF-19 · Claude Code (task manager)
+Seconds added to the hero countdown, so it now ticks once a second.
+
+That is auto-updating content, which WCAG 2.2.2 ("Pause, Stop, Hide") covers, and DF-19 claimed
+AA. Rather than park a pause button in the hero, readers who set
+`prefers-reduced-motion: reduce` get the same countdown **without** the seconds cell, ticking
+once a minute — their system setting acts as the stop mechanism. Worth being straight about: a
+strict reading of 2.2.2 would want an explicit control. This is the proportionate call for a
+decorative, `aria-hidden` timer, and it is recorded so the next accessibility pass evaluates it
+rather than discovering it.
+
+The layout constraint was the labels, not the digits: four cells have to fit a 390px phone, and
+"MINUTES" and "SECONDS" set in uppercase with letter-spacing are what would overflow. Label size
+and tracking drop on small screens and return at `md`.
+
 ### 2026-09-20 · DF-15 · Claude Code (task manager)
 Event countdown added to the hero: days, hours, minutes to
 **2026-11-21T09:30:00+04:00**, stored as `event.startsAt` in `event.json`.
