@@ -5,7 +5,7 @@ import {
   loadPartners,
   loadSpeakers,
   type EventContent,
-  type PartnerTier,
+  type Partner,
   type Speaker,
 } from "./content";
 
@@ -171,20 +171,22 @@ function speakers(list: Speaker[], e: EventContent): string {
 </section>`;
 }
 
-function partners(tiers: PartnerTier[], contactUrl: string): string {
-  const any = tiers.some((t) => t.partners.length > 0);
-  const body = any
-    ? tiers
-        .filter((t) => t.partners.length)
-        .map(
-          (t) => `<div class="mt-8">
-            <p class="text-sm text-[var(--ink-muted)]">${esc(t.label)}</p>
-            <div class="mt-3 flex flex-wrap items-center gap-8">
-              ${t.partners.map((p) => `<a class="partner-chip" href="${esc(p.url)}" rel="noopener"><img class="partner-mark" src="${esc(asset(p.logo))}" alt="${esc(p.name)}"></a>`).join("")}
-            </div>
-          </div>`,
-        )
-        .join("")
+function partners(list: Partner[], contactUrl: string): string {
+  // One flat list — there are no partner tiers. `role` describes the relationship where one
+  // needs describing; it is not a rank and must never be sorted on.
+  const body = list.length
+    ? `<div class="mt-8 flex flex-wrap items-start gap-6">
+         ${list
+           .map(
+             (p) => `<div class="text-center">
+               <a class="partner-chip" href="${esc(p.url)}" rel="noopener">
+                 <img class="partner-mark" src="${esc(asset(p.logo))}" alt="${esc(p.name)}">
+               </a>
+               ${p.role ? `<p class="mt-2 text-sm text-[var(--ink-muted)]">${esc(p.role)}</p>` : ""}
+             </div>`,
+           )
+           .join("")}
+       </div>`
     : `<p class="mt-6 prose-measure text-[var(--ink-muted)]">
          Partner announcements are coming soon. If your organization would like to support
          the Armenian developer community, we would like to hear from you.
@@ -199,8 +201,6 @@ function partners(tiers: PartnerTier[], contactUrl: string): string {
 </section>`;
 }
 
-// No building photo: AUA's complete asset set is the two lockups, and none is coming.
-// The text block is the finished state, not a placeholder. See CLAUDE.md constraint 6.
 function venue(e: EventContent): string {
   return `
 <section id="venue" class="py-20">
@@ -245,7 +245,7 @@ async function render() {
       callForSpeakers(event),
       about(event),
       speakers(speakerList, event),
-      partners(partnerData.tiers, partnerData.contactUrl),
+      partners(partnerData.partners, partnerData.contactUrl),
       venue(event),
       `</main>`,
       footer(event),

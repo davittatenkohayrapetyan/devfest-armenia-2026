@@ -40,12 +40,12 @@ if (speakers) {
 
 const partners = read("partners.json");
 if (partners) {
-  if (!Array.isArray(partners.tiers)) errors.push("partners.json: tiers must be an array");
+  if (!Array.isArray(partners.partners))
+    errors.push("partners.json: partners must be an array");
   else
-    partners.tiers.forEach((t, i) => {
-      if (!t.id || !t.label) errors.push(`partners.json.tiers[${i}]: needs id and label`);
-      if (!Array.isArray(t.partners))
-        errors.push(`partners.json.tiers[${i}]: partners must be an array`);
+    partners.partners.forEach((p, i) => {
+      for (const k of ["name", "logo", "url"])
+        if (!p?.[k]) errors.push(`partners.json.partners[${i}]: missing "${k}"`);
     });
 }
 

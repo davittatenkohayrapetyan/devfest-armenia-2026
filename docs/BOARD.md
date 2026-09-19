@@ -86,7 +86,7 @@ infrastructure decision.
 | DF-28 | Three-track agenda section | todo | Davit | 5 Nov | Three tracks plus workshops. UI only; data from DF-51 |
 | DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 5 Nov | Only embed retained |
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 5 Nov | Limited number |
-| DF-31 | Partner logos final — all tiers | todo | GDG team | 7 Nov | InTech.am added 19 Sep; other tiers still empty |
+| DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers — one flat list. InTech.am added 19 Sep |
 | DF-32 | Organizers section | todo | Davit | 7 Nov | `organizers.json` has no type, loader or schema check yet — add them |
 
 ## Phase 4 — Day of (21 Nov)
@@ -535,6 +535,17 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-31 · Claude Code (task manager)
+Davit: no tiers for partners. `partners.json` is now a flat `partners[]` array — the
+host/platinum/gold/community scaffolding is gone from the data, the types, the validator and the
+renderer, so there is no dormant hierarchy for a future session to start populating.
+
+One judgement call, easily reversed: each partner keeps an **optional** `role` string, and
+InTech's is "Media partner", rendered as small text under the mark. Dropping it entirely would
+have shown InTech alongside future sponsors with nothing distinguishing them, which misstates a
+different kind of relationship. A role is a description, not a rank — the code comment says so,
+and says it must never be sorted on. If Davit wants the label gone, delete the field.
 
 ### 2026-09-19 · DF-31 · Claude Code (task manager)
 InTech.am added as media partner at Davit's instruction, in a new `media` tier in

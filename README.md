@@ -42,7 +42,7 @@ Everything on the page comes from `public/content/*.json`:
 |---|---|
 | `event.json` | Dates, venue, CTA links, CFP details, about copy |
 | `speakers.json` | Speakers. Empty array renders the "announced soon" state. |
-| `partners.json` | Tiered partner logos |
+| `partners.json` | Partner logos, one flat list |
 | `tracks.json` | The three tracks |
 | `organizers.json` | GDG Yerevan team |
 

@@ -1,35 +1,10 @@
 {
-  "tiers": [
+  "partners": [
     {
-      "id": "host",
-      "label": "Host",
-      "partners": []
-    },
-    {
-      "id": "platinum",
-      "label": "Platinum",
-      "partners": []
-    },
-    {
-      "id": "gold",
-      "label": "Gold",
-      "partners": []
-    },
-    {
-      "id": "community",
-      "label": "Community",
-      "partners": []
-    },
-    {
-      "id": "media",
-      "label": "Media partner",
-      "partners": [
-        {
-          "name": "InTech.am",
-          "logo": "assets/logos/intech-am.png",
-          "url": "https://intech.am"
-        }
-      ]
+      "name": "InTech.am",
+      "role": "Media partner",
+      "logo": "assets/logos/intech-am.png",
+      "url": "https://intech.am"
     }
   ],
   "contactUrl": "mailto:gdgyerevan@gmail.com"

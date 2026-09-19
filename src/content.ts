@@ -27,12 +27,8 @@ export type Partner = {
   name: string;
   logo: string;
   url: string;
-};
-
-export type PartnerTier = {
-  id: string;
-  label: string;
-  partners: Partner[];
+  /** Optional descriptor, e.g. "Media partner". Not a rank — there are no partner tiers. */
+  role?: string;
 };
 
 export type EventContent = {
@@ -71,7 +67,7 @@ async function load<T>(file: string): Promise<T> {
 export const loadEvent = () => load<EventContent>("event.json");
 
 export const loadPartners = () =>
-  load<{ tiers: PartnerTier[]; contactUrl: string }>("partners.json");
+  load<{ partners: Partner[]; contactUrl: string }>("partners.json");
 
 /**
  * Reads the local file today.

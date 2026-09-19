@@ -40,7 +40,7 @@ All copy and data lives in `public/content/*.json`, fetched at runtime:
 public/content/
   event.json        # dates, venue, CTA URLs, copy blocks
   speakers.json     # manual now; Sessionize-shaped for a later swap
-  partners.json     # tier, name, logo, url
+  partners.json     # name, logo, url, optional role
   organizers.json   # GDG Yerevan team
   tracks.json       # three tracks plus workshops
 ```

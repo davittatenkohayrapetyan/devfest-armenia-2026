@@ -61,7 +61,9 @@ guard deliberately with a note in the comments log — do not work around it.
   asset by replacing "Editable Location" with "Armenia". Keep ample clear space.
 - **Collaboration strip:** its own band below the hero. GDG Yerevan and AUA ACSE side by
   side, equal optical weight, on `--df-surface-light` in both themes.
-- **Partners:** separate section, tiered, never combined with the DevFest lockup.
+- **Partners:** separate section, one flat list, never combined with the DevFest lockup.
+  Marks sit on a fixed white chip in both themes — a partner supplies whatever artwork they
+  have, and it must stay legible without anyone recolouring it.
 
 Never build a custom DevFest + AUA combined lockup. The kit asks organizers to use the
 provided lockups as designed.
