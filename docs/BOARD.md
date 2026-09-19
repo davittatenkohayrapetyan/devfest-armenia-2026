@@ -552,9 +552,10 @@ venue section, which limits it to people who scroll that far — but it is not z
 no-banner position matters, the fix is a click-to-load placeholder. Davit's call; raised, not
 assumed.
 
-Open question for him, not changed: the venue text still reads "Zaven P. & Sonia Akian College of
-Science & Engineering" while the map now points at the Paramaz Avedisian Building. If the event
-is actually in the PAB, the detail line should probably say so.
+**Resolved by Davit the same day, so it is not asked again:** the Paramaz Avedisian Building is
+just the building's name. The venue detail correctly names the Akian College of Science &
+Engineering, which is the collaborating institution; the map pin is the building it sits in.
+No change to the venue text. Do not "correct" it to the building name.
 
 ### 2026-09-19 · DF-15 · Claude Code (task manager)
 Added a "Become a speaker" button to the Speakers section, at Davit's request.
