@@ -56,7 +56,7 @@ function collaboration(): string {
     </div>
     <span class="collab-x" aria-hidden="true">&times;</span>
     <div class="collab-group">
-      <img class="collab-mark collab-mark--aua" src="${base}assets/logos/aua-acse-navy.png"
+      <img class="collab-mark collab-mark--aua" src="${base}assets/logos/aua-acse-strip.png"
            alt="Akian College of Science and Engineering, American University of Armenia">
     </div>
   </div>

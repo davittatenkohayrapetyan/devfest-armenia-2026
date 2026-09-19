@@ -43,13 +43,16 @@ provided lockups as designed.
 
 ## Aligning the two marks
 
-Sizing in the strip is per-mark and deliberately unequal: `.collab-mark--aua` is **3.16x**
-`.collab-mark--gdg`, which sets the word "AUA" at the same height as the GDG chevron mark
-(44px each at desktop size). The ratio is measured, not guessed: the chevron is 239px of a
-240px canvas, AUA's caps are 192px of a 610px canvas, and that canvas is ~68% empty vertical
-padding. Do not "fix" the disparity by cropping their file — that padding may be their
-clear-space requirement, and we have no brand rules from them. `.collab-mark` carries
-`max-width: 100%` because the scaled AUA file is wider than a phone.
+Both marks in the strip use the **same** CSS height, because both files are now pure artwork.
+`aua-acse-strip.png` is `aua-acse-navy.png` with its empty canvas trimmed (1700x192 from
+2130x610) — no pixel of the mark is altered, only surrounding emptiness removed. Its height is
+therefore the height of the word "AUA", which matches the GDG chevron (239px of 240px) to
+within half a percent.
+
+The trim also fixes spacing. CSS `gap` spaces image *boxes*, not artwork, so while AUA carried
+~68% internal padding an equal gap pushed its ink about 33px further from the `×` than GDG's.
+Clear space around the mark is now expressed as layout gap, where it is visible and
+adjustable. `aua-acse-navy.png` is retained untouched as the master.
 
 The two marks are separated by a `×`, decorative and `aria-hidden`. Only GDG Yerevan is
 labelled, with "Organized by"; the label is positioned out of flow so the two marks stay
@@ -87,7 +90,8 @@ on the strip without a visible box. They are PNG, not vector — if an SVG ever 
 
 | File | Source | Colors | Use |
 |---|---|---|---|
-| `aua-acse-navy.png` | 2130×610, transparent | `#003b5c` | Master. Collaboration strip. |
+| `aua-acse-navy.png` | 2130×610, transparent | `#003b5c` | Master, retained untouched |
+| `aua-acse-strip.png` | 1700×192, derived | `#003b5c` | Collaboration strip. Master with empty canvas trimmed |
 | `aua-acse-color.png` | 512×147, transparent | `#003b5c` + `#fc4c02` | Standalone placements only |
 
 These two files are AUA's complete asset set for this event — confirmed 19 September. There

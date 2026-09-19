@@ -105,10 +105,12 @@ body {
 }
 
 /* Align the two marks by letterform height, not bounding box.
-   Davit's call: the word "AUA" should read at the same size as the GDG chevron mark. Measured
-   from the files, the chevron is 239px of a 240px canvas (0.996) while AUA's caps are 192px of
-   a 610px canvas (0.315) — that canvas is ~68% empty padding. The 3.16x difference below is
-   exactly that ratio, and renders both at an identical 44px.
+   Both marks use the same height because both files are now pure ink: `aua-acse-strip.png` is
+   the master with its empty canvas trimmed off, so its height *is* the height of the word
+   "AUA", matching the GDG chevron (239px of 240px) to within half a percent.
+   This is also what makes the spacing around the `×` symmetric. `gap` spaces image boxes, not
+   artwork — while AUA carried ~68% internal padding, an equal gap put its ink about 33px
+   further from the `×` than GDG's. Trimming fixes the cause; do not re-solve it with margins.
    The padding is left in place rather than cropped: we have no AUA brand rules (DF-11 was
    cancelled), and that margin may be their mandated clear space. Compensate in CSS, never by
    editing a partner's file. */
@@ -119,10 +121,10 @@ body {
   max-width: 100%;
 }
 .collab-mark--gdg { height: 2.25rem; }
-.collab-mark--aua { height: 7.125rem; }
+.collab-mark--aua { height: 2.25rem; }
 @media (min-width: 768px) {
   .collab-mark--gdg { height: 2.75rem; }
-  .collab-mark--aua { height: 8.75rem; }
+  .collab-mark--aua { height: 2.75rem; }
 }
 
 /* Collaboration mark between the two logos. Decorative: the labels already state the

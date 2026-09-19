@@ -351,6 +351,22 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-09-19 · DF-09 · Claude Code (task manager)
+Uneven spacing around the `×` reported from the phone. The gap was already symmetric — `gap`
+spaces image boxes, and AUA's box was ~68% empty padding, so its ink sat about 33px further
+from the `×` than GDG's. Equal spacing between boxes, unequal spacing between artwork.
+
+Fixed by trimming the empty canvas into `aua-acse-strip.png` (1700x192 from 2130x610). That
+reverses an earlier call of mine not to crop, on the grounds the padding might be AUA's
+mandated clear space. It still might be — but clear space is a *layout* requirement, and it is
+now expressed as layout gap where it is visible and adjustable, instead of baked into a file
+where it silently distorted both sizing and spacing. No pixel of the mark is altered; the
+original is retained untouched as the master.
+
+Side effect: both marks now take the same CSS height, because both files are pure artwork.
+The 3.16x ratio from earlier today is gone, and the minifier collapsing the two rules into one
+is the proof they match.
+
 ### 2026-09-19 · DF-45, DF-15 · Claude Code (task manager)
 Davit supplied three stronger photos and asked for a link to last year's event. Hero is now
 the full-room shot with a speaker mid-talk; the CFP band is the standing, applauding crowd.
