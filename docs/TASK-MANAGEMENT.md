@@ -104,21 +104,20 @@ narration.
 Current known edges:
 
 ```
-DF-11 (ACSE assets) ──► DF-12 (venue photo)
-                    └─► DF-13 (AUA SVG swap)
-DF-14 (regional lead) ─► DF-20 (public deploy)
-DF-17 (base path) ─────► DF-20
+DF-17 (base path) ─────► DF-20 (public deploy)
 DF-22 (embed ID) ──────► DF-23 ──► DF-24, DF-25
 DF-07, DF-08, DF-09 ───► DF-10 (phone review)
+DF-28 (agenda) ────────► DF-33 (now/next)
 ```
 
-The critical path to launch runs DF-01 → DF-07/08/09 → DF-14 → DF-17 → DF-20, targeting
-a public site by **30 September**. Everything after that is content layered onto a live
-page.
+The critical path to launch runs DF-01 → DF-07/08/09 → DF-17 → DF-20, targeting a public
+site by **30 September**. Everything after that is content layered onto a live page.
 
-**DF-11 and DF-14 are external waits and should have been started already.** They are the
-two items most likely to silently consume a week. Treat any day they sit untouched as
-schedule loss, not slack.
+**There are currently no external waits.** DF-11 and DF-14 were cancelled on 19 September
+once it was established that AUA has no further assets and that Davit, as the GDG Yerevan
+organizer, is himself the brand approver. If a new dependency on someone outside the project
+appears, it gets a row and a follow-up date the day it appears — those are the items that
+silently consume a week.
 
 ## 7. Cadence
 
@@ -143,8 +142,6 @@ These need a person, and a session that tries to work around them causes real da
 
 | Item | Why |
 |---|---|
-| ACSE asset request (DF-11) | Institutional relationship. Do not substitute a photo from `cse.aua.am` — it is copyrighted and this is a co-branded site. |
-| GDG regional lead confirmation (DF-14) | Brand approval. Do not self-approve a lockup arrangement. |
 | Partner and sponsor content | Commercial relationships |
 | Speaker selection | Programme decision, not a tracking decision |
 | Deployment target (DF-17) | Depends on infrastructure only Davit knows |
@@ -174,7 +171,7 @@ Inherited from `CLAUDE.md` and non-negotiable. The manager enforces them in task
 3. No combined DevFest + AUA lockup.
 4. The collaboration strip stays `#f0f0f0` in both themes; no filters on a partner's mark.
 5. Never invent content — empty states are the deliverable until 14 October.
-6. The ACSE building photo must be licensed, not sourced from their site.
+6. No ACSE building photo on the site at all; never source one from `cse.aua.am`.
 7. No Sessionize wiring until the embed ID is known. It is not the CFP slug.
 
 Any task that would breach one of these is malformed. Rewrite it.

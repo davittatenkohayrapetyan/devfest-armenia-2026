@@ -46,8 +46,10 @@ body of `loadSpeakers()` in `src/content.ts` and nothing else.
 5. **Never invent content.** Empty `speakers.json`, `partners.json` and `organizers.json`
    are intentional. The empty states are the deliverable until the CFP closes on
    14 October 2026.
-6. **Do not take the ACSE building photo from `cse.aua.am`.** It must be licensed and
-   requested (DF-11).
+6. **The site carries no ACSE building photo.** AUA's complete asset set is the two PNG
+   lockups in `public/assets/logos/`; there is no licensed photo and none is coming. Do not
+   take one from `cse.aua.am` — copyrighted, and this is a co-branded site — and do not
+   substitute a stock photo of a different building.
 7. **Do not wire Sessionize until the embed ID is known.** It is not the CFP slug.
 
 ## Working agreement
@@ -65,7 +67,6 @@ body of `loadSpeakers()` in `src/content.ts` and nothing else.
 | `docs/HANDOVER.md` | Session handover, full context, open items |
 | `docs/PLAN.md` | Build plan and milestones |
 | `docs/BOARD.md` | Task board (authoritative — ADR-006), risk register, comments log |
-| `docs/OUTREACH.md` | Draft messages for the external waits (DF-11, DF-14) |
 | `docs/TASK-MANAGEMENT.md` | Role charter for task and board management |
 | `docs/BRAND.md` | Palette, logo placement, forbidden values |
 | `docs/DECISIONS.md` | ADR-001 to ADR-006 |

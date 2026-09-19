@@ -77,8 +77,9 @@ automatically.
   with `filter: invert()` — that alters a partner's mark.
 - **Never invent content.** Empty `speakers.json` / `partners.json` / `organizers.json`
   are intentional; the empty states are the deliverable for this phase.
-- **Do not source the ACSE building photo from `cse.aua.am`.** It is their copyrighted
-  asset on a co-branded site. It must be requested (DF-11).
+- **The site carries no ACSE building photo.** AUA has only the two PNG lockups already in
+  the repo — no SVG, no reversed mark, no photo to license. Do not source one from
+  `cse.aua.am`; it is their copyrighted asset on a co-branded site.
 - **Do not wire Sessionize yet.** The 2026 embed ID is unknown and is *not* the CFP slug
   `devfest-armenia-2026` — 2025's was `fep0017x`. October work, DF-22/DF-23.
 
@@ -90,16 +91,16 @@ DF-01 is the next task: add the remote, push `main`, run all three checks, bring
 The scaffold's own commit must be preserved — do not re-initialize or squash it.
 
 After that, in rough order: DF-07–09 (DevFest lockup, landing-page headers, GDG Yerevan
-SVG), DF-11 (the ACSE asset request — should go out this week), DF-14 (confirm the logo
-arrangement with the GDG regional lead), DF-17 (deployment target, which fixes
-`VITE_BASE_PATH`), then launch.
+SVG), DF-12 (venue section, now that the building photo is off the table), DF-17
+(deployment target, which fixes `VITE_BASE_PATH`), then launch.
+
+DF-11 and DF-14 were cancelled on 19 September — see the board. Nothing on the path to
+launch is waiting on a reply from outside the project.
 
 ## 6. Open items
 
 | | |
 |---|---|
-| ACSE assets | SVG, reversed/white mark, brand rules, licensed building photo — all pending a request |
-| Logo lockup | Unconfirmed with the GDG regional lead |
 | Sessionize embed ID | Unknown; needed before mid-October |
 | Deployment target | WordPress subfolder as in 2025, or standalone? Decides `VITE_BASE_PATH` |
 | Analytics | Tool not chosen |

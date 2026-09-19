@@ -138,7 +138,7 @@ shareable HTTPS URL for co-organizers.
 | Window | Milestone | Gate |
 |---|---|---|
 | 20–24 Sep | Repo, scaffold, content model, v1 sections running on :3026 | Reviewed on phone |
-| 25–30 Sep | ACSE assets, OG/SEO, deploy | Site public |
+| 25–30 Sep | Venue section, OG/SEO, accessibility, deploy | Site public |
 | 1–14 Oct | CFP promotion period | Submissions tracked |
 | 15–25 Oct | Speakers section live, Sessionize API wired | ~20 speakers published |
 | 1–10 Nov | Agenda grid, two-track schedule | GridSmart embedded |
@@ -151,16 +151,15 @@ shareable HTTPS URL for co-organizers.
 
 Tracked as live items on [BOARD.md](./BOARD.md). Summary:
 
-1. **ACSE building photo** — must be requested, not lifted from `cse.aua.am`. It is their
-   copyrighted asset on a co-branded site. If it takes more than a week, ship v1 with a
-   neutral hero and swap later. Do not block CFP promotion on an asset request.
-2. **Logo lockup arrangement** — confirm with the GDG regional lead that a separate
-   collaboration strip (rather than a combined lockup) is the correct reading of the brand
-   guide. One email; far cheaper than a rebrand after launch.
-3. **Reversed AUA mark** — request the white knockout version from ACSE. Not blocking
-   thanks to the light strip, but it gives more layout freedom later.
-4. **Sessionize embed ID** — needed before October.
-5. **Deployment target** — WordPress subfolder as in 2025, or standalone? Affects
+1. **Sessionize embed ID** — needed before October.
+2. **Deployment target** — WordPress subfolder as in 2025, or standalone? Affects
    `VITE_BASE_PATH`. Decide before the first public deploy.
+3. **Content publishing workflow** — DF-39, decide by 9 October. The JSON model made the
+   format editable; it did not make the workflow anything other than clone/commit/push.
+
+Settled on 19 September and no longer open: there is no ACSE building photo and no vector or
+reversed AUA mark — the two PNGs in the repo are the complete set (DF-11, DF-13 cancelled),
+and the collaboration-strip arrangement is approved, Davit being the GDG Yerevan organizer
+(DF-14 cancelled).
 
 Language is settled: **English only**. No locale nesting in the content model.

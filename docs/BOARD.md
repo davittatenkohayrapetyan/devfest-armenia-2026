@@ -16,16 +16,14 @@ have a brief in [Task briefs](#task-briefs).
 
 ```
 DF-01 ──► DF-07, DF-08, DF-09 ──► DF-10 (phone review)
-                                      │
-DF-11 (ACSE assets) ──► DF-12, DF-13  │
-DF-14 (regional lead) ────────────────┼──► DF-20 (public deploy, 30 Sep)
-DF-17 (base path) ────────────────────┘
+DF-17 (base path) ──────────────► DF-20 (public deploy, 30 Sep)
 DF-22 (embed ID) ──► DF-23 ──► DF-24, DF-25
 ```
 
-Target: public site by **30 September**. DF-11 and DF-14 are external waits — every day
-they sit untouched is schedule loss, not slack. Draft messages for both are in
-`docs/OUTREACH.md`; they need a human to send them.
+Target: public site by **30 September**. As of 19 September there are no external waits
+left: DF-11 and DF-14 were cancelled, so nothing on the path to launch depends on a reply
+from outside the project. DF-17 is the last open gate on DF-20 and it is Davit's own
+infrastructure decision.
 
 ## Phase 0 — Foundation (20–24 Sep)
 
@@ -47,10 +45,10 @@ they sit untouched is schedule loss, not slack. Draft messages for both are in
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
-| DF-11 | Request AUA/ACSE assets: SVG, reversed mark, building photo, brand rules | todo | Davit | 22 Sep | Draft in `docs/OUTREACH.md`. Blocks DF-12, DF-13. Chase 25 Sep |
-| DF-12 | Venue section with licensed ACSE building photo | blocked | Davit | 29 Sep | Blocker: DF-11. Follow up 26 Sep |
-| DF-13 | Swap AUA PNG for SVG in collaboration strip | blocked | Davit | 29 Sep | Blocker: DF-11. Follow up 26 Sep |
-| DF-14 | Confirm logo lockup arrangement with GDG regional lead | todo | Davit | 23 Sep | Draft in `docs/OUTREACH.md`. Blocks DF-20. Chase 26 Sep |
+| DF-11 | Request AUA/ACSE assets: SVG, reversed mark, building photo, brand rules | cancelled | — | — | Nothing to request — AUA has only the two PNGs already in the repo |
+| DF-12 | Venue section — name, address, map link, no photo | todo | Davit | 26 Sep | Rescoped, unblocked. See brief |
+| DF-13 | Swap AUA PNG for SVG in collaboration strip | cancelled | — | — | No SVG exists; the 2130×610 navy PNG is the master |
+| DF-14 | Confirm logo lockup arrangement with GDG regional lead | cancelled | — | — | Davit is the GDG Yerevan organizer; the call is his and he has made it |
 | DF-15 | Final About / CFP copy review | todo | Davit | 26 Sep | |
 | DF-16 | OG image, meta tags, sitemap, robots.txt | todo | Davit | 28 Sep | |
 | DF-17 | Decide deployment target and `VITE_BASE_PATH` | todo | Davit | 26 Sep | WP subfolder vs standalone. Blocks DF-20 |
@@ -105,6 +103,35 @@ they sit untouched is schedule loss, not slack. Draft messages for both are in
 
 Only for tasks a row cannot carry. Everything else is self-evident from its row.
 
+### DF-12 · Venue section — remove the pending-photo path
+
+**Context.** `docs/BRAND.md` for the asset inventory. The venue section already renders
+name, detail, address and a map link. It also carries a placeholder branch waiting for a
+licensed ACSE building photo. That photo is never arriving — AUA's complete asset set is the
+two PNG lockups in `public/assets/logos/` — so the branch is permanent dead code that reads
+like unfinished work.
+
+**Goal.** Make the photo-less venue section the finished state rather than a pending one.
+
+**Steps.**
+1. In `src/main.ts`, delete the `photo` conditional in `venue()` (around line 175) and the
+   `<!-- DF-12: ... -->` placeholder comment with it. Render the section directly.
+2. Remove `photo: string | null` from the `venue` type in `src/content.ts`.
+3. Remove `"photo": null` from `public/content/event.json`.
+4. Run all three checks.
+
+**Constraints.** Do not substitute another image — not a stock photo of a different
+building, not a map screenshot, not an image from `cse.aua.am`. A text venue block with a
+map link is the deliverable. Do not delete the venue section itself, and do not touch the
+`mapUrl`.
+
+**Definition of done.** No occurrence of `photo` under `src/` or in `event.json`; the venue
+section still renders name, detail, address and the Maps button; all three checks pass.
+
+**Commit message.** `DF-12: venue section ships without a building photo`
+
+---
+
 ### DF-39 · Decide how content gets published in October
 
 **Context.** Read `docs/HANDOVER.md`, then `docs/TASK-MANAGEMENT.md` §9. ADR-001 moved
@@ -144,19 +171,42 @@ go well.
 
 | ID | Risk | Impact | Mitigation |
 |---|---|---|---|
-| R-1 | ACSE assets delayed | Venue section blocked, co-branding on PNG | Ship v1 with neutral hero; do not block CFP promotion |
-| R-2 | Logo lockup violates GDG brand guide | Rework after launch | DF-14 — confirm with regional lead before public deploy |
 | R-3 | Fewer than ~20 accepted talks | Two tracks become unfillable | Monitor submissions weekly from 1 Oct; extend CFP if thin |
 | R-4 | Sessionize API shape changes | Speakers section breaks | DF-24 snapshot fallback |
 | R-5 | Content edits still require git, so they still require a developer | Bottleneck on one person in the busiest weeks | The JSON model and CI validation cover the format only; the workflow is unsolved. DF-39, decide by 9 Oct |
 | R-6 | AUA colors leak into the design system | Brand drift | CI guard in DF-06 |
 | R-7 | Repo exists only on Davit's machine | Total loss of scaffold, docs and history | DF-01 — push to GitHub. Open since 19 Sep; the only mitigation is doing it |
 
+**Closed.** IDs are not reused.
+
+- **R-1** (ACSE assets delayed) — closed 19 Sep. There is nothing outstanding to be delayed:
+  the two PNGs in the repo are AUA's complete set. The venue section ships without a photo.
+- **R-2** (lockup violates the GDG brand guide) — closed 19 Sep. Davit is the GDG Yerevan
+  organizer; the separate-strip arrangement is his call and he has made it.
+
 ---
 
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-11, DF-12, DF-13 · Claude Code (task manager)
+Davit: AUA has only the two PNG lockups already sitting in `public/assets/logos/` — no SVG,
+no reversed/white mark, and no building photo available to license. DF-11 is therefore
+cancelled, because there is nothing left to ask for, and DF-13 goes with it, because there
+is no vector to swap to. The 2130×610 navy PNG is the master and is comfortably large enough
+for 2x at the strip's rendered size, so the PNG is the permanent answer, not a stopgap.
+DF-12 is rescoped rather than cancelled: the venue section still ships, as name, address and
+a map link. Its `photo` field and placeholder branch come out so that a future session does
+not read them as unfinished work and go looking for an image. The rule against lifting a
+photo from `cse.aua.am` stays in CLAUDE.md — it is now permanent, not a wait.
+
+### 2026-09-19 · DF-14 · Claude Code (task manager)
+Cancelled at Davit's direction: he is the GDG Yerevan organizer, so the lockup arrangement is
+his to approve and he has approved it. Also removed from §8 of the role charter, which had
+listed it under escalate-never-attempt — that entry assumed the approver was someone else,
+and leaving it would have had a future session emailing for permission Davit already holds.
+DF-20 no longer has an approval dependency; DF-17 is the only remaining gate on the deploy.
 
 ### 2026-09-19 · DF-42 · Claude Code (task manager)
 New. Running the mandatory checks needed `npm install`, which revealed there is no
@@ -174,6 +224,11 @@ messages in `docs/OUTREACH.md` so the remaining work is a human pressing send, n
 composing one from scratch. Chase dates set: 25 Sep for ACSE, 26 Sep for the regional lead.
 DF-12 and DF-13 were `blocked` with a named blocker but no follow-up date, which the role
 charter calls a bug in the board — both now carry 26 Sep.
+
+**Superseded the same day.** Both tasks were cancelled once Davit confirmed the asset
+situation and his own role — see the two entries above. `docs/OUTREACH.md` was deleted with
+them; the drafts were for requests that no longer need making. Kept as a row here because
+the reasoning explains why the file existed for an afternoon.
 
 ### 2026-09-19 · DF-33 · Claude Code (task manager)
 Split. "Live now/next, wifi, floor plan" was three unrelated deliverables in one row: one

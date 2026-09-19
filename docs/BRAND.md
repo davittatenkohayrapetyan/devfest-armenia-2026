@@ -53,9 +53,11 @@ AUA look oversized. The strip sets a fixed cap-height and lets widths fall where
 |---|---|---|---|
 | `aua-acse-navy.png` | 2130×610, transparent | `#003b5c` | Master. Collaboration strip. |
 | `aua-acse-color.png` | 512×147, transparent | `#003b5c` + `#fc4c02` | Standalone placements only |
-| `aua-acse-reverse.*` | pending from ACSE | white | Dark backgrounds |
 
-Requested from ACSE: SVG, reversed/white knockout, brand usage rules.
+These two files are AUA's complete asset set for this event — confirmed 19 September. There
+is no SVG and no reversed/white knockout, and none are coming, so do not design a placement
+that needs one. The navy master at 2130×610 covers 2x at the strip's rendered size, which is
+why the missing vector costs nothing here.
 Do not apply `filter: invert()` or `brightness(0) invert(1)` — that alters the partner's
 mark and mangles the two-color version.
 
