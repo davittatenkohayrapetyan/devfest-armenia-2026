@@ -1,6 +1,6 @@
 # Tracking Board — DevFest Armenia 2026
 
-**Last updated:** 2026-09-19
+**Last updated:** 2026-09-20
 
 This board is the authoritative record of task status (ADR-006). There is no second
 tracker — do not mirror rows into GitHub Issues.
@@ -72,7 +72,7 @@ infrastructure decision.
 | DF-22 | Retrieve Sessionize embed ID for 2026 | done | Davit | 10 Oct | `2d3htmgm` — recorded in CLAUDE.md |
 | DF-23 | Wire `loadSpeakers()` to Sessionize API | cancelled | — | — | Superseded by DF-50 — sync on demand, not fetch at runtime |
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
-| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 4 speakers live |
+| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 5 speakers live at 20 Sep |
 | DF-51 | Extend the sync to talks — session mapping | todo | Davit | 1 Nov | Needs DF-50. Blocks DF-28. See brief |
 | DF-25 | Verify 9+ compact grid state with real data | todo | Davit | 20 Oct | 20+ expected |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
@@ -535,6 +535,20 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-20 · DF-50 · Claude Code (task manager)
+Ran the sync. One new accepted speaker: **Ankur Roy**, Solutions Architect at Online Partner AB.
+Five live. The diff was 30 insertions and no deletions, which is the thing to check on a sync —
+a removal or a silently rewritten record matters far more than an addition.
+
+Idempotency re-verified against a **snapshot of the file**, not `git diff`. My first check used
+`git diff`, which compares to HEAD and therefore flagged the not-yet-committed new speaker as
+though the rerun had caused it. Second time today I have made that exact mistake; the correct
+test is copy, rerun, `cmp`.
+
+Progress against R-3, which wants roughly 30 sessions for three tracks: 5 speakers accepted with
+the CFP closing 14 October. No action yet — submissions cluster in the final week — but this is
+the number to watch weekly from 1 October.
 
 ### 2026-09-19 · DF-28 · Claude Code (task manager)
 Agenda section added as a placeholder at Davit's request, between Speakers and the team. It

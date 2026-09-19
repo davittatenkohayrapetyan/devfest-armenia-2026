@@ -1,5 +1,35 @@
 [
   {
+    "id": "8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3",
+    "fullName": "Ankur Roy",
+    "tagLine": "Solutions Architect at Online Partner AB | Google Developer Expert in Cloud",
+    "bio": "I am a Solutions Architect at Online Partner AB and a Cloud GDE. I have worked on several projects involving Google Cloud services and Google Workspace along with multiple other technology stacks and platforms.",
+    "profilePicture": "assets/speakers/8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/ankurr0y/",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Blog",
+        "url": "https://ankurr.substack.com",
+        "linkType": "Blog"
+      },
+      {
+        "title": "Company Website",
+        "url": "https://ankurr.substack.com",
+        "linkType": "Company_Website"
+      },
+      {
+        "title": "Sessionize",
+        "url": "https://sessionize.com/ankurr0y",
+        "linkType": "Sessionize"
+      }
+    ],
+    "sessions": []
+  },
+  {
     "id": "ba8de9c7-f2d2-458a-b678-9270ab8def5d",
     "fullName": "Arman Gyulbudaghyan",
     "tagLine": "Staff DevOps Engineer",
