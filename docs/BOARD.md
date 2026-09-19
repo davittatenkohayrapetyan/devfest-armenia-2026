@@ -29,7 +29,7 @@ infrastructure decision.
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
-| DF-01 | Create `devfest-armenia-2026` repo on GitHub, push scaffold | todo | Davit | 20 Sep | Public, MIT. Needs the remote URL; `gh` is not installed, use plain git |
+| DF-01 | Create `devfest-armenia-2026` repo on GitHub, push scaffold | done | Davit | 20 Sep | Pushed 19 Sep, CI green on first run |
 | DF-02 | Vite + TS + Tailwind skeleton building clean | done | Davit | 20 Sep | Scaffolded |
 | DF-03 | Design tokens from DevFest 2026 kit in `style.css` | done | Davit | 20 Sep | See BRAND.md |
 | DF-04 | JSON content model + loader + types | done | Davit | 21 Sep | `src/content.ts` |
@@ -127,7 +127,8 @@ advance and is empty (HANDOVER §2).
 6. `docker compose up -d --build`, confirm the site serves on `http://localhost:3026`, then
    `docker compose down`.
 7. Set DF-01 to `done` on the board, close R-7 in the risk register with a one-line reason,
-   update "Last updated", and add a comments-log entry only if something surprising happened.
+   update "Last updated", and add a comments-log entry — §5 requires one for any move to
+   `done`, whether or not anything surprising happened.
 
 **Constraints.** Do not re-initialize the repo, squash, amend or rebase — the scaffold's
 three commits are the project's history and the handover says explicitly to preserve them.
@@ -216,9 +217,11 @@ go well.
 | R-4 | Sessionize API shape changes | Speakers section breaks | DF-24 snapshot fallback |
 | R-5 | Content edits still require git, so they still require a developer | Bottleneck on one person in the busiest weeks | The JSON model and CI validation cover the format only; the workflow is unsolved. DF-39, decide by 9 Oct |
 | R-6 | AUA colors leak into the design system | Brand drift | CI guard in DF-06 |
-| R-7 | Repo exists only on Davit's machine | Total loss of scaffold, docs and history | DF-01 — push to GitHub. Open since 19 Sep; the only mitigation is doing it |
 
 **Closed.** IDs are not reused.
+
+- **R-7** (repo only on Davit's machine) — closed 19 Sep. `main` is on GitHub with all seven
+  commits and CI green. Re-opens only if the remote is ever deleted.
 
 - **R-1** (ACSE assets delayed) — closed 19 Sep. There is nothing outstanding to be delayed:
   the two PNGs in the repo are AUA's complete set. The venue section ships without a photo.
@@ -230,6 +233,18 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-01 · Claude Code (task manager)
+Done. Remote `https://github.com/davittatenkohayrapetyan/devfest-armenia-2026`, pushed over
+HTTPS with plain git. All seven commits are on `origin/main`, including the three scaffold
+commits — nothing re-initialized, squashed or force-pushed. CI passed on its first run
+(`e256f36`, run 35431645446), so the ubuntu-latest/Node 20 environment agrees with local on
+all three checks. Container verified before teardown: `/` returned 200 with the built title,
+the hashed JS bundle returned 200, and `/content/event.json` returned 200 through nginx —
+that last one matters because it confirms ADR-001's runtime content fetch works in the
+served image, not only under `vite dev`. One note for whoever pushes next: the Actions API
+reported `total_count: 0` for several seconds after the push before the run appeared, so an
+immediate check reads as "no CI" when the run is simply not registered yet.
 
 ### 2026-09-19 · DF-43 · Claude Code (task manager)
 There is no `.dockerignore`, so `COPY . .` ships the host's `node_modules`, `dist` and `.git`
