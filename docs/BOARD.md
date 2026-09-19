@@ -351,6 +351,18 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-09-19 · DF-09 · Claude Code (task manager)
+Strip sizing revised at Davit's direction: "AUA" should match the GDG chevron, not the GDG
+wordmark. That is a 3.16x height ratio rather than the 1.55x set earlier — measured the same
+way, and verified by rendering both at final size and measuring the ink: 88px each at 2x.
+A `×` now sits between the marks, decorative and aria-hidden since the labels already carry
+the meaning.
+
+One consequence worth knowing: at that scale the AUA file is ~485px wide on desktop and would
+overrun a phone, because two thirds of its canvas is padding that scales with it. `max-width:
+100%` caps it, so on a narrow screen AUA shrinks slightly below an exact chevron match. That
+is the trade-off for not cropping a partner's file; it only shows below ~400px.
+
 ### 2026-09-19 · DF-08, DF-09 · Claude Code (task manager)
 Two corrections from Davit's phone review.
 

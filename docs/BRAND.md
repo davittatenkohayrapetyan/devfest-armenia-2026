@@ -43,10 +43,16 @@ provided lockups as designed.
 
 ## Aligning the two marks
 
-Sizing in the strip is per-mark and deliberately unequal: `.collab-mark--aua` is 1.55x
-`.collab-mark--gdg`. The AUA file is ~68% empty vertical padding, so equal heights shrink it
-to a third of GDG's size. Do not "fix" this by cropping their file — that padding may be
-their clear-space requirement, and we have no brand rules from them.
+Sizing in the strip is per-mark and deliberately unequal: `.collab-mark--aua` is **3.16x**
+`.collab-mark--gdg`, which sets the word "AUA" at the same height as the GDG chevron mark
+(44px each at desktop size). The ratio is measured, not guessed: the chevron is 239px of a
+240px canvas, AUA's caps are 192px of a 610px canvas, and that canvas is ~68% empty vertical
+padding. Do not "fix" the disparity by cropping their file — that padding may be their
+clear-space requirement, and we have no brand rules from them. `.collab-mark` carries
+`max-width: 100%` because the scaled AUA file is wider than a phone.
+
+The two marks are separated by a `×`. It is decorative and `aria-hidden`: the labels above
+each mark already state the relationship, so announcing a stray letter would add nothing.
 
 AUA's lockup is roughly 3.5:1; GDG Yerevan's is closer to square. Align by **optical
 cap-height of the letterforms**, not by bounding box — matching container heights makes
