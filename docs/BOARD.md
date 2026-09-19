@@ -39,7 +39,7 @@ infrastructure decision.
 | DF-08 | Create DevFest Armenia lockup from editable-location asset | todo | Davit | 22 Sep | Google Drawings |
 | DF-09 | Source GDG Yerevan logo SVG | todo | Davit | 22 Sep | |
 | DF-10 | Review v1 on phone via :3026 | todo | Davit | 24 Sep | Port-forward. Needs DF-07/08/09 |
-| DF-42 | Commit `package-lock.json`, switch CI to `npm ci` with node cache | todo | Davit | 22 Sep | Lockfile already generated locally, untracked — see log |
+| DF-42 | Commit `package-lock.json`, switch CI to `npm ci` with node cache | done | Davit | 22 Sep | Dockerfile switched too — see log |
 | DF-43 | Add `.dockerignore` | todo | Davit | 24 Sep | Build hygiene, not a bug — see log. Low priority |
 
 ## Phase 1 — Content and launch (25–30 Sep)
@@ -233,6 +233,21 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-42 · Claude Code (task manager)
+Done. `package-lock.json` committed (lockfileVersion 3, 137 entries, every `resolved` URL on
+registry.npmjs.org — checked before committing, since a lockfile is exactly where a bad
+registry would hide). CI now runs `npm ci` with `cache: npm` on `actions/setup-node`. The
+Dockerfile went with it — `COPY package*.json` became an explicit
+`COPY package.json package-lock.json` and `npm install` became `npm ci`, because a committed
+lockfile that the image build ignores buys nothing. Slightly wider than the row's wording;
+the alternative was reproducible CI and non-reproducible images.
+
+Verified by deleting `node_modules` and running `npm ci` from clean (89 packages), then all
+three checks, then `docker build --no-cache` (exit 0). Expect the package count to differ by
+one between host and container — 89 local, 88 in the image — because esbuild's platform
+binary is an optional dependency and only the matching one installs. That is correct
+behaviour, not lockfile drift.
 
 ### 2026-09-19 · DF-01 · Claude Code (task manager)
 Done. Remote `https://github.com/davittatenkohayrapetyan/devfest-armenia-2026`, pushed over
