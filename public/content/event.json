@@ -51,16 +51,16 @@
     "lead": "A full day of technical talks, knowledge sharing, networking and community, organized by GDG Yerevan in collaboration with the Zaven P. & Sonia Akian College of Science & Engineering at the American University of Armenia.",
     "stats": [
       {
-        "value": "~20",
+        "value": "20+",
         "label": "speakers"
       },
       {
-        "value": "2",
-        "label": "parallel tracks"
+        "value": "3",
+        "label": "tracks + workshops"
       },
       {
-        "value": "300–350",
-        "label": "attendees expected"
+        "value": "350+",
+        "label": "participants"
       }
     ]
   },

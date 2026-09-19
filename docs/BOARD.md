@@ -52,7 +52,7 @@ infrastructure decision.
 | DF-12 | Venue section — name, address, map link, no photo | done | Davit | 26 Sep | Photo path removed from code, types and content |
 | DF-13 | Swap AUA PNG for SVG in collaboration strip | cancelled | — | — | No SVG exists; the 2130×610 navy PNG is the master |
 | DF-14 | Confirm logo lockup arrangement with GDG regional lead | cancelled | — | — | Davit is the GDG Yerevan organizer; the call is his and he has made it |
-| DF-15 | Final About / CFP copy review | review | Davit | 26 Sep | Facts and links verified; one addition needs your eye |
+| DF-15 | Final About / CFP copy review | done | Davit | 26 Sep | Approved 19 Sep; scale updated to 20+/3 tracks/350+ |
 | DF-44 | Document the neutral ramp in BRAND.md | done | Davit | 26 Sep | Neutrals table with measured contrast |
 | DF-45 | 2025 photos as hero and CFP backgrounds | done | Davit | 22 Sep | Two photos, downscaled, EXIF stripped |
 | DF-46 | Re-cut hero art if the 2026 kit becomes available | todo | Davit | 10 Oct | Contingent on the kit; due date sits past this phase's window |
@@ -74,7 +74,7 @@ infrastructure decision.
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
 | DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 4 speakers live |
 | DF-51 | Extend the sync to talks — session mapping | todo | Davit | 1 Nov | Needs DF-50. Blocks DF-28. See brief |
-| DF-25 | Verify 9+ compact grid state with real data | todo | Davit | 20 Oct | ~20 expected |
+| DF-25 | Verify 9+ compact grid state with real data | todo | Davit | 20 Oct | 20+ expected |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
 | DF-27 | Hide CFP block after 14 Oct — verify | todo | Davit | 15 Oct | Date-aware. Checkpoint task |
 | DF-39 | Decide how content gets published in October | todo | Davit | 9 Oct | Decision task — see brief |
@@ -83,7 +83,7 @@ infrastructure decision.
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
-| DF-28 | Two-track agenda section | todo | Davit | 5 Nov | UI only. Data comes from DF-51 |
+| DF-28 | Three-track agenda section | todo | Davit | 5 Nov | Three tracks plus workshops. UI only; data from DF-51 |
 | DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 5 Nov | Only embed retained |
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 5 Nov | Limited number |
 | DF-31 | Partner logos final — all tiers | todo | GDG team | 7 Nov | |
@@ -352,7 +352,7 @@ if they are confused — the cards will silently render nothing. The join is: sp
    `questions` are **empty arrays** and every session has `startsAt: null`, so the shape of a
    scheduled session is **unverified**. Do not infer it from documentation — fetch the live
    payload once the schedule exists and code against what is actually there.
-6. Handle the two-track mapping only once `categoryItems` is populated; today it is `[]` for
+6. Handle the track mapping only once `categoryItems` is populated; today it is `[]` for
    every session, so there is nothing to map a track from.
 
 **Constraints.** Do not publish a session before it is `Accepted`. Do not invent a track, room
@@ -515,7 +515,7 @@ go well.
 
 | ID | Risk | Impact | Mitigation |
 |---|---|---|---|
-| R-3 | Fewer than ~20 accepted talks | Two tracks become unfillable | Monitor submissions weekly from 1 Oct; extend CFP if thin |
+| R-3 | Too few accepted talks to fill three tracks | A third track is visibly thin, or has to be dropped late | Three tracks needs roughly 30 sessions, not 20. 5 accepted as of 19 Sep, CFP closes 14 Oct. Monitor weekly from 1 Oct; decide by 16 Oct whether it is three tracks or two |
 | R-4 | Sessionize API shape changes | Speakers section breaks | DF-24 snapshot fallback |
 | R-5 | Content edits still require git, so they still require a developer | Bottleneck on one person in the busiest weeks | The JSON model and CI validation cover the format only; the workflow is unsolved. DF-39, decide by 9 Oct |
 | R-6 | AUA colors leak into the design system | Brand drift | CI guard in DF-06 |
@@ -535,6 +535,25 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-15 · Claude Code (task manager)
+Approved by Davit, with the scale corrected: **20+ speakers, 3 tracks plus workshops, 350+
+participants**. Talks and workshops as formats are confirmed, and the topic list stands.
+Networking was already in the About lead, so it needed no new copy — the meta description now
+says it too.
+
+The numbers were in six places, not one: `event.json`, the `og:description`, a comment in
+`main.ts`, `HANDOVER.md`, `PLAN.md` and `README.md`. All updated together; a social card still
+promising "two parallel tracks" would have outlived the page copy by months.
+
+**R-3 is now materially worse and has been rewritten.** Two tracks needed roughly 20 sessions;
+three tracks plus workshops needs closer to 30. Five are accepted as of today and the CFP closes
+14 October. That is not alarming yet — most submissions arrive in the final week — but the risk
+is no longer "monitor weekly", it is a decision with a date: **by 16 October, is it three tracks
+or two?** Deciding late means either a visibly thin third track or a schedule rebuilt during
+speaker-announcement week.
+
+DF-28 renamed to match. Its brief still stands; only the count changed.
 
 ### 2026-09-19 · DF-18 · Claude Code (task manager)
 Davit chose cookieless. Implemented as Plausible with the `outbound-links` variant, recorded as

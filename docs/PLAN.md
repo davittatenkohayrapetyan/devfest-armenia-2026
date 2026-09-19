@@ -2,7 +2,7 @@
 
 **Event:** 21 November 2026 · American University of Armenia, Yerevan
 **Organizers:** GDG Yerevan, in collaboration with the Zaven P. & Sonia Akian College of Science & Engineering (ACSE) at AUA
-**Scale:** ~300–350 attendees · ~20 speakers · 2 parallel tracks
+**Scale:** 350+ participants · 20+ speakers · 3 tracks plus workshops
 **CFP:** opened 3 Sep 2026 · closes 14 Oct 2026, 23:59 (UTC+04:00)
 
 ---
@@ -42,7 +42,7 @@ public/content/
   speakers.json     # manual now; Sessionize-shaped for a later swap
   partners.json     # tier, name, logo, url
   organizers.json   # GDG Yerevan team
-  tracks.json       # two parallel tracks
+  tracks.json       # three tracks plus workshops
 ```
 
 ### Sessionize strategy
@@ -101,7 +101,7 @@ Full detail in [BRAND.md](./BRAND.md).
 1. Hero — lockup, date, venue, dual CTA (Register primary / Submit a talk secondary)
 2. Collaboration strip — GDG Yerevan + AUA ACSE
 3. Call for speakers — countdown to 14 Oct, formats, topics, selection principles
-4. About — the event, the collaboration, two tracks
+4. About — the event, the collaboration, the tracks
 5. Speakers — empty state until October
 6. Partners — placeholder grid + "Become a partner"
 7. Venue — AUA, map, address
@@ -140,8 +140,8 @@ shareable HTTPS URL for co-organizers.
 | 20–24 Sep | Repo, scaffold, content model, v1 sections running on :3026 | Reviewed on phone |
 | 25–30 Sep | Venue section, OG/SEO, accessibility, deploy | Site public |
 | 1–14 Oct | CFP promotion period | Submissions tracked |
-| 15–25 Oct | Speakers section live, Sessionize API wired | ~20 speakers published |
-| 1–10 Nov | Agenda grid, two-track schedule | GridSmart embedded |
+| 15–25 Oct | Speakers section live, Sessionize API wired | 20+ speakers published |
+| 1–10 Nov | Agenda grid, three-track schedule | GridSmart embedded |
 | 21 Nov | Day-of mode: live schedule, wifi, floor plan | — |
 | 22 Nov+ | Post-event: thank-you, photo gallery | — |
 

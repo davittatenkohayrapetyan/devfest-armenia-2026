@@ -43,7 +43,7 @@ Everything on the page comes from `public/content/*.json`:
 | `event.json` | Dates, venue, CTA links, CFP details, about copy |
 | `speakers.json` | Speakers. Empty array renders the "announced soon" state. |
 | `partners.json` | Tiered partner logos |
-| `tracks.json` | The two parallel tracks |
+| `tracks.json` | The three tracks |
 | `organizers.json` | GDG Yerevan team |
 
 Edit, commit, done. CI validates the structure, so a malformed edit fails the build rather

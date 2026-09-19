@@ -12,7 +12,7 @@ The website for **DevFest Armenia 2026** — 21 November 2026, American Universi
 Armenia, Yerevan. Organized by GDG Yerevan in collaboration with the Zaven P. & Sonia
 Akian College of Science & Engineering (ACSE) at AUA.
 
-- ~20 speakers, two parallel tracks, 300–350 attendees expected
+- 20+ speakers, three tracks plus workshops, 350+ participants expected
 - CFP open 3 Sep, **closes 14 October 2026, 23:59 (UTC+04:00)**
 - Registration: https://gdg.community.dev/events/details/google-gdg-yerevan-presents-devfest-armenia-2026/
 - CFP: https://sessionize.com/devfest-armenia-2026/

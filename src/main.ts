@@ -137,7 +137,7 @@ function about(e: EventContent): string {
 function speakers(list: Speaker[], e: EventContent): string {
   const cfpUrl = e.cta.cfp;
   // While the call is open the published list is a first cut, not the lineup. Saying so
-  // avoids four names reading as the whole programme of a two-track, ~20-speaker event.
+  // avoids four names reading as the whole programme of a 20+ speaker, three-track event.
   const note =
     list.length > 0 && daysUntil(e.cfp.closes) >= 0
       ? `<p class="mt-3 text-[var(--ink-muted)] prose-measure">${esc(e.speakers.noteWhileCfpOpen)}</p>`
