@@ -72,6 +72,7 @@ infrastructure decision.
 | DF-23 | Wire `loadSpeakers()` to Sessionize API | cancelled | — | — | Superseded by DF-50 — sync on demand, not fetch at runtime |
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
 | DF-50 | On-demand speaker sync from Sessionize | todo | Davit | 10 Oct | `npm run sync:speakers`. See brief |
+| DF-51 | Extend the sync to talks — session mapping | todo | Davit | 1 Nov | Needs DF-50. Blocks DF-28. See brief |
 | DF-25 | Verify 9+ compact grid state with real data | todo | Davit | 20 Oct | ~20 expected |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
 | DF-27 | Hide CFP block after 14 Oct — verify | todo | Davit | 15 Oct | Date-aware. Checkpoint task |
@@ -81,7 +82,7 @@ infrastructure decision.
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
-| DF-28 | Two-track agenda section | todo | Davit | 5 Nov | `tracks.json` has no type, loader or schema check yet — add them |
+| DF-28 | Two-track agenda section | todo | Davit | 5 Nov | UI only. Data comes from DF-51 |
 | DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 5 Nov | Only embed retained |
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 5 Nov | Limited number |
 | DF-31 | Partner logos final — all tiers | todo | GDG team | 7 Nov | |
@@ -314,6 +315,60 @@ in place of the empty state.
 
 ---
 
+### DF-51 · Extend the sync to talks — session mapping
+
+**Context.** Needs DF-50, which deliberately writes `sessions: []`. This is the task that
+turns that on. It is the **data** layer only; DF-28 builds the agenda section and DF-29 the
+GridSmart embed, both downstream of this.
+
+**The mapping problem, stated precisely.** In `https://sessionize.com/api/v2/2d3htmgm/view/All`
+a speaker's `sessions` field is an array of numeric session **ids**:
+
+```
+"fullName": "Max Kachinkin", "sessions": [1326414, 1326413]
+```
+
+`src/content.ts` declares `sessions?: { id: string; name: string }[]`, which is the shape of a
+*different* endpoint, `/view/Speakers`. The two are not interchangeable and nothing will error
+if they are confused — the cards will silently render nothing. The join is: speaker
+`sessions[]` holds ids that index the top-level `sessions[]` array, where each entry carries
+`id`, `title`, `description`, `startsAt`, `endsAt`, `roomId`, `categoryItems`, `status`,
+`isConfirmed`, `isServiceSession`, `isPlenumSession`.
+
+**Goal.** Publish accepted talks and the speaker-to-talk relationship, from the same job.
+
+**Steps.**
+1. Extend `scripts/sync-speakers.mjs` — or split it if it has outgrown one file — to also
+   write `public/content/sessions.json`, keeping Sessionize's field names, as ADR-004 requires.
+2. Build the id→session map once, then resolve each speaker's `sessions` into
+   `{ id, name }` so `src/content.ts` is satisfied without changing the declared type.
+3. Include only `status: "Accepted"`. Exclude `isServiceSession` entries — breaks and lunch are
+   not talks — and treat `isPlenumSession` as a flag to carry, not a reason to exclude.
+4. Add a type and a loader in `src/content.ts`, and structural validation in
+   `scripts/validate-content.mjs`. `tracks.json` still has neither; if tracks are derived from
+   Sessionize `categories`, say so and generate it rather than hand-maintaining a second copy.
+5. Re-run the analysis before writing any of this. As of 19 September `rooms`, `categories` and
+   `questions` are **empty arrays** and every session has `startsAt: null`, so the shape of a
+   scheduled session is **unverified**. Do not infer it from documentation — fetch the live
+   payload once the schedule exists and code against what is actually there.
+6. Handle the two-track mapping only once `categoryItems` is populated; today it is `[]` for
+   every session, so there is nothing to map a track from.
+
+**Constraints.** Do not publish a session before it is `Accepted`. Do not invent a track, room
+or time that Sessionize does not carry — an agenda with a plausible-looking wrong room is worse
+than no agenda. Do not call Sessionize at runtime (ADR-009); this stays a job Davit runs. Do
+not let this task grow the agenda UI — that is DF-28, and keeping them apart is what lets the
+data land and be checked before anything renders it. Keep `sessions: []` behaviour available
+behind a flag or a separate script until Davit says talks are public.
+
+**Definition of done.** `sessions.json` exists with every accepted, non-service session;
+each speaker's `sessions` resolves to `{ id, name }` objects matching the ids in that file;
+types and validation cover both; re-running the sync produces no diff; all three checks pass.
+
+**Commit message.** `DF-51: sync talks and resolve speaker session mapping`
+
+---
+
 ### DF-12 · Venue section — remove the pending-photo path
 
 **Context.** `docs/BRAND.md` for the asset inventory. The venue section already renders
@@ -402,6 +457,23 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-51 · Claude Code (task manager)
+Created for the talk/session mapping DF-50 defers. Separate task rather than a step inside
+DF-50 because the two are verifiable independently and Davit wants speakers live now and talks
+later; bundling them would mean neither ships until both are ready.
+
+Also settled, at Davit's word, so it is not raised a third time: every session reads
+`isConfirmed: false`, but he manages the Sessionize instance and has spoken to the speakers
+directly. The flag reflects a Sessionize workflow step he has not clicked, not an unconfirmed
+speaker. **Not a blocker. Do not re-raise it.**
+
+The mapping trap is written into DF-51's brief in full, because it fails silently: speaker
+`sessions` in `/view/All` is an array of numeric ids, while `src/content.ts` declares the
+`{ id, name }` shape from `/view/Speakers`. Confusing the two renders empty cards rather than
+throwing. The brief also says explicitly that the scheduled-session shape is **unverified** —
+`rooms`, `categories` and `questions` are empty today and every `startsAt` is null, so anyone
+coding an agenda now would be coding against documentation rather than data.
 
 ### 2026-09-19 · DF-22, DF-23, DF-24, DF-50 · Claude Code (task manager)
 Davit supplied the embed ID: `2d3htmgm`. DF-22 closed, and the standing "do not wire
