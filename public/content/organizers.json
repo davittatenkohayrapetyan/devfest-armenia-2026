@@ -28,5 +28,11 @@
     "role": "GDE Angular",
     "photo": "assets/organizers/armen-vardanyan.jpg",
     "links": []
+  },
+  {
+    "name": "Rohan Singh",
+    "role": "GDE Cloud",
+    "photo": "assets/organizers/rohan-singh.jpg",
+    "links": []
   }
 ]
