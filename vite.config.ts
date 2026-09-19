@@ -5,6 +5,12 @@ import { defineConfig } from "vite";
 // Set by scripts/build-deploy.mjs; a normal `npm run build` keeps the page for local review.
 const omitProgress = process.env.OMIT_PROGRESS === "1";
 
+// Absolute URLs for Open Graph and the sitemap need an origin. Default to the local container
+// so a dev build is complete and self-consistent; scripts/build-deploy.mjs refuses to ship
+// while this is still localhost, which turns "forgot to set the domain" into a hard failure
+// rather than a social card that 404s.
+process.env.VITE_SITE_URL ??= "http://localhost:3026";
+
 export default defineConfig({
   base: process.env.VITE_BASE_PATH ?? "/",
   server: { host: true, port: 3025 },

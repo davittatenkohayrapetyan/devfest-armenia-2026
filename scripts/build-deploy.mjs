@@ -22,6 +22,25 @@ const run = (script, args) =>
     env: { ...process.env, OMIT_PROGRESS: "1" },
   });
 
+// Absolute URLs are baked into the HTML and sitemap at build time, so the domain has to be
+// right here — not fixed up afterwards. Refuse rather than ship a social card that 404s.
+const site = process.env.VITE_SITE_URL;
+if (!site || /localhost|127\.0\.0\.1/.test(site)) {
+  console.error("Deploy build refused: VITE_SITE_URL is not a deployable origin.");
+  console.error(`  current value: ${site ?? "(unset)"}`);
+  console.error("  Set it to the real domain, e.g.");
+  console.error("    VITE_SITE_URL=https://devfest.am/2026 npm run build:deploy");
+  console.error("  It is baked into og:image, og:url, canonical and sitemap.xml.");
+  process.exit(1);
+}
+console.log(`Origin: ${site}`);
+
+// Regenerate the SEO files under THIS origin. Skipping prebuild means public/robots.txt and
+// public/sitemap.xml are whatever the last local build left there — localhost — and Vite
+// copies public/ verbatim, so stale files would ship alongside correct HTML.
+console.log("Generating robots.txt and sitemap.xml...");
+run("scripts/build-seo.mjs", []);
+
 console.log("Type-checking...");
 run("node_modules/typescript/bin/tsc", ["--noEmit"]);
 console.log("Building without the internal board view...");
@@ -51,14 +70,20 @@ const files = [];
 })(DIST);
 
 const leaked = files.filter((f) => FORBIDDEN.some((bad) => relative(DIST, f).includes(bad)));
+
+// Any file that still points at a dev origin means something was copied rather than rebuilt.
+const stale = files
+  .filter((f) => /\.(html|xml|txt|json|js|css)$/.test(f))
+  .filter((f) => /localhost|127\.0\.0\.1/.test(readFileSync(f, "utf8")));
 const referenced = files
   .filter((f) => /\.(html|js|css|json|xml|txt)$/.test(f))
   .filter((f) => readFileSync(f, "utf8").includes("implementation-progress"));
 
-if (leaked.length || referenced.length) {
+if (leaked.length || referenced.length || stale.length) {
   console.error("Deploy build failed verification:");
   for (const f of leaked) console.error(`  present: ${f}`);
   for (const f of referenced) console.error(`  references the internal page: ${f}`);
+  for (const f of stale) console.error(`  still points at a dev origin: ${f}`);
   process.exit(1);
 }
 
