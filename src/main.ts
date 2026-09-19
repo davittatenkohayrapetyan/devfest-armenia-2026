@@ -218,12 +218,17 @@ function venue(e: EventContent): string {
     <p class="text-[var(--ink-muted)]">${esc(e.venue.detail)}</p>
     <p class="mt-2 text-[var(--ink-muted)]">${esc(e.venue.address)}</p>
     <a class="btn btn-secondary mt-6" href="${esc(e.venue.mapUrl)}" rel="noopener">Open in Maps</a>
-    <iframe
-      class="venue-map mt-8"
-      src="${esc(e.venue.mapEmbedUrl)}"
-      title="Map of ${esc(e.venue.name)}, ${esc(e.venue.address)}"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="venue-map venue-map-placeholder mt-8">
+      <p class="venue-map-note">
+        The map is a Google embed. Nothing is requested from Google, and no cookies are set,
+        until you load it.
+      </p>
+      <button class="btn btn-secondary mt-4" type="button"
+              data-load-map="${esc(e.venue.mapEmbedUrl)}"
+              data-map-title="Map of ${esc(e.venue.name)}, ${esc(e.venue.address)}">
+        Load map
+      </button>
+    </div>
   </div>
 </section>`;
 }
@@ -241,6 +246,27 @@ function footer(e: EventContent): string {
     <a class="underline mt-3 inline-block" href="${esc(e.cta.chapter)}" rel="noopener">gdg.community.dev/gdg-yerevan</a>
   </div>
 </footer>`;
+}
+
+/**
+ * Swaps the placeholder for the real embed on click. The map stays behind a press so that no
+ * request reaches Google — and no cookie is set — unless a visitor asks for it. That is what
+ * keeps ADR-012's cookieless position true for the page as a whole, not just for analytics.
+ */
+function wireMapButton(root: HTMLElement): void {
+  const button = root.querySelector<HTMLButtonElement>("[data-load-map]");
+  if (!button) return;
+  button.addEventListener("click", () => {
+    const slot = button.parentElement;
+    if (!slot) return;
+    const frame = document.createElement("iframe");
+    frame.className = "venue-map";
+    frame.src = button.dataset.loadMap ?? "";
+    frame.title = button.dataset.mapTitle ?? "Map";
+    frame.referrerPolicy = "no-referrer-when-downgrade";
+    slot.replaceWith(frame);
+    frame.focus();
+  });
 }
 
 async function render() {
@@ -264,6 +290,7 @@ async function render() {
       `</main>`,
       footer(event),
     ].join("");
+    wireMapButton(root);
   } catch (err) {
     root.innerHTML = `<div class="wrap py-20">
       <h1 class="text-2xl font-bold">Content failed to load</h1>

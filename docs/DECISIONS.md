@@ -196,3 +196,8 @@ it, which was checked, not assumed.
 **Consequence:** registration and submission totals still come from the GDG platform and
 Sessionize; this measures the site's contribution to them, not attendance. If it is ever swapped
 for self-hosted Umami, set `VITE_ANALYTICS_SRC` — no code change needed.
+
+**Extended 19 September:** the decision covers the page, not just analytics. The venue map is a
+Google embed and would have set cookies once loaded, so it sits behind a press with the reason
+stated on the button's own panel. Nothing reaches Google unless a visitor asks for it. Anything
+else third-party added later gets the same treatment or it undoes this decision quietly.

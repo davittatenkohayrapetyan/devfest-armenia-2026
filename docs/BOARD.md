@@ -537,6 +537,23 @@ go well.
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
 ### 2026-09-19 · DF-12, DF-18 · Claude Code (task manager)
+Davit chose click-to-load for the map. The placeholder occupies exactly the same box as the
+embed — same class, same heights at both breakpoints — so pressing it does not shift the page,
+and the panel states why it is there: nothing is requested from Google, and no cookie is set,
+until you press it.
+
+Verified the served bundle contains **no `<iframe>` at all**; the element is constructed in the
+click handler. The embed URL is present as a data attribute, which is inert — a string, not a
+request.
+
+ADR-012 extended to say so explicitly: the cookieless decision covers the page, not just the
+analytics tag, and anything third-party added later gets the same treatment or it quietly undoes
+the decision. That is the sentence worth having when someone adds a YouTube embed in November.
+
+The "Open in Maps" button is unchanged and still links straight to Google — a navigation a
+visitor chooses is not an embed, and it needs no gate.
+
+### 2026-09-19 · DF-12, DF-18 · Claude Code (task manager)
 Embedded map added under the venue text, and both the link and the embed now point where Davit
 asked rather than at a generic AUA search.
 
