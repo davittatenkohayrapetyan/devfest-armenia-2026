@@ -54,7 +54,7 @@ infrastructure decision.
 | DF-17 | Decide deployment target and `VITE_BASE_PATH` | todo | Davit | 26 Sep | WP subfolder vs standalone. Blocks DF-20 |
 | DF-18 | Analytics | todo | Davit | 28 Sep | Which tool? |
 | DF-19 | Accessibility pass: contrast, focus, reduced motion, keyboard | todo | Davit | 29 Sep | |
-| DF-20 | Public deploy | todo | Davit | 30 Sep | Needs DF-14, DF-17 |
+| DF-20 | Public deploy | todo | Davit | 30 Sep | Needs DF-17 |
 | DF-21 | Announce site on GDG Community platform and socials | todo | Davit | 30 Sep | |
 
 ## Phase 2 — Speakers (15–25 Oct)
@@ -85,7 +85,7 @@ infrastructure decision.
 |---|---|---|---|---|---|
 | DF-33 | Day-of mode: live "now / next" from the agenda data | todo | Davit | 17 Nov | Rescoped — see log 19 Sep. Needs DF-28 |
 | DF-40 | Practical info card: wifi, rooms, catering, emergency contact | todo | Davit | 18 Nov | Content from GDG team |
-| DF-41 | Floor plan section | todo | Davit | 18 Nov | Needs a plan image from AUA |
+| DF-41 | Floor plan section | todo | Davit | 18 Nov | External: ask AUA for a floor plan by 1 Nov |
 | DF-34 | PWA offline verified on real devices | todo | Davit | 19 Nov | Needs HTTPS tunnel (ADR-005) |
 | DF-35 | Feedback form link | todo | Davit | 20 Nov | |
 
