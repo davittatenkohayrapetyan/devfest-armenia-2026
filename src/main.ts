@@ -48,7 +48,7 @@ function hero(e: EventContent): string {
 function collaboration(): string {
   return `
 <section class="collab-strip" aria-label="Organizers">
-  <div class="wrap py-8 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+  <div class="wrap pt-12 pb-8 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
     <div class="collab-group">
       <p class="collab-label">Organized by</p>
       <img class="collab-mark collab-mark--gdg" src="${base}assets/logos/gdg-yerevan.png"
@@ -56,7 +56,6 @@ function collaboration(): string {
     </div>
     <span class="collab-x" aria-hidden="true">&times;</span>
     <div class="collab-group">
-      <p class="collab-label">In collaboration with</p>
       <img class="collab-mark collab-mark--aua" src="${base}assets/logos/aua-acse-navy.png"
            alt="Akian College of Science and Engineering, American University of Armenia">
     </div>

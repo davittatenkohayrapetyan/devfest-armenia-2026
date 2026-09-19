@@ -352,6 +352,21 @@ go well.
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
 ### 2026-09-19 · DF-09 · Claude Code (task manager)
+Davit's call: keep "Organized by" over GDG Yerevan, drop "In collaboration with" over AUA.
+The `×` between the marks now carries the relationship on its own.
+
+The label is positioned out of flow rather than simply deleted from one column. With only one
+column labelled, an in-flow label makes that column centre as label-plus-mark, which drops its
+logo below the unlabelled one — a misalignment that would have shown up on the next phone
+review. Taking the label out of flow means both marks centre on the same line, and the strip's
+extra top padding is the room the label occupies.
+
+Standing note, since this has now moved twice: the earlier objection was that a single
+"Organized by" above both marks reads as AUA organizing the event, which `HANDOVER.md` says
+they do not. That objection is Davit's to overrule and he has; the label sits over GDG only,
+so the claim is at least attached to the right mark. Not to be re-raised.
+
+### 2026-09-19 · DF-09 · Claude Code (task manager)
 Strip sizing revised at Davit's direction: "AUA" should match the GDG chevron, not the GDG
 wordmark. That is a 3.16x height ratio rather than the 1.55x set earlier — measured the same
 way, and verified by rendering both at final size and measuring the ink: 88px each at 2x.

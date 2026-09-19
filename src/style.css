@@ -78,17 +78,22 @@ body {
  * roughly 1.5:1 against the dark surface. #f0f0f0 is already in the Google palette, so
  * this costs nothing in brand terms and needs no filter on the partner's logo.
  */
-/* Each mark carries its own label. Previously one "Organized by" sat above both, which put
-   AUA's mark under a claim that is not true — they are a collaborating institution, not an
-   organizer. The long sentence that used to follow is gone: it repeated what the AUA lockup
-   already says in its own type. */
+/* Only GDG Yerevan is labelled. The label is positioned out of flow so it does not add to
+   its column's height — otherwise the labelled column centres as label+mark and its logo
+   sits lower than the unlabelled one. This way both marks centre on the same line. The
+   container's extra top padding is the room the label sits in. */
 .collab-group {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
 }
 .collab-label {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
   font-size: 0.8125rem;
   color: #5f6368;
   letter-spacing: 0.02em;
@@ -129,8 +134,7 @@ body {
   user-select: none;
 }
 @media (min-width: 768px) {
-  /* Nudged down so it centres on the marks rather than on the labelled columns. */
-  .collab-x { font-size: 2.5rem; margin-top: 1.5rem; }
+  .collab-x { font-size: 2.5rem; }
 }
 
 .btn {

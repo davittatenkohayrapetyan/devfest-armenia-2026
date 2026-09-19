@@ -51,8 +51,9 @@ padding. Do not "fix" the disparity by cropping their file — that padding may 
 clear-space requirement, and we have no brand rules from them. `.collab-mark` carries
 `max-width: 100%` because the scaled AUA file is wider than a phone.
 
-The two marks are separated by a `×`. It is decorative and `aria-hidden`: the labels above
-each mark already state the relationship, so announcing a stray letter would add nothing.
+The two marks are separated by a `×`, decorative and `aria-hidden`. Only GDG Yerevan is
+labelled, with "Organized by"; the label is positioned out of flow so the two marks stay
+centred on the same line rather than the labelled one sitting lower.
 
 AUA's lockup is roughly 3.5:1; GDG Yerevan's is closer to square. Align by **optical
 cap-height of the letterforms**, not by bounding box — matching container heights makes
