@@ -128,9 +128,13 @@ main:focus { outline: none; }
 /* Embedded map. loading="lazy" is not only a performance choice: the iframe is a Google
    origin, so deferring it until the venue section is actually reached keeps it off the initial
    page load for anyone who never scrolls that far. */
+/* The spacing lives here, not in a utility class on the placeholder: the iframe that replaces
+   it is built in JS and only carries .venue-map, so a margin applied to one element would be
+   dropped on swap. Both states share this rule and cannot diverge. */
 .venue-map {
   display: block;
   width: 100%;
+  margin-top: 2rem;
   height: 22rem;
   border: 0;
   border-radius: 1rem;

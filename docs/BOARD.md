@@ -536,6 +536,20 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-09-19 · DF-12 · Claude Code (task manager)
+UI bug from the phone: the loaded map sat flush against the "Open in Maps" button while the
+placeholder had a clear gap above it.
+
+Cause worth remembering rather than the fix: the spacing was a Tailwind utility (`mt-8`) on the
+placeholder element, and the iframe that replaces it is constructed in JS with
+`className = "venue-map"` — so the margin was silently dropped at swap time. Two states of the
+same box, styled in two different places, only one of which the swap carried over.
+
+Fixed by moving the margin into `.venue-map` itself, which both states share, so they cannot
+diverge again. The general rule, since this pattern will recur: when an element is replaced at
+runtime, its layout must come from the shared class, never from utilities on the markup that the
+replacement does not reproduce.
+
 ### 2026-09-19 · DF-12, DF-18 · Claude Code (task manager)
 Davit chose click-to-load for the map. The placeholder occupies exactly the same box as the
 embed — same class, same heights at both breakpoints — so pressing it does not shift the page,

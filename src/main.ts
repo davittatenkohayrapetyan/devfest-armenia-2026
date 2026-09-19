@@ -218,7 +218,7 @@ function venue(e: EventContent): string {
     <p class="text-[var(--ink-muted)]">${esc(e.venue.detail)}</p>
     <p class="mt-2 text-[var(--ink-muted)]">${esc(e.venue.address)}</p>
     <a class="btn btn-secondary mt-6" href="${esc(e.venue.mapUrl)}" rel="noopener">Open in Maps</a>
-    <div class="venue-map venue-map-placeholder mt-8">
+    <div class="venue-map venue-map-placeholder">
       <p class="venue-map-note">
         The map is a Google embed. Nothing is requested from Google, and no cookies are set,
         until you load it.
