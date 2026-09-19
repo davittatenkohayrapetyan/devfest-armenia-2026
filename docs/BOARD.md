@@ -58,9 +58,9 @@ infrastructure decision.
 | DF-46 | Re-cut hero art if the 2026 kit becomes available | todo | Davit | 10 Oct | Contingent on the kit; due date sits past this phase's window |
 | DF-16 | OG image, meta tags, sitemap, robots.txt | done | Davit | 28 Sep | Needs `VITE_SITE_URL` set at deploy — guarded |
 | DF-17 | Decide deployment target and `VITE_BASE_PATH` | done | Davit | 26 Sep | Standalone at root, ADR-008 |
-| DF-18 | Analytics | todo | Davit | 28 Sep | Decision task — see brief |
+| DF-18 | Analytics | done | Davit | 28 Sep | Plausible, cookieless, ADR-012. Off unless configured |
 | DF-19 | Accessibility pass: contrast, focus, reduced motion, keyboard | done | Davit | 29 Sep | All measured pairs now pass AA |
-| DF-20 | Public deploy | todo | Davit | 30 Sep | `VITE_SITE_URL=https://devfest.am/2026 npm run build:deploy` |
+| DF-20 | Public deploy | todo | Davit | 30 Sep | `VITE_SITE_URL=... VITE_ANALYTICS_DOMAIN=devfest.am npm run build:deploy` |
 | DF-49 | Deploy build that omits the internal board page | done | Davit | 26 Sep | `npm run build:deploy`, verified |
 | DF-52 | Decide: primary button contrast vs the kit blue | done | Davit | 26 Sep | ADR-010 — large-text threshold, kit blue kept |
 | DF-21 | Announce site on GDG Community platform and socials | todo | Davit | 30 Sep | |
@@ -535,6 +535,23 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-18 · Claude Code (task manager)
+Davit chose cookieless. Implemented as Plausible with the `outbound-links` variant, recorded as
+ADR-012.
+
+The outbound-links choice is deliberate: both CTAs leave the site, so the two numbers that matter
+are counted without writing any custom event code. No cookies, so no consent banner — which on a
+single-CTA landing page is worth more than the funnels GA4 would have added.
+
+Wired as a build-time Vite plugin rather than a tag in `index.html`, so **no variable means no
+script tag at all**. Local builds, preview builds and the review container therefore carry no
+tracker and there is nothing to remember to disable. Verified all four states: absent without the
+variable, present with it, absent from the internal board page either way, and no
+`document.cookie` or `localStorage` anywhere in the built bundle.
+
+Deploy command is now `VITE_SITE_URL=https://devfest.am/2026 VITE_ANALYTICS_DOMAIN=devfest.am npm
+run build:deploy`, recorded on the DF-20 row so it is not reconstructed from memory on the day.
 
 ### 2026-09-19 · DF-15, DF-18 · Claude Code (task manager)
 DF-15 to `review` — the objective half is done, the judgement half is Davit's.

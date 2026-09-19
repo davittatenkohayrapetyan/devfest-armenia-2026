@@ -171,3 +171,28 @@ base. A build whose paths do not match its origin fails instead of shipping.
 `devfest.am/2026/robots.txt` will be ignored by crawlers. The `Sitemap:` line must be added to
 the `robots.txt` at `devfest.am`'s root instead. The deploy build prints this reminder whenever
 the base path is not `/`. The sitemap itself is fine where it is.
+
+## ADR-012 · 2026-09-19 · Cookieless analytics, off unless configured
+
+**Decision:** Plausible, loaded via the `script.outbound-links` variant, enabled only when
+`VITE_ANALYTICS_DOMAIN` is set. Davit's call, 19 September, closing DF-18.
+
+**Why:** The site needs three numbers — page views, *Register* clicks, *Submit a talk* clicks.
+Plausible is cookieless and stores no personal data, so no consent banner is required. That
+matters more than it sounds: this is a landing page whose entire job is one click, and a consent
+dialog in front of it costs conversions on top of the compliance work. The outbound-links
+variant counts the two CTAs without any custom event code, because both go off-site.
+
+**GA4 rejected:** free and familiar, and it would fit existing GDG reporting, but it sets
+cookies and processes personal data. That means a banner, a processor agreement, and a worse
+first impression, in exchange for funnels and session detail that nobody will read for a
+one-page event site.
+
+**How it is wired:** a Vite plugin injects the tag at build time into `index.html` only. No
+variable set means no tag at all — so local builds, preview builds and the container all run
+clean, and there is nothing to "remember to turn off". The internal board view never receives
+it, which was checked, not assumed.
+
+**Consequence:** registration and submission totals still come from the GDG platform and
+Sessionize; this measures the site's contribution to them, not attendance. If it is ever swapped
+for self-hosted Umami, set `VITE_ANALYTICS_SRC` — no code change needed.

@@ -11,7 +11,29 @@ const omitProgress = process.env.OMIT_PROGRESS === "1";
 // rather than a social card that 404s.
 process.env.VITE_SITE_URL ??= "http://localhost:3026";
 
+/**
+ * Injects the analytics tag into the public page only, and only when a domain is configured
+ * (ADR-012). No variable set — as in every local and preview build — means no script tag at
+ * all, rather than a tag pointing at nothing. The internal board view never gets it.
+ */
+function analytics() {
+  const domain = process.env.VITE_ANALYTICS_DOMAIN;
+  const src = process.env.VITE_ANALYTICS_SRC ?? "https://plausible.io/js/script.outbound-links.js";
+  return {
+    name: "analytics-tag",
+    transformIndexHtml(html: string, ctx: { path: string }) {
+      if (!domain || !ctx.path.endsWith("/index.html") || ctx.path.includes("implementation-progress")) {
+        return html;
+      }
+      const tag = `    <script defer data-domain="${domain}" src="${src}"></script>
+`;
+      return html.replace("  </head>", tag + "  </head>");
+    },
+  };
+}
+
 export default defineConfig({
+  plugins: [analytics()],
   base: process.env.VITE_BASE_PATH ?? "/",
   server: { host: true, port: 3025 },
   preview: { host: true, port: 3026 },
