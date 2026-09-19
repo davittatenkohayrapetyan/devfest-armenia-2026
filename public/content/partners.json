@@ -1,0 +1,9 @@
+{
+  "tiers": [
+    { "id": "host", "label": "Host", "partners": [] },
+    { "id": "platinum", "label": "Platinum", "partners": [] },
+    { "id": "gold", "label": "Gold", "partners": [] },
+    { "id": "community", "label": "Community", "partners": [] }
+  ],
+  "contactUrl": "mailto:gdgyerevan@gmail.com"
+}

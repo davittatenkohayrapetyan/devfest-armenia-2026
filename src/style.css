@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens — DevFest 2026 official asset kit only.
+ * AUA brand colors must never appear here as values. See docs/BRAND.md.
+ * Enforced by scripts/check-brand.mjs in CI.
+ */
+:root {
+  --df-blue: #4285f4;
+  --df-green: #34a853;
+  --df-yellow: #f9ab00;
+  --df-red: #ea4335;
+
+  --df-halftone-blue: #57caff;
+  --df-halftone-green: #5cdb6d;
+  --df-halftone-yellow: #ffd427;
+  --df-halftone-red: #ff7daf;
+
+  --df-pastel-blue: #c3ecf6;
+  --df-pastel-green: #ccf6c5;
+  --df-pastel-yellow: #ffe7a5;
+  --df-pastel-red: #f8d8d8;
+
+  --df-surface-light: #f0f0f0;
+  --df-surface-dark: #1e1e1e;
+
+  --surface: #ffffff;
+  --surface-alt: var(--df-surface-light);
+  --ink: var(--df-surface-dark);
+  --ink-muted: #5f6368;
+  --rule: rgba(30, 30, 30, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: var(--df-surface-dark);
+    --surface-alt: #262626;
+    --ink: var(--df-surface-light);
+    --ink-muted: #9aa0a6;
+    --rule: rgba(240, 240, 240, 0.16);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  background: var(--surface);
+  color: var(--ink);
+  font-family: "Google Sans", "Roboto", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 3px solid var(--df-blue);
+  outline-offset: 3px;
+}
+
+.wrap {
+  width: min(72rem, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.prose-measure {
+  max-width: 62ch;
+}
+
+/*
+ * Collaboration strip.
+ * Fixed light background in BOTH themes: the AUA mark is single-colour navy and drops to
+ * roughly 1.5:1 against the dark surface. #f0f0f0 is already in the Google palette, so
+ * this costs nothing in brand terms and needs no filter on the partner's logo.
+ */
+.collab-strip {
+  background: var(--df-surface-light);
+  border-block: 1px solid rgba(30, 30, 30, 0.08);
+}
+
+/* Align the two marks by letterform height, not bounding box — the AUA lockup is ~3.5:1
+   while the GDG mark is near-square, so equal container heights oversize AUA. */
+.collab-mark {
+  height: 2.25rem;
+  width: auto;
+  object-fit: contain;
+}
+@media (min-width: 768px) {
+  .collab-mark { height: 2.75rem; }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.875rem 1.75rem;
+  font-weight: 500;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-primary {
+  background: var(--df-blue);
+  color: #ffffff;
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px var(--rule);
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.rule-blue { background: var(--df-blue); }
+.rule-red { background: var(--df-red); }
+.rule-yellow { background: var(--df-yellow); }
+.rule-green { background: var(--df-green); }
