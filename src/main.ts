@@ -16,18 +16,25 @@ const esc = (s: string) =>
   );
 
 function hero(e: EventContent): string {
+  // Photo from DevFest Armenia 2025, GDG Yerevan's own archive. The scrim is not
+  // decoration: hero text sits on it, so it carries the contrast. See DF-45.
+  const photo = `${base}assets/photos/hero-audience.jpg`;
   return `
-<header class="relative overflow-hidden">
-  <div class="wrap py-20 md:py-28">
-    <p class="text-sm text-[var(--ink-muted)]">Google Developer Groups Yerevan presents</p>
+<header class="hero relative overflow-hidden"
+        style="background-image:linear-gradient(180deg,rgba(30,30,30,.78),rgba(30,30,30,.94)),url('${photo}')">
+  <img class="hero-art hero-art-a" src="${base}assets/art/element1.svg" alt="" aria-hidden="true">
+  <img class="hero-art hero-art-b" src="${base}assets/art/se-1.svg" alt="" aria-hidden="true">
+  <div class="wrap py-20 md:py-28 relative">
+    <img class="hero-lockup" src="${base}assets/logos/devfest-lockup.svg" alt="" aria-hidden="true">
+    <p class="mt-6 text-sm hero-muted">Google Developer Groups Yerevan presents</p>
     <h1 class="mt-3 text-5xl md:text-7xl font-bold tracking-tight">DevFest Armenia 2026</h1>
     <div class="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-lg">
       <span>${esc(e.dateLabel)}</span>
-      <span class="text-[var(--ink-muted)]">${esc(e.venue.name)}, Yerevan</span>
+      <span class="hero-muted">${esc(e.venue.name)}, Yerevan</span>
     </div>
     <div class="mt-10 flex flex-wrap gap-4">
       <a class="btn btn-primary" href="${esc(e.cta.register)}" rel="noopener">Register to attend</a>
-      <a class="btn btn-secondary" href="${esc(e.cta.cfp)}" rel="noopener">Submit a talk</a>
+      <a class="btn btn-on-dark" href="${esc(e.cta.cfp)}" rel="noopener">Submit a talk</a>
     </div>
   </div>
   <div class="flex h-1.5">
@@ -44,8 +51,8 @@ function collaboration(): string {
   <div class="wrap py-8 flex flex-col md:flex-row items-center gap-6 md:gap-12">
     <p class="text-sm text-[#5f6368] shrink-0">Organized by</p>
     <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14">
-      <img class="collab-mark" src="${base}assets/logos/gdg-yerevan.svg"
-           alt="GDG Yerevan" onerror="this.style.display='none'">
+      <img class="collab-mark" src="${base}assets/logos/gdg.svg"
+           alt="Google Developer Groups" onerror="this.style.display='none'">
       <img class="collab-mark" src="${base}assets/logos/aua-acse-navy.png"
            alt="Akian College of Science and Engineering, American University of Armenia">
     </div>
@@ -70,18 +77,19 @@ function callForSpeakers(e: EventContent): string {
     )
     .join("");
   return `
-<section id="cfp" class="py-20" style="background:var(--surface-alt)">
+<section id="cfp" class="cfp-band py-20"
+         style="background-image:linear-gradient(180deg,rgba(30,30,30,.90),rgba(30,30,30,.96)),url('${base}assets/photos/cfp-audience.jpg')">
   <div class="wrap grid gap-12 md:grid-cols-[1.1fr_1fr]">
     <div>
       <h2 class="text-3xl md:text-4xl font-bold">Call for speakers is open</h2>
-      <p class="mt-4 prose-measure text-[var(--ink-muted)]">
+      <p class="mt-4 prose-measure hero-muted">
         We are looking for practical experience, technical insight, lessons learned, deep
         dives and case studies that bring real value to the developer community. First-time
         speakers are welcome — what matters is the relevance of the topic.
       </p>
       <ul class="mt-6 space-y-1">${formats}</ul>
-      <p class="mt-4 text-sm text-[var(--ink-muted)] prose-measure">${esc(e.cfp.note)}</p>
-      <p class="mt-4 text-sm text-[var(--ink-muted)] prose-measure">
+      <p class="mt-4 text-sm hero-muted prose-measure">${esc(e.cfp.note)}</p>
+      <p class="mt-4 text-sm hero-muted prose-measure">
         Sessions should be educational rather than promotional. Commercial partnership with
         the event does not influence speaker selection.
       </p>
@@ -90,7 +98,7 @@ function callForSpeakers(e: EventContent): string {
     <div>
       <p class="text-6xl md:text-7xl font-bold" style="color:var(--df-red)">${left}</p>
       <p class="text-lg">days left to submit</p>
-      <p class="mt-1 text-sm text-[var(--ink-muted)]">Closes 14 October, 23:59 (UTC+04:00)</p>
+      <p class="mt-1 text-sm hero-muted">Closes 14 October, 23:59 (UTC+04:00)</p>
       <ul class="mt-8 flex flex-wrap gap-2">${topics}</ul>
     </div>
   </div>

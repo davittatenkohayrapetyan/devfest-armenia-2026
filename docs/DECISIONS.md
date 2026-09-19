@@ -70,3 +70,22 @@ checked out, which is all of them.
 external bug reports, not for `DF-xx` tracking. The bootstrap script was removed rather
 than left in place precisely so a future session cannot half-migrate the tracker — which
 the role charter (§3) correctly calls worse than either option.
+
+## ADR-007 · 2026-09-19 · Build the 2026 visual identity from GDG Yerevan's own 2024/2025 assets
+
+**Decision:** Stop waiting on the official DevFest 2026 organizer kit. Source the hero
+lockup, the GDG mark and the decorative key-art elements from `devfest.am/2024`, and the
+photographic backgrounds from the DevFest Armenia 2025 archive. Davit's call, 19 September.
+
+**Why:** The kit is behind the organizer console and was blocking DF-07, DF-08 and DF-09
+indefinitely. The 2024 assets are GDG Yerevan's own prior-year files, they are already
+drawn in the DevFest palette this site uses, and the wordmark carries no year — so reusing
+them is closer to the brand than anything a session could construct.
+
+**What did not change:** The palette is still the only design system, AUA colours still
+never appear as CSS values, and there is still no combined DevFest + AUA lockup — the hero
+carries the DevFest mark alone and AUA remains in the collaboration strip.
+
+**Cost and consequence:** These are 2024-vintage files. If the 2026 kit specifies different
+key art, the hero needs re-cutting — DF-46. `hero-image.svg` from 2024 was deliberately not
+used: it has a "2024" pill baked into the artwork. Only the year-neutral elements were taken.

@@ -35,11 +35,13 @@ infrastructure decision.
 | DF-04 | JSON content model + loader + types | done | Davit | 21 Sep | `src/content.ts` |
 | DF-05 | Docker + compose on port 3026 | done | Davit | 21 Sep | `docker compose up -d` |
 | DF-06 | CI: build + content schema validation + brand-color guard | done | Davit | 22 Sep | Fails on AUA hex in CSS |
-| DF-07 | Download DevFest 2026 landing-page headers (2650/1440/640×500) | todo | Davit | 22 Sep | From brand deck |
-| DF-08 | Create DevFest Armenia lockup from editable-location asset | todo | Davit | 22 Sep | Google Drawings |
-| DF-09 | Source GDG Yerevan logo SVG | todo | Davit | 22 Sep | |
+| DF-07 | Hero key art — decorative elements from the 2024 site | done | Davit | 22 Sep | ADR-007. Kit headers unobtainable |
+| DF-08 | DevFest lockup in the hero | done | Davit | 22 Sep | ADR-007. `{ DevFest }` mark from the 2024 site, no year in it |
+| DF-09 | Source GDG Yerevan logo SVG | todo | Davit | 22 Sep | Generic GDG mark in place as interim — the 2024 site had no Yerevan lockup |
 | DF-10 | Review v1 on phone via :3026 | todo | Davit | 24 Sep | `http://<lan-ip>:3026`, container left up after each task. Needs DF-07/08/09 |
 | DF-42 | Commit `package-lock.json`, switch CI to `npm ci` with node cache | done | Davit | 22 Sep | Dockerfile switched too — see log |
+| DF-45 | 2025 photos as hero and CFP backgrounds | done | Davit | 22 Sep | Two photos, downscaled, EXIF stripped |
+| DF-46 | Re-cut hero art if the 2026 kit becomes available | todo | Davit | 10 Oct | ADR-007 runs on 2024-vintage assets |
 | DF-43 | Add `.dockerignore` | todo | Davit | 24 Sep | Build hygiene, not a bug — see log. Low priority |
 
 ## Phase 1 — Content and launch (25–30 Sep)
@@ -55,7 +57,7 @@ infrastructure decision.
 | DF-16 | OG image, meta tags, sitemap, robots.txt | todo | Davit | 28 Sep | |
 | DF-17 | Decide deployment target and `VITE_BASE_PATH` | todo | Davit | 26 Sep | WP subfolder vs standalone. Blocks DF-20 |
 | DF-18 | Analytics | todo | Davit | 28 Sep | Which tool? |
-| DF-19 | Accessibility pass: contrast, focus, reduced motion, keyboard | todo | Davit | 29 Sep | |
+| DF-19 | Accessibility pass: contrast, focus, reduced motion, keyboard | todo | Davit | 29 Sep | Must include text-on-photo contrast in the two new bands |
 | DF-20 | Public deploy | todo | Davit | 30 Sep | Needs DF-17 |
 | DF-21 | Announce site on GDG Community platform and socials | todo | Davit | 30 Sep | |
 
@@ -264,6 +266,35 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-07, DF-08, DF-09, DF-45 · Claude Code (task manager)
+Davit released the "official 2026 kit only" constraint, so the visual identity now comes
+from GDG Yerevan's own prior-year assets. Recorded as ADR-007. What was actually found:
+
+`devfest.am/2024` serves its assets as plain SVG. Taken: the `{ DevFest }` bracket lockup,
+the GDG mark, and three decorative elements — all already drawn in this site's palette.
+Deliberately **not** taken: `hero-image.svg`, the large key-art collage, because it has a
+"2024" pill baked into the artwork. They are outlined paths with no `<text>`, so this was
+only visible after rasterising them; a session that trusts filenames would have shipped a
+2024 badge in the 2026 hero.
+
+DF-09 stays open. The 2024 site used the **generic** "Google Developer Groups" logo, not a
+Yerevan lockup, so that is what is in the collaboration strip now, with `alt` changed to
+match rather than claiming to be something it is not. If a real GDG Yerevan lockup exists,
+it should replace this.
+
+Photos: the 2025 gallery proxies a Google Apps Script that returns a sign-in page, but the
+Drive folder behind it is link-shared, so the originals are reachable directly. They are
+5–16 MB at up to 9504×6336. Two were resized to 1920 wide at quality 72 — 194 KB and
+145 KB — and re-encoded through `convert('RGB')`, which drops EXIF, since the originals
+carry camera and potentially GPS metadata that has no business on a public site. Chosen for
+being wide, dark and crowd-level. Avoided: every frame where a sponsor's stand dominates —
+p14, p18 and p20 are EPAM-branded, and putting those on the 2026 site would imply a 2026
+sponsorship that DF-31 has not agreed yet.
+
+The gradient scrims over both photos are load-bearing, not decoration — they are what hold
+body text at a readable contrast over an image whose luminance we do not control. Noted on
+DF-19, which now has to measure them.
 
 ### 2026-09-19 · working agreement · Claude Code (task manager)
 Davit reviews from his phone, so the container is now left **running** at the end of every

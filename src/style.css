@@ -116,6 +116,53 @@ body {
   transform: translateY(-1px);
 }
 
+/* Hero and CFP photo bands.
+   Both sit on photographs from DevFest Armenia 2025 (GDG Yerevan's own archive), so the
+   gradient scrim is load-bearing: it is what keeps body text at an accessible contrast
+   over an image whose luminance we do not control. Do not lighten it without re-checking
+   contrast. Text inside these bands is fixed light in both themes — the photo does not
+   change with the colour scheme, so the type cannot either. */
+.hero,
+.cfp-band {
+  background-size: cover;
+  background-position: center;
+  color: var(--df-surface-light);
+}
+.hero h1,
+.cfp-band h2 {
+  color: #ffffff;
+}
+.hero-muted {
+  color: rgba(240, 240, 240, 0.78);
+}
+.hero-lockup {
+  height: 2.5rem;
+  width: auto;
+}
+@media (min-width: 768px) {
+  .hero-lockup { height: 3.25rem; }
+}
+
+/* Decorative kit elements. Hidden below md — at phone width they crowd the type rather
+   than frame it, and they carry no information. */
+.hero-art {
+  position: absolute;
+  display: none;
+  pointer-events: none;
+  opacity: 0.5;
+}
+@media (min-width: 1024px) {
+  .hero-art { display: block; }
+  .hero-art-a { right: 4%; top: 12%; width: 9rem; }
+  .hero-art-b { right: 16%; bottom: 14%; width: 5rem; }
+}
+
+.btn-on-dark {
+  background: transparent;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 2px rgba(240, 240, 240, 0.55);
+}
+
 .rule-blue { background: var(--df-blue); }
 .rule-red { background: var(--df-red); }
 .rule-yellow { background: var(--df-yellow); }
