@@ -40,6 +40,7 @@ infrastructure decision.
 | DF-09 | Source GDG Yerevan logo SVG | todo | Davit | 22 Sep | |
 | DF-10 | Review v1 on phone via :3026 | todo | Davit | 24 Sep | Port-forward. Needs DF-07/08/09 |
 | DF-42 | Commit `package-lock.json`, switch CI to `npm ci` with node cache | todo | Davit | 22 Sep | Lockfile already generated locally, untracked — see log |
+| DF-43 | Add `.dockerignore` | todo | Davit | 24 Sep | Build hygiene, not a bug — see log. Low priority |
 
 ## Phase 1 — Content and launch (25–30 Sep)
 
@@ -102,6 +103,46 @@ infrastructure decision.
 ## Task briefs
 
 Only for tasks a row cannot carry. Everything else is self-evident from its row.
+
+### DF-01 · Push the scaffold to GitHub
+
+**Context.** Read `CLAUDE.md`, then `docs/HANDOVER.md`. This repo exists only on Davit's
+machine — three local commits, no remote, never pushed, CI never run. That is R-7 on the
+risk register and it is the reason this task is first. The GitHub repo was created in
+advance and is empty (HANDOVER §2).
+
+**Goal.** Get `main` onto GitHub with CI green.
+
+**Steps.**
+1. Confirm the remote URL with Davit. The scaffold assumed
+   `davittatenkohayrapetyan/devfest-armenia-2026` — do not guess if it does not match.
+2. `git remote add origin <url>` — `gh` is not installed on this machine, so use plain git
+   over HTTPS or SSH.
+3. Run all three checks locally first: `npm run check:brand`, `npm run validate:content`,
+   `npm run build`. They passed on 19 Sep; if one fails now, stop and log why before pushing.
+4. `git push -u origin main`.
+5. Watch the CI run on GitHub. It runs the same three checks on `ubuntu-latest` with Node 20.
+   If it fails where local passed, that difference is the finding — record it in the comments
+   log, do not paper over it.
+6. `docker compose up -d --build`, confirm the site serves on `http://localhost:3026`, then
+   `docker compose down`.
+7. Set DF-01 to `done` on the board, close R-7 in the risk register with a one-line reason,
+   update "Last updated", and add a comments-log entry only if something surprising happened.
+
+**Constraints.** Do not re-initialize the repo, squash, amend or rebase — the scaffold's
+three commits are the project's history and the handover says explicitly to preserve them.
+Do not force-push. Do not commit `package-lock.json`; it is untracked on purpose and belongs
+to DF-42, so stage files by name rather than `git add -A`. Do not fix CI's `npm install` here
+either — also DF-42. If a check fails, fix the code, never the check; `check:brand` firing
+means an AUA hex reached a CSS value and the fix is always in the CSS.
+
+**Definition of done.** `git log origin/main` shows all three scaffold commits plus this
+task's board update; the CI badge on the default branch is green; `curl -sI localhost:3026`
+returned 200 while the container was up; DF-01 reads `done`.
+
+**Commit message.** `DF-01: push scaffold, verify CI and :3026`
+
+---
 
 ### DF-12 · Venue section — remove the pending-photo path
 
@@ -189,6 +230,19 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-43 · Claude Code (task manager)
+There is no `.dockerignore`, so `COPY . .` ships the host's `node_modules`, `dist` and `.git`
+into the build context — about 50 MB that does not need to move. The obvious worry was
+worse than that: the host `node_modules` contains `@esbuild/win32-x64`, and copying it over
+the container's install looked certain to break `npm run build` inside the image. It does
+not. `COPY` merges directories rather than replacing them, so the container's
+`@esbuild/linux-x64` survives and esbuild resolves the correct binary at runtime. Verified
+with `docker build --no-cache`: exit 0 with the host `node_modules` in the context and no
+`.dockerignore` present. Recording it because the first two attempts to check this were
+misleading — with layer cache warm, `docker compose build` reports success without ever
+exercising the context, so a cold build is the only test that means anything here. DF-43 is
+therefore build speed and image hygiene, not correctness, and should not block DF-01.
 
 ### 2026-09-19 · DF-11, DF-12, DF-13 · Claude Code (task manager)
 Davit: AUA has only the two PNG lockups already sitting in `public/assets/logos/` — no SVG,
