@@ -537,6 +537,26 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-09-20 · DF-15 · Claude Code (task manager)
+Event countdown added to the hero: days, hours, minutes to
+**2026-11-21T09:30:00+04:00**, stored as `event.startsAt` in `event.json`.
+
+Kept separate from the existing `date` field rather than reusing it. `date` is the calendar day
+that copy renders; `startsAt` is the instant the countdown runs to. Collapsing them would mean
+either losing the 09:30 start or putting a time into a field the date label formats.
+
+The validator now rejects a `startsAt` without an explicit UTC offset. A bare
+`2026-11-21T09:30` is parsed as *the visitor's* local time, so the countdown would silently read
+differently in Yerevan and Berlin — the kind of bug that is invisible to whoever writes the JSON
+and wrong for most of the audience.
+
+Ticks every 15 seconds and recomputes on `visibilitychange`, since a backgrounded phone tab
+throttles timers and would otherwise show a stale number on return. It removes itself once the
+start passes, rather than counting into negatives; day-of behaviour is DF-33.
+
+`aria-hidden`, deliberately: the hero already states the date in words, and a timer that
+re-announces itself every minute is noise to a screen reader without adding information.
+
 ### 2026-09-20 · schedule · Claude Code (task manager)
 **The CFP deadline moved from 14 October to 8 November.** Davit's call. Updated in `event.json`,
 both hardcoded strings in `main.ts`, `CLAUDE.md`, `HANDOVER.md`, `PLAN.md` and the role charter —

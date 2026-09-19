@@ -14,7 +14,7 @@ const read = (f) => {
 
 const event = read("event.json");
 if (event) {
-  for (const k of ["name", "date", "dateLabel", "venue", "cta", "cfp", "about", "speakers"]) {
+  for (const k of ["name", "date", "dateLabel", "startsAt", "venue", "cta", "cfp", "about", "speakers"]) {
     if (!(k in event)) errors.push(`event.json: missing "${k}"`);
   }
   for (const k of ["register", "cfp", "chapter", "lastYear"]) {
@@ -24,6 +24,10 @@ if (event) {
     if (!event.venue?.[k]) errors.push(`event.json: missing venue.${k}`);
   if (!event.speakers?.noteWhileCfpOpen)
     errors.push("event.json: missing speakers.noteWhileCfpOpen");
+  if (event.startsAt && Number.isNaN(Date.parse(event.startsAt)))
+    errors.push("event.json: startsAt is not parseable");
+  if (event.startsAt && !/[+-]\d{2}:\d{2}$|Z$/.test(event.startsAt))
+    errors.push("event.json: startsAt needs an explicit UTC offset, or it is read as local time");
   if (event.date && Number.isNaN(Date.parse(event.date)))
     errors.push("event.json: date is not parseable");
   if (event.cfp?.closes && Number.isNaN(Date.parse(event.cfp.closes)))

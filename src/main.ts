@@ -24,6 +24,37 @@ const esc = (s: string) =>
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!,
   );
 
+/** Whole days, hours and minutes until `iso`, or null once it has passed. */
+function countdownParts(iso: string): { days: number; hours: number; minutes: number } | null {
+  const ms = new Date(iso).getTime() - Date.now();
+  if (ms <= 0) return null;
+  const totalMinutes = Math.floor(ms / 60_000);
+  return {
+    days: Math.floor(totalMinutes / 1440),
+    hours: Math.floor((totalMinutes % 1440) / 60),
+    minutes: totalMinutes % 60,
+  };
+}
+
+const pad = (n: number): string => String(n).padStart(2, "0");
+
+/**
+ * The countdown is aria-hidden and the hero already states the date in words: a timer that
+ * re-announces itself every minute is noise for a screen reader, and it carries no information
+ * the date line does not.
+ */
+function countdown(iso: string): string {
+  const p = countdownParts(iso);
+  if (!p) return "";
+  const cell = (value: string, label: string) => `<div class="countdown-cell">
+      <span class="countdown-value" data-countdown="${label}">${value}</span>
+      <span class="countdown-label">${label}</span>
+    </div>`;
+  return `<div class="countdown mt-8" data-countdown-to="${esc(iso)}" aria-hidden="true">
+    ${cell(String(p.days), "days")}${cell(pad(p.hours), "hours")}${cell(pad(p.minutes), "minutes")}
+  </div>`;
+}
+
 function hero(e: EventContent): string {
   // Photo from DevFest Armenia 2025, GDG Yerevan's own archive. The scrim is not
   // decoration: hero text sits on it, so it carries the contrast. See DF-45.
@@ -42,6 +73,7 @@ function hero(e: EventContent): string {
       <span>${esc(e.dateLabel)}</span>
       <span class="hero-muted">${esc(e.venue.name)}, Yerevan</span>
     </div>
+    ${countdown(e.startsAt)}
     <div class="mt-10 flex flex-wrap gap-4">
       <a class="btn btn-primary" href="${esc(e.cta.register)}" rel="noopener">Register to attend</a>
       <a class="btn btn-on-dark" href="${esc(e.cta.cfp)}" rel="noopener">Submit a talk</a>
@@ -291,6 +323,32 @@ function footer(e: EventContent): string {
  * request reaches Google — and no cookie is set — unless a visitor asks for it. That is what
  * keeps ADR-012's cookieless position true for the page as a whole, not just for analytics.
  */
+/** Keeps the hero countdown honest without re-rendering the page. */
+function wireCountdown(root: HTMLElement): void {
+  const box = root.querySelector<HTMLElement>("[data-countdown-to]");
+  const iso = box?.dataset.countdownTo;
+  if (!box || !iso) return;
+  const tick = () => {
+    const p = countdownParts(iso);
+    if (!p) {
+      box.remove();
+      window.clearInterval(timer);
+      return;
+    }
+    const set = (k: string, v: string) => {
+      const el = box.querySelector<HTMLElement>(`[data-countdown="${k}"]`);
+      if (el && el.textContent !== v) el.textContent = v;
+    };
+    set("days", String(p.days));
+    set("hours", pad(p.hours));
+    set("minutes", pad(p.minutes));
+  };
+  const timer = window.setInterval(tick, 15_000);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) tick();
+  });
+}
+
 function wireMapButton(root: HTMLElement): void {
   const button = root.querySelector<HTMLButtonElement>("[data-load-map]");
   if (!button) return;
@@ -332,6 +390,7 @@ async function render() {
       footer(event),
     ].join("");
     wireMapButton(root);
+    wireCountdown(root);
   } catch (err) {
     root.innerHTML = `<div class="wrap py-20">
       <h1 class="text-2xl font-bold">Content failed to load</h1>

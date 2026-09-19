@@ -287,6 +287,34 @@ main:focus { outline: none; }
   .hero-badge { height: 1.25rem; }
 }
 
+/* Event countdown in the hero. Tabular figures so the numbers do not jitter as they tick. */
+.countdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+}
+.countdown-cell {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.countdown-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+@media (min-width: 768px) {
+  .countdown-value { font-size: 3.25rem; }
+}
+.countdown-label {
+  margin-top: 0.4rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(240, 240, 240, 0.78);
+}
+
 /* Decorative kit elements. Hidden below md — at phone width they crowd the type rather
    than frame it, and they carry no information. */
 .hero-art {

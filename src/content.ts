@@ -42,6 +42,8 @@ export type EventContent = {
   name: string;
   date: string;
   dateLabel: string;
+  /** Exact start instant, with offset. The countdown runs to this, not to `date`. */
+  startsAt: string;
   venue: {
     name: string;
     detail: string;
