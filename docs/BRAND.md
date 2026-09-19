@@ -20,6 +20,29 @@ From the official DevFest 2026 asset kit.
 | pastels | `#c3ecf6` `#ccf6c5` `#ffe7a5` `#f8d8d8` | Section tints |
 | halftones | `#57caff` `#5cdb6d` `#ffd427` `#ff7daf` | Emphasis, key art |
 
+## Neutrals
+
+The kit palette above covers brand colour. A page also needs neutrals, and these are the only
+ones permitted. Adding a grey that is not in this table is drift — add it here with its purpose
+and its measured contrast, or do not add it.
+
+| Token / value | Where | Contrast | Verdict |
+|---|---|---|---|
+| `#ffffff` | `--surface`, light background | 16.67:1 vs `#1e1e1e` | AA |
+| `#5f6368` | `--ink-muted`, light theme | 6.05:1 on white, 5.31:1 on `#f0f0f0` | AA |
+| `#9aa0a6` | `--ink-muted`, dark theme | 6.31:1 on `#1e1e1e`, 5.73:1 on `#262626` | AA |
+| `#262626` | `--surface-alt`, dark theme | — surface only | — |
+| `rgba(30,30,30,0.08–0.12)` | `--rule`, hairlines, light | — non-text | — |
+| `rgba(240,240,240,0.16)` | `--rule`, dark | — non-text | — |
+| `rgba(240,240,240,0.78)` | `.hero-muted`, text on photo | 5.10:1 worst case over the hero photo | AA |
+| `rgba(240,240,240,0.55)` | `.btn-on-dark` border | — non-text | — |
+
+Contrast over the photo bands is measured against the **composited** image — the scrim over the
+actual photograph, not against a flat colour — because that is what a reader sees. Worst case
+across the hero band is 8.13:1 for white text and 5.10:1 for `.hero-muted`; the CFP band is
+12.37:1 and 7.30:1. If either photograph is replaced, re-measure: the scrim is tuned to these
+images, and a brighter photo silently erodes the margin.
+
 ## Forbidden as CSS values
 
 | Hex | What it is | Why |

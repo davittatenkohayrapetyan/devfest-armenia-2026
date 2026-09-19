@@ -53,7 +53,7 @@ infrastructure decision.
 | DF-13 | Swap AUA PNG for SVG in collaboration strip | cancelled | — | — | No SVG exists; the 2130×610 navy PNG is the master |
 | DF-14 | Confirm logo lockup arrangement with GDG regional lead | cancelled | — | — | Davit is the GDG Yerevan organizer; the call is his and he has made it |
 | DF-15 | Final About / CFP copy review | todo | Davit | 26 Sep | |
-| DF-44 | Document the neutral ramp in BRAND.md | todo | Davit | 26 Sep | Three greys in `style.css` are not in the palette table — see log |
+| DF-44 | Document the neutral ramp in BRAND.md | done | Davit | 26 Sep | Neutrals table with measured contrast |
 | DF-45 | 2025 photos as hero and CFP backgrounds | done | Davit | 22 Sep | Two photos, downscaled, EXIF stripped |
 | DF-46 | Re-cut hero art if the 2026 kit becomes available | todo | Davit | 10 Oct | Contingent on the kit; due date sits past this phase's window |
 | DF-16 | OG image, meta tags, sitemap, robots.txt | todo | Davit | 28 Sep | |
@@ -457,6 +457,18 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-44 · Claude Code (task manager)
+Done. `BRAND.md` now has a Neutrals table covering every grey in `style.css`, each with its
+purpose and measured contrast, and a rule that an undocumented grey is drift.
+
+All neutrals pass AA. The photo-band figures are measured against the **composited** image —
+scrim over the actual photograph, per-pixel — rather than against a flat colour, because that is
+what a reader sees. Hero: 8.13:1 worst case for white text, 5.10:1 for `.hero-muted`. CFP band:
+12.37:1 and 7.30:1. Recorded with an instruction to re-measure if either photo is swapped; the
+scrims are tuned to these two images and a brighter photo would erode the margin silently.
+
+That work also turned up two genuine failures, both introduced today — see the DF-19 entry.
 
 ### 2026-09-19 · DF-07 · Claude Code (task manager)
 Google for Developers mark added to the top corner of the hero, at Davit's request.
