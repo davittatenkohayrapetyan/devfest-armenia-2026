@@ -13,6 +13,7 @@ Vite · TypeScript · Tailwind · Docker.
 | [docs/HANDOVER.md](docs/HANDOVER.md) | Session handover — read this first |
 | [docs/PLAN.md](docs/PLAN.md) | Build plan, approach, milestones |
 | [docs/BOARD.md](docs/BOARD.md) | Task board, risk register, comments log |
+| [docs/TASK-MANAGEMENT.md](docs/TASK-MANAGEMENT.md) | Role charter for whoever manages the board |
 | [docs/BRAND.md](docs/BRAND.md) | Palette, logo placement, forbidden colours |
 | [docs/DECISIONS.md](docs/DECISIONS.md) | Architecture decision records |
 

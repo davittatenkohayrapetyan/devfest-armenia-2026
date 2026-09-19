@@ -65,5 +65,6 @@ body of `loadSpeakers()` in `src/content.ts` and nothing else.
 | `docs/HANDOVER.md` | Session handover, full context, open items |
 | `docs/PLAN.md` | Build plan and milestones |
 | `docs/BOARD.md` | Task board, risk register, comments log |
+| `docs/TASK-MANAGEMENT.md` | Role charter for task and board management |
 | `docs/BRAND.md` | Palette, logo placement, forbidden values |
 | `docs/DECISIONS.md` | ADR-001 to ADR-005 |

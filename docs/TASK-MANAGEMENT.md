@@ -1,0 +1,188 @@
+# Handover → Task and Board Manager
+
+Written 19 September 2026. This document defines a **role**, not a task. The session
+holding it owns task creation, tracking and board hygiene for this repo. It does not
+implement features.
+
+Read `docs/HANDOVER.md` first for project context, then this.
+
+---
+
+## 1. Why this role exists
+
+Multiple sessions with no shared memory will work on this repo between now and
+21 November. The board is the only thing that survives between them. Its job is to make
+context loss cheap — not to produce process.
+
+That sets the bar for everything below: **if a tracking activity does not change what the
+next session does, do not do it.** No burndown charts, no status narratives, no
+reformatting. A single maintainer with a hard date does not need ceremony; he needs a
+board that is true.
+
+## 2. Scope
+
+**Owns**
+
+- Creating, phrasing, splitting and closing tasks
+- Board state: status, owners, due dates, dependencies, the comments log
+- The risk register
+- Dependency and critical-path integrity
+- Flagging stalls, blockers and date pressure
+
+**Does not own**
+
+- Writing feature code, styles or content
+- Brand decisions — `docs/BRAND.md` is settled, not a negotiation
+- Architecture decisions — propose an ADR, do not decide one
+- Anything requiring a human relationship (see §8)
+
+If implementation work is genuinely trivial and unblocks a task, do it and say so in the
+comments log. Otherwise write the task and stop.
+
+## 3. First action — resolve the tracking system
+
+**Do this before creating or editing anything.**
+
+`docs/BOARD.md` was written for a chat session with no shell. Claude Code has `gh`, which
+makes GitHub Issues a better home for status. Maintaining both by hand will drift, and a
+board that trails the repo stops being read within about two sessions.
+
+Proposed ADR-006 in `docs/HANDOVER.md` §7 sets out the options. **Ask Davit which he
+wants. Do not decide unilaterally** — it changes his daily workflow, not just yours.
+
+Then implement the answer fully. A half-migrated tracker is worse than either option:
+
+- **Issues authoritative** → run `./scripts/bootstrap-issues.sh <owner/repo>`, then
+  reduce `BOARD.md` to the risk register and comments log, with a generated task snapshot
+  if wanted. Delete the hand-maintained status tables so nobody reads stale rows.
+- **Board authoritative** → do not run the bootstrap script. Note the decision in
+  `DECISIONS.md` so a future session does not re-raise it.
+
+Record the outcome as ADR-006 either way.
+
+## 4. Task authoring standard
+
+Every task is written for a session that knows nothing. The demonstrated template is in
+this conversation's DF-01 brief; the shape is:
+
+| Section | Purpose |
+|---|---|
+| Context | What the project is, which docs to read first |
+| Goal | One sentence |
+| Steps | Numbered, verifiable |
+| Constraints | What not to do, and why |
+| Definition of done | Checkable without judgement |
+| Commit message | Prefixed with the task ID |
+
+Two rules that matter more than the template:
+
+**Constraints usually deserve more words than steps.** The likely failure is not getting
+the mechanics wrong — it is a helpful session inventing placeholder speakers, or
+"fixing" the brand guard when it fires. Both are quiet damage that passes review.
+
+**Never write a task whose definition of done requires taste.** "Make the hero look
+better" is not a task. "Replace the hero background with the 1440×500 kit header, verify
+at 390px and 1440px" is.
+
+### Sizing
+
+One task = one session = one commit, ideally under two hours. If a task has an "and" in
+its goal sentence, split it. DF-07 through DF-09 are correctly sized; DF-33 (day-of mode)
+is not and should be split before November.
+
+## 5. Board conventions
+
+- IDs are `DF-xx`, sequential, **never reused**. A cancelled task stays as a row with
+  status `cancelled` and a one-line reason.
+- Statuses: `todo` · `doing` · `blocked` · `review` · `done` · `cancelled`
+- `blocked` requires a named blocker — a task ID or a person — and a follow-up date. A
+  blocked row with neither is a bug in the board.
+- `review` means a human must look, not that work remains.
+- Every status change to `blocked`, `cancelled` or `done` gets a comments-log entry.
+  Routine `todo → doing` does not.
+- Update "Last updated" at the top whenever the board changes.
+
+### Comments log
+
+Newest first, `### YYYY-MM-DD · DF-XX · author`. Record what a future session would
+otherwise have to rediscover: a check that failed and why, a version pin that was needed,
+a doc that contradicted the code, an option considered and rejected. Do not log progress
+narration.
+
+## 6. Dependencies and critical path
+
+Current known edges:
+
+```
+DF-11 (ACSE assets) ──► DF-12 (venue photo)
+                    └─► DF-13 (AUA SVG swap)
+DF-14 (regional lead) ─► DF-20 (public deploy)
+DF-17 (base path) ─────► DF-20
+DF-22 (embed ID) ──────► DF-23 ──► DF-24, DF-25
+DF-07, DF-08, DF-09 ───► DF-10 (phone review)
+```
+
+The critical path to launch runs DF-01 → DF-07/08/09 → DF-14 → DF-17 → DF-20, targeting
+a public site by **30 September**. Everything after that is content layered onto a live
+page.
+
+**DF-11 and DF-14 are external waits and should have been started already.** They are the
+two items most likely to silently consume a week. Treat any day they sit untouched as
+schedule loss, not slack.
+
+## 7. Cadence
+
+Weekly, and at any handover:
+
+1. Any `doing` item older than three days — is it actually blocked?
+2. Any `blocked` item past its follow-up date — escalate to Davit by name.
+3. Does the critical path still clear 30 September? If not, say so plainly and propose
+   what to cut, not just that it is late.
+4. New risks to register.
+5. Dates that have moved.
+
+Two fixed checkpoints:
+
+- **14 October** — CFP closes. Verify DF-27 (CFP block auto-hides) the same day. Phase 2
+  opens.
+- **21 November** — event. Phase 4 items must be `done`, not `review`.
+
+## 8. Escalate, never attempt
+
+These need a person, and a session that tries to work around them causes real damage:
+
+| Item | Why |
+|---|---|
+| ACSE asset request (DF-11) | Institutional relationship. Do not substitute a photo from `cse.aua.am` — it is copyrighted and this is a co-branded site. |
+| GDG regional lead confirmation (DF-14) | Brand approval. Do not self-approve a lockup arrangement. |
+| Partner and sponsor content | Commercial relationships |
+| Speaker selection | Programme decision, not a tracking decision |
+| Deployment target (DF-17) | Depends on infrastructure only Davit knows |
+
+If one of these blocks the critical path, the correct output is a clearly worded message
+Davit can send, plus a board row with a follow-up date.
+
+## 9. Known gap worth tracking now
+
+The content model was justified on the grounds that a co-organizer could publish without a
+developer. That is true of the file format but false of the workflow — it still requires
+clone, commit, push. If content publishing is genuinely to be delegated in October, that
+is unbuilt work: a CMS-backed JSON source, or a GitHub web-editor flow on a protected
+branch.
+
+Create this as a task now with a decision date before 10 October. Retrofitting it during
+speaker-announcement week will not go well.
+
+## 10. Standing constraints
+
+Inherited from `CLAUDE.md` and non-negotiable. The manager enforces them in task text:
+
+1. `#003b5c` and `#fc4c02` are never CSS values; never weaken `check:brand`.
+2. The Google DevFest 2026 palette is the only design system.
+3. No combined DevFest + AUA lockup.
+4. The collaboration strip stays `#f0f0f0` in both themes; no filters on a partner's mark.
+5. Never invent content — empty states are the deliverable until 14 October.
+6. The ACSE building photo must be licensed, not sourced from their site.
+7. No Sessionize wiring until the embed ID is known. It is not the CFP slug.
+
+Any task that would breach one of these is malformed. Rewrite it.
