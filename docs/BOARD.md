@@ -86,7 +86,7 @@ infrastructure decision.
 | DF-28 | Three-track agenda section | todo | Davit | 5 Nov | Three tracks plus workshops. UI only; data from DF-51 |
 | DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 5 Nov | Only embed retained |
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 5 Nov | Limited number |
-| DF-31 | Partner logos final — all tiers | todo | GDG team | 7 Nov | |
+| DF-31 | Partner logos final — all tiers | todo | GDG team | 7 Nov | InTech.am added 19 Sep; other tiers still empty |
 | DF-32 | Organizers section | todo | Davit | 7 Nov | `organizers.json` has no type, loader or schema check yet — add them |
 
 ## Phase 4 — Day of (21 Nov)
@@ -535,6 +535,21 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-31 · Claude Code (task manager)
+InTech.am added as media partner at Davit's instruction, in a new `media` tier in
+`partners.json`. Link verified (200). The empty-state copy disappears automatically now that a
+tier has an entry, so the "partner announcements are coming soon" paragraph is gone.
+
+Partner marks now render on a **fixed white chip in both themes**, which is a change to how the
+section works, not just an addition. A partner's logo is whatever artwork they supply — InTech's
+is black on transparent, and `--surface-alt` in dark mode is `#262626`, so it would have been
+close to invisible for anyone browsing in dark mode. Recolouring or inverting somebody else's
+mark is not an option, so the surface changes instead. Same reasoning as the collaboration strip,
+and it means the next partner's logo works without anyone thinking about it.
+
+Also applied `asset()` to partner logos, as done for speaker photos, so repo-relative paths
+follow `VITE_BASE_PATH` — relevant now that production is `/2026/` rather than root.
 
 ### 2026-09-19 · DF-15, DF-19 · Claude Code (task manager)
 The 2025 link was rendering as a tofu box followed by "92". Cause: `.link-arrow::after` held a

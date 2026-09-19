@@ -180,7 +180,7 @@ function partners(tiers: PartnerTier[], contactUrl: string): string {
           (t) => `<div class="mt-8">
             <p class="text-sm text-[var(--ink-muted)]">${esc(t.label)}</p>
             <div class="mt-3 flex flex-wrap items-center gap-8">
-              ${t.partners.map((p) => `<a href="${esc(p.url)}" rel="noopener"><img class="h-10 w-auto" src="${esc(p.logo)}" alt="${esc(p.name)}"></a>`).join("")}
+              ${t.partners.map((p) => `<a class="partner-chip" href="${esc(p.url)}" rel="noopener"><img class="partner-mark" src="${esc(asset(p.logo))}" alt="${esc(p.name)}"></a>`).join("")}
             </div>
           </div>`,
         )
