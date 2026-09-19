@@ -44,7 +44,6 @@ export type EventContent = {
     detail: string;
     address: string;
     mapUrl: string;
-    photo: string | null;
   };
   cta: { register: string; cfp: string; chapter: string; lastYear: string };
   cfp: {

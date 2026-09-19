@@ -189,10 +189,9 @@ function partners(tiers: PartnerTier[], contactUrl: string): string {
 </section>`;
 }
 
+// No building photo: AUA's complete asset set is the two lockups, and none is coming.
+// The text block is the finished state, not a placeholder. See CLAUDE.md constraint 6.
 function venue(e: EventContent): string {
-  const photo = e.venue.photo
-    ? `<img class="mt-8 w-full rounded-2xl" src="${esc(e.venue.photo)}" alt="${esc(e.venue.name)}" loading="lazy">`
-    : `<!-- DF-12: licensed ACSE building photo pending, see docs/BOARD.md -->`;
   return `
 <section id="venue" class="py-20">
   <div class="wrap">
@@ -201,7 +200,6 @@ function venue(e: EventContent): string {
     <p class="text-[var(--ink-muted)]">${esc(e.venue.detail)}</p>
     <p class="mt-2 text-[var(--ink-muted)]">${esc(e.venue.address)}</p>
     <a class="btn btn-secondary mt-6" href="${esc(e.venue.mapUrl)}" rel="noopener">Open in Maps</a>
-    ${photo}
   </div>
 </section>`;
 }

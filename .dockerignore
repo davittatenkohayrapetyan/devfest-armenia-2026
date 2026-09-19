@@ -1,0 +1,12 @@
+# Keep the build context to what the image build actually needs. node_modules also carries
+# host-platform binaries (@esbuild/win32-x64 here), which have no business in a linux image.
+#
+# docs/ is NOT excluded: prebuild runs scripts/build-board.mjs, which reads docs/BOARD.md to
+# generate the board view. Excluding it fails the image build.
+node_modules
+dist
+.git
+.github
+.env
+*.local
+.DS_Store

@@ -6,8 +6,7 @@
     "name": "American University of Armenia",
     "detail": "Zaven P. & Sonia Akian College of Science & Engineering",
     "address": "40 Marshal Baghramyan Ave, Yerevan 0019, Armenia",
-    "mapUrl": "https://maps.google.com/?q=American+University+of+Armenia",
-    "photo": null
+    "mapUrl": "https://maps.google.com/?q=American+University+of+Armenia"
   },
   "cta": {
     "register": "https://gdg.community.dev/events/details/google-gdg-yerevan-presents-devfest-armenia-2026/",
