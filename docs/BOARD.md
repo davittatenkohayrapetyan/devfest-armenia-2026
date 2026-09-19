@@ -59,9 +59,10 @@ infrastructure decision.
 | DF-16 | OG image, meta tags, sitemap, robots.txt | todo | Davit | 28 Sep | |
 | DF-17 | Decide deployment target and `VITE_BASE_PATH` | done | Davit | 26 Sep | Standalone at root, ADR-008 |
 | DF-18 | Analytics | todo | Davit | 28 Sep | Which tool? |
-| DF-19 | Accessibility pass: contrast, focus, reduced motion, keyboard | todo | Davit | 29 Sep | Must include text-on-photo contrast in the two new bands |
+| DF-19 | Accessibility pass: contrast, focus, reduced motion, keyboard | done | Davit | 29 Sep | One AA failure fixed; button colour raised as DF-52 |
 | DF-20 | Public deploy | todo | Davit | 30 Sep | `npm run build:deploy`, copy `dist/` to the host |
 | DF-49 | Deploy build that omits the internal board page | done | Davit | 26 Sep | `npm run build:deploy`, verified |
+| DF-52 | Decide: primary button contrast vs the kit blue | todo | Davit | 26 Sep | AA failure inherent to `#4285f4`. See brief |
 | DF-21 | Announce site on GDG Community platform and socials | todo | Davit | 30 Sep | |
 
 ## Phase 2 — Speakers (15–25 Oct)
@@ -369,6 +370,44 @@ types and validation cover both; re-running the sync produces no diff; all three
 
 ---
 
+### DF-52 · Decide: primary button contrast vs the kit blue
+
+**Context.** DF-19 measured every colour pair on the site. One fails and cannot be fixed
+without a decision only Davit can make.
+
+**The finding.** `.btn-primary` is `#ffffff` on `#4285f4` — **3.56:1**. WCAG AA requires 4.5:1
+for normal-size text; 3:1 applies only to text at 18.66px bold or 24px regular, and the button
+label is 16px at weight 500. The same 3.56:1 applies to `#4285f4` as a text colour on white,
+which is why `.link-arrow` was changed to ink with a blue underline instead.
+
+This is not a mistake in the CSS. It is inherent to the DevFest kit blue, which constraint 2
+makes the only permitted blue, so the fix is a brand decision rather than a code change.
+
+**Options.**
+1. **Accept it.** Google's own properties ship this blue on white. The label is large, high
+   contrast against its surroundings, and the button is not the only route to any action —
+   every CTA also appears as plain text elsewhere. Cost: the site does not fully meet AA, and
+   saying it does would be false.
+2. **Enlarge the label** to 18.66px bold, which moves it into the large-text threshold where
+   3:1 applies, and it passes. Cost: buttons get visually heavier; no palette change.
+3. **Use `#1a73e8`** — Google's own accessible blue, 4.6:1 on white. Cost: a colour outside the
+   documented DevFest kit, which is exactly the drift ADR-003 exists to prevent, so it would
+   need recording as a deliberate exception.
+
+**Recommendation:** option 2. It keeps the palette intact and needs no exception, and a slightly
+heavier button on a conference landing page is not a loss.
+
+**Constraints.** Do not change `#4285f4` anywhere without recording the decision as an ADR. Do
+not weaken `check:brand`. Do not claim AA conformance anywhere on the site or in the README
+while option 1 stands.
+
+**Definition of done.** The choice is recorded as an ADR; if it is option 2 or 3, the change is
+made and the button pair re-measured above 4.5:1 (or above 3:1 at the large-text threshold).
+
+**Commit message.** `DF-52: record the primary button contrast decision`
+
+---
+
 ### DF-12 · Venue section — remove the pending-photo path
 
 **Context.** `docs/BRAND.md` for the asset inventory. The venue section already renders
@@ -457,6 +496,30 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-19 · Claude Code (task manager)
+Accessibility pass done. The scaffold was in better shape than expected: `:focus-visible` with a
+3px offset outline, a `prefers-reduced-motion` block that kills all transitions, `lang="en"`,
+all nine images carrying `alt`, and a sane heading order — one `h1`, section `h2`s, speaker
+`h3`s. The second `h1` in the source is the content-load error state, which replaces the whole
+page and never coexists with the hero.
+
+Fixed:
+- **`.link-arrow` failed AA.** `#4285f4` on white is 3.56:1 against a 4.5:1 requirement — a link
+  I added this afternoon. Now ink-coloured text with a blue underline: the affordance and the
+  brand colour survive in the underline, where contrast rules do not apply.
+- **No `main` landmark.** Sections sat directly under `#app`, so assistive tech had no content
+  region to jump to. Added, with `tabindex="-1"` so it can actually receive focus.
+- **No skip link.** Added, revealed on focus.
+
+Two self-inflicted bugs caught during verification, both in the fix itself: the skip link
+pointed at `#cfp` rather than `#main`, and it was white-on-blue — the very failure being fixed
+three lines above. It is now on the dark surface at 14.63:1.
+
+Raised rather than fixed: `.btn-primary` is white on `#4285f4`, 3.56:1, failing AA for its 16px
+label. That is inherent to the kit blue that constraint 2 makes mandatory, so it is a brand
+decision, not a bug — **DF-52**, with three options and a recommendation. Until it is decided,
+do not claim AA conformance anywhere.
 
 ### 2026-09-19 · DF-44 · Claude Code (task manager)
 Done. `BRAND.md` now has a Neutrals table covering every grey in `style.css`, each with its

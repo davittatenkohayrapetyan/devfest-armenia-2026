@@ -58,6 +58,26 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -4rem;
+  z-index: 50;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 0.75rem 0.75rem;
+  /* Dark surface, not brand blue: white on #4285f4 is 3.56:1 and this is normal-size text.
+     White on #1e1e1e is 14.63:1. */
+  background: var(--df-surface-dark);
+  color: var(--df-surface-light);
+  font-weight: 700;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+main:focus { outline: none; }
+
 :focus-visible {
   outline: 3px solid var(--df-blue);
   outline-offset: 3px;
@@ -139,11 +159,16 @@ body {
   .collab-x { font-size: 2.5rem; }
 }
 
+/* Ink text with a blue underline, not blue text: #4285f4 on white is 3.56:1, which fails AA
+   for normal-size text, and the palette is fixed (constraint 2). The underline keeps the link
+   affordance and carries the brand colour where contrast rules do not apply. */
 .link-arrow {
-  color: var(--df-blue);
+  color: var(--ink);
   font-weight: 500;
   text-underline-offset: 0.2em;
   text-decoration: underline;
+  text-decoration-color: var(--df-blue);
+  text-decoration-thickness: 2px;
 }
 .link-arrow::after {
   content: " 92";

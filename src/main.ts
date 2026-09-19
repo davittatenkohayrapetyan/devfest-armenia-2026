@@ -230,13 +230,16 @@ async function render() {
       loadSpeakers(),
     ]);
     root.innerHTML = [
+      `<a class="skip-link" href="#main">Skip to content</a>`,
       hero(event),
       collaboration(),
+      `<main id="main" tabindex="-1">`,
       callForSpeakers(event),
       about(event),
       speakers(speakerList, event.cta.cfp),
       partners(partnerData.tiers, partnerData.contactUrl),
       venue(event),
+      `</main>`,
       footer(event),
     ].join("");
   } catch (err) {
