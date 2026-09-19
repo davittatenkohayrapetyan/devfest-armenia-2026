@@ -51,6 +51,7 @@ infrastructure decision.
 | DF-13 | Swap AUA PNG for SVG in collaboration strip | cancelled | — | — | No SVG exists; the 2130×610 navy PNG is the master |
 | DF-14 | Confirm logo lockup arrangement with GDG regional lead | cancelled | — | — | Davit is the GDG Yerevan organizer; the call is his and he has made it |
 | DF-15 | Final About / CFP copy review | todo | Davit | 26 Sep | |
+| DF-44 | Document the neutral ramp in BRAND.md | todo | Davit | 26 Sep | Three greys in `style.css` are not in the palette table — see log |
 | DF-16 | OG image, meta tags, sitemap, robots.txt | todo | Davit | 28 Sep | |
 | DF-17 | Decide deployment target and `VITE_BASE_PATH` | todo | Davit | 26 Sep | WP subfolder vs standalone. Blocks DF-20 |
 | DF-18 | Analytics | todo | Davit | 28 Sep | Which tool? |
@@ -74,11 +75,11 @@ infrastructure decision.
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
-| DF-28 | Two-track agenda section | todo | Davit | 5 Nov | |
+| DF-28 | Two-track agenda section | todo | Davit | 5 Nov | `tracks.json` has no type, loader or schema check yet — add them |
 | DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 5 Nov | Only embed retained |
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 5 Nov | Limited number |
 | DF-31 | Partner logos final — all tiers | todo | GDG team | 7 Nov | |
-| DF-32 | Organizers section | todo | Davit | 7 Nov | |
+| DF-32 | Organizers section | todo | Davit | 7 Nov | `organizers.json` has no type, loader or schema check yet — add them |
 
 ## Phase 4 — Day of (21 Nov)
 
@@ -142,6 +143,36 @@ task's board update; the CI badge on the default branch is green; `curl -sI loca
 returned 200 while the container was up; DF-01 reads `done`.
 
 **Commit message.** `DF-01: push scaffold, verify CI and :3026`
+
+---
+
+### DF-44 · Document the neutral ramp in BRAND.md
+
+**Context.** Constraint 2 says the DevFest 2026 palette is the only design system and that
+no colour outside it may be introduced. `src/style.css` nonetheless defines three neutrals
+that `docs/BRAND.md`'s palette table does not list: `--surface: #ffffff`,
+`--ink-muted: #5f6368`, and dark-mode `--surface-alt: #262626`. A page needs neutrals, so
+this is almost certainly a documentation gap rather than brand drift — but as it stands the
+guard doc and the stylesheet disagree, and the next person to add a grey has no rule to
+follow.
+
+**Goal.** Make `BRAND.md` the complete account of every colour in the stylesheet.
+
+**Steps.**
+1. Check whether the DevFest 2026 kit specifies neutrals. If it does, adopt its values.
+2. If it does not, add a "Neutrals" table to `BRAND.md` listing the three in use, each with
+   its purpose, and state that no further greys may be added without an entry there.
+3. Confirm `#5f6368` on `#ffffff` and `#9aa0a6` on `#1e1e1e` both clear 4.5:1 for body text,
+   since DF-19 will otherwise find it later.
+
+**Constraints.** Do not add new colours while documenting the existing ones. Do not touch
+the two forbidden AUA hexes or relax `check:brand`. If a token turns out to fail contrast,
+record it for DF-19 rather than restyling the site under this task.
+
+**Definition of done.** Every colour literal in `src/style.css` appears in a `BRAND.md`
+table; the contrast figures for muted ink in both themes are written down.
+
+**Commit message.** `DF-44: document the neutral ramp in BRAND.md`
 
 ---
 
@@ -233,6 +264,26 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-02, DF-03, DF-04, DF-05 · Claude Code (task manager)
+All four were marked `done` by a session with no shell, so they were claims rather than
+verified facts. Checked each against the repo; all four hold, and the rows stay `done`.
+
+DF-02: `tsc --noEmit && vite build` clean from a cold `npm ci`. DF-05: verified during DF-01
+— compose up on 3026, 200 on `/`, on the hashed bundle and on `/content/event.json`.
+DF-04: types and loaders exist for event, partners and speakers, the Sessionize field shape
+is preserved with the October swap written out in a comment, the empty state renders the
+"announced after 14 October" panel, the 9+ compact grid branch DF-25 will test already
+exists, and a content load failure renders a message instead of a blank page.
+DF-03: all ten kit tokens match `docs/BRAND.md` exactly. Confirmed in passing that
+`.collab-strip` uses `--df-surface-light`, which the dark-mode block does not redefine — so
+constraint 4 holds structurally, not just by convention.
+
+Two gaps found, neither of them a reason to reopen a row. `tracks.json` and
+`organizers.json` have no type, no loader and no structural validation — the validator only
+parses them — so DF-28 and DF-32 must add those, not just build a section; noted on both
+rows. And `style.css` carries three neutrals that `BRAND.md` never documents: `#ffffff`,
+`#5f6368` for muted ink, and `#262626` for the dark alt surface. See DF-44.
 
 ### 2026-09-19 · DF-42 · Claude Code (task manager)
 Done. `package-lock.json` committed (lockfileVersion 3, 137 entries, every `resolved` URL on
