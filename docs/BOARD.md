@@ -536,6 +536,26 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-09-19 · DF-15, DF-19 · Claude Code (task manager)
+The 2025 link was rendering as a tofu box followed by "92". Cause: `.link-arrow::after` held a
+literal `0x11` byte, not an arrow. I had written the CSS escape through a Python string where
+`92` was parsed as an **octal escape** — `` is 0x11 — leaving "92" as literal text. The
+generated CSS was syntactically valid, so nothing failed; it only showed up on a phone.
+
+Fixed by removing the CSS escape entirely and putting a real `→` in the markup, inside an
+`aria-hidden` span so it is not announced. No escape layer, nothing to mis-encode. Worth
+generalising: **do not write CSS or JS escape sequences through a generating script.** Put the
+character in directly.
+
+Also made it visible, as Davit asked: it is now a secondary button rather than an underlined
+line of text, which suits a link people are meant to follow.
+
+That exposed a gap in DF-19 — I measured text contrast but not **non-text** contrast. WCAG 1.4.11
+wants 3:1 for the visual boundary of a control, and `.btn-secondary` was outlined in `--rule` at
+roughly 1.3:1 on white. A hairline is right for dividing content and wrong for outlining a
+button, so there is now a separate `--control-edge` token at 3.1:1, documented in BRAND.md. It
+affects "Open in Maps" too, which had the same invisible outline.
+
 ### 2026-09-19 · DF-15 · Claude Code (task manager)
 Approved by Davit, with the scale corrected: **20+ speakers, 3 tracks plus workshops, 350+
 participants**. Talks and workshops as formats are confirmed, and the topic list stands.

@@ -33,6 +33,8 @@ and its measured contrast, or do not add it.
 | `#9aa0a6` | `--ink-muted`, dark theme | 6.31:1 on `#1e1e1e`, 5.73:1 on `#262626` | AA |
 | `#262626` | `--surface-alt`, dark theme | — surface only | — |
 | `rgba(30,30,30,0.08–0.12)` | `--rule`, hairlines, light | — non-text | — |
+| `rgba(30,30,30,0.45)` | `--control-edge`, button outline, light | 3.1:1 on white | AA (1.4.11) |
+| `rgba(240,240,240,0.5)` | `--control-edge`, dark theme | 3.4:1 on `#1e1e1e` | AA (1.4.11) |
 | `rgba(240,240,240,0.16)` | `--rule`, dark | — non-text | — |
 | `rgba(240,240,240,0.78)` | `.hero-muted`, text on photo | 5.10:1 worst case over the hero photo | AA |
 | `rgba(240,240,240,0.55)` | `.btn-on-dark` border | — non-text | — |
