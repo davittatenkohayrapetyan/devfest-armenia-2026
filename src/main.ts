@@ -181,6 +181,21 @@ function speakers(list: Speaker[], e: EventContent): string {
 </section>`;
 }
 
+function agenda(): string {
+  return `
+<section id="agenda" class="py-20" style="background:var(--surface-alt)">
+  <div class="wrap">
+    <h2 class="text-3xl md:text-4xl font-bold">Agenda</h2>
+    <div class="mt-8 rounded-2xl p-10 text-center" style="background:var(--surface)">
+      <p class="text-lg">The agenda will be announced closer to the event.</p>
+      <p class="mt-2 text-[var(--ink-muted)]">
+        Three tracks plus workshops, across a single day.
+      </p>
+    </div>
+  </div>
+</section>`;
+}
+
 function organizers(list: Organizer[]): string {
   if (list.length === 0) return "";
   return `
@@ -309,6 +324,7 @@ async function render() {
       callForSpeakers(event),
       about(event),
       speakers(speakerList, event),
+      agenda(),
       organizers(organizerList),
       partners(partnerData.partners, partnerData.contactUrl),
       venue(event),

@@ -83,7 +83,7 @@ infrastructure decision.
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
-| DF-28 | Three-track agenda section | todo | Davit | 5 Nov | Three tracks plus workshops. UI only; data from DF-51 |
+| DF-28 | Three-track agenda section | todo | Davit | 5 Nov | Placeholder section live since 19 Sep; fill it from DF-51 data |
 | DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 5 Nov | Only embed retained |
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 5 Nov | Limited number |
 | DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers — one flat list. InTech.am added 19 Sep |
@@ -535,6 +535,20 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-19 · DF-28 · Claude Code (task manager)
+Agenda section added as a placeholder at Davit's request, between Speakers and the team. It
+states that the agenda comes closer to the event and repeats the shape of the day — three tracks
+plus workshops — so the section carries information rather than just occupying space.
+
+This is deliberately the **shell** of DF-28, not DF-28 itself. The section, its heading and its
+`#agenda` anchor now exist, so the real agenda has somewhere to land and any link to `#agenda`
+made between now and November will not break. Filling it still needs session data from DF-51,
+and DF-28's row now says the placeholder is live so nobody rebuilds the section from scratch.
+
+Copy is hardcoded, matching the speakers empty state rather than `event.json`. Empty-state
+strings live with the markup that renders them; content that changes independently of the code
+lives in JSON. Worth stating because the site now does both.
 
 ### 2026-09-19 · DF-32 · Claude Code (task manager)
 "Meet the team" section built, with Davit as GDG Yerevan Organizer. Placed after Speakers and
