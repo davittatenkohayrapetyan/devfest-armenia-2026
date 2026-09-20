@@ -54,6 +54,21 @@
     "sessions": []
   },
   {
+    "id": "24806d60-f727-4328-9942-68684ecca775",
+    "fullName": "Gabriel Preda",
+    "tagLine": "Principal Data Scientist at Endava, AI & Cloud AI GDE, 2 x Kaggle Grandmaster",
+    "bio": "Survived PhD in Computational Electromagnetics, while working as a researcher, applied 25 years ago what will be called now Machine Learning to solve ill-posed inverse problems in NDT, worked for long time in Software Development, with positions from developer to senior manager or programme manager, started few years ago to dive into Data Science, currently working as a Principal Data Scientist at Endava. Author with Packt of a book on Kaggle Notebooks (data analytics, machine learning, generative AI), 2x Kaggle Grandmaster, GDE for AI and Kaggle.",
+    "profilePicture": "assets/speakers/24806d60-f727-4328-9942-68684ecca775.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/gabrielpreda/",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
     "id": "8b52910b-edcd-42d4-b415-57fffcb06ead",
     "fullName": "Liana Darbinyan",
     "tagLine": "Cybersecurity Engineer | Security Infrastructure, Application Security & Threat Detection",

@@ -72,7 +72,7 @@ infrastructure decision.
 | DF-22 | Retrieve Sessionize embed ID for 2026 | done | Davit | 10 Oct | `2d3htmgm` — recorded in CLAUDE.md |
 | DF-23 | Wire `loadSpeakers()` to Sessionize API | cancelled | — | — | Superseded by DF-50 — sync on demand, not fetch at runtime |
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
-| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 5 speakers live at 20 Sep |
+| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 6 speakers live at 20 Sep |
 | DF-51 | Extend the sync to talks — session mapping | todo | Davit | 10 Nov | Needs DF-50. Blocks DF-28. See brief |
 | DF-25 | Verify 9+ compact grid state with real data | todo | Davit | 20 Oct | 20+ expected |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
@@ -536,6 +536,21 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-20 · DF-50 · Claude Code (task manager)
+Synced. One new speaker — **Gabriel Preda**, Principal Data Scientist at Endava — bringing the
+published list to six. No removals, and no field on any existing record changed.
+
+The run also rewrote **Arman Gyulbudaghyan's photo**: the byte comparison in the sync caught that
+the upstream file had changed. Compared old against new before committing — same portrait, same
+framing, re-encoded upstream, not a substitution. Worth doing rather than assuming: a replaced
+photo is the one change a JSON diff cannot show you, because the filename is keyed on speaker id
+and stays identical.
+
+Diff review for a sync is three questions, in this order: was anyone **removed**, did any
+existing record **change**, and only then what was added. Additions are the safe case.
+
+R-3 watch: 6 speakers, roughly 30 sessions needed for three tracks, CFP now closing 8 November.
 
 ### 2026-09-20 · DF-15, DF-19 · Claude Code (task manager)
 Seconds added to the hero countdown, so it now ticks once a second.
