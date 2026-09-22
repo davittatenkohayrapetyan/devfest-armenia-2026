@@ -48,6 +48,50 @@ for (const sp of data.speakers) {
 
 mkdirSync(IMG_DIR, { recursive: true });
 
+/**
+ * Strips metadata that varies between renders, so the same image produces the same bytes.
+ *
+ * Sessionize's CDN stamps a PNG `tIME` chunk with the moment it rendered the file, so a sync on
+ * a new day rewrote every photo with no visual change — permanent diff noise, and a commit that
+ * says a speaker's portrait changed when it did not. JPEG APPn segments carry the same hazard
+ * (and any EXIF the speaker's own camera left behind), so they go too.
+ */
+function stripVolatileMetadata(buf) {
+  const PNG_SIG = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+  if (buf.subarray(0, 8).equals(PNG_SIG)) {
+    const drop = new Set(["tIME", "tEXt", "iTXt", "zTXt"]);
+    const out = [buf.subarray(0, 8)];
+    let pos = 8;
+    while (pos + 8 <= buf.length) {
+      const len = buf.readUInt32BE(pos);
+      const type = buf.subarray(pos + 4, pos + 8).toString("latin1");
+      const end = pos + 12 + len;
+      if (!drop.has(type)) out.push(buf.subarray(pos, end));
+      pos = end;
+      if (type === "IEND") break;
+    }
+    return Buffer.concat(out);
+  }
+  if (buf[0] === 0xff && buf[1] === 0xd8) {
+    const out = [buf.subarray(0, 2)];
+    let pos = 2;
+    while (pos + 4 <= buf.length) {
+      if (buf[pos] !== 0xff) break;
+      const marker = buf[pos + 1];
+      if (marker === 0xda) {
+        out.push(buf.subarray(pos)); // start of scan: copy the rest verbatim
+        break;
+      }
+      const len = buf.readUInt16BE(pos + 2);
+      const isMetadata = (marker >= 0xe0 && marker <= 0xef) || marker === 0xfe;
+      if (!isMetadata) out.push(buf.subarray(pos, pos + 2 + len));
+      pos += 2 + len;
+    }
+    return Buffer.concat(out);
+  }
+  return buf;
+}
+
 /** Download a speaker photo locally: no third-party dependency for faces on event day. */
 async function localPhoto(sp) {
   if (!sp.profilePicture) return "";
@@ -56,7 +100,7 @@ async function localPhoto(sp) {
   const dest = join("public", rel);
   const r = await fetch(sp.profilePicture);
   if (!r.ok) die(`photo for ${sp.fullName} returned ${r.status}`);
-  const bytes = Buffer.from(await r.arrayBuffer());
+  const bytes = stripVolatileMetadata(Buffer.from(await r.arrayBuffer()));
   // Only write when the bytes differ, so a rerun leaves the working tree clean.
   if (!existsSync(dest) || !readFileSync(dest).equals(bytes)) {
     writeFileSync(dest, bytes);

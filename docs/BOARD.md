@@ -1,6 +1,6 @@
 # Tracking Board — DevFest Armenia 2026
 
-**Last updated:** 2026-09-20
+**Last updated:** 2026-09-22
 
 This board is the authoritative record of task status (ADR-006). There is no second
 tracker — do not mirror rows into GitHub Issues.
@@ -72,7 +72,7 @@ infrastructure decision.
 | DF-22 | Retrieve Sessionize embed ID for 2026 | done | Davit | 10 Oct | `2d3htmgm` — recorded in CLAUDE.md |
 | DF-23 | Wire `loadSpeakers()` to Sessionize API | cancelled | — | — | Superseded by DF-50 — sync on demand, not fetch at runtime |
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
-| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 6 speakers live at 20 Sep |
+| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 7 speakers live at 22 Sep |
 | DF-51 | Extend the sync to talks — session mapping | todo | Davit | 10 Nov | Needs DF-50. Blocks DF-28. See brief |
 | DF-25 | Verify 9+ compact grid state with real data | todo | Davit | 20 Oct | 20+ expected |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
@@ -536,6 +536,37 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-22 · DF-50 · Claude Code (task manager)
+Synced. One new speaker — **Mohammed Buallay** — seven published. No removals, no changed fields.
+
+The run also exposed a real defect. Arman Gyulbudaghyan's photo was rewritten on the 20th *and*
+again today, which should not happen for an unchanged portrait. Chasing it properly:
+
+1. Fetched the CDN image three times — byte-identical, so the CDN is not random.
+2. Compared the committed blob against the working file: same length, 41 differing bytes,
+   starting at offset 127.
+3. Walked the PNG chunks: the difference is a **`tIME` chunk**, the CDN stamping each render
+   with the moment it produced the file. Decoded, it read today's date.
+
+So every sync on a new day rewrote every photo with no visual change — permanent diff noise, and
+commits claiming a speaker's portrait changed when it had not. On a repo where the sync is meant
+to be reviewed by diff, that is corrosive: noise trains you to skim, and skimming is how a real
+substitution gets waved through.
+
+Fixed in the sync: PNG `tIME`/`tEXt`/`iTXt`/`zTXt` chunks and JPEG APPn/COM segments are stripped
+before the bytes are compared or written. Verified in three ways — every photo still decodes
+fully, the decoded **pixels are identical** to what the CDN serves, and a rerun now changes
+nothing at all. Stripping APPn also removes any EXIF a speaker's own camera left in their
+upload, which is a privacy improvement we were not otherwise making.
+
+One-time cost: this commit rewrites six existing photos as their metadata is stripped. After
+that they are stable.
+
+Worth noting the earlier check that missed this. On the 20th I compared the old and new photo
+*visually*, saw the same portrait, and concluded "re-encoded upstream, not a substitution". That
+was true and insufficient — it explained the image but not why the bytes moved, and the answer
+was a bug worth fixing rather than a curiosity to note.
 
 ### 2026-09-20 · DF-50 · Claude Code (task manager)
 Synced. One new speaker — **Gabriel Preda**, Principal Data Scientist at Endava — bringing the

@@ -117,5 +117,40 @@
       }
     ],
     "sessions": []
+  },
+  {
+    "id": "f579b865-8a53-4718-98e3-f8a52a93d8cd",
+    "fullName": "Mohammed Buallay",
+    "tagLine": "Data science",
+    "bio": "Mohammed Buallay, data enthusiast looking for hidden patterns in data. My mission is to empower individuals and companies with the power of artificial intelligence.",
+    "profilePicture": "assets/speakers/f579b865-8a53-4718-98e3-f8a52a93d8cd.png",
+    "links": [
+      {
+        "title": "X (Twitter)",
+        "url": "https://www.twitter.com/mohammedbuallay",
+        "linkType": "Twitter"
+      },
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/mohammed-buallay-691b23152/",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Instagram",
+        "url": "https://www.instagram.com/mohammedbuallay/",
+        "linkType": "Instagram"
+      },
+      {
+        "title": "Blog",
+        "url": "https://www.instagram.com/mohammedbuallay/",
+        "linkType": "Blog"
+      },
+      {
+        "title": "Company Website",
+        "url": "https://buallay.com",
+        "linkType": "Company_Website"
+      }
+    ],
+    "sessions": []
   }
 ]
