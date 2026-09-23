@@ -270,9 +270,15 @@ function partners(list: Partner[], contactUrl: string): string {
          ${list
            .map(
              (p) => `<div class="text-center">
-               <a class="partner-chip" href="${esc(p.url)}" rel="noopener">
-                 <img class="partner-mark" src="${esc(asset(p.logo))}" alt="${esc(p.name)}">
-               </a>
+               ${
+                 p.url
+                   ? `<a class="partner-chip" href="${esc(p.url)}" rel="noopener">
+                        <img class="partner-mark" src="${esc(asset(p.logo))}" alt="${esc(p.name)}">
+                      </a>`
+                   : `<div class="partner-chip">
+                        <img class="partner-mark" src="${esc(asset(p.logo))}" alt="${esc(p.name)}">
+                      </div>`
+               }
                ${p.role ? `<p class="mt-2 text-sm text-[var(--ink-muted)]">${esc(p.role)}</p>` : ""}
              </div>`,
            )

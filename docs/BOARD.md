@@ -1,6 +1,6 @@
 # Tracking Board — DevFest Armenia 2026
 
-**Last updated:** 2026-09-23
+**Last updated:** 2026-09-24
 
 This board is the authoritative record of task status (ADR-006). There is no second
 tracker — do not mirror rows into GitHub Issues.
@@ -86,7 +86,7 @@ infrastructure decision.
 | DF-28 | Three-track agenda section | todo | Davit | 12 Nov | Placeholder live; cannot be complete before the CFP closes 8 Nov |
 | DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 12 Nov | Only embed retained |
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 12 Nov | Limited number |
-| DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers — one flat list. InTech.am added 19 Sep |
+| DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers. InTech.am 19 Sep, Yandex Armenia 24 Sep — **needs a link** |
 | DF-32 | Organizers section — "Meet the team" | done | Davit | 7 Nov | Type, loader and validation added; Davit listed |
 
 ## Phase 4 — Day of (21 Nov)
@@ -536,6 +536,27 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-24 · DF-31 · Claude Code (task manager)
+Yandex Armenia added as **Event Partner**. The logo came from a Safari `.webarchive` — a binary
+plist — so it was extracted from the `WebSubresources` list rather than from a file. The archive
+was a Yandex Disk folder page, so what it contained were preview thumbnails, not the originals:
+four images, two stacked and two horizontal, one of the horizontal pair cropped. Took the
+complete 1280x141 horizontal wordmark, trimmed its transparent margin, and checked it on the
+white partner chip before committing.
+
+**It has no link.** Davit did not supply one, `yandex.am` does not respond and
+`yandex.com/company/armenia` 404s, and inventing a partner's URL is not a guess worth making.
+So `url` is now allowed to be empty and the mark renders as an unlinked chip. The validator
+still requires the key to be **present and a string**, so "no link yet" is a deliberate state in
+the file rather than an omission nobody notices. DF-31's row asks for the link.
+
+Also: Davit's title is now "Staff Software Engineer @ Grid Dynamics".
+
+Worth recording about the extraction, since it cost two attempts: compositing the RGBA previews
+with `.convert("RGB")` produced four solid black rectangles, because transparent pixels composite
+onto black by default and the artwork is black on transparent. The logos were fine; the contact
+sheet was lying. `alpha_composite` onto white showed them immediately.
 
 ### 2026-09-23 · DF-32 · Claude Code (task manager)
 Habet Madoyan added at the end of the team as **Co-Organizer** — deliberately not "GDG Yerevan

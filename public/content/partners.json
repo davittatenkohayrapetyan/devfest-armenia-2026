@@ -5,6 +5,12 @@
       "role": "Media partner",
       "logo": "assets/logos/intech-am.png",
       "url": "https://intech.am"
+    },
+    {
+      "name": "Yandex Armenia",
+      "role": "Event Partner",
+      "logo": "assets/logos/yandex-armenia.png",
+      "url": ""
     }
   ],
   "contactUrl": "mailto:gdgyerevan@gmail.com"

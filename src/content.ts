@@ -36,6 +36,7 @@ export type Organizer = {
 export type Partner = {
   name: string;
   logo: string;
+  /** Empty when a partner has given no link — the mark then renders unlinked. */
   url: string;
   /** Optional descriptor, e.g. "Media partner". Not a rank — there are no partner tiers. */
   role?: string;

@@ -50,8 +50,12 @@ if (partners) {
     errors.push("partners.json: partners must be an array");
   else
     partners.partners.forEach((p, i) => {
-      for (const k of ["name", "logo", "url"])
+      for (const k of ["name", "logo"])
         if (!p?.[k]) errors.push(`partners.json.partners[${i}]: missing "${k}"`);
+      // url may be empty — a partner without a link is legitimate — but the key must be
+      // present and a string, so "no link yet" is a deliberate state rather than an omission.
+      if (typeof p?.url !== "string")
+        errors.push(`partners.json.partners[${i}]: "url" must be a string, empty if unknown`);
     });
 }
 
