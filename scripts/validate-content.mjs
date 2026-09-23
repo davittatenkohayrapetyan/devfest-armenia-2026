@@ -64,6 +64,10 @@ if (organizers) {
     organizers.forEach((o, i) => {
       for (const k of ["name", "role", "photo"])
         if (!o?.[k]) errors.push(`organizers.json[${i}]: missing "${k}"`);
+      // title is optional, but if present it must be a string — an accidental number or
+      // object would render as [object Object] rather than failing.
+      if ("title" in (o ?? {}) && typeof o.title !== "string")
+        errors.push(`organizers.json[${i}]: "title" must be a string`);
     });
 }
 

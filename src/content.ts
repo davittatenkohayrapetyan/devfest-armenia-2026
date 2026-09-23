@@ -25,7 +25,10 @@ export type Speaker = {
 
 export type Organizer = {
   name: string;
+  /** Their role on this event, e.g. "Co-Organizer". */
   role: string;
+  /** Optional day-job title, e.g. "BS in DS Program Chair, ACSE, AUA". Rendered when set. */
+  title?: string;
   photo: string;
   links?: SpeakerLink[];
 };

@@ -1,6 +1,6 @@
 # Tracking Board — DevFest Armenia 2026
 
-**Last updated:** 2026-09-22
+**Last updated:** 2026-09-23
 
 This board is the authoritative record of task status (ADR-006). There is no second
 tracker — do not mirror rows into GitHub Issues.
@@ -536,6 +536,24 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-09-23 · DF-32 · Claude Code (task manager)
+Habet Madoyan added at the end of the team as **Co-Organizer** — deliberately not "GDG Yerevan
+Organizer", at Davit's instruction. He is ACSE, and labelling him under GDG would misstate which
+organisation he is there for, in the same way the collaboration strip did before it was split.
+
+Organizers gained an optional `title` for a day-job line: his reads "BS in DS Program Chair,
+ACSE, AUA". Two things worth recording about how it was added:
+
+- The existing six entries carry `"title": ""` rather than omitting the key. An optional field
+  that is simply absent is invisible to whoever fills the file in next; an empty string is a slot
+  they can see. Empty renders nothing.
+- The validator accepts a missing `title` but rejects a non-string one. A number or object there
+  would render as `[object Object]` on the page rather than failing the build, which is the kind
+  of thing that reaches production because nothing complained.
+
+`role` now renders in full ink with `title` muted beneath it, so the event role reads as primary
+and the institutional title as context.
 
 ### 2026-09-22 · DF-50 · Claude Code (task manager)
 Synced. One new speaker — **Mohammed Buallay** — seven published. No removals, no changed fields.

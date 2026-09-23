@@ -252,7 +252,8 @@ function organizers(list: Organizer[]): string {
           (o) => `<article class="rounded-2xl p-5" style="background:var(--surface-alt)">
             <img class="h-20 w-20 rounded-full object-cover" src="${esc(asset(o.photo))}" alt="" loading="lazy">
             <h3 class="mt-4 font-bold">${esc(o.name)}</h3>
-            <p class="text-sm text-[var(--ink-muted)]">${esc(o.role)}</p>
+            <p class="text-sm">${esc(o.role)}</p>
+            ${o.title ? `<p class="mt-1 text-sm text-[var(--ink-muted)]">${esc(o.title)}</p>` : ""}
           </article>`,
         )
         .join("")}

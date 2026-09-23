@@ -3,36 +3,49 @@
     "name": "Davit Hayrapetyan",
     "role": "GDG Yerevan Organizer",
     "photo": "assets/organizers/davit-hayrapetyan.jpg",
-    "links": []
+    "links": [],
+    "title": ""
   },
   {
     "name": "Martin Mirzoyan",
     "role": "GDG Yerevan Organizer",
     "photo": "assets/organizers/martin-mirzoyan.jpg",
-    "links": []
+    "links": [],
+    "title": ""
   },
   {
     "name": "Roland Egiazaryan",
     "role": "GDG Yerevan Organizer",
     "photo": "assets/organizers/roland-egiazaryan.jpg",
-    "links": []
+    "links": [],
+    "title": ""
   },
   {
     "name": "Vardan Papikyan",
     "role": "GDG Yerevan Founder",
     "photo": "assets/organizers/vardan-papikyan.jpg",
-    "links": []
+    "links": [],
+    "title": ""
   },
   {
     "name": "Armen Vardanyan",
     "role": "GDE Angular",
     "photo": "assets/organizers/armen-vardanyan.jpg",
-    "links": []
+    "links": [],
+    "title": ""
   },
   {
     "name": "Rohan Singh",
     "role": "GDE Cloud",
     "photo": "assets/organizers/rohan-singh.jpg",
+    "links": [],
+    "title": ""
+  },
+  {
+    "name": "Habet Madoyan",
+    "role": "Co-Organizer",
+    "title": "BS in DS Program Chair, ACSE, AUA",
+    "photo": "assets/organizers/habet-madoyan.jpg",
     "links": []
   }
 ]
