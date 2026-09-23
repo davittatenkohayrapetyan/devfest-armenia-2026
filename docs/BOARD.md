@@ -538,6 +538,24 @@ go well.
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
 ### 2026-09-24 · DF-31 · Claude Code (task manager)
+Partner chips are now the same rectangle, with the wordmarks at matching letterform height.
+
+The measurement is the interesting part. Matching the images by height would have been wrong:
+InTech's capitals are **0.78** of its trimmed height, because the red `IN` block stands taller
+than the letters, while Yandex's are **0.98**. Equal image heights therefore render Yandex's
+wordmark about 25% larger — the same trap as the GDG/AUA strip, where the AUA file's padding made
+an equal height look like an unequal logo. Matched on cap height instead, at 100px, and centred
+both on a shared 1000x140 transparent canvas.
+
+Two mechanisms rather than one, deliberately. The shared canvas makes the marks *read* at the
+same size, and `.partner-chip` fixes its own width and height so a logo prepared some other way
+is letterboxed rather than allowed to resize its chip. The first is a convention, which someone
+will eventually miss; the second is enforcement.
+
+Written into `BRAND.md` as a three-step procedure, because "prepare it like the others" is not
+usable guidance for whoever adds the next partner.
+
+### 2026-09-24 · DF-31 · Claude Code (task manager)
 Yandex Armenia added as **Event Partner**. The logo came from a Safari `.webarchive` — a binary
 plist — so it was extracted from the `WebSubresources` list rather than from a file. The archive
 was a Yandex Disk folder page, so what it contained were preview thumbnails, not the originals:

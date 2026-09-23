@@ -85,6 +85,23 @@ The two marks are separated by a `×`, decorative and `aria-hidden`. Only GDG Ye
 labelled, with "Organized by"; the label is positioned out of flow so the two marks stay
 centred on the same line rather than the labelled one sitting lower.
 
+## Partner marks
+
+Prepare every partner logo the same way, or the section stops looking deliberate:
+
+1. Trim the supplied artwork to its ink, and key a white background to transparency.
+2. Scale it so the **letterform height matches the others** — the cap height of the wordmark,
+   not the overall bounding box. Measured from the files: InTech's caps are 0.78 of its trimmed
+   height because the red `IN` block is taller than the letters, while Yandex's are 0.98. Match
+   on caps at **100px** and they read as the same size; match on bounding box and one wordmark
+   looks 25% bigger than the other.
+3. Centre it on a transparent **1000×140** canvas. A shared canvas means a shared aspect ratio,
+   which is what keeps the chips identical.
+
+`.partner-chip` also fixes its own width and height, so a logo prepared some other way is
+letterboxed rather than allowed to resize its chip. Marks sit on a fixed white chip in both
+themes — a partner supplies whatever artwork they have, and recolouring it is not an option.
+
 AUA's lockup is roughly 3.5:1; GDG Yerevan's is closer to square. Align by **optical
 cap-height of the letterforms**, not by bounding box — matching container heights makes
 AUA look oversized. The strip sets a fixed cap-height and lets widths fall where they land.
