@@ -1,6 +1,6 @@
 # Tracking Board — DevFest Armenia 2026
 
-**Last updated:** 2026-09-24
+**Last updated:** 2026-10-04
 
 This board is the authoritative record of task status (ADR-006). There is no second
 tracker — do not mirror rows into GitHub Issues.
@@ -72,9 +72,9 @@ infrastructure decision.
 | DF-22 | Retrieve Sessionize embed ID for 2026 | done | Davit | 10 Oct | `2d3htmgm` — recorded in CLAUDE.md |
 | DF-23 | Wire `loadSpeakers()` to Sessionize API | cancelled | — | — | Superseded by DF-50 — sync on demand, not fetch at runtime |
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
-| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 7 speakers live at 22 Sep |
+| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 10 speakers live at 4 Oct |
 | DF-51 | Extend the sync to talks — session mapping | todo | Davit | 10 Nov | Needs DF-50. Blocks DF-28. See brief |
-| DF-25 | Verify 9+ compact grid state with real data | todo | Davit | 20 Oct | 20+ expected |
+| DF-25 | Verify 9+ compact grid state with real data | review | Davit | 20 Oct | Threshold crossed at 10 speakers, 4 Oct — needs a look on a phone |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
 | DF-27 | Hide CFP block after 8 Nov — verify | todo | Davit | 9 Nov | Also check the Speakers CTA and note disappear |
 | DF-39 | Decide how content gets published in October | todo | Davit | 9 Oct | Decision task — see brief |
@@ -536,6 +536,25 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-10-04 · DF-50, DF-25 · Claude Code (task manager)
+Synced after ten days. Three new speakers — **Ali (Aran) Kazemi**, **Kenneth Christiansen**,
+**Natasha Arefyeva** — ten published. No removals, no changed fields.
+
+**The metadata fix held.** Not one existing photo was rewritten, across a ten-day gap that would
+previously have re-stamped every PNG with a fresh `tIME` chunk. Before the fix this sync would
+have shown seven photos modified and three added, and the three that mattered would have been
+buried in the noise.
+
+**DF-25's threshold has been crossed.** `speakers()` switches from the roomy 2/3-column grid to
+the compact 3/4-column one above eight speakers, and at ten that branch is now live for the first
+time with real data. Code-verified; moved to `review` rather than `done` because the thing DF-25
+actually asks is whether the compact cards *look* right at that density, which is a phone check,
+not a curl check.
+
+R-3 watch: 10 accepted, roughly 30 wanted for three tracks, CFP closing 8 November. The trend
+matters more than the count — five in the last fortnight. The track-count call is due on trend by
+1 November.
 
 ### 2026-09-24 · DF-31 · Claude Code (task manager)
 Partner chips are now the same rectangle, with the wordmarks at matching letterform height.

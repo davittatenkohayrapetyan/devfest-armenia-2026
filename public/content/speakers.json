@@ -1,5 +1,25 @@
 [
   {
+    "id": "ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147",
+    "fullName": "Ali (Aran) Kazemi",
+    "tagLine": "EU AI Alliance Member | Founder & Principal AI Systems Architect at EIP-Technologies",
+    "bio": "Ali (Aran) Kazemi is the Founder and Principal Systems Architect at EIP-Technologies, an active Member and Advisor of the EU AI Alliance, and an IBM-Certified Generative AI Developer and Generative AI Engineer. He specializes in designing high-assurance, high-frequency distributed systems and is the architect behind the Enterprise Agent Engine (EAE) and EIP-LABS. Through the EU AI Alliance, Ali introduced CrisisAI, a pioneering hybrid intelligence (AI and ML) framework recognized as an official best practice on the European Union portal, and he actively contributes to critical EU initiatives focused on AI-driven emergency and disaster management. Applying rigorous engineering standards to artificial intelligence, he works on solving the structural bottlenecks of modern AI platforms, enabling enterprise data independence, hardware-level optimization, pure Go microkernels, and providing cloud providers and public-sector institutions with carrier-grade, secure, air-gapped agent infrastructure.",
+    "profilePicture": "assets/speakers/ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147.png",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/e-a-k/",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Sessionize",
+        "url": "https://sessionize.com/e-a-k",
+        "linkType": "Sessionize"
+      }
+    ],
+    "sessions": []
+  },
+  {
     "id": "8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3",
     "fullName": "Ankur Roy",
     "tagLine": "Solutions Architect at Online Partner AB | Google Developer Expert in Cloud",
@@ -64,6 +84,36 @@
         "title": "LinkedIn",
         "url": "https://www.linkedin.com/in/gabrielpreda/",
         "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
+    "id": "4f850d61-b54a-4e83-895b-043292dd29d3",
+    "fullName": "Kenneth Christiansen",
+    "tagLine": "Web Platform Architect and Principal Engineer at Intel Corporation, W3C Technical Architecture Group alumni",
+    "bio": "Kenneth Rohde Christiansen is principal engineer in the Intel Web Platform Engineering team. In his role, Kenneth leads multiple efforts making sure that the web platform works in Intel’s favor, by becoming a real application development platform, driving Windows and Chrome OS usage, while working best on Intel and exposing the full potential of our hardware capabilities to developers. Since joining Intel in 2011, Kenneth has shaped our approach to working with external browser vendors and the web community, leading to many success stories in landing Intel specific features and optimization in Chromium based browsers such as Google Chrome and Microsoft Edge. Some of these features and inventions have been industry shaping, such as Progressive Web Apps, which is becoming one of the main ways to create desktop applications. He is a multi-term elected member of the W3C (World Wide Web Consortium) Technical Architecture Group, growing Intel’s influence inside the most important standardization group of the web platform. Apart from that he is also a Microsoft Most Values Professional in Developer Tooling and Google Developer Experts in Web Technology. Kenneth holds a MSc degree in Software Engineering from the University of Groningen, the Netherlands and a BSc degree in Software Engineering and Math from the University of Copenhagen.",
+    "profilePicture": "assets/speakers/4f850d61-b54a-4e83-895b-043292dd29d3.jpg",
+    "links": [
+      {
+        "title": "X (Twitter)",
+        "url": "https://twitter.com/kennethrohde",
+        "linkType": "Twitter"
+      },
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/kenneth-rohde-christiansen/",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Company Website",
+        "url": "https://intel.com",
+        "linkType": "Company_Website"
+      },
+      {
+        "title": "Sessionize",
+        "url": "https://sessionize.com/kenneth-christiansen",
+        "linkType": "Sessionize"
       }
     ],
     "sessions": []
@@ -149,6 +199,21 @@
         "title": "Company Website",
         "url": "https://buallay.com",
         "linkType": "Company_Website"
+      }
+    ],
+    "sessions": []
+  },
+  {
+    "id": "fcd40625-d41f-45f8-8b4b-fc510bb96d07",
+    "fullName": "Natasha Arefyeva",
+    "tagLine": "PCC ICF Certified Coach, 15+ years in IT",
+    "bio": "Natasha Arefyeva has spent over 15 years in tech — from developer to Chief Product Officer.\r\nNow an PCC ICF coach (Erickson Coaching International, Canada) and team coach, she helps people and teams reconnect with clarity, trust, and purpose.\r\nHer work focuses on building honest, open communication and processes that make teams stronger from the inside out.",
+    "profilePicture": "assets/speakers/fcd40625-d41f-45f8-8b4b-fc510bb96d07.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/natasha-arefyeva/",
+        "linkType": "LinkedIn"
       }
     ],
     "sessions": []
