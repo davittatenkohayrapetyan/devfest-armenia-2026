@@ -217,5 +217,50 @@
       }
     ],
     "sessions": []
+  },
+  {
+    "id": "5ec4275d-42ed-41ca-bbf2-305f258dc0b0",
+    "fullName": "Vadim Patsev",
+    "tagLine": "Lead AI Agents Engineer at Yandex Armenia",
+    "bio": "Vadim Patsev leads the DeepAgent team at Yandex, building a multi-agent system that plans a search across many sources and assembles one coherent answer. Before that he worked on Yandex Mail and Disk. Outside Yandex he was part of a self-driving car racing project and worked on an automated blood-analysis system. He previously spoke at PyCon about Python and robotics, and still builds robots for fun.",
+    "profilePicture": "assets/speakers/5ec4275d-42ed-41ca-bbf2-305f258dc0b0.png",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/basvasilich/",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Sessionize",
+        "url": "https://sessionize.com/vadim-patsev",
+        "linkType": "Sessionize"
+      }
+    ],
+    "sessions": []
+  },
+  {
+    "id": "4f4a4f3f-0751-41f1-b1ad-d4edd8cd09c5",
+    "fullName": "Viktoriia Akhmatova",
+    "tagLine": "Jack of All Trades",
+    "bio": "Full-stack software engineer with 6+ years of experience building production web applications, backend services, and Web3 products.\r\n \r\nEven though my primary focus is frontend, my background also spans backend, cloud infrastructure, and smart contracts. I enjoy working across the stack and choosing the right tools for the problem rather than specializing in a single technology.",
+    "profilePicture": "assets/speakers/4f4a4f3f-0751-41f1-b1ad-d4edd8cd09c5.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/toriatovawebdev/",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Facebook",
+        "url": "https://www.facebook.com/profile.php?id=100003447890738",
+        "linkType": "Facebook"
+      },
+      {
+        "title": "Sessionize",
+        "url": "https://sessionize.com/victoria-akhmatova",
+        "linkType": "Sessionize"
+      }
+    ],
+    "sessions": []
   }
 ]

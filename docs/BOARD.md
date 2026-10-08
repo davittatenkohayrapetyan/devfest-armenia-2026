@@ -1,6 +1,6 @@
 # Tracking Board — DevFest Armenia 2026
 
-**Last updated:** 2026-10-04
+**Last updated:** 2026-10-08
 
 This board is the authoritative record of task status (ADR-006). There is no second
 tracker — do not mirror rows into GitHub Issues.
@@ -72,7 +72,7 @@ infrastructure decision.
 | DF-22 | Retrieve Sessionize embed ID for 2026 | done | Davit | 10 Oct | `2d3htmgm` — recorded in CLAUDE.md |
 | DF-23 | Wire `loadSpeakers()` to Sessionize API | cancelled | — | — | Superseded by DF-50 — sync on demand, not fetch at runtime |
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
-| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 10 speakers live at 4 Oct |
+| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 12 speakers live at 8 Oct |
 | DF-51 | Extend the sync to talks — session mapping | todo | Davit | 10 Nov | Needs DF-50. Blocks DF-28. See brief |
 | DF-25 | Verify 9+ compact grid state with real data | review | Davit | 20 Oct | Threshold crossed at 10 speakers, 4 Oct — needs a look on a phone |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
@@ -536,6 +536,23 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-10-08 · DF-50, DF-32, DF-20 · Claude Code (task manager)
+Synced: **Vadim Patsev** and **Viktoriia Akhmatova** added, twelve published. No removals, no
+changed fields, no photo churn. Mane Vardanyan's title corrected to "Communications and Events
+Organization **Specialist**".
+
+Produced a deploy build and, usefully, diffed it against the previous one rather than just
+handing over a folder. The result is worth recording as a property of this site: **the JS and CSS
+were byte-identical**. Four syncs and a title edit changed nothing but `content/*.json` and two
+speaker photos. That is ADR-001 paying out — content changes do not touch code, so a content
+update is five files rather than a redeployment, and the hashed bundles stay cached in visitors'
+browsers.
+
+`sitemap.xml` also changed, which is expected and not content: it carries a `lastmod` date.
+
+Outstanding: Davit asked to change Mane's photo but attached no image. Title updated, photo
+unchanged, and he has been told rather than left to notice.
 
 ### 2026-10-04 · DF-50, DF-25 · Claude Code (task manager)
 Synced after ten days. Three new speakers — **Ali (Aran) Kazemi**, **Kenneth Christiansen**,
