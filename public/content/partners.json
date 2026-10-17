@@ -14,11 +14,13 @@
     },
     {
       "name": "HackLab",
+      "role": "Quiz Partner",
       "logo": "assets/logos/hacklab.png",
       "url": "https://hacklab-opal.vercel.app/"
     },
     {
       "name": "EPAM Armenia",
+      "role": "Event Partner",
       "logo": "assets/logos/epam.png",
       "url": "https://www.epam.com/careers/epam-armenia"
     }

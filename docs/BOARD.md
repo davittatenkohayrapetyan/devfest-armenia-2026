@@ -86,7 +86,7 @@ infrastructure decision.
 | DF-28 | Three-track agenda section | todo | Davit | 12 Nov | Placeholder live; cannot be complete before the CFP closes 8 Nov |
 | DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 12 Nov | Only embed retained |
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 12 Nov | Limited number |
-| DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers. InTech.am 19 Sep, Yandex Armenia 24 Sep, HackLab and EPAM Armenia 17 Oct |
+| DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers. InTech.am 19 Sep, Yandex Armenia 24 Sep, HackLab (Quiz Partner) and EPAM Armenia (Event Partner) 17 Oct |
 | DF-53 | Follow buttons: Instagram and LinkedIn | done | Davit | 17 Oct | `event.json` `social[]`, rendered in the footer |
 | DF-54 | Crop speaker portraits to a matched face size, lock them against sync | done | Davit | 17 Oct | `scripts/crop-speakers.py`, lock in `scripts/speaker-photos.lock.json` |
 | DF-32 | Organizers section — "Meet the team" | done | Davit | 7 Nov | Type, loader and validation added; Davit listed |
