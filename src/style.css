@@ -433,3 +433,66 @@ main:focus { outline: none; }
   font-weight: 400;
   opacity: 0.75;
 }
+
+/* Motion layer (DF-55). Three effects, all in the kit's four colours and all quiet:
+   section content fades up once on scroll, headings get a four-colour rule that draws in,
+   and portraits pick up a colour ring. Reduced-motion readers get the end state with no
+   movement — wireReveal() does not run for them, and the global rule above zeroes durations. */
+
+/* Hidden only once JS has opted in (html.reveal), so a script failure never blanks the page. */
+.reveal main section .wrap [style*="--reveal-delay"] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal main section .wrap .is-visible[style*="--reveal-delay"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hard stops, not a blend: four equal bars, the same rhythm as the hero's rule. */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 4.5rem;
+  height: 4px;
+  margin-top: 0.75rem;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--df-blue) 0 25%,
+    var(--df-red) 25% 50%,
+    var(--df-yellow) 50% 75%,
+    var(--df-green) 75% 100%
+  );
+  transform-origin: left;
+}
+.reveal .section-title::after {
+  transform: scaleX(0);
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s;
+}
+.reveal .is-visible .section-title::after,
+.reveal .section-title.is-visible::after {
+  transform: scaleX(1);
+}
+
+/* Portrait rings take turns through the four colours across a grid. The inner ring is the
+   card's own surface, so the colour reads as a halo rather than touching the photo. */
+.grid > :nth-child(4n + 1) .avatar { --ring: var(--df-blue); }
+.grid > :nth-child(4n + 2) .avatar { --ring: var(--df-red); }
+.grid > :nth-child(4n + 3) .avatar { --ring: var(--df-yellow); }
+.grid > :nth-child(4n + 4) .avatar { --ring: var(--df-green); }
+.avatar {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+/* Touch screens cannot hover, so they get the ring as a static detail. */
+@media (hover: none) {
+  .avatar { box-shadow: 0 0 0 3px var(--surface-alt), 0 0 0 5px var(--ring, transparent); }
+}
+@media (hover: hover) {
+  article:hover .avatar {
+    box-shadow: 0 0 0 3px var(--surface-alt), 0 0 0 6px var(--ring, transparent);
+    transform: scale(1.04);
+  }
+}

@@ -134,7 +134,7 @@ function callForSpeakers(e: EventContent): string {
          style="background-image:linear-gradient(180deg,rgba(30,30,30,.90),rgba(30,30,30,.96)),url('${base}assets/photos/cfp-audience.jpg')">
   <div class="wrap grid gap-12 md:grid-cols-[1.1fr_1fr]">
     <div>
-      <h2 class="text-3xl md:text-4xl font-bold">Call for speakers is open</h2>
+      <h2 class="section-title text-3xl md:text-4xl font-bold">Call for speakers is open</h2>
       <p class="mt-4 prose-measure hero-muted">
         We are looking for practical experience, technical insight, lessons learned, deep
         dives and case studies that bring real value to the developer community. First-time
@@ -170,7 +170,7 @@ function about(e: EventContent): string {
   return `
 <section id="about" class="py-20">
   <div class="wrap">
-    <h2 class="text-3xl md:text-4xl font-bold">About the event</h2>
+    <h2 class="section-title text-3xl md:text-4xl font-bold">About the event</h2>
     <p class="mt-4 prose-measure text-lg text-[var(--ink-muted)]">${esc(e.about.lead)}</p>
     <p class="mt-8">
       <a class="btn btn-secondary" href="${esc(e.cta.lastYear)}" rel="noopener">
@@ -207,7 +207,7 @@ function speakers(list: Speaker[], e: EventContent): string {
            ${list
              .map(
                (s) => `<article class="rounded-2xl p-5" style="background:var(--surface-alt)">
-               <img class="h-20 w-20 rounded-full object-cover" src="${esc(asset(s.profilePicture))}" alt="" loading="lazy">
+               <img class="avatar h-20 w-20 rounded-full object-cover" src="${esc(asset(s.profilePicture))}" alt="" loading="lazy">
                <h3 class="mt-4 font-bold">${esc(s.fullName)}</h3>
                <p class="text-sm text-[var(--ink-muted)]">${esc(s.tagLine)}</p>
              </article>`,
@@ -217,7 +217,7 @@ function speakers(list: Speaker[], e: EventContent): string {
   return `
 <section id="speakers" class="py-20">
   <div class="wrap">
-    <h2 class="text-3xl md:text-4xl font-bold">Speakers</h2>
+    <h2 class="section-title text-3xl md:text-4xl font-bold">Speakers</h2>
     ${note}
     ${body}
     ${cta}
@@ -229,7 +229,7 @@ function agenda(): string {
   return `
 <section id="agenda" class="py-20" style="background:var(--surface-alt)">
   <div class="wrap">
-    <h2 class="text-3xl md:text-4xl font-bold">Agenda</h2>
+    <h2 class="section-title text-3xl md:text-4xl font-bold">Agenda</h2>
     <div class="mt-8 rounded-2xl p-10 text-center" style="background:var(--surface)">
       <p class="text-lg">The agenda will be announced closer to the event.</p>
       <p class="mt-2 text-[var(--ink-muted)]">
@@ -245,12 +245,12 @@ function organizers(list: Organizer[]): string {
   return `
 <section id="team" class="py-20">
   <div class="wrap">
-    <h2 class="text-3xl md:text-4xl font-bold">Meet the team</h2>
+    <h2 class="section-title text-3xl md:text-4xl font-bold">Meet the team</h2>
     <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       ${list
         .map(
           (o) => `<article class="rounded-2xl p-5" style="background:var(--surface-alt)">
-            <img class="h-20 w-20 rounded-full object-cover" src="${esc(asset(o.photo))}" alt="" loading="lazy">
+            <img class="avatar h-20 w-20 rounded-full object-cover" src="${esc(asset(o.photo))}" alt="" loading="lazy">
             <h3 class="mt-4 font-bold">${esc(o.name)}</h3>
             <p class="text-sm">${esc(o.role)}</p>
             ${o.title ? `<p class="mt-1 text-sm text-[var(--ink-muted)]">${esc(o.title)}</p>` : ""}
@@ -291,7 +291,7 @@ function partners(list: Partner[], contactUrl: string): string {
   return `
 <section id="partners" class="py-20" style="background:var(--surface-alt)">
   <div class="wrap">
-    <h2 class="text-3xl md:text-4xl font-bold">Partners</h2>
+    <h2 class="section-title text-3xl md:text-4xl font-bold">Partners</h2>
     ${body}
     <a class="btn btn-secondary mt-8" href="${esc(contactUrl)}">Become a partner</a>
   </div>
@@ -302,7 +302,7 @@ function venue(e: EventContent): string {
   return `
 <section id="venue" class="py-20">
   <div class="wrap">
-    <h2 class="text-3xl md:text-4xl font-bold">Venue</h2>
+    <h2 class="section-title text-3xl md:text-4xl font-bold">Venue</h2>
     <p class="mt-4 text-lg">${esc(e.venue.name)}</p>
     <p class="text-[var(--ink-muted)]">${esc(e.venue.detail)}</p>
     <p class="mt-2 text-[var(--ink-muted)]">${esc(e.venue.address)}</p>
@@ -400,6 +400,39 @@ function wireCountdown(root: HTMLElement): void {
   });
 }
 
+/**
+ * Fades section content up as it scrolls into view, once. Cards in a grid stagger slightly.
+ * Nothing is hidden unless this runs: the hidden state hangs off `html.reveal`, which is only set
+ * when IntersectionObserver exists and the reader has not asked for reduced motion — so a
+ * failure here leaves the page fully visible rather than blank.
+ */
+function wireReveal(root: HTMLElement): void {
+  if (!("IntersectionObserver" in window)) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const targets: HTMLElement[] = [];
+  root.querySelectorAll<HTMLElement>("main section .wrap").forEach((wrap) => {
+    for (const child of Array.from(wrap.children) as HTMLElement[]) {
+      const items = child.matches(".grid, .flex-wrap") ? (Array.from(child.children) as HTMLElement[]) : [child];
+      items.forEach((el, i) => {
+        el.style.setProperty("--reveal-delay", `${Math.min(i, 8) * 40}ms`);
+        targets.push(el);
+      });
+    }
+  });
+  const seen = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        e.target.classList.add("is-visible");
+        seen.unobserve(e.target);
+      }
+    },
+    { rootMargin: "0px 0px -8% 0px", threshold: 0.1 },
+  );
+  document.documentElement.classList.add("reveal");
+  targets.forEach((el) => seen.observe(el));
+}
+
 function wireMapButton(root: HTMLElement): void {
   const button = root.querySelector<HTMLButtonElement>("[data-load-map]");
   if (!button) return;
@@ -442,6 +475,7 @@ async function render() {
     ].join("");
     wireMapButton(root);
     wireCountdown(root);
+    wireReveal(root);
   } catch (err) {
     root.innerHTML = `<div class="wrap py-20">
       <h1 class="text-2xl font-bold">Content failed to load</h1>

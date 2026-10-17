@@ -89,6 +89,7 @@ infrastructure decision.
 | DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers. InTech.am 19 Sep, Yandex Armenia 24 Sep, HackLab (Quiz Partner) and EPAM Armenia (Event Partner) 17 Oct |
 | DF-53 | Follow buttons: Instagram and LinkedIn | done | Davit | 17 Oct | `event.json` `social[]`, rendered in the footer |
 | DF-54 | Crop speaker portraits to a matched face size, lock them against sync | done | Davit | 17 Oct | `scripts/crop-speakers.py`, lock in `scripts/speaker-photos.lock.json` |
+| DF-55 | Light motion layer: scroll reveal, four-colour heading rule, portrait rings | review | Davit | 17 Oct | CSS + `wireReveal()`, no dependencies. Needs a look on a phone |
 | DF-32 | Organizers section — "Meet the team" | done | Davit | 7 Nov | Type, loader and validation added; Davit listed |
 
 ## Phase 4 — Day of (21 Nov)
@@ -538,6 +539,18 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-10-17 · DF-55 · Claude Code (task manager)
+Three of seven proposed effects, chosen by Davit: section content fades up 12px once as it
+enters the viewport (grid cards stagger 40ms, capped at 8); every section heading gets a 72px
+rule in the four kit colours that draws in left to right; speaker and team portraits get a ring
+that cycles blue/red/yellow/green across the grid, on hover for mouse users and static on touch.
+
+Safe by construction: the hidden state hangs off `html.reveal`, which `wireReveal()` sets only
+when IntersectionObserver exists and the reader has not asked for reduced motion. A script
+failure leaves the page fully visible, and reduced-motion readers see the end state with no
+movement. No colour outside the kit; partner logos untouched. Left out on purpose: floating
+hero art, countdown digit animation, halftone backgrounds — revisit after the phone review.
 
 ### 2026-10-17 · DF-54 · Claude Code (task manager)
 All sixteen portraits cropped square around the face at a fixed face-to-frame ratio (face
