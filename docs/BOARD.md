@@ -540,6 +540,14 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-10-17 · DF-31, DF-20 · Claude Code (task manager)
+EPAM's logo replaced: the original `Black Logo.svg` turned up in Davit's iCloud Drive, so the
+mark cut from a phone screenshot is gone. Rendered from the SVG and placed on the same 1000×140
+canvas at the same 100px letterform height — identical size on the page, sharper edges.
+
+Deploy build produced with the recorded command and copied to iCloud Drive
+(`DevFest-Armenia-2026-dist`) for Davit to upload from his Mac.
+
 ### 2026-10-17 · DF-55 · Claude Code (task manager)
 Three of seven proposed effects, chosen by Davit: section content fades up 12px once as it
 enters the viewport (grid cards stagger 40ms, capped at 8); every section heading gets a 72px
