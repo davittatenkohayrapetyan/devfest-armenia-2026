@@ -92,8 +92,20 @@ function stripVolatileMetadata(buf) {
   return buf;
 }
 
+// Photos cropped by scripts/crop-speakers.py are locked: the sync keeps the committed crop and
+// never downloads over it. Delete a speaker's entry to take their Sessionize photo again.
+const LOCK = "scripts/speaker-photos.lock.json";
+const locked = existsSync(LOCK) ? JSON.parse(readFileSync(LOCK, "utf8")) : {};
+const unlocked = [];
+
 /** Download a speaker photo locally: no third-party dependency for faces on event day. */
 async function localPhoto(sp) {
+  const lock = locked[sp.id];
+  if (lock) {
+    if (!existsSync(join("public", lock.file))) die(`locked photo ${lock.file} for ${sp.fullName} is missing`);
+    return lock.file;
+  }
+  unlocked.push(sp.fullName);
   if (!sp.profilePicture) return "";
   const ext = (extname(new URL(sp.profilePicture).pathname) || ".jpg").toLowerCase();
   const rel = `assets/speakers/${sp.id}${ext}`;
@@ -130,4 +142,6 @@ for (const sp of kept.sort((a, b) => a.fullName.localeCompare(b.fullName))) {
 writeFileSync(OUT, JSON.stringify(out, null, 2) + "\n", "utf8");
 console.log(`\nWrote ${out.length} speakers to ${OUT}`);
 console.log("Talks were not published — that is DF-51.");
+if (unlocked.length)
+  console.log(`Uncropped photos (${unlocked.join(", ")}): run python scripts/crop-speakers.py`);
 console.log("Review the diff, then run the three checks before committing.");

@@ -88,6 +88,7 @@ infrastructure decision.
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 12 Nov | Limited number |
 | DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers. InTech.am 19 Sep, Yandex Armenia 24 Sep, HackLab and EPAM Armenia 17 Oct |
 | DF-53 | Follow buttons: Instagram and LinkedIn | done | Davit | 17 Oct | `event.json` `social[]`, rendered in the footer |
+| DF-54 | Crop speaker portraits to a matched face size, lock them against sync | done | Davit | 17 Oct | `scripts/crop-speakers.py`, lock in `scripts/speaker-photos.lock.json` |
 | DF-32 | Organizers section — "Meet the team" | done | Davit | 7 Nov | Type, loader and validation added; Davit listed |
 
 ## Phase 4 — Day of (21 Nov)
@@ -537,6 +538,25 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-10-17 · DF-54 · Claude Code (task manager)
+All sixteen portraits cropped square around the face at a fixed face-to-frame ratio (face
+width × 2), so the 80px circles read as the same size of person. Faces come from OpenCV's
+frontal detector; four needed a manual box in `scripts/speaker-faces.json`. **Ankur Roy's
+Sessionize upload is sideways** — rotated 90° here, but worth telling him so the source gets
+fixed too.
+
+Limits worth knowing: Sessionize serves 400×400 at most, so faces that are small in the upload
+are upscaled. **Kevork Sulahian** (stage shot, 44px source crop) is visibly soft; Ankur Roy and
+Arman Gyulbudaghyan slightly. The fix is a better photo, not more processing. Five speakers whose
+face already fills the frame (Ali Kazemi, Artem Viter, Gabriel Preda, Goran Minov, Vadim Patsev)
+keep the full 400px frame — zooming out would need invented background.
+
+The lock: `sync-speakers.mjs` now returns the locked file for any speaker in
+`speaker-photos.lock.json` and never downloads over it. Verified: a full sync after cropping
+left every photo byte-identical. New speakers arrive uncropped and the sync names them; run
+`python scripts/crop-speakers.py` (needs `pillow` and `opencv-python-headless<5`). Five PNGs
+became JPEGs, which is why the paths in `speakers.json` changed.
 
 ### 2026-10-17 · DF-50, DF-31, DF-53 · Claude Code (task manager)
 Synced: **Artem Viter**, **Goran Minov**, **Kevork Sulahian** and **Vasilii Nikitin** added, sixteen published. No removals.

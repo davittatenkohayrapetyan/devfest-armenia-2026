@@ -4,7 +4,7 @@
     "fullName": "Ali (Aran) Kazemi",
     "tagLine": "EU AI Alliance Member | Founder & Principal AI Systems Architect at EIP-Technologies",
     "bio": "Ali (Aran) Kazemi is the Founder and Principal Systems Architect at EIP-Technologies, an active Member and Advisor of the EU AI Alliance, and an IBM-Certified Generative AI Developer and Generative AI Engineer. He specializes in designing high-assurance, high-frequency distributed systems and is the architect behind the Enterprise Agent Engine (EAE) and EIP-LABS. Through the EU AI Alliance, Ali introduced CrisisAI, a pioneering hybrid intelligence (AI and ML) framework recognized as an official best practice on the European Union portal, and he actively contributes to critical EU initiatives focused on AI-driven emergency and disaster management. Applying rigorous engineering standards to artificial intelligence, he works on solving the structural bottlenecks of modern AI platforms, enabling enterprise data independence, hardware-level optimization, pure Go microkernels, and providing cloud providers and public-sector institutions with carrier-grade, secure, air-gapped agent infrastructure.",
-    "profilePicture": "assets/speakers/ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147.png",
+    "profilePicture": "assets/speakers/ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147.jpg",
     "links": [
       {
         "title": "LinkedIn",
@@ -54,7 +54,7 @@
     "fullName": "Arman Gyulbudaghyan",
     "tagLine": "Staff DevOps Engineer",
     "bio": "Staff DevOps Engineer and Head of DevOps at Grid Dynamics",
-    "profilePicture": "assets/speakers/ba8de9c7-f2d2-458a-b678-9270ab8def5d.png",
+    "profilePicture": "assets/speakers/ba8de9c7-f2d2-458a-b678-9270ab8def5d.jpg",
     "links": [],
     "sessions": []
   },
@@ -108,7 +108,7 @@
     "fullName": "Goran Minov",
     "tagLine": "Regional Technical Strategist @ Okta | Google Developer Expert (GDE) in Google Cloud: Cloud AI",
     "bio": "Goran is a Google Developer Expert (GDE) in Cloud AI, Cloud AI & Cyber Security Architect, and 8x Google Cloud Certified Professional, holding key credentials including Google Cloud Professional Cloud Architect, DevOps Engineer, and Database Engineer.\r\n\r\nCurrently, he serves as a Senior Technical Account Manager at Okta, helping enterprises automate and secure their identity infrastructure. His passion lies in architecting secure machine learning workflows, deploying autonomous applications via the Gemini Enterprise Agent Platform, and ensuring multi-agent systems are governed by strict Secure-by-Design and Zero Trust principles.",
-    "profilePicture": "assets/speakers/12c176ed-9104-4a50-b1de-4f453342ab20.png",
+    "profilePicture": "assets/speakers/12c176ed-9104-4a50-b1de-4f453342ab20.jpg",
     "links": [
       {
         "title": "X (Twitter)",
@@ -238,7 +238,7 @@
     "fullName": "Mohammed Buallay",
     "tagLine": "Data science",
     "bio": "Mohammed Buallay, data enthusiast looking for hidden patterns in data. My mission is to empower individuals and companies with the power of artificial intelligence.",
-    "profilePicture": "assets/speakers/f579b865-8a53-4718-98e3-f8a52a93d8cd.png",
+    "profilePicture": "assets/speakers/f579b865-8a53-4718-98e3-f8a52a93d8cd.jpg",
     "links": [
       {
         "title": "X (Twitter)",
@@ -288,7 +288,7 @@
     "fullName": "Vadim Patsev",
     "tagLine": "Lead AI Agents Engineer at Yandex Armenia",
     "bio": "Vadim Patsev leads the DeepAgent team at Yandex, building a multi-agent system that plans a search across many sources and assembles one coherent answer. Before that he worked on Yandex Mail and Disk. Outside Yandex he was part of a self-driving car racing project and worked on an automated blood-analysis system. He previously spoke at PyCon about Python and robotics, and still builds robots for fun.",
-    "profilePicture": "assets/speakers/5ec4275d-42ed-41ca-bbf2-305f258dc0b0.png",
+    "profilePicture": "assets/speakers/5ec4275d-42ed-41ca-bbf2-305f258dc0b0.jpg",
     "links": [
       {
         "title": "LinkedIn",
