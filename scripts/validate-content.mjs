@@ -24,6 +24,12 @@ if (event) {
     if (!event.venue?.[k]) errors.push(`event.json: missing venue.${k}`);
   if (!event.speakers?.noteWhileCfpOpen)
     errors.push("event.json: missing speakers.noteWhileCfpOpen");
+  if (!Array.isArray(event.social)) errors.push("event.json: social must be an array");
+  else
+    event.social.forEach((s, i) => {
+      for (const k of ["name", "handle", "url"])
+        if (!s?.[k]) errors.push(`event.json: social[${i}] missing "${k}"`);
+    });
   if (event.startsAt && Number.isNaN(Date.parse(event.startsAt)))
     errors.push("event.json: startsAt is not parseable");
   if (event.startsAt && !/[+-]\d{2}:\d{2}$|Z$/.test(event.startsAt))

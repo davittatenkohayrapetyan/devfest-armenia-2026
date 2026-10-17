@@ -422,3 +422,14 @@ main:focus { outline: none; }
 .rule-red { background: var(--df-red); }
 .rule-yellow { background: var(--df-yellow); }
 .rule-green { background: var(--df-green); }
+
+/* Footer follow buttons. Same pill as every other button; the icon inherits the label's ink
+   through currentColor, so no network brand colour enters the palette. */
+.social-btn {
+  gap: 0.6rem;
+  padding-inline: 1.25rem;
+}
+.social-handle {
+  font-weight: 400;
+  opacity: 0.75;
+}

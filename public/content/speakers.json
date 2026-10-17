@@ -59,6 +59,21 @@
     "sessions": []
   },
   {
+    "id": "d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19",
+    "fullName": "Artem Viter",
+    "tagLine": "Senior Software Engineer",
+    "bio": "I’ve been building mobile apps since 2012. I started with Android, then picked up iOS, Kotlin Multiplatform and React Native along the way. Today I work on a crypto wallet with millions of users. Outside of work, I’m into backend and AI: I’m building my own AI product in Go and Python, with RAG search and an agent harness, and exploring how to build software with coding agents.",
+    "profilePicture": "assets/speakers/d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/artem-viter/",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
     "id": "75f479eb-c660-4511-8445-8ead525d09f1",
     "fullName": "Davit Siradeghyan",
     "tagLine": "Engineering Manager at Softr",
@@ -89,6 +104,36 @@
     "sessions": []
   },
   {
+    "id": "12c176ed-9104-4a50-b1de-4f453342ab20",
+    "fullName": "Goran Minov",
+    "tagLine": "Regional Technical Strategist @ Okta | Google Developer Expert (GDE) in Google Cloud: Cloud AI",
+    "bio": "Goran is a Google Developer Expert (GDE) in Cloud AI, Cloud AI & Cyber Security Architect, and 8x Google Cloud Certified Professional, holding key credentials including Google Cloud Professional Cloud Architect, DevOps Engineer, and Database Engineer.\r\n\r\nCurrently, he serves as a Senior Technical Account Manager at Okta, helping enterprises automate and secure their identity infrastructure. His passion lies in architecting secure machine learning workflows, deploying autonomous applications via the Gemini Enterprise Agent Platform, and ensuring multi-agent systems are governed by strict Secure-by-Design and Zero Trust principles.",
+    "profilePicture": "assets/speakers/12c176ed-9104-4a50-b1de-4f453342ab20.png",
+    "links": [
+      {
+        "title": "X (Twitter)",
+        "url": "https://twitter.com/lineargs",
+        "linkType": "Twitter"
+      },
+      {
+        "title": "LinkedIn",
+        "url": "https://linkedin.com/in/lineargs",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Blog",
+        "url": "https://lineargs.dev/",
+        "linkType": "Blog"
+      },
+      {
+        "title": "Sessionize",
+        "url": "https://sessionize.com/lineargs",
+        "linkType": "Sessionize"
+      }
+    ],
+    "sessions": []
+  },
+  {
     "id": "4f850d61-b54a-4e83-895b-043292dd29d3",
     "fullName": "Kenneth Christiansen",
     "tagLine": "Web Platform Architect and Principal Engineer at Intel Corporation, W3C Technical Architecture Group alumni",
@@ -113,6 +158,26 @@
       {
         "title": "Sessionize",
         "url": "https://sessionize.com/kenneth-christiansen",
+        "linkType": "Sessionize"
+      }
+    ],
+    "sessions": []
+  },
+  {
+    "id": "76de9ed8-afd1-499b-be1c-8cafae9585fe",
+    "fullName": "Kevork Sulahian",
+    "tagLine": "Staff ML Engineer & AAAI author",
+    "bio": "ML team lead and published researcher with a passion for building useful AI systems and helping teams deliver them well.",
+    "profilePicture": "assets/speakers/76de9ed8-afd1-499b-be1c-8cafae9585fe.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/kevorkysulahian/",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Sessionize",
+        "url": "https://sessionize.com/kevork-sulahian",
         "linkType": "Sessionize"
       }
     ],
@@ -236,6 +301,15 @@
         "linkType": "Sessionize"
       }
     ],
+    "sessions": []
+  },
+  {
+    "id": "d34d0e0e-8d93-405e-9a29-441cad6541ef",
+    "fullName": "Vasilii Nikitin",
+    "tagLine": "Software engineer · high-load data services (Python, Erlang, ClickHouse) · interested in mobile app security & reverse engineering · Yerevan",
+    "bio": "Vasily Nikitin is a software engineer based in Yerevan. He works on high-load data services in Python, Erlang and ClickHouse, and has a long-standing interest in mobile application security and reverse engineering. He follows public vulnerability research and bug bounty disclosures and enjoys turning them into practical, defensive lessons for developers.",
+    "profilePicture": "assets/speakers/d34d0e0e-8d93-405e-9a29-441cad6541ef.jpg",
+    "links": [],
     "sessions": []
   },
   {

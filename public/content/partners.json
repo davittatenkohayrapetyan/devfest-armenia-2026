@@ -11,6 +11,16 @@
       "role": "Event Partner",
       "logo": "assets/logos/yandex-armenia.png",
       "url": "https://www.instagram.com/yandex.armenia/"
+    },
+    {
+      "name": "HackLab",
+      "logo": "assets/logos/hacklab.png",
+      "url": "https://hacklab-opal.vercel.app/"
+    },
+    {
+      "name": "EPAM Armenia",
+      "logo": "assets/logos/epam.png",
+      "url": "https://www.epam.com/careers/epam-armenia"
     }
   ],
   "contactUrl": "mailto:gdgyerevan@gmail.com"

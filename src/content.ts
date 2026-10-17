@@ -42,6 +42,13 @@ export type Partner = {
   role?: string;
 };
 
+export type SocialLink = {
+  /** Network name — also selects the icon, so it must be "Instagram" or "LinkedIn". */
+  name: string;
+  handle: string;
+  url: string;
+};
+
 export type EventContent = {
   name: string;
   date: string;
@@ -64,6 +71,8 @@ export type EventContent = {
     note: string;
   };
   speakers: { noteWhileCfpOpen: string };
+  /** GDG Yerevan's own channels, rendered as follow buttons in the footer. */
+  social: SocialLink[];
   about: {
     lead: string;
     stats: { value: string; label: string }[];

@@ -1,6 +1,6 @@
 # Tracking Board — DevFest Armenia 2026
 
-**Last updated:** 2026-10-08
+**Last updated:** 2026-10-17
 
 This board is the authoritative record of task status (ADR-006). There is no second
 tracker — do not mirror rows into GitHub Issues.
@@ -72,7 +72,7 @@ infrastructure decision.
 | DF-22 | Retrieve Sessionize embed ID for 2026 | done | Davit | 10 Oct | `2d3htmgm` — recorded in CLAUDE.md |
 | DF-23 | Wire `loadSpeakers()` to Sessionize API | cancelled | — | — | Superseded by DF-50 — sync on demand, not fetch at runtime |
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
-| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 12 speakers live at 8 Oct |
+| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 16 speakers live at 17 Oct |
 | DF-51 | Extend the sync to talks — session mapping | todo | Davit | 10 Nov | Needs DF-50. Blocks DF-28. See brief |
 | DF-25 | Verify 9+ compact grid state with real data | review | Davit | 20 Oct | Threshold crossed at 10 speakers, 4 Oct — needs a look on a phone |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
@@ -86,7 +86,8 @@ infrastructure decision.
 | DF-28 | Three-track agenda section | todo | Davit | 12 Nov | Placeholder live; cannot be complete before the CFP closes 8 Nov |
 | DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 12 Nov | Only embed retained |
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 12 Nov | Limited number |
-| DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers. InTech.am 19 Sep, Yandex Armenia 24 Sep — **needs a link** |
+| DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers. InTech.am 19 Sep, Yandex Armenia 24 Sep, HackLab and EPAM Armenia 17 Oct |
+| DF-53 | Follow buttons: Instagram and LinkedIn | done | Davit | 17 Oct | `event.json` `social[]`, rendered in the footer |
 | DF-32 | Organizers section — "Meet the team" | done | Davit | 7 Nov | Type, loader and validation added; Davit listed |
 
 ## Phase 4 — Day of (21 Nov)
@@ -536,6 +537,20 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-10-17 · DF-50, DF-31, DF-53 · Claude Code (task manager)
+Synced: **Artem Viter**, **Goran Minov**, **Kevork Sulahian** and **Vasilii Nikitin** added, sixteen published. No removals.
+
+Partners: **HackLab** and **EPAM Armenia** added, both linked, no `role` given so none shown.
+Logos prepared per BRAND.md (trimmed, white keyed out, 100px letterform height, 1000×140).
+Two things to know: HackLab's supplied file is a stacked icon-over-wordmark, which is
+unreadable at chip size, so the chip carries the **wordmark only** — swap in a horizontal
+lockup if HackLab has one. EPAM's mark was cut from a **phone screenshot** of their SVG; it is
+sharp enough at chip size, but the real SVG should replace it when someone has the file.
+
+DF-53 (new): Instagram `@gdg_yerevan` and LinkedIn follow buttons in the footer, from
+`event.json` `social[]`. Icons are single-path `currentColor`, so no network colours entered
+the palette. `validate:content` now requires `social`.
 
 ### 2026-10-08 · DF-50, DF-32, DF-20 · Claude Code (task manager)
 Synced: **Vadim Patsev** and **Viktoriia Akhmatova** added, twelve published. No removals, no
