@@ -1,7 +1,7 @@
 {
   "9db1befa-deda-4676-a470-49cb8b6d9bab": {
     "name": "Aleksandr Kondaurov",
-    "file": "assets/speakers/9db1befa-deda-4676-a470-49cb8b6d9bab.jpg",
+    "file": "assets/speakers/9db1befa-deda-4676-a470-49cb8b6d9bab.webp",
     "crop": [
       46,
       10,
@@ -13,11 +13,12 @@
       160,
       160
     ],
-    "lockedAt": "2026-10-25"
+    "lockedAt": "2026-10-25",
+    "cutout": "assets/speakers/9db1befa-deda-4676-a470-49cb8b6d9bab.jpg"
   },
   "ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147": {
     "name": "Ali (Aran) Kazemi",
-    "file": "assets/speakers/ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147.jpg",
+    "file": "assets/speakers/ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147.webp",
     "crop": [
       0,
       0,
@@ -29,11 +30,12 @@
       202,
       202
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147.jpg"
   },
   "8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3": {
     "name": "Ankur Roy",
-    "file": "assets/speakers/8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3.jpg",
+    "file": "assets/speakers/8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3.webp",
     "crop": [
       123,
       97,
@@ -46,11 +48,12 @@
       58
     ],
     "rotate": 90,
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3.jpg"
   },
   "ba8de9c7-f2d2-458a-b678-9270ab8def5d": {
     "name": "Arman Gyulbudaghyan",
-    "file": "assets/speakers/ba8de9c7-f2d2-458a-b678-9270ab8def5d.jpg",
+    "file": "assets/speakers/ba8de9c7-f2d2-458a-b678-9270ab8def5d.webp",
     "crop": [
       144,
       42,
@@ -62,11 +65,12 @@
       78,
       78
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/ba8de9c7-f2d2-458a-b678-9270ab8def5d.jpg"
   },
   "b3a2e3aa-4e66-41dc-83a9-8209803c914f": {
     "name": "Armen Vardanyan",
-    "file": "assets/speakers/b3a2e3aa-4e66-41dc-83a9-8209803c914f.jpg",
+    "file": "assets/speakers/b3a2e3aa-4e66-41dc-83a9-8209803c914f.webp",
     "crop": [
       94,
       48,
@@ -78,11 +82,12 @@
       125,
       125
     ],
-    "lockedAt": "2026-10-25"
+    "lockedAt": "2026-10-25",
+    "cutout": "assets/speakers/b3a2e3aa-4e66-41dc-83a9-8209803c914f.jpg"
   },
   "d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19": {
     "name": "Artem Viter",
-    "file": "assets/speakers/d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19.jpg",
+    "file": "assets/speakers/d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19.webp",
     "crop": [
       0,
       0,
@@ -94,11 +99,12 @@
       200,
       200
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19.jpg"
   },
   "75f479eb-c660-4511-8445-8ead525d09f1": {
     "name": "Davit Siradeghyan",
-    "file": "assets/speakers/75f479eb-c660-4511-8445-8ead525d09f1.jpg",
+    "file": "assets/speakers/75f479eb-c660-4511-8445-8ead525d09f1.webp",
     "crop": [
       52,
       28,
@@ -110,11 +116,12 @@
       136,
       136
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/75f479eb-c660-4511-8445-8ead525d09f1.jpg"
   },
   "24806d60-f727-4328-9942-68684ecca775": {
     "name": "Gabriel Preda",
-    "file": "assets/speakers/24806d60-f727-4328-9942-68684ecca775.jpg",
+    "file": "assets/speakers/24806d60-f727-4328-9942-68684ecca775.webp",
     "crop": [
       0,
       0,
@@ -126,11 +133,12 @@
       222,
       222
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/24806d60-f727-4328-9942-68684ecca775.jpg"
   },
   "12c176ed-9104-4a50-b1de-4f453342ab20": {
     "name": "Goran Minov",
-    "file": "assets/speakers/12c176ed-9104-4a50-b1de-4f453342ab20.jpg",
+    "file": "assets/speakers/12c176ed-9104-4a50-b1de-4f453342ab20.webp",
     "crop": [
       0,
       0,
@@ -142,11 +150,12 @@
       242,
       242
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/12c176ed-9104-4a50-b1de-4f453342ab20.jpg"
   },
   "4f850d61-b54a-4e83-895b-043292dd29d3": {
     "name": "Kenneth Christiansen",
-    "file": "assets/speakers/4f850d61-b54a-4e83-895b-043292dd29d3.jpg",
+    "file": "assets/speakers/4f850d61-b54a-4e83-895b-043292dd29d3.webp",
     "crop": [
       12,
       12,
@@ -158,11 +167,12 @@
       194,
       194
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/4f850d61-b54a-4e83-895b-043292dd29d3.jpg"
   },
   "76de9ed8-afd1-499b-be1c-8cafae9585fe": {
     "name": "Kevork Sulahian",
-    "file": "assets/speakers/76de9ed8-afd1-499b-be1c-8cafae9585fe.jpg",
+    "file": "assets/speakers/76de9ed8-afd1-499b-be1c-8cafae9585fe.webp",
     "crop": [
       327,
       110,
@@ -174,11 +184,13 @@
       22,
       22
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/76de9ed8-afd1-499b-be1c-8cafae9585fe.jpg",
+    "cutoutNote": "u2net mask refined by hand with OpenCV GrabCut; rerunning the script will not redo this"
   },
   "8b52910b-edcd-42d4-b415-57fffcb06ead": {
     "name": "Liana Darbinyan",
-    "file": "assets/speakers/8b52910b-edcd-42d4-b415-57fffcb06ead.jpg",
+    "file": "assets/speakers/8b52910b-edcd-42d4-b415-57fffcb06ead.webp",
     "crop": [
       97,
       90,
@@ -190,11 +202,12 @@
       93,
       93
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/8b52910b-edcd-42d4-b415-57fffcb06ead.jpg"
   },
   "1f2ba26b-921a-4b3a-ba24-1e8208f935b8": {
     "name": "Max Kachinkin",
-    "file": "assets/speakers/1f2ba26b-921a-4b3a-ba24-1e8208f935b8.jpg",
+    "file": "assets/speakers/1f2ba26b-921a-4b3a-ba24-1e8208f935b8.webp",
     "crop": [
       8,
       14,
@@ -206,11 +219,12 @@
       193,
       193
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/1f2ba26b-921a-4b3a-ba24-1e8208f935b8.jpg"
   },
   "f579b865-8a53-4718-98e3-f8a52a93d8cd": {
     "name": "Mohammed Buallay",
-    "file": "assets/speakers/f579b865-8a53-4718-98e3-f8a52a93d8cd.jpg",
+    "file": "assets/speakers/f579b865-8a53-4718-98e3-f8a52a93d8cd.webp",
     "crop": [
       31,
       18,
@@ -222,11 +236,12 @@
       145,
       145
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/f579b865-8a53-4718-98e3-f8a52a93d8cd.jpg"
   },
   "fcd40625-d41f-45f8-8b4b-fc510bb96d07": {
     "name": "Natasha Arefyeva",
-    "file": "assets/speakers/fcd40625-d41f-45f8-8b4b-fc510bb96d07.jpg",
+    "file": "assets/speakers/fcd40625-d41f-45f8-8b4b-fc510bb96d07.webp",
     "crop": [
       0,
       0,
@@ -238,11 +253,13 @@
       200,
       200
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/fcd40625-d41f-45f8-8b4b-fc510bb96d07.jpg",
+    "cutoutNote": "u2net mask refined by hand with OpenCV GrabCut; rerunning the script will not redo this"
   },
   "28278ce1-a2f8-4d26-a2da-1b7a7628365a": {
     "name": "Sergei Tolmachev",
-    "file": "assets/speakers/28278ce1-a2f8-4d26-a2da-1b7a7628365a.jpg",
+    "file": "assets/speakers/28278ce1-a2f8-4d26-a2da-1b7a7628365a.webp",
     "crop": [
       0,
       62,
@@ -254,11 +271,12 @@
       159,
       159
     ],
-    "lockedAt": "2026-10-25"
+    "lockedAt": "2026-10-25",
+    "cutout": "assets/speakers/28278ce1-a2f8-4d26-a2da-1b7a7628365a.jpg"
   },
   "5ec4275d-42ed-41ca-bbf2-305f258dc0b0": {
     "name": "Vadim Patsev",
-    "file": "assets/speakers/5ec4275d-42ed-41ca-bbf2-305f258dc0b0.jpg",
+    "file": "assets/speakers/5ec4275d-42ed-41ca-bbf2-305f258dc0b0.webp",
     "crop": [
       0,
       0,
@@ -270,11 +288,12 @@
       381,
       381
     ],
-    "lockedAt": "2026-10-25"
+    "lockedAt": "2026-10-25",
+    "cutout": "assets/speakers/5ec4275d-42ed-41ca-bbf2-305f258dc0b0.jpg"
   },
   "d34d0e0e-8d93-405e-9a29-441cad6541ef": {
     "name": "Vasilii Nikitin",
-    "file": "assets/speakers/d34d0e0e-8d93-405e-9a29-441cad6541ef.jpg",
+    "file": "assets/speakers/d34d0e0e-8d93-405e-9a29-441cad6541ef.webp",
     "crop": [
       93,
       17,
@@ -286,11 +305,12 @@
       118,
       118
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/d34d0e0e-8d93-405e-9a29-441cad6541ef.jpg"
   },
   "4f4a4f3f-0751-41f1-b1ad-d4edd8cd09c5": {
     "name": "Viktoriia Akhmatova",
-    "file": "assets/speakers/4f4a4f3f-0751-41f1-b1ad-d4edd8cd09c5.jpg",
+    "file": "assets/speakers/4f4a4f3f-0751-41f1-b1ad-d4edd8cd09c5.webp",
     "crop": [
       0,
       0,
@@ -302,6 +322,7 @@
       194,
       194
     ],
-    "lockedAt": "2026-10-17"
+    "lockedAt": "2026-10-17",
+    "cutout": "assets/speakers/4f4a4f3f-0751-41f1-b1ad-d4edd8cd09c5.jpg"
   }
 }

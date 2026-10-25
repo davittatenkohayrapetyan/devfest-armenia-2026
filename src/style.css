@@ -478,12 +478,15 @@ main:focus { outline: none; }
 }
 
 /* Portrait rings take turns through the four colours across a grid. The inner ring is the
-   card's own surface, so the colour reads as a halo rather than touching the photo. */
-.grid > :nth-child(4n + 1) .avatar { --ring: var(--df-blue); }
-.grid > :nth-child(4n + 2) .avatar { --ring: var(--df-red); }
-.grid > :nth-child(4n + 3) .avatar { --ring: var(--df-yellow); }
-.grid > :nth-child(4n + 4) .avatar { --ring: var(--df-green); }
+   card's own surface, so the colour reads as a halo rather than touching the photo. Portraits
+   are cut-outs (scripts/cutout-portraits.py); the circle behind them takes the same colour's
+   pastel, so ring and background always agree whatever order the grid is in. */
+.grid > :nth-child(4n + 1) .avatar { --ring: var(--df-blue); --fill: var(--df-pastel-blue); }
+.grid > :nth-child(4n + 2) .avatar { --ring: var(--df-red); --fill: var(--df-pastel-red); }
+.grid > :nth-child(4n + 3) .avatar { --ring: var(--df-yellow); --fill: var(--df-pastel-yellow); }
+.grid > :nth-child(4n + 4) .avatar { --ring: var(--df-green); --fill: var(--df-pastel-green); }
 .avatar {
+  background-color: var(--fill, var(--df-pastel-blue));
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 /* Touch screens cannot hover, so they get the ring as a static detail. */
