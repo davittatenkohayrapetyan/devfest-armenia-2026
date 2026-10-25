@@ -559,6 +559,11 @@ still a little rough; the real fix remains a sharper photo from him.
 The larger `birefnet-portrait` model was tried first and failed: **C: ran out of space** mid-
 download, and it is at ~0.3 GB free. That also blocked the Docker rebuild for this task.
 
+**Kevork Sulahian's portrait replaced** later the same day with a photo Davit supplied (outdoor,
+1098×1133). His stale manual face box in `speaker-faces.json` was removed — it described the old
+upload — and the detector found the face: 202px source crop, no longer soft. Cut out by the script
+with no hand work, so his `cutoutNote` is gone. Locked against sync like the others.
+
 DF-57 (new): team photos were never face-cropped (DF-54 covered speakers only). Martin, Roland,
 Armen, Rohan and Vardan are full-body or waist-up shots, and on a pastel circle the size
 difference against the speaker grid is plain. Not fixed here: separate task.

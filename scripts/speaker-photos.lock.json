@@ -174,19 +174,18 @@
     "name": "Kevork Sulahian",
     "file": "assets/speakers/76de9ed8-afd1-499b-be1c-8cafae9585fe.webp",
     "crop": [
-      327,
-      110,
-      44
+      424,
+      585,
+      202
     ],
     "face": [
-      338,
-      117,
-      22,
-      22
+      475,
+      616,
+      101,
+      101
     ],
-    "lockedAt": "2026-10-17",
-    "cutout": "assets/speakers/76de9ed8-afd1-499b-be1c-8cafae9585fe.jpg",
-    "cutoutNote": "u2net mask refined by hand with OpenCV GrabCut; rerunning the script will not redo this"
+    "lockedAt": "2026-10-25",
+    "cutout": "assets/speakers/76de9ed8-afd1-499b-be1c-8cafae9585fe.jpg"
   },
   "8b52910b-edcd-42d4-b415-57fffcb06ead": {
     "name": "Liana Darbinyan",
