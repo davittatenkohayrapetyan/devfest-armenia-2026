@@ -550,6 +550,11 @@ All three new portraits cropped and locked (320, 250 and 318px source crops — 
 manual face boxes needed). Sergei Tolmachev's photo is a stage profile shot; the detector found
 the face and the crop reads fine at 80px.
 
+**Vadim Patsev's portrait replaced** with a photo Davit supplied directly (640px studio
+headshot), not his Sessionize upload. Cropped by the script (face fills the frame, so full frame
+kept) and locked, so the sync will not put the Sessionize photo back. To revert: delete his lock
+entry and re-run sync + crop.
+
 Partners and organizers unchanged: `main` already carried all four partners and eight team
 members, and was level with `origin/main` before this sync.
 
