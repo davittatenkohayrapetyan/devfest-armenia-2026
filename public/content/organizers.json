@@ -2,42 +2,42 @@
   {
     "name": "Davit Hayrapetyan",
     "role": "GDG Yerevan Organizer",
-    "photo": "assets/organizers/davit-hayrapetyan.webp",
+    "photo": "assets/organizers/davit-hayrapetyan.jpg",
     "links": [],
     "title": "Staff Software Engineer @ Grid Dynamics"
   },
   {
     "name": "Martin Mirzoyan",
     "role": "GDG Yerevan Organizer",
-    "photo": "assets/organizers/martin-mirzoyan.webp",
+    "photo": "assets/organizers/martin-mirzoyan.jpg",
     "links": [],
     "title": "Software Engineer"
   },
   {
     "name": "Roland Egiazaryan",
     "role": "GDG Yerevan Organizer",
-    "photo": "assets/organizers/roland-egiazaryan.webp",
+    "photo": "assets/organizers/roland-egiazaryan.jpg",
     "links": [],
     "title": "Lead Engineer @ Klarna"
   },
   {
     "name": "Vardan Papikyan",
     "role": "GDG Yerevan Founder",
-    "photo": "assets/organizers/vardan-papikyan.webp",
+    "photo": "assets/organizers/vardan-papikyan.jpg",
     "links": [],
     "title": "SEO specialist"
   },
   {
     "name": "Armen Vardanyan",
     "role": "GDE Angular",
-    "photo": "assets/organizers/armen-vardanyan.webp",
+    "photo": "assets/organizers/armen-vardanyan.jpg",
     "links": [],
     "title": "Frontend Team Lead @ Volo"
   },
   {
     "name": "Rohan Singh",
     "role": "GDE Cloud",
-    "photo": "assets/organizers/rohan-singh.webp",
+    "photo": "assets/organizers/rohan-singh.jpg",
     "links": [],
     "title": "Senior Cloud Platform Engineer @ SADA, An Insight company"
   },
@@ -45,14 +45,14 @@
     "name": "Habet Madoyan",
     "role": "Co-Organizer",
     "title": "BS in DS Program Chair, ACSE, AUA",
-    "photo": "assets/organizers/habet-madoyan.webp",
+    "photo": "assets/organizers/habet-madoyan.jpg",
     "links": []
   },
   {
     "name": "Mane Vardanyan",
     "role": "Co-Organizer",
     "title": "Communications and Events Organization Specialist, ACSE, AUA",
-    "photo": "assets/organizers/mane-vardanyan.webp",
+    "photo": "assets/organizers/mane-vardanyan.jpg",
     "links": []
   }
 ]

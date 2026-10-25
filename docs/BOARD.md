@@ -90,7 +90,7 @@ infrastructure decision.
 | DF-53 | Follow buttons: Instagram and LinkedIn | done | Davit | 17 Oct | `event.json` `social[]`, rendered in the footer |
 | DF-54 | Crop speaker portraits to a matched face size, lock them against sync | done | Davit | 17 Oct | `scripts/crop-speakers.py`, lock in `scripts/speaker-photos.lock.json` |
 | DF-55 | Light motion layer: scroll reveal, four-colour heading rule, portrait rings | review | Davit | 17 Oct | CSS + `wireReveal()`, no dependencies. Needs a look on a phone |
-| DF-56 | Pastel portrait backgrounds: cut-outs on the ring's pastel | review | Davit | 25 Oct | `scripts/cutout-portraits.py` + `.avatar` fill in `style.css`. Needs a look on a phone |
+| DF-56 | Pastel portrait backgrounds: cut-outs on the ring's pastel | cancelled | Davit | 25 Oct | Reverted at Davit's request the same day. See log 25 Oct |
 | DF-57 | Team photos: crop to a matched face size like the speakers | todo | Davit | 7 Nov | Several are full-body shots; the pastel makes the size mismatch obvious. See log 25 Oct |
 | DF-32 | Organizers section — "Meet the team" | done | Davit | 7 Nov | Type, loader and validation added; Davit listed |
 
@@ -541,6 +541,13 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-10-25 · DF-56 · Claude Code (task manager)
+Cancelled and reverted at Davit's request, after it was live for review. Speakers and team are back
+on their cropped JPGs, the `.avatar` pastel fill is gone and `scripts/cutout-portraits.py` is
+deleted (it is in history at `6551c98` if this is wanted again). Kept: Vadim Patsev's and Kevork
+Sulahian's replacement photos, which are independent of the backgrounds. DF-57 stands: the team
+photo size mismatch exists with or without the pastel.
 
 ### 2026-10-25 · DF-56, DF-57 · Claude Code (task manager)
 DF-56 (new, at Davit's request): every portrait, 19 speakers and 8 team members, cut out of its
