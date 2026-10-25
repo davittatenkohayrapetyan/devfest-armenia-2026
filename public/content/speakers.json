@@ -1,5 +1,20 @@
 [
   {
+    "id": "9db1befa-deda-4676-a470-49cb8b6d9bab",
+    "fullName": "Aleksandr Kondaurov",
+    "tagLine": "Senior Fullstack Engineer · TypeScript, Serverless, Open Source",
+    "bio": "Aleksandr is a senior backend/fullstack engineer with about 15 years in software development, focused on TypeScript, Node.js and AWS serverless architecture. He comes from a strong functional programming background (5 years of Scala with ZIO, now Effect-TS) and builds LLM-based and agentic systems on top of modern AI APIs. He maintains open-source projects including effortless-aws, an infrastructure-from-code framework for AWS, and a set of packages under the @effect-ak npm scope. Based in Yerevan.",
+    "profilePicture": "assets/speakers/9db1befa-deda-4676-a470-49cb8b6d9bab.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/alexander-kondaurov/",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
     "id": "ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147",
     "fullName": "Ali (Aran) Kazemi",
     "tagLine": "EU AI Alliance Member | Founder & Principal AI Systems Architect at EIP-Technologies",
@@ -56,6 +71,36 @@
     "bio": "Staff DevOps Engineer and Head of DevOps at Grid Dynamics",
     "profilePicture": "assets/speakers/ba8de9c7-f2d2-458a-b678-9270ab8def5d.jpg",
     "links": [],
+    "sessions": []
+  },
+  {
+    "id": "b3a2e3aa-4e66-41dc-83a9-8209803c914f",
+    "fullName": "Armen Vardanyan",
+    "tagLine": "Google Developer Expert for Angular, Front-End Team Lead",
+    "bio": "Front End Team Lead working with Angular for 6+ years, GDE for Angular, technical writer, mentor, speaker.",
+    "profilePicture": "assets/speakers/b3a2e3aa-4e66-41dc-83a9-8209803c914f.jpg",
+    "links": [
+      {
+        "title": "X (Twitter)",
+        "url": "https://twitter.com/Armandotrue",
+        "linkType": "Twitter"
+      },
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/armen-vardanyan-am/",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Facebook",
+        "url": "https://www.facebook.com/exit.pain/",
+        "linkType": "Facebook"
+      },
+      {
+        "title": "Blog",
+        "url": "https://armenvardanyan.dev/",
+        "linkType": "Blog"
+      }
+    ],
     "sessions": []
   },
   {
@@ -284,10 +329,25 @@
     "sessions": []
   },
   {
+    "id": "28278ce1-a2f8-4d26-a2da-1b7a7628365a",
+    "fullName": "Sergei Tolmachev",
+    "tagLine": "CTO, Axmit",
+    "bio": "I'm CTO at Axmit, a software studio. Since 2015, we've built web and mobile apps for startups and growing businesses in logistics, fintech, healthcare, and SaaS.\r\n\r\nMost of my time goes into business matters and software architecture.\r\n\r\nBut I still get my hands dirty with code - mostly Go, Node.js, TypeScript, databases, and DevOps.\r\n\r\nThese days, I also spend a lot of time making AI coding agents actually useful on real projects.",
+    "profilePicture": "assets/speakers/28278ce1-a2f8-4d26-a2da-1b7a7628365a.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/sergeytolmachev1992/",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
     "id": "5ec4275d-42ed-41ca-bbf2-305f258dc0b0",
     "fullName": "Vadim Patsev",
     "tagLine": "Lead AI Agents Engineer at Yandex Armenia",
-    "bio": "Vadim Patsev leads the DeepAgent team at Yandex, building a multi-agent system that plans a search across many sources and assembles one coherent answer. Before that he worked on Yandex Mail and Disk. Outside Yandex he was part of a self-driving car racing project and worked on an automated blood-analysis system. He previously spoke at PyCon about Python and robotics, and still builds robots for fun.",
+    "bio": "Vadim Patsev leads the DeepAgent team at Yandex Armenia, building a multi-agent system that plans a search across many sources and assembles one coherent answer. Before that he worked on Yandex Delivery routing optimization solution, Mail and Disk. Outside Yandex he was part of a self-driving car racing project and worked on an automated blood-analysis system. He previously spoke at PyCon about Python and robotics, and still builds robots for fun.",
     "profilePicture": "assets/speakers/5ec4275d-42ed-41ca-bbf2-305f258dc0b0.jpg",
     "links": [
       {

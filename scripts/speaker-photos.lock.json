@@ -1,4 +1,20 @@
 {
+  "9db1befa-deda-4676-a470-49cb8b6d9bab": {
+    "name": "Aleksandr Kondaurov",
+    "file": "assets/speakers/9db1befa-deda-4676-a470-49cb8b6d9bab.jpg",
+    "crop": [
+      46,
+      10,
+      320
+    ],
+    "face": [
+      126,
+      58,
+      160,
+      160
+    ],
+    "lockedAt": "2026-10-25"
+  },
   "ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147": {
     "name": "Ali (Aran) Kazemi",
     "file": "assets/speakers/ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147.jpg",
@@ -47,6 +63,22 @@
       78
     ],
     "lockedAt": "2026-10-17"
+  },
+  "b3a2e3aa-4e66-41dc-83a9-8209803c914f": {
+    "name": "Armen Vardanyan",
+    "file": "assets/speakers/b3a2e3aa-4e66-41dc-83a9-8209803c914f.jpg",
+    "crop": [
+      94,
+      48,
+      250
+    ],
+    "face": [
+      157,
+      86,
+      125,
+      125
+    ],
+    "lockedAt": "2026-10-25"
   },
   "d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19": {
     "name": "Artem Viter",
@@ -207,6 +239,22 @@
       200
     ],
     "lockedAt": "2026-10-17"
+  },
+  "28278ce1-a2f8-4d26-a2da-1b7a7628365a": {
+    "name": "Sergei Tolmachev",
+    "file": "assets/speakers/28278ce1-a2f8-4d26-a2da-1b7a7628365a.jpg",
+    "crop": [
+      0,
+      62,
+      318
+    ],
+    "face": [
+      69,
+      110,
+      159,
+      159
+    ],
+    "lockedAt": "2026-10-25"
   },
   "5ec4275d-42ed-41ca-bbf2-305f258dc0b0": {
     "name": "Vadim Patsev",
