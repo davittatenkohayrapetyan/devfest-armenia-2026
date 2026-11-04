@@ -80,6 +80,22 @@
     ],
     "lockedAt": "2026-10-25"
   },
+  "4b993823-524f-4bed-a0c0-facb42f54089": {
+    "name": "Arsen Mazmanyan",
+    "file": "assets/speakers/4b993823-524f-4bed-a0c0-facb42f54089.jpg",
+    "crop": [
+      125,
+      68,
+      180
+    ],
+    "face": [
+      170,
+      95,
+      90,
+      90
+    ],
+    "lockedAt": "2026-11-04"
+  },
   "d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19": {
     "name": "Artem Viter",
     "file": "assets/speakers/d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19.jpg",
@@ -95,6 +111,22 @@
       200
     ],
     "lockedAt": "2026-10-17"
+  },
+  "5ee7b9bb-2ac2-448a-9810-e0656c083f7e": {
+    "name": "Azat Davliatshin",
+    "file": "assets/speakers/5ee7b9bb-2ac2-448a-9810-e0656c083f7e.jpg",
+    "crop": [
+      111,
+      29,
+      180
+    ],
+    "face": [
+      156,
+      56,
+      90,
+      90
+    ],
+    "lockedAt": "2026-11-04"
   },
   "75f479eb-c660-4511-8445-8ead525d09f1": {
     "name": "Davit Siradeghyan",
@@ -192,6 +224,38 @@
     ],
     "lockedAt": "2026-10-17"
   },
+  "f1f13b29-7398-4d81-8c82-02bedfe50871": {
+    "name": "Mariam Grigoryan",
+    "file": "assets/speakers/f1f13b29-7398-4d81-8c82-02bedfe50871.jpg",
+    "crop": [
+      86,
+      52,
+      150
+    ],
+    "face": [
+      124,
+      75,
+      75,
+      75
+    ],
+    "lockedAt": "2026-11-04"
+  },
+  "8ef48870-8f85-4450-b385-6695da4c180f": {
+    "name": "Mariia Khachaturova",
+    "file": "assets/speakers/8ef48870-8f85-4450-b385-6695da4c180f.jpg",
+    "crop": [
+      115,
+      93,
+      208
+    ],
+    "face": [
+      167,
+      125,
+      104,
+      104
+    ],
+    "lockedAt": "2026-11-04"
+  },
   "1f2ba26b-921a-4b3a-ba24-1e8208f935b8": {
     "name": "Max Kachinkin",
     "file": "assets/speakers/1f2ba26b-921a-4b3a-ba24-1e8208f935b8.jpg",
@@ -207,6 +271,22 @@
       193
     ],
     "lockedAt": "2026-10-17"
+  },
+  "7e81baea-59e0-4d19-947e-5efb5644b2e9": {
+    "name": "Milena Janoyan",
+    "file": "assets/speakers/7e81baea-59e0-4d19-947e-5efb5644b2e9.jpg",
+    "crop": [
+      124,
+      36,
+      266
+    ],
+    "face": [
+      191,
+      76,
+      133,
+      133
+    ],
+    "lockedAt": "2026-11-04"
   },
   "f579b865-8a53-4718-98e3-f8a52a93d8cd": {
     "name": "Mohammed Buallay",
@@ -240,6 +320,38 @@
     ],
     "lockedAt": "2026-10-17"
   },
+  "019c6fb9-e890-4df3-9f5f-092e7a16bce2": {
+    "name": "Pavel Elizarov",
+    "file": "assets/speakers/019c6fb9-e890-4df3-9f5f-092e7a16bce2.jpg",
+    "crop": [
+      0,
+      0,
+      400
+    ],
+    "face": [
+      40,
+      161,
+      225,
+      225
+    ],
+    "lockedAt": "2026-11-04"
+  },
+  "695c0a43-6758-4801-bb70-bb1e447b4df2": {
+    "name": "Seda Sahakyan",
+    "file": "assets/speakers/695c0a43-6758-4801-bb70-bb1e447b4df2.jpg",
+    "crop": [
+      39,
+      9,
+      324
+    ],
+    "face": [
+      120,
+      58,
+      162,
+      162
+    ],
+    "lockedAt": "2026-11-04"
+  },
   "28278ce1-a2f8-4d26-a2da-1b7a7628365a": {
     "name": "Sergei Tolmachev",
     "file": "assets/speakers/28278ce1-a2f8-4d26-a2da-1b7a7628365a.jpg",
@@ -271,6 +383,22 @@
       381
     ],
     "lockedAt": "2026-10-25"
+  },
+  "379f5371-846b-4d51-b2c6-172545486b5e": {
+    "name": "Vadim Sofin",
+    "file": "assets/speakers/379f5371-846b-4d51-b2c6-172545486b5e.jpg",
+    "crop": [
+      37,
+      62,
+      314
+    ],
+    "face": [
+      116,
+      110,
+      157,
+      157
+    ],
+    "lockedAt": "2026-11-04"
   },
   "d34d0e0e-8d93-405e-9a29-441cad6541ef": {
     "name": "Vasilii Nikitin",

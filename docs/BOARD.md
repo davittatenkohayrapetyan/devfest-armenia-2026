@@ -1,6 +1,6 @@
 # Tracking Board — DevFest Armenia 2026
 
-**Last updated:** 2026-10-25
+**Last updated:** 2026-11-04
 
 This board is the authoritative record of task status (ADR-006). There is no second
 tracker — do not mirror rows into GitHub Issues.
@@ -72,7 +72,7 @@ infrastructure decision.
 | DF-22 | Retrieve Sessionize embed ID for 2026 | done | Davit | 10 Oct | `2d3htmgm` — recorded in CLAUDE.md |
 | DF-23 | Wire `loadSpeakers()` to Sessionize API | cancelled | — | — | Superseded by DF-50 — sync on demand, not fetch at runtime |
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
-| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 19 speakers live at 25 Oct |
+| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 27 speakers live at 4 Nov |
 | DF-51 | Extend the sync to talks — session mapping | todo | Davit | 10 Nov | Needs DF-50. Blocks DF-28. See brief |
 | DF-25 | Verify 9+ compact grid state with real data | review | Davit | 20 Oct | Threshold crossed at 10 speakers, 4 Oct — needs a look on a phone |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
@@ -86,7 +86,7 @@ infrastructure decision.
 | DF-28 | Three-track agenda section | todo | Davit | 12 Nov | Placeholder live; cannot be complete before the CFP closes 8 Nov |
 | DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 12 Nov | Only embed retained |
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 12 Nov | Limited number |
-| DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers. InTech.am 19 Sep, Yandex Armenia 24 Sep, HackLab (Quiz Partner) and EPAM Armenia (Event Partner) 17 Oct |
+| DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers. InTech.am 19 Sep, Yandex Armenia 24 Sep, HackLab (Quiz Partner) and EPAM Armenia (Event Partner) 17 Oct; Ameriabank (Fintech), Gtatso and Cin Cin (Afterparty) 4 Nov |
 | DF-53 | Follow buttons: Instagram and LinkedIn | done | Davit | 17 Oct | `event.json` `social[]`, rendered in the footer |
 | DF-54 | Crop speaker portraits to a matched face size, lock them against sync | done | Davit | 17 Oct | `scripts/crop-speakers.py`, lock in `scripts/speaker-photos.lock.json` |
 | DF-55 | Light motion layer: scroll reveal, four-colour heading rule, portrait rings | review | Davit | 17 Oct | CSS + `wireReveal()`, no dependencies. Needs a look on a phone |
@@ -541,6 +541,24 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-11-04 · DF-50, DF-54, DF-31 · Claude Code (task manager)
+Synced: eight new speakers, twenty-seven published — **Arsen Mazmanyan**, **Azat Davliatshin**,
+**Mariam Grigoryan**, **Mariia Khachaturova**, **Milena Janoyan**, **Pavel Elizarov**, **Seda
+Sahakyan**, **Vadim Sofin**. All eight cropped and locked. Six faces detected automatically;
+Arsen (side profile at a lectern) and Mariam (full-length shot) needed manual boxes in
+`speaker-faces.json`. Worth knowing for the next manual box: a box drawn around the whole visible
+face reads ~1.5× tighter than the detector's own box, so the first attempt came out too close and
+was redone at 90px and 75px. Mariam's crop is soft (150px source) — a closer photo would fix it.
+
+Partners: **Ameriabank** (Fintech Partner), **Gtatso** (Afterparty Partner) and **Cin Cin Urban
+Craft Bar** (Afterparty Partner), all linked. Ameriabank is a wide lockup, so the 1000px canvas
+width limits it rather than letterform height — it sits at 71px caps, not 100. Gtatso came as an
+SVG. Cin Cin was supplied as a photo of gold foil on green velvet; Davit asked for the background
+removed. The chip carries the `CIN✦CIN` wordmark only (the stacked glasses icon and "urban craft
+bar" line are unreadable at chip size, same call as HackLab), in one even foil gold taken from the
+photo — the photo's glare made the right half near-white on the white chip, and that sheen is
+lighting, not the mark. A vector from Cin Cin would beat this.
 
 ### 2026-10-25 · DF-56 · Claude Code (task manager)
 Cancelled and reverted at Davit's request, after it was live for review. Speakers and team are back

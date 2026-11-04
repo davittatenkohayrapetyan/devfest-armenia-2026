@@ -104,6 +104,21 @@
     "sessions": []
   },
   {
+    "id": "4b993823-524f-4bed-a0c0-facb42f54089",
+    "fullName": "Arsen Mazmanyan",
+    "tagLine": "PixiJS Game Developer, Kendoo Games",
+    "bio": "HTML5 Game Developer with 6 years of experience, mainly focused on 2D Game Development",
+    "profilePicture": "assets/speakers/4b993823-524f-4bed-a0c0-facb42f54089.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://am.linkedin.com/in/arsenmazmanyan1104",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
     "id": "d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19",
     "fullName": "Artem Viter",
     "tagLine": "Senior Software Engineer",
@@ -114,6 +129,26 @@
         "title": "LinkedIn",
         "url": "https://www.linkedin.com/in/artem-viter/",
         "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
+    "id": "5ee7b9bb-2ac2-448a-9810-e0656c083f7e",
+    "fullName": "Azat Davliatshin",
+    "tagLine": "Software Architect & Tech Lead",
+    "bio": "Software architect and tech lead at Quantori, writing JavaScript for over ten years. Lately digging into how sessions and tokens cross trust boundaries -- between browser contexts and between agents. Maintainer of next-auth-bridge, an open-source reference implementation of cross-context session handoff for Auth.js and Better Auth, and author of an IETF Internet-Draft analysing proposed attenuating delegation tokens for AI agents.",
+    "profilePicture": "assets/speakers/5ee7b9bb-2ac2-448a-9810-e0656c083f7e.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/azat-davliasthin",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Sessionize",
+        "url": "https://sessionize.com/azat-davliatshin",
+        "linkType": "Sessionize"
       }
     ],
     "sessions": []
@@ -244,6 +279,36 @@
     "sessions": []
   },
   {
+    "id": "f1f13b29-7398-4d81-8c82-02bedfe50871",
+    "fullName": "Mariam Grigoryan",
+    "tagLine": "Grid Dynamics - Delivery Manager",
+    "bio": "I’m Mariam Grigoryan, a Delivery Manager at a global engineering services company in Yerevan. I lead client projects from scope to delivery, most recently a project training a humanoid robot for a pharmaceutical company.",
+    "profilePicture": "assets/speakers/f1f13b29-7398-4d81-8c82-02bedfe50871.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/mariam-grigoryanpm/",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
+    "id": "8ef48870-8f85-4450-b385-6695da4c180f",
+    "fullName": "Mariia Khachaturova",
+    "tagLine": "Align technologies, Jr. Application Security Engineer",
+    "bio": "My journey started from 42 where I really got a real picture of what programming and tech world is, after college showed the worst parts of it.\r\nAfter studying there for 1.5 years I landed my first job in a local company where I was a Cybersecurity specialist intern and where I got the best opportunity to deepen my knowledge in how applications and big systems are built and supported. \r\nNow I'm working in security in healthcare, navigating and communicating with tens of teams and supporting the whole system on SAST behalf.",
+    "profilePicture": "assets/speakers/8ef48870-8f85-4450-b385-6695da4c180f.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/mariia-khachaturova/",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
     "id": "1f2ba26b-921a-4b3a-ba24-1e8208f935b8",
     "fullName": "Max Kachinkin",
     "tagLine": "Android Tech Lead, Dodo Brands",
@@ -273,6 +338,26 @@
       {
         "title": "Sessionize",
         "url": "https://sessionize.com/maxkachinkin",
+        "linkType": "Sessionize"
+      }
+    ],
+    "sessions": []
+  },
+  {
+    "id": "7e81baea-59e0-4d19-947e-5efb5644b2e9",
+    "fullName": "Milena Janoyan",
+    "tagLine": "Founder of MJ Studio",
+    "bio": "Milena Janoyan is a software engineer, startup strategist, and founder focused on helping early-stage founders turn ideas into validated products and scalable businesses. With over 6 years of experience in software development, she has worked across product development, backend engineering, and startup growth, building solutions for clients across Europe and the United States.\r\n\r\nAlongside her technical background, Milena works closely with founders on market validation, product strategy, and go-to-market planning, bridging the gap between technology and business. She recently completed her Bachelor's thesis on the impact of Generative AI on software startups, combining academic research with insights from startup founders and technology professionals.\r\n\r\nOriginally from Northern Armenia, Milena is passionate about innovation, entrepreneurship, and empowering the next generation of women in technology. Through her work, she advocates for practical use of AI, founder-driven growth, and building products that solve real-world problems.",
+    "profilePicture": "assets/speakers/7e81baea-59e0-4d19-947e-5efb5644b2e9.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/milenajanoyan",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Sessionize",
+        "url": "https://sessionize.com/milena-janoyan",
         "linkType": "Sessionize"
       }
     ],
@@ -329,6 +414,36 @@
     "sessions": []
   },
   {
+    "id": "019c6fb9-e890-4df3-9f5f-092e7a16bce2",
+    "fullName": "Pavel Elizarov",
+    "tagLine": "ex-Lead ML Engineer at Glam AI",
+    "bio": "Pavel Elizarov is a Machine Learning Engineer with experience building and operating production recommendation systems. Previously, as Lead Machine Learning Engineer at Glam AI, he designed and implemented a near-real-time personalisation pipeline, owning its architecture, event processing, model training and serving, deployment, and monitoring. Earlier, at VKontakte, he worked on visual-content features for story recommendations using CLIP embeddings and content clustering. His work focuses on connecting machine learning models with the data pipelines and serving infrastructure needed to make them useful in live products.",
+    "profilePicture": "assets/speakers/019c6fb9-e890-4df3-9f5f-092e7a16bce2.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/pavel-elizarov-an/",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
+    "id": "695c0a43-6758-4801-bb70-bb1e447b4df2",
+    "fullName": "Seda Sahakyan",
+    "tagLine": "Product Designer",
+    "bio": "Seda Sahakyan is a Product Designer based in Yerevan, Armenia. Over more than 5 years she has designed products across web3, gaming, streaming, fintech and e-commerce, and has built design systems from scratch. She loves building experiences for an innovative world and making new technology easy to use for the people it’s made for. She also teaches UX/UI design and is building a community for people who want to learn it.",
+    "profilePicture": "assets/speakers/695c0a43-6758-4801-bb70-bb1e447b4df2.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/sedasahakyan/",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": []
+  },
+  {
     "id": "28278ce1-a2f8-4d26-a2da-1b7a7628365a",
     "fullName": "Sergei Tolmachev",
     "tagLine": "CTO, Axmit",
@@ -359,6 +474,21 @@
         "title": "Sessionize",
         "url": "https://sessionize.com/vadim-patsev",
         "linkType": "Sessionize"
+      }
+    ],
+    "sessions": []
+  },
+  {
+    "id": "379f5371-846b-4d51-b2c6-172545486b5e",
+    "fullName": "Vadim Sofin",
+    "tagLine": "Senior Software Engineer at EPAM",
+    "bio": "A software engineer with 7+ years of experience. Previously worked at Huawei RRI and Yandex. My background is in systems programming, compilers, and backend development. At EPAM, I currently work on the AI DIAL platform and develop agentic AI tooling. In my free time, I lead the R&D project I'll be presenting at DevFest.",
+    "profilePicture": "assets/speakers/379f5371-846b-4d51-b2c6-172545486b5e.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/sovadim/",
+        "linkType": "LinkedIn"
       }
     ],
     "sessions": []

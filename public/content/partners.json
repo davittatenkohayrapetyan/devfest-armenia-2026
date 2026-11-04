@@ -23,6 +23,24 @@
       "role": "Event Partner",
       "logo": "assets/logos/epam.png",
       "url": "https://www.epam.com/careers/epam-armenia"
+    },
+    {
+      "name": "Ameriabank",
+      "role": "Fintech Partner",
+      "logo": "assets/logos/ameriabank.png",
+      "url": "https://ameriabank.am/"
+    },
+    {
+      "name": "Gtatso",
+      "role": "Afterparty Partner",
+      "logo": "assets/logos/gtatso.png",
+      "url": "https://www.instagram.com/gtatso.liqueur/"
+    },
+    {
+      "name": "Cin Cin Urban Craft Bar",
+      "role": "Afterparty Partner",
+      "logo": "assets/logos/cincin.png",
+      "url": "https://www.instagram.com/cincinevn/"
     }
   ],
   "contactUrl": "mailto:gdgyerevan@gmail.com"
