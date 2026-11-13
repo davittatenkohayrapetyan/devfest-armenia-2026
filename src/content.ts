@@ -97,6 +97,8 @@ export type EventContent = {
     note: string;
   };
   speakers: { noteWhileCfpOpen: string };
+  /** Shown above the agenda while it contains at least one workshop. */
+  agenda?: { workshopNote?: string };
   /** GDG Yerevan's own channels, rendered as follow buttons in the footer. */
   social: SocialLink[];
   about: {

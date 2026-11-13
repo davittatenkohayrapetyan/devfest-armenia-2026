@@ -375,7 +375,16 @@ function agenda(
   sessions: Session[],
   people: Map<string, Speaker>,
   casts: Map<string, SessionCast>,
+  workshopNote = "",
 ): string {
+  // Only while there is a workshop to bring a laptop to.
+  const note =
+    workshopNote && sessions.some((s) => s.format === "Workshop")
+      ? `<p class="agenda-note mt-6 prose-measure" role="note">
+           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="currentColor"><path d="M4 5h16a1 1 0 0 1 1 1v10H3V6a1 1 0 0 1 1-1zm1 2v7h14V7H5zM1 17h22v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1z"/></svg>
+           <span>${esc(workshopNote)}</span>
+         </p>`
+      : "";
   const talks = sessions;
   const scheduled = talks.filter((s) => s.startsAt && s.endsAt && s.room);
   const shell = (body: string, lead: string) => `
@@ -383,6 +392,7 @@ function agenda(
   <div class="wrap">
     <h2 class="section-title text-3xl md:text-4xl font-bold">Agenda</h2>
     <p class="mt-3 text-[var(--ink-muted)] prose-measure">${lead}</p>
+    ${note}
     ${body}
   </div>
 </section>`;
@@ -713,7 +723,7 @@ async function render() {
       callForSpeakers(event),
       about(event),
       speakers(speakerList, event),
-      agenda(sessionList, people, casts),
+      agenda(sessionList, people, casts, event.agenda?.workshopNote),
       organizers(organizerList),
       partners(partnerData.partners, partnerData.contactUrl),
       venue(event),

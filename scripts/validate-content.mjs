@@ -24,6 +24,8 @@ if (event) {
     if (!event.venue?.[k]) errors.push(`event.json: missing venue.${k}`);
   if (!event.speakers?.noteWhileCfpOpen)
     errors.push("event.json: missing speakers.noteWhileCfpOpen");
+  if (event.agenda?.workshopNote !== undefined && typeof event.agenda.workshopNote !== "string")
+    errors.push("event.json: agenda.workshopNote must be a string");
   if (!Array.isArray(event.social)) errors.push("event.json: social must be an array");
   else
     event.social.forEach((s, i) => {
