@@ -201,3 +201,28 @@ for self-hosted Umami, set `VITE_ANALYTICS_SRC` — no code change needed.
 Google embed and would have set cookies once loaded, so it sits behind a press with the reason
 stated on the button's own panel. Nothing reaches Google unless a visitor asks for it. Anything
 else third-party added later gets the same treatment or it undoes this decision quietly.
+
+## ADR-013 · 2026-11-12 · Talk and speaker text is edited once and locked
+
+**Decision:** The site never publishes a raw Sessionize description or bio. Each accepted talk's
+title, format and description, and each speaker's tagline and bio, are rewritten once for the
+public page and stored in `scripts/session-text.lock.json` and `scripts/speaker-text.lock.json`.
+`npm run sync:speakers` publishes the locked text verbatim. Davit's call, 12 November, with DF-51
+and DF-28.
+
+**Why:** A submission is written for the programme committee, not for attendees. The 2026 set
+included a "Note to the DevFest Committee", a thesis grade, video links, links to private talk
+plans in Google Docs, and accelerator shortlisting. Descriptions ran from 20 to 900 words. An
+agenda card needs about 60, in a consistent voice. Every edited text is a rewording of the
+speaker's own submission: nothing is added that the speaker did not say.
+
+**How drift is caught:** each lock entry stores a hash of the submission it was written from. If a
+speaker later edits their talk or bio on Sessionize, the sync keeps the locked text and lists the
+entry as changed, for a person to read and re-lock. It never silently publishes the new raw text,
+and it never silently ignores it either.
+
+**New entries:** a talk or speaker with no lock entry is published with its title or tagline
+only, with no description or bio, and the sync lists it. It is not published raw.
+
+**Same pattern as photos:** `scripts/speaker-photos.lock.json` (DF-54) already does this for
+portraits. Delete an entry to take the upstream version again.

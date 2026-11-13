@@ -52,7 +52,9 @@ body of `loadSpeakers()` in `src/content.ts` and nothing else.
    substitute a stock photo of a different building.
 7. **The Sessionize embed ID is `2d3htmgm`** — not the CFP slug. Speakers come from
    `npm run sync:speakers`, a job run on demand (ADR-009). The site never calls Sessionize at
-   runtime, and the sync deliberately writes no talk titles or agenda.
+   runtime. Since 12 November the sync also writes `sessions.json` (talks, times, rooms) for the
+   agenda. Talk and speaker text comes from the lock files, never raw from Sessionize (ADR-013),
+   and times and rooms are only ever what Sessionize carries.
 
 ## Working agreement
 

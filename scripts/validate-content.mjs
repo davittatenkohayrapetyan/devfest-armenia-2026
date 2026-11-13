@@ -1,6 +1,6 @@
 // Structural validation of public/content/*.json so a malformed edit fails CI
 // rather than the live site.
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
 const errors = [];
 const read = (f) => {
@@ -48,6 +48,63 @@ if (speakers) {
       for (const k of ["id", "fullName", "tagLine", "profilePicture"])
         if (!s?.[k]) errors.push(`speakers.json[${i}]: missing "${k}"`);
     });
+}
+
+const sessions = read("sessions.json");
+if (sessions) {
+  if (!Array.isArray(sessions)) errors.push("sessions.json: must be an array");
+  else {
+    const speakerIds = new Set((Array.isArray(speakers) ? speakers : []).map((s) => s.id));
+    const sessionIds = new Set();
+    const local = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?$/;
+    sessions.forEach((s, i) => {
+      const at = `sessions.json[${i}]`;
+      for (const k of ["id", "title", "format"]) if (!s?.[k]) errors.push(`${at}: missing "${k}"`);
+      if (!["Talk", "Workshop", "Service"].includes(s?.format))
+        errors.push(`${at}: format must be Talk, Workshop or Service`);
+      if (typeof s?.description !== "string") errors.push(`${at}: "description" must be a string`);
+      if (s?.url !== null && !/^https:\/\//.test(s?.url ?? "")) errors.push(`${at}: "url" must be null or https`);
+      if (s?.format === "Service" && !s.isServiceSession) errors.push(`${at}: format Service needs isServiceSession`);
+      if (!Array.isArray(s?.speakers)) errors.push(`${at}: "speakers" must be an array`);
+      else
+        for (const id of s.speakers)
+          if (!speakerIds.has(id)) errors.push(`${at}: speaker ${id} is not in speakers.json`);
+      // Times are both set or both null, venue-local with no offset (Sessionize's shape), and in
+      // order. A room without a time, or the reverse, is half a schedule.
+      for (const k of ["startsAt", "endsAt"])
+        if (s?.[k] !== null && !local.test(s?.[k] ?? "")) errors.push(`${at}: ${k} must be null or local ISO time`);
+      if ((s?.startsAt === null) !== (s?.endsAt === null)) errors.push(`${at}: startsAt and endsAt must both be set`);
+      if (s?.startsAt && s?.endsAt && s.endsAt <= s.startsAt) errors.push(`${at}: ends before it starts`);
+      if ((s?.room === null) !== (s?.roomId === null)) errors.push(`${at}: room and roomId must both be set`);
+      if (sessionIds.has(s?.id)) errors.push(`${at}: duplicate id ${s.id}`);
+      sessionIds.add(s?.id);
+    });
+    if (Array.isArray(speakers))
+      speakers.forEach((sp, i) =>
+        (sp.sessions ?? []).forEach((ref) => {
+          if (!sessionIds.has(ref?.id)) errors.push(`speakers.json[${i}]: session ${ref?.id} is not in sessions.json`);
+        }),
+      );
+  }
+}
+
+const cast = read("session-people.json");
+if (cast) {
+  const ids = new Set((Array.isArray(sessions) ? sessions : []).map((s) => s.id));
+  for (const [id, entry] of Object.entries(cast)) {
+    if (id.startsWith("_")) continue; // _note
+    const at = `session-people.json["${id}"]`;
+    if (!ids.has(id)) errors.push(`${at}: no such session in sessions.json`);
+    if ("summary" in entry && typeof entry.summary !== "string") errors.push(`${at}: summary must be a string`);
+    if (!Array.isArray(entry.people) || entry.people.length === 0) errors.push(`${at}: people must be a non-empty array`);
+    else
+      entry.people.forEach((p, i) => {
+        for (const k of ["name", "role", "title"]) if (!p?.[k]) errors.push(`${at}.people[${i}]: missing "${k}"`);
+        if (!["Moderator", "Panelist"].includes(p?.role)) errors.push(`${at}.people[${i}]: role must be Moderator or Panelist`);
+        if (typeof p?.photo !== "string") errors.push(`${at}.people[${i}]: "photo" must be a string, empty if not supplied yet`);
+        else if (p.photo && !existsSync(`public/${p.photo}`)) errors.push(`${at}.people[${i}]: photo ${p.photo} does not exist`);
+      });
+  }
 }
 
 const partners = read("partners.json");

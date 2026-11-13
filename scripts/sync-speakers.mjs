@@ -1,18 +1,27 @@
-// Rewrites public/content/speakers.json from Sessionize. Run on demand: npm run sync:speakers
+// Rewrites public/content/speakers.json and public/content/sessions.json from Sessionize.
+// Run on demand: npm run sync:speakers
 //
 // Publishing is deliberate (ADR-009): the site never calls Sessionize at runtime, so a visitor
 // sees what was reviewed and committed, not whatever the API held at page load. Run it, read
 // the diff, commit it.
 //
-// Talks are deliberately NOT published — `sessions` is emitted empty. Turning that on is
-// DF-51, which has to resolve speaker.sessions (numeric ids in this endpoint) against the
-// top-level sessions array. Do not shortcut that here.
+// Text is locked, like photos (ADR-013). A submission is written for the programme committee —
+// notes to reviewers, video links, private talk plans — so its raw description is never
+// published. scripts/session-text.lock.json and scripts/speaker-text.lock.json hold the edited
+// public text; the sync uses it verbatim and only reports when the speaker has since changed
+// their submission. A session or speaker with no lock entry publishes its title or tagline
+// alone, with no description or bio, until someone writes one.
+//
+// Schedule fields (startsAt, endsAt, roomId) are passed through exactly as Sessionize carries
+// them. Nothing here invents a time or a room: no schedule upstream means none on the page.
+import { createHash } from "node:crypto";
 import { writeFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
 import { join, extname } from "node:path";
 
 const EMBED_ID = "2d3htmgm";
 const ENDPOINT = `https://sessionize.com/api/v2/${EMBED_ID}/view/All`;
 const OUT = "public/content/speakers.json";
+const SESSIONS_OUT = "public/content/sessions.json";
 const IMG_DIR = "public/assets/speakers";
 
 const die = (msg) => {
@@ -121,27 +130,121 @@ async function localPhoto(sp) {
   return rel;
 }
 
+// Locked public text. The hash is over the submission as it stood when the text was written, so
+// a later edit by the speaker is reported for review instead of silently ignored or published.
+const readLock = (f) => (existsSync(f) ? JSON.parse(readFileSync(f, "utf8")) : {});
+const sessionText = readLock("scripts/session-text.lock.json");
+const speakerText = readLock("scripts/speaker-text.lock.json");
+const sourceHash = (...parts) =>
+  createHash("sha256").update(parts.map((p) => p ?? "").join("\n")).digest("hex").slice(0, 16);
+const drifted = [];
+const unwritten = [];
+
+// Service sessions — registration, opening, panels, closing, afterparty — are written by the
+// organisers in Sessionize's schedule builder and are NOT in /view/All. They only appear in the
+// schedule grid, so take them from there and merge them in. Talks still come from /view/All.
+const GRID = `https://sessionize.com/api/v2/${EMBED_ID}/view/GridSmart`;
+console.log(`Fetching ${GRID}`);
+const gridRes = await fetch(GRID).catch((e) => die(`grid request failed — ${e.message}`));
+if (!gridRes.ok) die(`grid ${gridRes.status} ${gridRes.statusText}`);
+const grid = await gridRes.json().catch(() => die("grid response was not JSON"));
+if (!Array.isArray(grid)) die("grid payload is not an array of days");
+const serviceSessions = new Map();
+for (const day of grid)
+  for (const room of day.rooms ?? [])
+    for (const s of room.sessions ?? [])
+      if (s.isServiceSession) serviceSessions.set(String(s.id), s);
+
+const rooms = new Map((data.rooms ?? []).map((r) => [r.id, r]));
+const publishedSessions = [];
+for (const s of [...(data.sessions ?? []), ...serviceSessions.values()]) {
+  if (s.status && s.status !== "Accepted") continue;
+  const room = s.roomId != null ? rooms.get(s.roomId) : undefined;
+  if (s.roomId != null && !room) die(`session ${s.id} points at unknown room ${s.roomId}`);
+  let title = s.title.trim();
+  let format = /\[workshop\]/i.test(title) ? "Workshop" : "Talk";
+  let description = "";
+  let url = null;
+  const lock = sessionText[s.id];
+  if (s.isServiceSession) {
+    // Written by the organisers, not submitted to the committee, so published as written. A
+    // description that is nothing but a link (the afterparty's map) becomes `url`, not prose.
+    format = "Service";
+    description = (s.description ?? "").replace(/\r\n/g, "\n").trim();
+    if (/^https?:\/\/\S+$/.test(description)) [url, description] = [description, ""];
+  } else if (lock) {
+    ({ title, format, description } = lock);
+    if (lock.sourceHash !== sourceHash(s.title, s.description)) drifted.push(`session ${s.id} "${title}"`);
+  } else {
+    title = title.replace(/\s*\[workshop\]\s*/i, " ").trim();
+    unwritten.push(`session ${s.id} "${title}"`);
+  }
+  publishedSessions.push({
+    id: String(s.id),
+    title,
+    description,
+    format,
+    url,
+    startsAt: s.startsAt ?? null,
+    endsAt: s.endsAt ?? null,
+    roomId: s.roomId ?? null,
+    room: room?.name ?? null,
+    roomSort: room?.sort ?? null,
+    isServiceSession: Boolean(s.isServiceSession),
+    isPlenumSession: Boolean(s.isPlenumSession),
+    speakers: (s.speakers ?? []).map(String),
+  });
+}
+// Schedule order once there is one; title order until then. Sessionize start times are venue
+// local time with no offset, so plain string comparison is the correct order.
+publishedSessions.sort(
+  (a, b) =>
+    (a.startsAt ?? "").localeCompare(b.startsAt ?? "") ||
+    (a.roomSort ?? 0) - (b.roomSort ?? 0) ||
+    a.title.localeCompare(b.title),
+);
+const titleById = new Map(publishedSessions.map((s) => [s.id, s.title]));
+
 const out = [];
 for (const sp of kept.sort((a, b) => a.fullName.localeCompare(b.fullName))) {
+  const lock = speakerText[sp.id];
+  if (lock && lock.sourceHash !== sourceHash(sp.tagLine, sp.bio)) drifted.push(`speaker ${sp.fullName}`);
+  if (!lock) unwritten.push(`speaker ${sp.fullName}`);
   out.push({
     id: sp.id,
     fullName: sp.fullName.trim(),
-    tagLine: (sp.tagLine ?? "").trim(),
-    bio: (sp.bio ?? "").trim(),
+    tagLine: lock ? lock.tagLine : (sp.tagLine ?? "").trim(),
+    bio: lock ? lock.bio : "",
     profilePicture: await localPhoto(sp),
     links: (sp.links ?? []).map((l) => ({
       title: l.title,
       url: l.url,
       linkType: l.linkType,
     })),
-    // DF-51 fills this in. Empty is a decision, not an oversight.
-    sessions: [],
+    // Resolved from the numeric ids this endpoint carries into the { id, name } shape that
+    // src/content.ts declares. Only sessions that were published above.
+    sessions: (sp.sessions ?? [])
+      .map(String)
+      .filter((id) => titleById.has(id))
+      .map((id) => ({ id, name: titleById.get(id) })),
   });
 }
 
 writeFileSync(OUT, JSON.stringify(out, null, 2) + "\n", "utf8");
+writeFileSync(SESSIONS_OUT, JSON.stringify(publishedSessions, null, 2) + "\n", "utf8");
+const scheduled = publishedSessions.filter((s) => s.startsAt).length;
 console.log(`\nWrote ${out.length} speakers to ${OUT}`);
-console.log("Talks were not published — that is DF-51.");
+console.log(
+  `Wrote ${publishedSessions.length} sessions to ${SESSIONS_OUT} — ${scheduled} scheduled, ${serviceSessions.size} service, ${rooms.size} rooms`,
+);
 if (unlocked.length)
   console.log(`Uncropped photos (${unlocked.join(", ")}): run python scripts/crop-speakers.py`);
+if (unwritten.length) {
+  console.log(`\nNo locked text yet — published with title or tagline only:`);
+  for (const u of unwritten) console.log(`  ${u}`);
+}
+if (drifted.length) {
+  console.log(`\nChanged on Sessionize since the text was locked — locked text kept, review it:`);
+  for (const d of drifted) console.log(`  ${d}`);
+}
 console.log("Review the diff, then run the three checks before committing.");

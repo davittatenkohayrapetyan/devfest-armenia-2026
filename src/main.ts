@@ -4,10 +4,15 @@ import {
   loadEvent,
   loadOrganizers,
   loadPartners,
+  loadSessionPeople,
+  loadSessions,
   loadSpeakers,
   type EventContent,
   type Organizer,
   type Partner,
+  type Session,
+  type SessionCast,
+  type SessionPerson,
   type Speaker,
 } from "./content";
 
@@ -210,6 +215,12 @@ function speakers(list: Speaker[], e: EventContent): string {
                <img class="avatar h-20 w-20 rounded-full object-cover" src="${esc(asset(s.profilePicture))}" alt="" loading="lazy">
                <h3 class="mt-4 font-bold">${esc(s.fullName)}</h3>
                <p class="text-sm text-[var(--ink-muted)]">${esc(s.tagLine)}</p>
+               ${(s.sessions ?? [])
+                 .map(
+                   (t) =>
+                     `<a class="speaker-talk" href="#session-${esc(t.id)}">${esc(t.name)}</a>`,
+                 )
+                 .join("")}
              </article>`,
              )
              .join("")}
@@ -225,19 +236,250 @@ function speakers(list: Speaker[], e: EventContent): string {
 </section>`;
 }
 
-function agenda(): string {
-  return `
+/** "2026-11-21T10:50:00" → minutes since midnight. Venue-local, so no Date and no timezone. */
+const minutes = (local: string): number =>
+  Number(local.slice(11, 13)) * 60 + Number(local.slice(14, 16));
+const clock = (local: string): string => local.slice(11, 16);
+const clockOf = (mins: number): string => `${pad(Math.floor(mins / 60))}:${pad(mins % 60)}`;
+
+/** Room accents cycle through the four kit colours. A stripe and a dot only — never text. */
+const roomAccents = ["blue", "red", "yellow", "green"] as const;
+const accentOf = (i: number): string => roomAccents[i % roomAccents.length]!;
+
+/** Rows in the timeline are this many minutes. Every Sessionize time so far is a multiple of 5. */
+const SLOT = 5;
+
+/**
+ * One talk as a native <details>: keyboard and screen-reader behaviour come from the element,
+ * and it works with scripting off. The summary carries what you scan for (time, room, title,
+ * who); opening it adds the locked description and the speaker's photo and short bio.
+ */
+/**
+ * Registration, opening, the panel, closing, the afterparty: the organisers' own blocks. Same
+ * card shape as a talk so the timeline reads as one day, marked by the four-colour stripe
+ * instead of a room colour. Expandable only when there is something behind it; a plenum block
+ * names no room, since it is everyone, wherever Sessionize parked it.
+ */
+/** Portrait, or initials in a circle while a panelist's photo has not been supplied yet. */
+function personFace(p: SessionPerson, cls: string): string {
+  if (p.photo) return `<img class="${cls}" src="${esc(asset(p.photo))}" alt="" loading="lazy">`;
+  const initials = p.name
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((w) => w[0])
+    .filter((_, i, a) => i === 0 || i === a.length - 1)
+    .join("");
+  return `<span class="${cls} person-initials" aria-hidden="true">${esc(initials)}</span>`;
+}
+
+/** Moderator first, then panelists, as a list of faces with name, role and title. */
+function castList(cast: SessionCast): string {
+  const order = [...cast.people].sort((a, b) => Number(b.role === "Moderator") - Number(a.role === "Moderator"));
+  return `<ul class="session-cast">${order
+    .map(
+      (p) => `<li class="session-speaker">
+        ${personFace(p, "session-speaker-photo")}
+        <div>
+          <p class="font-bold">${esc(p.name)}</p>
+          <p class="text-sm"><span class="session-role">${esc(p.role)}</span></p>
+          <p class="text-sm text-[var(--ink-muted)]">${esc(p.title)}</p>
+        </div>
+      </li>`,
+    )
+    .join("")}</ul>`;
+}
+
+function serviceCard(s: Session, cast?: SessionCast): string {
+  const time = s.startsAt && s.endsAt ? `${clock(s.startsAt)}–${clock(s.endsAt)}` : "";
+  const room = s.room && !s.isPlenumSession ? `<span class="session-room">${esc(s.room)}</span>` : "";
+  const head = `<span class="session-meta">
+        ${time ? `<span class="session-time">${time}</span>` : ""}${room}
+      </span>
+      <span class="session-title">${esc(s.title)}</span>${
+        cast?.people.length
+          ? `<span class="session-people">${cast.people
+              .map((p) => `<span class="session-who">${personFace(p, "session-face")}</span>`)
+              .join("")}<span class="sr-only">${cast.people.length} people</span></span>`
+          : ""
+      }`;
+  if (!s.description && !s.url && !cast)
+    return `<div class="session session--service" id="session-${esc(s.id)}"><div class="session-head">${head}</div></div>`;
+  const link = s.url
+    ? `<p><a class="speaker-talk" href="${esc(s.url)}" rel="noopener" target="_blank">${
+        /google\.[a-z.]+\/maps|maps\.app\.goo\.gl/.test(s.url) ? "Open the location in Maps" : "Open link"
+      }<span class="sr-only">, opens in a new tab</span></a></p>`
+    : "";
+  return `<details class="session session--service" id="session-${esc(s.id)}">
+    <summary>${head}</summary>
+    <div class="session-body">
+      ${
+        cast?.summary
+          ? `<p class="session-desc">${esc(cast.summary)}</p>`
+          : s.description
+            ? `<p class="session-desc session-desc--service">${esc(s.description)}</p>`
+            : ""
+      }
+      ${cast ? castList(cast) : ""}
+      ${link}
+    </div>
+  </details>`;
+}
+
+function sessionCard(
+  s: Session,
+  people: Map<string, Speaker>,
+  accent: string,
+  casts: Map<string, SessionCast>,
+): string {
+  if (s.isServiceSession) return serviceCard(s, casts.get(s.id));
+  const who = s.speakers.map((id) => people.get(id)).filter((p): p is Speaker => Boolean(p));
+  const time = s.startsAt && s.endsAt ? `${clock(s.startsAt)}–${clock(s.endsAt)}` : "";
+  const badge =
+    s.format === "Workshop" ? `<span class="session-badge">Workshop</span>` : "";
+  const faces = who
+    .map(
+      (p) =>
+        `<span class="session-who"><img class="session-face" src="${esc(asset(p.profilePicture))}" alt="" loading="lazy">${esc(p.fullName)}</span>`,
+    )
+    .join("");
+  const bios = who
+    .map(
+      (p) => `<div class="session-speaker">
+        <img class="avatar session-speaker-photo" src="${esc(asset(p.profilePicture))}" alt="" loading="lazy">
+        <div>
+          <p class="font-bold">${esc(p.fullName)}</p>
+          <p class="text-sm text-[var(--ink-muted)]">${esc(p.tagLine)}</p>
+          ${p.bio ? `<p class="mt-2 text-sm">${esc(p.bio)}</p>` : ""}
+        </div>
+      </div>`,
+    )
+    .join("");
+  return `<details class="session" id="session-${esc(s.id)}" data-accent="${accent}">
+    <summary>
+      <span class="session-meta">
+        ${time ? `<span class="session-time">${time}</span>` : ""}
+        ${s.room ? `<span class="session-room">${esc(s.room)}</span>` : ""}
+        ${badge}
+      </span>
+      <span class="session-title">${esc(s.title)}</span>
+      <span class="session-people">${faces}</span>
+    </summary>
+    <div class="session-body">
+      ${s.description ? `<p class="session-desc">${esc(s.description)}</p>` : ""}
+      ${bios}
+    </div>
+  </details>`;
+}
+
+function agenda(
+  sessions: Session[],
+  people: Map<string, Speaker>,
+  casts: Map<string, SessionCast>,
+): string {
+  const talks = sessions;
+  const scheduled = talks.filter((s) => s.startsAt && s.endsAt && s.room);
+  const shell = (body: string, lead: string) => `
 <section id="agenda" class="py-20" style="background:var(--surface-alt)">
   <div class="wrap">
     <h2 class="section-title text-3xl md:text-4xl font-bold">Agenda</h2>
-    <div class="mt-8 rounded-2xl p-10 text-center" style="background:var(--surface)">
-      <p class="text-lg">The agenda will be announced closer to the event.</p>
-      <p class="mt-2 text-[var(--ink-muted)]">
-        Three tracks plus workshops, across a single day.
-      </p>
-    </div>
+    <p class="mt-3 text-[var(--ink-muted)] prose-measure">${lead}</p>
+    ${body}
   </div>
 </section>`;
+
+  if (talks.length === 0)
+    return shell(
+      `<div class="mt-8 rounded-2xl p-10 text-center" style="background:var(--surface)">
+         <p class="text-lg">The agenda will be announced closer to the event.</p>
+       </div>`,
+      "",
+    );
+
+  // Until Sessionize carries a schedule, list the talks without inventing a time or a room.
+  if (scheduled.length === 0)
+    return shell(
+      `<div class="session-list mt-8">${talks.map((s) => sessionCard(s, people, "blue", casts)).join("")}</div>`,
+      "Accepted talks and workshops. Times and rooms are added here once the schedule is final.",
+    );
+
+  // Rooms in Sessionize's own order. Columns, not tracks: a room is where you walk to.
+  const rooms = [...new Map(scheduled.map((s) => [s.roomId, s])).values()]
+    .sort((a, b) => (a.roomSort ?? 0) - (b.roomSort ?? 0))
+    .map((s) => ({ id: s.roomId, name: s.room! }));
+  const col = new Map(rooms.map((r, i) => [r.id, i]));
+  // A block is drawn at most an hour tall. The card states the real time; drawing a three-hour
+  // afterparty to scale would add half a screen of empty grid to the bottom of the day.
+  const drawnEnd = (s: Session) => Math.min(minutes(s.endsAt!), minutes(s.startsAt!) + 60);
+  const first = Math.floor(Math.min(...scheduled.map((s) => minutes(s.startsAt!))) / 30) * 30;
+  const last = Math.ceil(Math.max(...scheduled.map(drawnEnd)) / 30) * 30;
+  const rowOf = (mins: number) => (mins - first) / SLOT + 2; // row 1 is the room header
+
+  const header = rooms
+    .map(
+      (r, i) =>
+        `<div class="agenda-room" data-accent="${accentOf(i)}" style="grid-column:${i + 2};grid-row:1">${esc(r.name)}</div>`,
+    )
+    .join("");
+  const marks: string[] = [];
+  for (let m = first; m < last; m += 30)
+    marks.push(
+      `<div class="agenda-mark" style="grid-row:${rowOf(m)}"><span>${clockOf(m)}</span></div>
+       <div class="agenda-line" style="grid-row:${rowOf(m)}"></div>`,
+    );
+  const cards = scheduled
+    .map((s) => {
+      const i = col.get(s.roomId)!;
+      const span = `grid-row:${rowOf(minutes(s.startsAt!))} / ${rowOf(drawnEnd(s))}`;
+      const column = s.isPlenumSession ? "grid-column:2 / -1" : `grid-column:${i + 2}`;
+      // The last room's panel opens leftwards, or it would run off the page.
+      const edge = !s.isPlenumSession && i === rooms.length - 1 ? ` data-edge="end"` : "";
+      return `<div class="agenda-cell"${edge} style="${column};${span}">${sessionCard(s, people, accentOf(i), casts)}</div>`;
+    })
+    .join("");
+
+  return shell(
+    `<div class="agenda-grid mt-8" style="--rooms:${rooms.length};--rows:${(last - first) / SLOT}">
+       ${header}${marks.join("")}${cards}
+     </div>`,
+    `Saturday 21 November, ${rooms.length} rooms in parallel. Times are Yerevan time. Open a talk for the details and the speaker.`,
+  );
+}
+
+/** Opens the talk a link points at — from a speaker card, or a shared #session-… URL. */
+function wireAgenda(root: HTMLElement): void {
+  const open = (hash: string) => {
+    if (!hash.startsWith("#session-")) return;
+    const el = root.querySelector<HTMLDetailsElement>(hash.replace(/[^#\w-]/g, ""));
+    if (!el) return;
+    el.open = true;
+    el.scrollIntoView({ block: "center" });
+  };
+  // On the timeline an open talk is a panel over its neighbours, so only one at a time.
+  const timeline = window.matchMedia("(min-width: 1024px)");
+  root.addEventListener(
+    "toggle",
+    (e) => {
+      const opened = e.target as HTMLDetailsElement;
+      if (!opened.open || !timeline.matches || !opened.closest(".agenda-cell")) return;
+      root.querySelectorAll<HTMLDetailsElement>(".agenda-cell details[open]").forEach((d) => {
+        if (d !== opened) d.open = false;
+      });
+    },
+    true, // toggle does not bubble
+  );
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape" || !timeline.matches) return;
+    const openOne = root.querySelector<HTMLDetailsElement>(".agenda-cell details[open]");
+    if (!openOne) return;
+    openOne.open = false;
+    openOne.querySelector("summary")?.focus();
+  });
+  window.addEventListener("hashchange", () => open(location.hash));
+  root.addEventListener("click", (e) => {
+    const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href^="#session-"]');
+    if (a && a.getAttribute("href") === location.hash) open(location.hash);
+  });
+  open(location.hash);
 }
 
 function organizers(list: Organizer[]): string {
@@ -410,9 +652,11 @@ function wireReveal(root: HTMLElement): void {
   if (!("IntersectionObserver" in window)) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const targets: HTMLElement[] = [];
+  // Tall blocks reveal card by card: as one element, a 4,600px agenda on a phone never gets 10%
+  // of itself on screen and would stay invisible.
   root.querySelectorAll<HTMLElement>("main section .wrap").forEach((wrap) => {
     for (const child of Array.from(wrap.children) as HTMLElement[]) {
-      const items = child.matches(".grid, .flex-wrap") ? (Array.from(child.children) as HTMLElement[]) : [child];
+      const items = child.matches(".grid, .flex-wrap, .agenda-grid, .session-list") ? (Array.from(child.children) as HTMLElement[]) : [child];
       items.forEach((el, i) => {
         el.style.setProperty("--reveal-delay", `${Math.min(i, 8) * 40}ms`);
         targets.push(el);
@@ -452,12 +696,15 @@ function wireMapButton(root: HTMLElement): void {
 async function render() {
   const root = document.querySelector<HTMLDivElement>("#app")!;
   try {
-    const [event, partnerData, speakerList, organizerList] = await Promise.all([
+    const [event, partnerData, speakerList, organizerList, sessionList, casts] = await Promise.all([
       loadEvent(),
       loadPartners(),
       loadSpeakers(),
       loadOrganizers(),
+      loadSessions(),
+      loadSessionPeople(),
     ]);
+    const people = new Map(speakerList.map((s) => [s.id, s]));
     root.innerHTML = [
       `<a class="skip-link" href="#main">Skip to content</a>`,
       hero(event),
@@ -466,7 +713,7 @@ async function render() {
       callForSpeakers(event),
       about(event),
       speakers(speakerList, event),
-      agenda(),
+      agenda(sessionList, people, casts),
       organizers(organizerList),
       partners(partnerData.partners, partnerData.contactUrl),
       venue(event),
@@ -476,6 +723,7 @@ async function render() {
     wireMapButton(root);
     wireCountdown(root);
     wireReveal(root);
+    wireAgenda(root);
   } catch (err) {
     root.innerHTML = `<div class="wrap py-20">
       <h1 class="text-2xl font-bold">Content failed to load</h1>

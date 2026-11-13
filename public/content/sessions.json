@@ -1,0 +1,638 @@
+[
+  {
+    "id": "9ae12578-ec70-49e5-8ec0-56c3ccba11ba",
+    "title": "Registration full day",
+    "description": "",
+    "format": "Service",
+    "url": null,
+    "startsAt": "2026-11-21T09:00:00",
+    "endsAt": "2026-11-21T10:00:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": true,
+    "isPlenumSession": true,
+    "speakers": []
+  },
+  {
+    "id": "dec3b71d-e24d-4350-8c92-55bdb37d6add",
+    "title": "Opening",
+    "description": "",
+    "format": "Service",
+    "url": null,
+    "startsAt": "2026-11-21T10:00:00",
+    "endsAt": "2026-11-21T10:40:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": true,
+    "isPlenumSession": false,
+    "speakers": []
+  },
+  {
+    "id": "1362615",
+    "title": "Autonomous Remediation with CodeMender and Google Cloud",
+    "description": "Scanners find vulnerabilities faster than teams can fix them, and simple LLM code generators lack the context to fix them safely. A code-first look at CodeMender, an agentic system that reasons across a repository, patches with Gemini, and verifies each fix by rebuilding, running the tests and re-running the exploit in a sandbox, then opens a verified pull request. Runs on Cloud Build and Cloud Run.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T10:40:00",
+    "endsAt": "2026-11-21T11:20:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "12c176ed-9104-4a50-b1de-4f453342ab20"
+    ]
+  },
+  {
+    "id": "1342063",
+    "title": "Building a High-Assurance AgentOS: Performant, Secure, Flexible Agentic AI Infrastructure in Go",
+    "description": "Python and TypeScript agent frameworks bring memory bloat, garbage-collection pauses, deep dependency trees and runaway cloud costs. A deep dive into the Enterprise Agent Engine, an agent runtime in pure Go where agents run as schedulable processes on a minimal microkernel: its architecture, multi-agent patterns, zero-copy agent-to-agent messaging, memory and observability, and benchmarks of a million concurrent agents on one 64 GB node.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T10:50:00",
+    "endsAt": "2026-11-21T11:30:00",
+    "roomId": 89726,
+    "room": "Hall 114W",
+    "roomSort": 0,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147"
+    ]
+  },
+  {
+    "id": "1350602",
+    "title": "UI Without a Release: What Remote Compose Can and Can't Do Today",
+    "description": "Remote Compose is a new androidx library that turns UI into a document: written in Kotlin, captured into a compact binary, rendered by a player, and shipped without an app release. What you can build today, navigation, data updates and fallbacks, how far community players on iOS, desktop and web go, and the honest trade-offs: alpha status, a small component set and runtime pitfalls.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T11:10:00",
+    "endsAt": "2026-11-21T11:50:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19"
+    ]
+  },
+  {
+    "id": "1337987",
+    "title": "Antigravity CLI: Use Your AI in the CLI for Maximum Control and Effectiveness",
+    "description": "The command line is where an AI agent's reach and a human in the loop meet best. A hands-on workshop on using the Antigravity CLI effectively, with ideas for exploring it further on your own.",
+    "format": "Workshop",
+    "url": null,
+    "startsAt": "2026-11-21T11:20:00",
+    "endsAt": "2026-11-21T12:20:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3"
+    ]
+  },
+  {
+    "id": "1340713",
+    "title": "From Cloud to Edge: Building Autonomous AI Agents with Gemini, ADK and On-Device AI",
+    "description": "AI applications are no longer cloud-only. How to design production-ready agents with Gemini, the Agent Development Kit and the Model Context Protocol, in hybrid architectures that pair cloud models with on-device AI. Covers orchestration, tool calling and context management, when to run inference on-device versus in the cloud, and the privacy, latency and cost trade-offs.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T11:30:00",
+    "endsAt": "2026-11-21T12:10:00",
+    "roomId": 89726,
+    "room": "Hall 114W",
+    "roomSort": 0,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "919f1380-f9b7-40ce-97a9-545be75734ae"
+    ]
+  },
+  {
+    "id": "1326414",
+    "title": "Stranger Shaders: Turning the App Upside Down",
+    "description": "Shader effects look like magic and are surprisingly easy, until the screen contains a video. Starting from an effect shipped in the Drinkit app, build an AGSL shader in about 20 lines, see why video breaks it through the Android rendering pipeline (SurfaceFlinger, and why SurfaceView is a hole in the hierarchy), and compare three fixes with real performance numbers.",
+    "format": "Workshop",
+    "url": null,
+    "startsAt": "2026-11-21T11:30:00",
+    "endsAt": "2026-11-21T12:30:00",
+    "roomId": 92712,
+    "room": "133W [Workshops]",
+    "roomSort": 3,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "1f2ba26b-921a-4b3a-ba24-1e8208f935b8"
+    ]
+  },
+  {
+    "id": "1325974",
+    "title": "GKE 2026",
+    "description": "GKE workloads, optimizations and best practices, AI on GKE, and “predictive” autoscaling.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T11:50:00",
+    "endsAt": "2026-11-21T12:30:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "ba8de9c7-f2d2-458a-b678-9270ab8def5d"
+    ]
+  },
+  {
+    "id": "1378277",
+    "title": "Faster, Not Better: The Real Impact of AI on Building Software",
+    "description": "Every team in this research uses generative AI daily, and 75% say it got them to market significantly faster, yet only 6.3% say it made their software better. Based on a study with 36 startup founders, developers and product leaders: where AI really changes engineering work, where it quietly adds security flaws and technical debt, and the review, testing and security habits that keep speed from costing quality.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T12:10:00",
+    "endsAt": "2026-11-21T12:50:00",
+    "roomId": 89726,
+    "room": "Hall 114W",
+    "roomSort": 0,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "7e81baea-59e0-4d19-947e-5efb5644b2e9"
+    ]
+  },
+  {
+    "id": "1368726",
+    "title": "Agents and Knowledge Graphs: Building an AI Interviewer",
+    "description": "How do you reliably find the gaps in what you know? An EPAM R&D project builds a knowledge graph for a domain, one node per concept, and an AI agent walks the graph to run an interview, then maps strengths and gaps back onto it. How it was built, the problems along the way, and the lessons learned.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T12:20:00",
+    "endsAt": "2026-11-21T13:00:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "379f5371-846b-4d51-b2c6-172545486b5e"
+    ]
+  },
+  {
+    "id": "1379530",
+    "title": "What Your Business Says vs. What Your Users Hear",
+    "description": "How do users think, feel and behave when they use a product, and how can design communicate with them without relying on words? The psychology behind user behaviour: what users expect, what motivates them, what confuses them, and how visual hierarchy, interaction, feedback and content build trust and reduce friction.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T12:30:00",
+    "endsAt": "2026-11-21T13:10:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "695c0a43-6758-4801-bb70-bb1e447b4df2"
+    ]
+  },
+  {
+    "id": "1362616",
+    "title": "Building Stateful Agentic Apps with the Gemini Interactions API",
+    "description": "Most LLM integrations leave you managing history, persisting context and writing glue code for tool loops. The Gemini Interactions API moves that state to the server. This hands-on workshop explores its architecture and the client.interactions interface, building multi-step agents with native state and tool calling. Bring a laptop and a Google Cloud project: everything runs in Cloud Shell, and API keys are provided. Basic Python helps.",
+    "format": "Workshop",
+    "url": null,
+    "startsAt": "2026-11-21T12:40:00",
+    "endsAt": "2026-11-21T13:40:00",
+    "roomId": 92712,
+    "room": "133W [Workshops]",
+    "roomSort": 3,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "12c176ed-9104-4a50-b1de-4f453342ab20"
+    ]
+  },
+  {
+    "id": "1378375",
+    "title": "Skills Needed to Become a Cybersecurity Professional",
+    "description": "What it takes to become a cybersecurity professional beyond the technical side: the balance of hard and soft skills, and why no one is fully prepared before their first job. Seven years of experience, from college and 42 Yerevan through cybersecurity sprints and research teams to the job market.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T12:50:00",
+    "endsAt": "2026-11-21T13:30:00",
+    "roomId": 89726,
+    "room": "Hall 114W",
+    "roomSort": 0,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "8ef48870-8f85-4450-b385-6695da4c180f"
+    ]
+  },
+  {
+    "id": "1382132",
+    "title": "Enterprise Adopts AI, or AI Adopts the Enterprise",
+    "description": "What large-scale AI adoption looks like inside an enterprise: the challenges every enterprise is likely to face, and an architecture that helps smooth the process and bring clarity.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T13:00:00",
+    "endsAt": "2026-11-21T13:40:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "e3906fb8-6843-4593-adc5-d655fb872c74"
+    ]
+  },
+  {
+    "id": "1363221",
+    "title": "Offline-First Mobile Apps: Sync Conflicts, Lost Data and How to Avoid Them",
+    "description": "A dispatcher closed an order while the driver, offline, was still delivering it, and when the phone reconnected the driver's data was gone. Lessons from building offline mode for a React Native driver app at Axmit: event time versus sync time, the app and the web editing the same order, retries that duplicate or lose data, and the priority rules that decide who wins a conflict.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T13:10:00",
+    "endsAt": "2026-11-21T13:50:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "28278ce1-a2f8-4d26-a2da-1b7a7628365a"
+    ]
+  },
+  {
+    "id": "1376807",
+    "title": "Where Physical AI Gets Stuck, and Why That's Armenia's Opening",
+    "description": "Physical AI companies raised about $48 billion in 2026, yet only a few thousand humanoid robots were sold last year. From a humanoid robot project for a pharmaceutical client: hardware that breaks, training data recorded by hand, and roles without job titles yet. Then why Armenia, which teaches robotics in kindergartens but has few robotics companies, has a real opening, and practical first steps into robotics, including for people who do not code.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T13:30:00",
+    "endsAt": "2026-11-21T14:10:00",
+    "roomId": 89726,
+    "room": "Hall 114W",
+    "roomSort": 0,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "f1f13b29-7398-4d81-8c82-02bedfe50871"
+    ]
+  },
+  {
+    "id": "ac7e3df5-772a-4279-91c9-d20fb43e061c",
+    "title": "DevFest Armenia 2026 — Education & AI Panel",
+    "description": "🎙 Moderator\nMane Vardanyan — American University of Armenia (AUA)\n\nPanelists:\n\nHabet Madoyan — AUA Akian College of Science and Engineering\n\nArman Gyulbudaghyan — Trainer at BDG, also joining DevFest as a speaker\n\nNerses Srapionyan — Academic Director at ML School Armenia (Yandex)\n\nAsya Sepkhanyan — Senior Digital Skills Development Specialist at Ameriabank\n\nMariam Aleksanyan — Learning Design Manager at Teach For Armenia\n\nA little about our discussion:\n\nWe'll explore how education needs to evolve in the age of AI — from schools and universities to professional training programs, and how we can prepare future specialists with skills that go beyond entry-level knowledge.",
+    "format": "Service",
+    "url": null,
+    "startsAt": "2026-11-21T13:40:00",
+    "endsAt": "2026-11-21T14:40:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": true,
+    "isPlenumSession": false,
+    "speakers": []
+  },
+  {
+    "id": "1381156",
+    "title": "Beyond Networking: Building Tech Communities That Actually Create Value",
+    "description": "Communities are often measured in events and attendees, but what happens after the event ends? Drawing on her work as Atlassian Community Champion in Yerevan: what makes people join a community and stay, how to turn attendees into contributors, how to connect beginners with experienced professionals, and how to measure impact beyond registration numbers.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T14:40:00",
+    "endsAt": "2026-11-21T15:20:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "4b510743-11a4-4288-90f2-960ca91d9cc1"
+    ]
+  },
+  {
+    "id": "1353091",
+    "title": "One Click to Your Account: What Public Mobile Bug Bounty Reports Teach App Developers",
+    "description": "Some of the best mobile security lessons are already public, in CVEs and disclosed bug bounty reports. A walk through well-documented account-takeover cases in major social apps, all fixed, turning each into a checklist for your own Android app: deep link handling, WebView bridges, account recovery, and the defensive patterns that would have stopped them.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T14:50:00",
+    "endsAt": "2026-11-21T15:30:00",
+    "roomId": 89726,
+    "room": "Hall 114W",
+    "roomSort": 0,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "d34d0e0e-8d93-405e-9a29-441cad6541ef"
+    ]
+  },
+  {
+    "id": "1349046",
+    "title": "The Web After the AI Revolution: How WebMCP, Gemma 4 and On-Device Runtimes Redefine the Browser",
+    "description": "Agents now drive over half of web traffic, and the browser is becoming the runtime for AI. WebMCP, the emerging standard for web apps to expose typed tools directly to agents; open models like Gemma 4 running on-device through LiteRT, WebNN and WebGPU; and interactive MCP apps that put live UI inside the reasoning loop. With live demos across browser tabs and local inference.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T15:05:00",
+    "endsAt": "2026-11-21T15:45:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "4f850d61-b54a-4e83-895b-043292dd29d3"
+    ]
+  },
+  {
+    "id": "1335588",
+    "title": "AI Wrote the Code. Who Owns the Security?",
+    "description": "AI can generate auth flows, APIs and whole features in minutes, but working code is not secure code. This session takes an AI-built application and attacks it live: authorization flaws, insecure API behaviour, input manipulation and exposed functionality. You leave with a practical workflow for AI-assisted code: vibe, verify, attack, fix, retest, ship.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T15:20:00",
+    "endsAt": "2026-11-21T16:00:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "8b52910b-edcd-42d4-b415-57fffcb06ead"
+    ]
+  },
+  {
+    "id": "1369533",
+    "title": "Building Near-Real-Time Recommendations from Fresh User Signals",
+    "description": "At Glam AI, recommendations had to reflect what a user did in the current session. The path from an interaction to an updated recommendation: events through AWS Kinesis, online user state, embeddings served by Triton, retrieval from Qdrant, then ranking. The decisions behind it: what to precompute, what must stay fresh, and how to trade freshness against latency. A/B tests with over a million users showed 20% more daily content sharing.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T15:30:00",
+    "endsAt": "2026-11-21T16:10:00",
+    "roomId": 89726,
+    "room": "Hall 114W",
+    "roomSort": 0,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "019c6fb9-e890-4df3-9f5f-092e7a16bce2"
+    ]
+  },
+  {
+    "id": "1338006",
+    "title": "Fine-Tuning Gemma 4 E2B with Unsloth and LoRA for Computer Vision Tasks",
+    "description": "A step-by-step walkthrough of fine-tuning Gemma 4 E2B, Google's lightweight multimodal model, for computer vision and visual reasoning, using Unsloth and LoRA on Kaggle's free GPUs. Covers dataset preparation, prompting for vision, parameter-efficient training and evaluation, so you can adapt compact multimodal models to your own domain without large compute.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T15:45:00",
+    "endsAt": "2026-11-21T16:25:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "24806d60-f727-4328-9942-68684ecca775"
+    ]
+  },
+  {
+    "id": "1354745",
+    "title": "TypeScript's New Chapter: Go Fast or Go Rust?",
+    "description": "TypeScript is getting 10x faster, with parallel type-checking and smarter memory use. What made that possible, what has changed, and how to decide whether you should migrate.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T16:00:00",
+    "endsAt": "2026-11-21T16:40:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "4f4a4f3f-0751-41f1-b1ad-d4edd8cd09c5"
+    ]
+  },
+  {
+    "id": "1362275",
+    "title": "Serverless for AI Apps: Build More, Pay Less",
+    "description": "Running AI assistants, agents and bots should not need a budget before anyone uses them. Practical experience building AI apps on Firebase, Google Cloud and Cloudflare with TypeScript: why serverless suits AI workloads, how to keep costs near zero until real users arrive, and the limits to plan for from day one.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T16:10:00",
+    "endsAt": "2026-11-21T16:50:00",
+    "roomId": 89726,
+    "room": "Hall 114W",
+    "roomSort": 0,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "9db1befa-deda-4676-a470-49cb8b6d9bab"
+    ]
+  },
+  {
+    "id": "1352973",
+    "title": "Self-Improving Agents",
+    "description": "A self-improving agent is not a property of the model. It is a loop you build around it: production signal, diagnosis, verified change, ship, measure. A walk through the loop around an agent in production, including the day the eval turned out to reward the agent for reading the answer key, and how to contain it all in one human-reviewed pull request.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T16:25:00",
+    "endsAt": "2026-11-21T17:05:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "5ec4275d-42ed-41ca-bbf2-305f258dc0b0"
+    ]
+  },
+  {
+    "id": "1363880",
+    "title": "Building Richer Data for Physical AI",
+    "description": "In Physical AI, motion alone does not show whether the robot picked the right container, held its grip or completed the handoff. How to build richer records of each attempt, covering the goal, the objects, the steps and the outcome, by enriching video and control traces with grounded object references, temporal and spatial context and expert corrections. A concrete example from excavator data, using frontier and open-vocabulary models.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T16:40:00",
+    "endsAt": "2026-11-21T17:20:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "76de9ed8-afd1-499b-be1c-8cafae9585fe"
+    ]
+  },
+  {
+    "id": "1326413",
+    "title": "The New Bottleneck: How AI Changed Mobile Development",
+    "description": "AI agents write code faster than we can read it, yet teams do not ship faster: the bottleneck has moved to verification, and on mobile that is the hardest part. A practical toolkit: agent rules in the repo, linters and architecture tests that gate the merge, tests as acceptance criteria, and an agent that verifies the app on a real device through the accessibility tree, demoed live. Android first, with a Flutter version of every technique.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T16:50:00",
+    "endsAt": "2026-11-21T17:30:00",
+    "roomId": 89726,
+    "room": "Hall 114W",
+    "roomSort": 0,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "1f2ba26b-921a-4b3a-ba24-1e8208f935b8"
+    ]
+  },
+  {
+    "id": "1339323",
+    "title": "What Building with Agents Taught Me About Communication",
+    "description": "Building a Gemini-powered support assistant, the hard part was not the model. Every wrong output traced back to an instruction that seemed clear but was not. Real prompt failures, why they broke, and how fixing them for an LLM changed how specs, tickets and messages get written for people, plus a simple framework for instructions that assume nothing.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T17:05:00",
+    "endsAt": "2026-11-21T17:45:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "f579b865-8a53-4718-98e3-f8a52a93d8cd"
+    ]
+  },
+  {
+    "id": "1329366",
+    "title": "From Writing Code to Building Products",
+    "description": "When anyone can generate code, what makes an engineer valuable? How to use AI tools, including Google's, as more than a coding assistant: a force multiplier that helps an engineer think like a product manager, designer and QA engineer, and take an idea from concept to working product.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T17:20:00",
+    "endsAt": "2026-11-21T18:00:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "75f479eb-c660-4511-8445-8ead525d09f1"
+    ]
+  },
+  {
+    "id": "1378097",
+    "title": "A Bridge the Token Never Crosses: Single Sign-On Inside an Iframe After Third-Party Cookies",
+    "description": "Your app runs inside someone else's page, such as a SharePoint web part or a Teams tab, and with third-party cookies blocked your session no longer reaches the iframe. Why the usual fixes fail, and a pattern that works: a popup inherits the existing SSO, the server swaps the session for a 60-second single-use ticket, and the iframe redeems it into a CHIPS partitioned cookie. Shown live with Auth.js and Better Auth.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T17:30:00",
+    "endsAt": "2026-11-21T18:10:00",
+    "roomId": 89726,
+    "room": "Hall 114W",
+    "roomSort": 0,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "5ee7b9bb-2ac2-448a-9810-e0656c083f7e"
+    ]
+  },
+  {
+    "id": "1371419",
+    "title": "From LLMs to Your Web App: Building Agentic Frontends with Google ADK, AG-UI, A2UI and Angular",
+    "description": "How to build dynamic, AI-generated interfaces in Angular: agents built with Google's Agent Development Kit, connected to the UI through the AG-UI protocol, composing custom screens from a catalog of developer-defined components.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T17:45:00",
+    "endsAt": "2026-11-21T18:25:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "b3a2e3aa-4e66-41dc-83a9-8209803c914f"
+    ]
+  },
+  {
+    "id": "1341264",
+    "title": "Staying Human in the Age of AI: Simple Adaptation Skills for Leaders and Teams",
+    "description": "We talk a lot about what AI can do, and less about what happens to us as we try to keep up. An interactive workshop built on four simple steps: slow down, notice what you feel, examine what you think, and choose what matters, through short exercises and conversations about your own responses to AI-driven change.",
+    "format": "Workshop",
+    "url": null,
+    "startsAt": "2026-11-21T18:00:00",
+    "endsAt": "2026-11-21T18:40:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "fcd40625-d41f-45f8-8b4b-fc510bb96d07"
+    ]
+  },
+  {
+    "id": "1378802",
+    "title": "From Game Idea to Deployment",
+    "description": "Creating a game from scratch with open-source tools and materials, and hosting it for free.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T18:10:00",
+    "endsAt": "2026-11-21T18:50:00",
+    "roomId": 89726,
+    "room": "Hall 114W",
+    "roomSort": 0,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "4b993823-524f-4bed-a0c0-facb42f54089"
+    ]
+  },
+  {
+    "id": "1373825",
+    "title": "Rollback the Entire World State in an Instance",
+    "description": "What if you could simulate a sequence of operations, inspect the result, then undo every mutation without a database, in hundreds of nanoseconds? Games need this for bot decisions and combat simulations, but the problem is general: making changes to large, mutable state reversible. Several approaches, their trade-offs, and the one chosen for the speaker's own game.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T18:40:00",
+    "endsAt": "2026-11-21T19:20:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "1490ea64-7f42-4a1a-bbba-c229be5e928e"
+    ]
+  },
+  {
+    "id": "d26cc26b-30dc-4af6-89b0-80b7bd3a25a5",
+    "title": "Closing",
+    "description": "",
+    "format": "Service",
+    "url": null,
+    "startsAt": "2026-11-21T19:20:00",
+    "endsAt": "2026-11-21T19:50:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": true,
+    "isPlenumSession": false,
+    "speakers": []
+  },
+  {
+    "id": "a792762c-a4fd-459d-bc47-7a47e867ecaf",
+    "title": "Afterparty at Cin Cin bar",
+    "description": "",
+    "format": "Service",
+    "url": "https://www.google.com/maps/place/Cin+-+Cin+Urban+Craft+Bar/data=!4m2!3m1!1s0x0:0xb8f980391e2876c6?sa=X&ved=1t:2428&ictx=111",
+    "startsAt": "2026-11-21T20:00:00",
+    "endsAt": "2026-11-21T23:00:00",
+    "roomId": 89728,
+    "room": "Manukyan Hall",
+    "roomSort": 2,
+    "isServiceSession": true,
+    "isPlenumSession": true,
+    "speakers": []
+  }
+]

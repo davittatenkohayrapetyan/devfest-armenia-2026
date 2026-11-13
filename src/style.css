@@ -496,3 +496,258 @@ main:focus { outline: none; }
     transform: scale(1.04);
   }
 }
+
+/* Agenda (DF-28). A timeline with one column per room on 5-minute rows, so a 40-minute talk
+   and a 60-minute workshop are drawn at their real lengths and staggered starts line up across
+   rooms. Rows are minmax(…, auto): opening a talk grows the rows it spans for every room at
+   once, which keeps the times aligned instead of letting one column slide. Below 1024px the
+   grid becomes a single list in start order, and each card names its own room. */
+[data-accent="blue"] { --accent: var(--df-blue); }
+[data-accent="red"] { --accent: var(--df-red); }
+[data-accent="yellow"] { --accent: var(--df-yellow); }
+[data-accent="green"] { --accent: var(--df-green); }
+
+.agenda-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.agenda-room,
+.agenda-mark,
+.agenda-line { display: none; }
+
+@media (min-width: 1024px) {
+  .agenda-grid {
+    display: grid;
+    grid-template-columns: 3.25rem repeat(var(--rooms), minmax(0, 1fr));
+    grid-template-rows: auto repeat(var(--rows), minmax(0.9rem, auto));
+    column-gap: 0.75rem;
+    row-gap: 0;
+  }
+  /* Sticky, so the room names stay readable on a 1,500px-tall day. */
+  .agenda-room {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 0.75rem 0 0.6rem;
+    margin-bottom: 0.5rem;
+    background: var(--surface-alt);
+    border-bottom: 3px solid var(--accent);
+    font-weight: 700;
+  }
+  .agenda-mark {
+    display: block;
+    grid-column: 1;
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    font-variant-numeric: tabular-nums;
+    transform: translateY(-0.55em);
+  }
+  .agenda-line {
+    display: block;
+    grid-column: 2 / -1;
+    border-top: 1px solid var(--rule);
+  }
+  .agenda-cell {
+    position: relative;
+    z-index: 1;
+    padding-block: 3px;
+  }
+  .agenda-cell .session { height: 100%; }
+  /* The column header already names the room. */
+  .agenda-cell .session-room { display: none; }
+
+  /* An open talk drops its details as a panel over the timeline instead of growing its rows:
+     inline, a 16rem column turns 80 words and a bio into a 900px card and drags every other
+     room's talks apart. wireAgenda() keeps one open at a time on this layout. */
+  .agenda-cell:has(.session[open]) { z-index: 3; }
+  .agenda-cell .session[open] { position: relative; border-bottom-left-radius: 0; }
+  .agenda-cell .session-body {
+    position: absolute;
+    top: 100%;
+    left: -4px;
+    width: max(calc(100% + 4px), 26rem);
+    padding-top: 0.9rem;
+    background: var(--surface);
+    border-left: 4px solid var(--accent, var(--df-blue));
+    border-radius: 0 0 0.75rem 0.75rem;
+    box-shadow: 0 0 0 1px var(--rule), 0 12px 28px rgba(30, 30, 30, 0.12);
+  }
+  .agenda-cell[data-edge="end"] .session-body { left: auto; right: 0; }
+}
+
+.session-list {
+  display: grid;
+  gap: 0.75rem;
+}
+@media (min-width: 768px) {
+  .session-list { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+
+.session {
+  background: var(--surface);
+  border-radius: 0.75rem;
+  border-left: 4px solid var(--accent, var(--df-blue));
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+.session summary {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.6rem 2rem 0.7rem 0.75rem;
+  cursor: pointer;
+  list-style: none;
+  border-radius: 0.75rem;
+}
+.session summary::-webkit-details-marker { display: none; }
+/* Chevron: points down closed, up open. Decorative — <details> already exposes its state. */
+.session summary::after {
+  content: "";
+  position: absolute;
+  right: 0.85rem;
+  top: 0.85rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--ink-muted);
+  border-bottom: 2px solid var(--ink-muted);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+.session[open] summary::after { transform: translateY(0.2rem) rotate(-135deg); }
+
+.session-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem 0.6rem;
+  font-size: 0.8125rem;
+  color: var(--ink-muted);
+}
+.session-time {
+  color: var(--ink);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.session-badge {
+  border-radius: 9999px;
+  padding: 0 0.5rem;
+  background: var(--df-pastel-yellow);
+  color: #1e1e1e;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.session-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.session-people {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--ink-muted);
+}
+.session-who {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.session-face {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+.session-body {
+  display: grid;
+  gap: 0.9rem;
+  padding: 0 0.85rem 0.9rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.session-speaker {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--rule);
+}
+.session-speaker-photo {
+  flex: none;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+/* Organisers' blocks: the four kit colours as the stripe, top to bottom, rather than one room's
+   colour — these belong to the whole day, not to a room. */
+.session--service {
+  border-left: 0;
+  background:
+    linear-gradient(var(--df-blue) 0 25%, var(--df-red) 25% 50%, var(--df-yellow) 50% 75%, var(--df-green) 75% 100%)
+      left / 4px 100% no-repeat,
+    var(--surface);
+  padding-left: 4px;
+}
+.session-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.6rem 0.75rem 0.7rem;
+}
+/* Panel moderator and panelists (session-people.json). A portrait still to come shows initials on
+   the alternate surface in ink — no colour, so a missing photo never reads as a status. */
+.session-cast {
+  display: grid;
+  gap: 0;
+}
+.session-cast .session-speaker:first-child { border-top: 0; padding-top: 0; }
+.session-cast .session-speaker { padding-bottom: 0.75rem; }
+.session-cast .session-speaker-photo { width: 3rem; height: 3rem; }
+.session-role {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.person-initials {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-alt);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+.session-face.person-initials { font-size: 0.5625rem; }
+/* Overlapping face stack on the closed panel card. */
+.session--service .session-people { gap: 0; }
+.session--service .session-who + .session-who { margin-left: -0.35rem; }
+.session--service .session-face { box-shadow: 0 0 0 2px var(--surface); }
+
+/* The panel's description is the organisers' own line-broken list of moderator and panelists. */
+.session-desc--service { white-space: pre-line; }
+@media (min-width: 1024px) {
+  .agenda-cell .session--service .session-body {
+    left: 0;
+    border-left: 4px solid var(--df-blue);
+  }
+}
+
+/* Speaker card → their talk in the agenda. Ink, not kit blue: #4285f4 on #f0f0f0 is about
+   3.2:1, too low for 14px text. The blue lives in the underline. */
+.speaker-talk {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-decoration-color: var(--df-blue);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}

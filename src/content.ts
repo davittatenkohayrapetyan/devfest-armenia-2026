@@ -23,6 +23,32 @@ export type Speaker = {
   sessions?: { id: string; name: string }[];
 };
 
+/**
+ * One entry of public/content/sessions.json, written by `npm run sync:speakers`. Field names
+ * follow Sessionize's /view/All sessions; for talks, `title`, `format` and `description` come
+ * from the locked public text in scripts/session-text.lock.json, never the raw submission.
+ * Service sessions (registration, opening, panel, closing, afterparty) come from the schedule
+ * grid and are published as the organisers wrote them.
+ */
+export type Session = {
+  id: string;
+  title: string;
+  description: string;
+  format: "Talk" | "Workshop" | "Service";
+  /** Service sessions only: a link that stood in for a description, e.g. the afterparty's map. */
+  url: string | null;
+  /** Venue local time with no offset, e.g. "2026-11-21T10:00:00". Null until scheduled. */
+  startsAt: string | null;
+  endsAt: string | null;
+  roomId: number | null;
+  room: string | null;
+  roomSort: number | null;
+  isServiceSession: boolean;
+  isPlenumSession: boolean;
+  /** Speaker ids, matching `Speaker.id` in speakers.json. */
+  speakers: string[];
+};
+
 export type Organizer = {
   name: string;
   /** Their role on this event, e.g. "Co-Organizer". */
@@ -106,7 +132,33 @@ export const loadPartners = () =>
  */
 export const loadSpeakers = () => load<Speaker[]>("speakers.json");
 
-export const loadOrganizers = () => load<Organizer[]>("organizers.json");
+export const loadSessions = () => load<Session[]>("sessions.json");
+
+/** A moderator or panelist on an organisers' session. */
+export type SessionPerson = {
+  name: string;
+  role: "Moderator" | "Panelist";
+  title: string;
+  /** Path under public/, or "" — the page then shows initials until a portrait is added. */
+  photo: string;
+};
+
+/**
+ * public/content/session-people.json, keyed by Sessionize session id. Hand-maintained: Sessionize
+ * carries no speakers for service sessions, so a panel's people live here, not in the sync.
+ * `summary`, when set, replaces the session's description on the page.
+ */
+export type SessionCast = { summary?: string; people: SessionPerson[] };
+
+export const loadSessionPeople = () =>
+  load<Record<string, SessionCast | string>>("session-people.json").then(
+    (raw) =>
+      new Map(
+        Object.entries(raw).filter((e): e is [string, SessionCast] => typeof e[1] === "object"),
+      ),
+  );
+
+export const loadOrganizers =() => load<Organizer[]>("organizers.json");
 
 /** Days remaining until the CFP closes. Negative once it has closed. */
 export function daysUntil(iso: string): number {

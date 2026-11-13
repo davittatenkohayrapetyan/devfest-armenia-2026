@@ -72,8 +72,8 @@ infrastructure decision.
 | DF-22 | Retrieve Sessionize embed ID for 2026 | done | Davit | 10 Oct | `2d3htmgm` — recorded in CLAUDE.md |
 | DF-23 | Wire `loadSpeakers()` to Sessionize API | cancelled | — | — | Superseded by DF-50 — sync on demand, not fetch at runtime |
 | DF-24 | Build-time speaker JSON snapshot as offline fallback | cancelled | — | — | Superseded by DF-50 — the synced file is the source, so there is nothing to fall back from |
-| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 27 speakers live at 4 Nov |
-| DF-51 | Extend the sync to talks — session mapping | todo | Davit | 10 Nov | Needs DF-50. Blocks DF-28. See brief |
+| DF-50 | On-demand speaker sync from Sessionize | done | Davit | 10 Oct | `npm run sync:speakers`. 31 speakers live at 12 Nov |
+| DF-51 | Extend the sync to talks — session mapping | review | Davit | 10 Nov | `sessions.json`, 33 talks + 5 service sessions, 4 rooms. Text locked (ADR-013). See log 12 Nov |
 | DF-25 | Verify 9+ compact grid state with real data | review | Davit | 20 Oct | Threshold crossed at 10 speakers, 4 Oct — needs a look on a phone |
 | DF-26 | Speaker announcement social assets | todo | GDG team | 20 Oct | Templates in brand deck |
 | DF-27 | Hide CFP block after 8 Nov — verify | todo | Davit | 9 Nov | Also check the Speakers CTA and note disappear |
@@ -83,7 +83,7 @@ infrastructure decision.
 
 | ID | Task | Status | Owner | Due | Notes |
 |---|---|---|---|---|---|
-| DF-28 | Three-track agenda section | todo | Davit | 12 Nov | Placeholder live; cannot be complete before the CFP closes 8 Nov |
+| DF-28 | Agenda section | review | Davit | 12 Nov | Room-column timeline, expandable talks with speaker. Four rooms, not three tracks. See log 12 Nov |
 | DF-29 | Sessionize GridSmart embed + theme overrides | todo | Davit | 12 Nov | Only embed retained |
 | DF-30 | Workshop section if workshops are accepted | todo | Davit | 12 Nov | Limited number |
 | DF-31 | Partner logos final | todo | GDG team | 7 Nov | No tiers. InTech.am 19 Sep, Yandex Armenia 24 Sep, HackLab (Quiz Partner) and EPAM Armenia (Event Partner) 17 Oct; Ameriabank (Fintech), Gtatso and Cin Cin (Afterparty) 4 Nov |
@@ -541,6 +541,81 @@ go well.
 ## Comments log
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
+
+### 2026-11-12 · DF-51, DF-28, DF-50, DF-54 · Claude Code
+At Davit's request: talks, schedule and agenda published from Sessionize in one pass.
+
+**Data (DF-51).** `sync-speakers.mjs` now also writes `public/content/sessions.json`: 33 accepted
+talks, all scheduled, across four rooms (Hall 114W, Hall 113W, Manukyan Hall, 133W [Workshops]).
+Each speaker's `sessions` resolves to `{ id, name }`. Types in `src/content.ts`, validation in
+`validate-content.mjs` (speaker ↔ session ids both ways, times paired and in order, room and
+roomId paired). A second run gives no diff. Two departures from the brief: service sessions are
+*carried* with `format: "Service"` rather than dropped (see below); and there is no flag holding talks back, because Davit asked for them
+public. Surprise worth knowing: the schedule reached the API about 20 minutes after Davit said
+it was announced. Before that, every session had `startsAt: null` and `rooms: []`.
+
+**Text (ADR-013).** No raw description or bio is published. All 33 talks and 31 speakers were
+rewritten to about 60 words and 1–3 sentences, and locked with a hash of the source. Removed as
+reviewer-only material: Ali Kazemi's committee note and accelerator mention, Milena Janoyan's
+thesis grade and organizer note, Max Kachinkin's video link and Google Docs talk plans (both
+talks), and "no product pitch" assurances. Titles were tidied (case, `[WORKSHOP]` tag removed,
+"Ai" → "AI"), not reworded. One left as submitted: "Rollback the Entire World State in an
+*Instance*" may mean *Instant*. Ask Iskander before changing it.
+
+**Format.** Four talks are labelled Workshop: Goran's Interactions API and Max's Stranger Shaders
+(tagged `[WORKSHOP]` in the title, in the workshops room), and Ankur's Antigravity CLI and
+Natasha's Staying Human (each description calls itself a workshop). The last two sit in
+40-minute slots in regular halls. If they are really talks, change `format` in the lock.
+Max's Stranger Shaders description also says "the talk is 30 minutes", but it is scheduled for
+60 minutes in the workshops room.
+
+**Agenda UI (DF-28).** A timeline with one column per room on 5-minute rows, so 40- and
+60-minute sessions are drawn at their real length and the staggered per-room starts line up.
+Each talk is a native `<details>`: time, title, speaker face and name closed; locked
+description, photo, tagline and bio open. On desktop the open talk drops a panel over the grid
+rather than growing its rows: inline, one open card measured 890px and dragged the other rooms
+apart. Only one panel opens at a time, and Escape closes it. Below 1024px the grid becomes a
+single list in start order with the room on each card. Speaker cards link to their talks, and
+`#session-<id>` URLs open the talk. Breaks, lunch and the opening are **not in Sessionize**, so
+they do not appear (13:50–14:40 is an empty band). Add them there as service sessions if wanted.
+
+**Bug found and fixed on the way:** the scroll reveal fades in each direct child of a section,
+and requires 10% of it to be on screen. The phone agenda is 4,600px tall, so it was at 17%:
+borderline, and a shorter phone or a longer day would have left it invisible. Agenda cards now
+reveal one by one, like speaker cards.
+
+**Speakers (DF-50, DF-54).** Four new: Anahit Sukiasyan, Daniele Mario Areddu, Harutyun
+Margaryan, Iskander Sharipov. 31 published. All four cropped and locked. Iskander's is a
+three-quarter profile that the frontal detector misses, so it has a manual box in
+`speaker-faces.json`.
+
+**Service sessions, later the same day.** Registration, Opening, the Education & AI Panel,
+Closing and the Afterparty exist in Sessionize but are **not in `/view/All`**: that endpoint
+carries submitted sessions only. They appear only in `/view/GridSmart`, so the sync now reads
+both and merges the service sessions in (5 today, 38 sessions in all). They are published as the
+organisers wrote them, with no lock, since they were never submissions. The afterparty's
+description is just a Google Maps URL, so the sync moves it to a new `url` field and the card
+shows "Open the location in Maps". Registration and the afterparty are plenum sessions: they span
+all four columns and name no room, because Sessionize parks both in Manukyan Hall, and the
+afterparty is at Cin Cin, not in a hall. On the timeline a block is drawn at most an hour tall,
+and the card states the real 20:00–23:00, so a three-hour afterparty does not add half a screen
+of empty grid.
+
+**Panel portraits.** Sessionize carries no speakers for service sessions, so the Education & AI
+Panel's people live in a new hand-maintained file, `public/content/session-people.json`, keyed by
+session id: name, role (Moderator or Panelist), title and photo, all taken from the panel's own
+description. Three portraits already existed on the site and are reused, not copied: Mane
+Vardanyan and Habet Madoyan (team photos) and Arman Gyulbudaghyan (speaker photo). Davit
+supplied Nerses Srapionyan, Asya Sepkhanyan and Mariam Aleksanyan on 13 Nov. They are cropped to
+the speaker geometry (face detected, side 2× face width, centre dropped 10%, 400px, no EXIF) and
+stored in `public/assets/panel/`. Mariam's was a half-length outdoor shot and crops cleanly. To
+add another, put the file under `public/assets/` and set its `photo`; validation fails on a path that
+does not exist. `summary` carries the description's closing paragraph verbatim, so the panel
+does not list its people twice. If the description changes in Sessionize, update it here too.
+
+**Not done:** DF-29 (GridSmart embed) and DF-30 (workshop section) are probably superseded by this
+agenda, since workshops are in it with a badge. Davit to decide before they are closed. The
+deploy `dist/` from 4 Nov predates all of this and needs rebuilding.
 
 ### 2026-11-04 · DF-50, DF-54, DF-31 · Claude Code (task manager)
 Synced: eight new speakers, twenty-seven published — **Arsen Mazmanyan**, **Azat Davliatshin**,

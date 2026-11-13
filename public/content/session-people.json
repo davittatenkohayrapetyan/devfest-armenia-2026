@@ -1,0 +1,44 @@
+{
+  "_note": "People shown on organiser sessions (panels), keyed by Sessionize session id. Sessionize carries no speakers for service sessions, so they live here. Names and titles are taken from the session's own description. photo is a path under public/, or \"\" to show initials until a portrait is added. summary, if set, replaces the session description on the page.",
+  "ac7e3df5-772a-4279-91c9-d20fb43e061c": {
+    "summary": "We'll explore how education needs to evolve in the age of AI — from schools and universities to professional training programs, and how we can prepare future specialists with skills that go beyond entry-level knowledge.",
+    "people": [
+      {
+        "name": "Mane Vardanyan",
+        "role": "Moderator",
+        "title": "American University of Armenia (AUA)",
+        "photo": "assets/organizers/mane-vardanyan.jpg"
+      },
+      {
+        "name": "Habet Madoyan",
+        "role": "Panelist",
+        "title": "AUA Akian College of Science and Engineering",
+        "photo": "assets/organizers/habet-madoyan.jpg"
+      },
+      {
+        "name": "Arman Gyulbudaghyan",
+        "role": "Panelist",
+        "title": "Trainer at BDG, also joining DevFest as a speaker",
+        "photo": "assets/speakers/ba8de9c7-f2d2-458a-b678-9270ab8def5d.jpg"
+      },
+      {
+        "name": "Nerses Srapionyan",
+        "role": "Panelist",
+        "title": "Academic Director at ML School Armenia (Yandex)",
+        "photo": "assets/panel/nerses-srapionyan.jpg"
+      },
+      {
+        "name": "Asya Sepkhanyan",
+        "role": "Panelist",
+        "title": "Senior Digital Skills Development Specialist at Ameriabank",
+        "photo": "assets/panel/asya-sepkhanyan.jpg"
+      },
+      {
+        "name": "Mariam Aleksanyan",
+        "role": "Panelist",
+        "title": "Learning Design Manager at Teach For Armenia",
+        "photo": "assets/panel/mariam-aleksanyan.jpg"
+      }
+    ]
+  }
+}

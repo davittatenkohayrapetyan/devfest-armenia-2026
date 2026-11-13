@@ -1,0 +1,219 @@
+{
+  "9db1befa-deda-4676-a470-49cb8b6d9bab": {
+    "name": "Aleksandr Kondaurov",
+    "tagLine": "Senior Fullstack Engineer · TypeScript, Serverless, Open Source",
+    "bio": "Backend and fullstack engineer with about 15 years in software, focused on TypeScript, Node.js and serverless. Builds LLM-based and agentic systems and maintains open-source projects including effortless-aws. Based in Yerevan.",
+    "sourceHash": "17ffa6e7eaafb554",
+    "lockedAt": "2026-11-12"
+  },
+  "ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147": {
+    "name": "Ali (Aran) Kazemi",
+    "tagLine": "Founder & Principal AI Systems Architect, EIP-Technologies",
+    "bio": "Founder and principal systems architect at EIP-Technologies and a member of the EU AI Alliance. Designs high-assurance distributed systems, is the architect behind the Enterprise Agent Engine, and introduced CrisisAI, a hybrid AI framework for emergency management recognised as a best practice on the EU portal.",
+    "sourceHash": "e63d772ac9f76f0d",
+    "lockedAt": "2026-11-12"
+  },
+  "4b510743-11a4-4288-90f2-960ca91d9cc1": {
+    "name": "Anahit Sukiasyan",
+    "tagLine": "Atlassian Admin & Creator · Atlassian Community Champion, Yerevan",
+    "bio": "Atlassian Admin & Creator and the Atlassian Community Champion in Yerevan, with a background in service management and digital transformation. Brings professionals together to share knowledge, and creates educational content on technology and professional growth.",
+    "sourceHash": "a1c58fce25c50cf0",
+    "lockedAt": "2026-11-12"
+  },
+  "8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3": {
+    "name": "Ankur Roy",
+    "tagLine": "Solutions Architect, Online Partner AB · Google Developer Expert, Cloud",
+    "bio": "Solutions architect at Online Partner AB and a Google Developer Expert in Cloud, working on projects across Google Cloud, Google Workspace and other platforms.",
+    "sourceHash": "9b1d92554fe05c75",
+    "lockedAt": "2026-11-12"
+  },
+  "ba8de9c7-f2d2-458a-b678-9270ab8def5d": {
+    "name": "Arman Gyulbudaghyan",
+    "tagLine": "Head of DevOps, Grid Dynamics",
+    "bio": "Staff DevOps engineer and Head of DevOps at Grid Dynamics.",
+    "sourceHash": "84b8f6e5ef011efb",
+    "lockedAt": "2026-11-12"
+  },
+  "b3a2e3aa-4e66-41dc-83a9-8209803c914f": {
+    "name": "Armen Vardanyan",
+    "tagLine": "Front-End Team Lead · Google Developer Expert, Angular",
+    "bio": "Front-end team lead who has worked with Angular for over six years. Google Developer Expert for Angular, technical writer, mentor and speaker.",
+    "sourceHash": "a63f15cedee9e18f",
+    "lockedAt": "2026-11-12"
+  },
+  "4b993823-524f-4bed-a0c0-facb42f54089": {
+    "name": "Arsen Mazmanyan",
+    "tagLine": "PixiJS Game Developer, Kendoo Games",
+    "bio": "HTML5 game developer with six years of experience, focused on 2D games.",
+    "sourceHash": "eb74ff0d3f1e0f9d",
+    "lockedAt": "2026-11-12"
+  },
+  "d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19": {
+    "name": "Artem Viter",
+    "tagLine": "Senior Software Engineer",
+    "bio": "Has built mobile apps since 2012, across Android, iOS, Kotlin Multiplatform and React Native, and now works on a crypto wallet with millions of users. Outside work, builds an AI product in Go and Python and explores building software with coding agents.",
+    "sourceHash": "e928b9a466b9bb8d",
+    "lockedAt": "2026-11-12"
+  },
+  "5ee7b9bb-2ac2-448a-9810-e0656c083f7e": {
+    "name": "Azat Davliatshin",
+    "tagLine": "Software Architect & Tech Lead, Quantori",
+    "bio": "Software architect and tech lead at Quantori, writing JavaScript for over ten years. Maintains next-auth-bridge, an open-source reference for cross-context session handoff, and wrote an IETF Internet-Draft on delegation tokens for AI agents.",
+    "sourceHash": "e404f7271c92e08b",
+    "lockedAt": "2026-11-12"
+  },
+  "919f1380-f9b7-40ce-97a9-545be75734ae": {
+    "name": "Daniele Mario Areddu",
+    "tagLine": "Backend & AI Developer, Global Technologies Italia · Community Lead, Velletri.dev",
+    "bio": "Backend and AI developer at Global Technologies Italia and a computer science student at the University of Calabria. Has given around 30 talks across Europe, the US and Central Asia on AI agents, RAG and cloud-to-edge architectures, and founded the Velletri.dev community.",
+    "sourceHash": "4d48d60f72612cb5",
+    "lockedAt": "2026-11-12"
+  },
+  "75f479eb-c660-4511-8445-8ead525d09f1": {
+    "name": "Davit Siradeghyan",
+    "tagLine": "Engineering Manager, Softr",
+    "bio": "Engineering manager with over 16 years in fintech, SaaS and mobile, leading a distributed team at Softr that builds products used by more than a million people. Founder of GoBuild Technologies, exploring how AI is reshaping software development.",
+    "sourceHash": "778b17d05ad2a35f",
+    "lockedAt": "2026-11-12"
+  },
+  "24806d60-f727-4328-9942-68684ecca775": {
+    "name": "Gabriel Preda",
+    "tagLine": "Principal Data Scientist, Endava · AI & Cloud AI GDE · 2x Kaggle Grandmaster",
+    "bio": "Principal data scientist at Endava, with a PhD in computational electromagnetics and a long career in software development. Two-time Kaggle Grandmaster, Google Developer Expert, and author of a Packt book on Kaggle notebooks.",
+    "sourceHash": "5df71627c87077e2",
+    "lockedAt": "2026-11-12"
+  },
+  "12c176ed-9104-4a50-b1de-4f453342ab20": {
+    "name": "Goran Minov",
+    "tagLine": "Regional Technical Strategist, Okta · Google Developer Expert, Cloud AI",
+    "bio": "Google Developer Expert in Cloud AI, cloud AI and cybersecurity architect, and eight times Google Cloud certified. At Okta, helps enterprises automate and secure their identity infrastructure, with a focus on secure ML workflows and Zero Trust multi-agent systems.",
+    "sourceHash": "3be64d32a409fe9e",
+    "lockedAt": "2026-11-12"
+  },
+  "e3906fb8-6843-4593-adc5-d655fb872c74": {
+    "name": "Harutyun Margaryan",
+    "tagLine": "Head of Enterprise Architecture, Ameriabank",
+    "bio": "Head of Enterprise Architecture at Ameriabank, with a background in engineering, architecture and system design at global companies and startups. Enthusiast of complex systems, systems theory and complexity science.",
+    "sourceHash": "052af47023b80c95",
+    "lockedAt": "2026-11-12"
+  },
+  "1490ea64-7f42-4a1a-bbba-c229be5e928e": {
+    "name": "Iskander Sharipov",
+    "tagLine": "Solo Indie Game Developer",
+    "bio": "Former compiler engineer, now a solo indie game developer working with custom engines and libraries. Has published two games on Steam, with a third in active development.",
+    "sourceHash": "0bccf15fdda50d7d",
+    "lockedAt": "2026-11-12"
+  },
+  "4f850d61-b54a-4e83-895b-043292dd29d3": {
+    "name": "Kenneth Christiansen",
+    "tagLine": "Principal Engineer, Intel · W3C TAG alumnus",
+    "bio": "Principal engineer in Intel's Web Platform Engineering team, working with browser vendors to make the web a real application platform, including the rise of Progressive Web Apps. Multi-term elected member of the W3C Technical Architecture Group and a Google Developer Expert in Web Technologies.",
+    "sourceHash": "55b002a4301e2892",
+    "lockedAt": "2026-11-12"
+  },
+  "76de9ed8-afd1-499b-be1c-8cafae9585fe": {
+    "name": "Kevork Sulahian",
+    "tagLine": "Staff ML Engineer & AAAI Author",
+    "bio": "ML team lead and published researcher who builds useful AI systems and helps teams deliver them well.",
+    "sourceHash": "60b5719d3d76d602",
+    "lockedAt": "2026-11-12"
+  },
+  "8b52910b-edcd-42d4-b415-57fffcb06ead": {
+    "name": "Liana Darbinyan",
+    "tagLine": "Cybersecurity Engineer · Application Security & Threat Detection",
+    "bio": "Cybersecurity professional working across security infrastructure, application and API security, threat detection and security operations. With a background in data science, focuses on where security meets AI, and on making security practical for developers.",
+    "sourceHash": "341b0bee006f60aa",
+    "lockedAt": "2026-11-12"
+  },
+  "f1f13b29-7398-4d81-8c82-02bedfe50871": {
+    "name": "Mariam Grigoryan",
+    "tagLine": "Delivery Manager, Grid Dynamics",
+    "bio": "Delivery manager in Yerevan, leading client projects from scope to delivery, most recently training a humanoid robot for a pharmaceutical company.",
+    "sourceHash": "8d84c1d4db6c77ac",
+    "lockedAt": "2026-11-12"
+  },
+  "8ef48870-8f85-4450-b385-6695da4c180f": {
+    "name": "Mariia Khachaturova",
+    "tagLine": "Junior Application Security Engineer, Align Technology",
+    "bio": "Application security engineer in healthcare, supporting dozens of teams on static application security testing. Started at 42 Yerevan, then joined a local company as a cybersecurity intern.",
+    "sourceHash": "4e10df7bf66b9593",
+    "lockedAt": "2026-11-12"
+  },
+  "1f2ba26b-921a-4b3a-ba24-1e8208f935b8": {
+    "name": "Max Kachinkin",
+    "tagLine": "Android Tech Lead, Dodo Brands",
+    "bio": "Android developer for over ten years and tech lead at Dodo Brands, who led Dodo Pizza (9 million MAU across 20 countries) and now works on Drinkit. Runs the Mobile Fiction Telegram channel, teaches Android development, and speaks at conferences such as Mobius and Codefest.",
+    "sourceHash": "e84b2336b8825465",
+    "lockedAt": "2026-11-12"
+  },
+  "7e81baea-59e0-4d19-947e-5efb5644b2e9": {
+    "name": "Milena Janoyan",
+    "tagLine": "Founder, MJ Studio",
+    "bio": "Software engineer and founder of MJ Studio, helping early-stage founders turn ideas into validated products, with over six years across product, backend engineering and startup growth. Recently completed a bachelor's thesis on the impact of generative AI on software startups.",
+    "sourceHash": "5cf0841473eb043e",
+    "lockedAt": "2026-11-12"
+  },
+  "f579b865-8a53-4718-98e3-f8a52a93d8cd": {
+    "name": "Mohammed Buallay",
+    "tagLine": "Data Science",
+    "bio": "Data enthusiast looking for hidden patterns in data, on a mission to help people and companies put artificial intelligence to work.",
+    "sourceHash": "1e9004c20e27d68e",
+    "lockedAt": "2026-11-12"
+  },
+  "fcd40625-d41f-45f8-8b4b-fc510bb96d07": {
+    "name": "Natasha Arefyeva",
+    "tagLine": "ICF PCC Coach · 15+ years in IT",
+    "bio": "Spent over 15 years in tech, from developer to Chief Product Officer. Now an ICF PCC coach and team coach, helping people and teams build honest communication, clarity and trust.",
+    "sourceHash": "5f6ba7134908fa3d",
+    "lockedAt": "2026-11-12"
+  },
+  "019c6fb9-e890-4df3-9f5f-092e7a16bce2": {
+    "name": "Pavel Elizarov",
+    "tagLine": "Former Lead ML Engineer, Glam AI",
+    "bio": "Machine learning engineer who builds production recommendation systems. At Glam AI, designed and ran a near-real-time personalisation pipeline end to end; earlier, at VKontakte, worked on visual features for story recommendations.",
+    "sourceHash": "141307fdafeee494",
+    "lockedAt": "2026-11-12"
+  },
+  "695c0a43-6758-4801-bb70-bb1e447b4df2": {
+    "name": "Seda Sahakyan",
+    "tagLine": "Product Designer",
+    "bio": "Product designer in Yerevan with over five years across web3, gaming, streaming, fintech and e-commerce, including design systems built from scratch. Also teaches UX/UI design and is building a community for people learning it.",
+    "sourceHash": "0c307625520abb34",
+    "lockedAt": "2026-11-12"
+  },
+  "28278ce1-a2f8-4d26-a2da-1b7a7628365a": {
+    "name": "Sergei Tolmachev",
+    "tagLine": "CTO, Axmit",
+    "bio": "CTO at Axmit, a software studio building web and mobile apps since 2015 for logistics, fintech, healthcare and SaaS. Still hands-on with Go, Node.js, TypeScript, databases and DevOps, and works on making AI coding agents useful on real projects.",
+    "sourceHash": "67b3aebb318ca11a",
+    "lockedAt": "2026-11-12"
+  },
+  "5ec4275d-42ed-41ca-bbf2-305f258dc0b0": {
+    "name": "Vadim Patsev",
+    "tagLine": "Lead AI Agents Engineer, Yandex Armenia",
+    "bio": "Leads the DeepAgent team at Yandex Armenia, building a multi-agent system that plans a search across many sources and assembles one answer. Previously worked on Yandex Delivery routing, Mail and Disk, and on a self-driving car racing project. Still builds robots for fun.",
+    "sourceHash": "3fe7fc92fcb5c5e2",
+    "lockedAt": "2026-11-12"
+  },
+  "379f5371-846b-4d51-b2c6-172545486b5e": {
+    "name": "Vadim Sofin",
+    "tagLine": "Senior Software Engineer, EPAM",
+    "bio": "Software engineer with over seven years of experience, previously at Huawei and Yandex, with a background in systems programming, compilers and backend. Works on the AI DIAL platform and agentic tooling at EPAM, and leads the R&D project behind this talk.",
+    "sourceHash": "8362414320a03c80",
+    "lockedAt": "2026-11-12"
+  },
+  "d34d0e0e-8d93-405e-9a29-441cad6541ef": {
+    "name": "Vasilii Nikitin",
+    "tagLine": "Software Engineer · Mobile Security",
+    "bio": "Software engineer in Yerevan working on high-load data services in Python, Erlang and ClickHouse. Has a long-standing interest in mobile security and reverse engineering, and turns public vulnerability research into practical lessons for developers.",
+    "sourceHash": "1fa00d624ae2419b",
+    "lockedAt": "2026-11-12"
+  },
+  "4f4a4f3f-0751-41f1-b1ad-d4edd8cd09c5": {
+    "name": "Viktoriia Akhmatova",
+    "tagLine": "Full-Stack Software Engineer",
+    "bio": "Full-stack engineer with over six years building production web apps, backend services and Web3 products. Frontend-focused, with experience across backend, cloud infrastructure and smart contracts.",
+    "sourceHash": "92bda40fc827ff3d",
+    "lockedAt": "2026-11-12"
+  }
+}

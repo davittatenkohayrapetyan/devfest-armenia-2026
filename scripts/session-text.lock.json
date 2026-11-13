@@ -1,0 +1,266 @@
+{
+  "1378097": {
+    "source": "A Bridge the Token Never Crosses: single sign-on inside an iframe after third-party cookies",
+    "title": "A Bridge the Token Never Crosses: Single Sign-On Inside an Iframe After Third-Party Cookies",
+    "format": "Talk",
+    "description": "Your app runs inside someone else's page, such as a SharePoint web part or a Teams tab, and with third-party cookies blocked your session no longer reaches the iframe. Why the usual fixes fail, and a pattern that works: a popup inherits the existing SSO, the server swaps the session for a 60-second single-use ticket, and the iframe redeems it into a CHIPS partitioned cookie. Shown live with Auth.js and Better Auth.",
+    "sourceHash": "d8302eb619dca422",
+    "lockedAt": "2026-11-12"
+  },
+  "1335588": {
+    "source": "AI Wrote the Code. Who Owns the Security?",
+    "title": "AI Wrote the Code. Who Owns the Security?",
+    "format": "Talk",
+    "description": "AI can generate auth flows, APIs and whole features in minutes, but working code is not secure code. This session takes an AI-built application and attacks it live: authorization flaws, insecure API behaviour, input manipulation and exposed functionality. You leave with a practical workflow for AI-assisted code: vibe, verify, attack, fix, retest, ship.",
+    "sourceHash": "9611a85247d7daa1",
+    "lockedAt": "2026-11-12"
+  },
+  "1368726": {
+    "source": "Agents and Knowledge Graphs: Building an AI Interviewer",
+    "title": "Agents and Knowledge Graphs: Building an AI Interviewer",
+    "format": "Talk",
+    "description": "How do you reliably find the gaps in what you know? An EPAM R&D project builds a knowledge graph for a domain, one node per concept, and an AI agent walks the graph to run an interview, then maps strengths and gaps back onto it. How it was built, the problems along the way, and the lessons learned.",
+    "sourceHash": "4155ec8fe115af29",
+    "lockedAt": "2026-11-12"
+  },
+  "1337987": {
+    "source": "Antigravity CLI: Use your AI in CLI for maximum control and effectiveness",
+    "title": "Antigravity CLI: Use Your AI in the CLI for Maximum Control and Effectiveness",
+    "format": "Workshop",
+    "description": "The command line is where an AI agent's reach and a human in the loop meet best. A hands-on workshop on using the Antigravity CLI effectively, with ideas for exploring it further on your own.",
+    "sourceHash": "8fd624edabb0692a",
+    "lockedAt": "2026-11-12"
+  },
+  "1362615": {
+    "source": "Autonomous Remediation with CodeMender and Google Cloud",
+    "title": "Autonomous Remediation with CodeMender and Google Cloud",
+    "format": "Talk",
+    "description": "Scanners find vulnerabilities faster than teams can fix them, and simple LLM code generators lack the context to fix them safely. A code-first look at CodeMender, an agentic system that reasons across a repository, patches with Gemini, and verifies each fix by rebuilding, running the tests and re-running the exploit in a sandbox, then opens a verified pull request. Runs on Cloud Build and Cloud Run.",
+    "sourceHash": "4dcaf70bc1134dd8",
+    "lockedAt": "2026-11-12"
+  },
+  "1381156": {
+    "source": "Beyond Networking: Building tech communities that actually create value",
+    "title": "Beyond Networking: Building Tech Communities That Actually Create Value",
+    "format": "Talk",
+    "description": "Communities are often measured in events and attendees, but what happens after the event ends? Drawing on her work as Atlassian Community Champion in Yerevan: what makes people join a community and stay, how to turn attendees into contributors, how to connect beginners with experienced professionals, and how to measure impact beyond registration numbers.",
+    "sourceHash": "8eaf3c43f044d448",
+    "lockedAt": "2026-11-12"
+  },
+  "1369533": {
+    "source": "Building Near-Real-Time Recommendations from Fresh User Signals",
+    "title": "Building Near-Real-Time Recommendations from Fresh User Signals",
+    "format": "Talk",
+    "description": "At Glam AI, recommendations had to reflect what a user did in the current session. The path from an interaction to an updated recommendation: events through AWS Kinesis, online user state, embeddings served by Triton, retrieval from Qdrant, then ranking. The decisions behind it: what to precompute, what must stay fresh, and how to trade freshness against latency. A/B tests with over a million users showed 20% more daily content sharing.",
+    "sourceHash": "7f52132da6ffedf6",
+    "lockedAt": "2026-11-12"
+  },
+  "1363880": {
+    "source": "Building richer data for Physical AI",
+    "title": "Building Richer Data for Physical AI",
+    "format": "Talk",
+    "description": "In Physical AI, motion alone does not show whether the robot picked the right container, held its grip or completed the handoff. How to build richer records of each attempt, covering the goal, the objects, the steps and the outcome, by enriching video and control traces with grounded object references, temporal and spatial context and expert corrections. A concrete example from excavator data, using frontier and open-vocabulary models.",
+    "sourceHash": "4c954763ac754608",
+    "lockedAt": "2026-11-12"
+  },
+  "1362616": {
+    "source": "Building Stateful Agentic Apps with the Gemini Interactions API [WORKSHOP]",
+    "title": "Building Stateful Agentic Apps with the Gemini Interactions API",
+    "format": "Workshop",
+    "description": "Most LLM integrations leave you managing history, persisting context and writing glue code for tool loops. The Gemini Interactions API moves that state to the server. This hands-on workshop explores its architecture and the client.interactions interface, building multi-step agents with native state and tool calling. Bring a laptop and a Google Cloud project: everything runs in Cloud Shell, and API keys are provided. Basic Python helps.",
+    "sourceHash": "e77f722d0bf61e0a",
+    "lockedAt": "2026-11-12"
+  },
+  "1342063": {
+    "source": "Building a High-Assurance AgentOS: Performant, Secure, Flexible Agentic AI Infrastructure in Go",
+    "title": "Building a High-Assurance AgentOS: Performant, Secure, Flexible Agentic AI Infrastructure in Go",
+    "format": "Talk",
+    "description": "Python and TypeScript agent frameworks bring memory bloat, garbage-collection pauses, deep dependency trees and runaway cloud costs. A deep dive into the Enterprise Agent Engine, an agent runtime in pure Go where agents run as schedulable processes on a minimal microkernel: its architecture, multi-agent patterns, zero-copy agent-to-agent messaging, memory and observability, and benchmarks of a million concurrent agents on one 64 GB node.",
+    "sourceHash": "4d08429046f76b23",
+    "lockedAt": "2026-11-12"
+  },
+  "1382132": {
+    "source": "Enterprise adopts Ai or Ai adopts the Enterprise",
+    "title": "Enterprise Adopts AI, or AI Adopts the Enterprise",
+    "format": "Talk",
+    "description": "What large-scale AI adoption looks like inside an enterprise: the challenges every enterprise is likely to face, and an architecture that helps smooth the process and bring clarity.",
+    "sourceHash": "527ef2be7d3304c4",
+    "lockedAt": "2026-11-12"
+  },
+  "1378277": {
+    "source": "Faster, Not Better: The Real Impact of AI on Building Software",
+    "title": "Faster, Not Better: The Real Impact of AI on Building Software",
+    "format": "Talk",
+    "description": "Every team in this research uses generative AI daily, and 75% say it got them to market significantly faster, yet only 6.3% say it made their software better. Based on a study with 36 startup founders, developers and product leaders: where AI really changes engineering work, where it quietly adds security flaws and technical debt, and the review, testing and security habits that keep speed from costing quality.",
+    "sourceHash": "eccc0f5fa25ec73d",
+    "lockedAt": "2026-11-12"
+  },
+  "1338006": {
+    "source": "Fine-Tuning Gemma 4:E2B with Unsloth and LoRA for Computer Vision Tasks",
+    "title": "Fine-Tuning Gemma 4 E2B with Unsloth and LoRA for Computer Vision Tasks",
+    "format": "Talk",
+    "description": "A step-by-step walkthrough of fine-tuning Gemma 4 E2B, Google's lightweight multimodal model, for computer vision and visual reasoning, using Unsloth and LoRA on Kaggle's free GPUs. Covers dataset preparation, prompting for vision, parameter-efficient training and evaluation, so you can adapt compact multimodal models to your own domain without large compute.",
+    "sourceHash": "b7ca0c2c7eb43229",
+    "lockedAt": "2026-11-12"
+  },
+  "1340713": {
+    "source": "From Cloud to Edge: Building Autonomous AI Agents with Gemini, ADK and On-Device AI",
+    "title": "From Cloud to Edge: Building Autonomous AI Agents with Gemini, ADK and On-Device AI",
+    "format": "Talk",
+    "description": "AI applications are no longer cloud-only. How to design production-ready agents with Gemini, the Agent Development Kit and the Model Context Protocol, in hybrid architectures that pair cloud models with on-device AI. Covers orchestration, tool calling and context management, when to run inference on-device versus in the cloud, and the privacy, latency and cost trade-offs.",
+    "sourceHash": "c2889bd19ed73f14",
+    "lockedAt": "2026-11-12"
+  },
+  "1378802": {
+    "source": "From game idea to deployment",
+    "title": "From Game Idea to Deployment",
+    "format": "Talk",
+    "description": "Creating a game from scratch with open-source tools and materials, and hosting it for free.",
+    "sourceHash": "b46e3b72a7d2d2d7",
+    "lockedAt": "2026-11-12"
+  },
+  "1371419": {
+    "source": "From LLMs to your Web App: building agentic frontends with Google ADK, AG-UI, A2UI and Angular",
+    "title": "From LLMs to Your Web App: Building Agentic Frontends with Google ADK, AG-UI, A2UI and Angular",
+    "format": "Talk",
+    "description": "How to build dynamic, AI-generated interfaces in Angular: agents built with Google's Agent Development Kit, connected to the UI through the AG-UI protocol, composing custom screens from a catalog of developer-defined components.",
+    "sourceHash": "0011d33b04aa0af3",
+    "lockedAt": "2026-11-12"
+  },
+  "1329366": {
+    "source": "From writing code to building products",
+    "title": "From Writing Code to Building Products",
+    "format": "Talk",
+    "description": "When anyone can generate code, what makes an engineer valuable? How to use AI tools, including Google's, as more than a coding assistant: a force multiplier that helps an engineer think like a product manager, designer and QA engineer, and take an idea from concept to working product.",
+    "sourceHash": "2b52a47cb55dafee",
+    "lockedAt": "2026-11-12"
+  },
+  "1325974": {
+    "source": "GKE 2026",
+    "title": "GKE 2026",
+    "format": "Talk",
+    "description": "GKE workloads, optimizations and best practices, AI on GKE, and “predictive” autoscaling.",
+    "sourceHash": "decb912891f22c77",
+    "lockedAt": "2026-11-12"
+  },
+  "1363221": {
+    "source": "Offline-first mobile apps: sync conflicts, lost data and how to avoid them",
+    "title": "Offline-First Mobile Apps: Sync Conflicts, Lost Data and How to Avoid Them",
+    "format": "Talk",
+    "description": "A dispatcher closed an order while the driver, offline, was still delivering it, and when the phone reconnected the driver's data was gone. Lessons from building offline mode for a React Native driver app at Axmit: event time versus sync time, the app and the web editing the same order, retries that duplicate or lose data, and the priority rules that decide who wins a conflict.",
+    "sourceHash": "508f38318de36aa0",
+    "lockedAt": "2026-11-12"
+  },
+  "1353091": {
+    "source": "One click to your account: what public mobile bug bounty reports teach app developers",
+    "title": "One Click to Your Account: What Public Mobile Bug Bounty Reports Teach App Developers",
+    "format": "Talk",
+    "description": "Some of the best mobile security lessons are already public, in CVEs and disclosed bug bounty reports. A walk through well-documented account-takeover cases in major social apps, all fixed, turning each into a checklist for your own Android app: deep link handling, WebView bridges, account recovery, and the defensive patterns that would have stopped them.",
+    "sourceHash": "2ee4f3fbd76a1977",
+    "lockedAt": "2026-11-12"
+  },
+  "1373825": {
+    "source": "Rollback the Entire World State in an Instance",
+    "title": "Rollback the Entire World State in an Instance",
+    "format": "Talk",
+    "description": "What if you could simulate a sequence of operations, inspect the result, then undo every mutation without a database, in hundreds of nanoseconds? Games need this for bot decisions and combat simulations, but the problem is general: making changes to large, mutable state reversible. Several approaches, their trade-offs, and the one chosen for the speaker's own game.",
+    "sourceHash": "e8ace20060249fe7",
+    "lockedAt": "2026-11-12"
+  },
+  "1352973": {
+    "source": "Self-Improving Agents",
+    "title": "Self-Improving Agents",
+    "format": "Talk",
+    "description": "A self-improving agent is not a property of the model. It is a loop you build around it: production signal, diagnosis, verified change, ship, measure. A walk through the loop around an agent in production, including the day the eval turned out to reward the agent for reading the answer key, and how to contain it all in one human-reviewed pull request.",
+    "sourceHash": "b6b4b9b24709468e",
+    "lockedAt": "2026-11-12"
+  },
+  "1362275": {
+    "source": "Serverless for AI Apps: Build More, Pay Less",
+    "title": "Serverless for AI Apps: Build More, Pay Less",
+    "format": "Talk",
+    "description": "Running AI assistants, agents and bots should not need a budget before anyone uses them. Practical experience building AI apps on Firebase, Google Cloud and Cloudflare with TypeScript: why serverless suits AI workloads, how to keep costs near zero until real users arrive, and the limits to plan for from day one.",
+    "sourceHash": "aebb76f3c8e3230d",
+    "lockedAt": "2026-11-12"
+  },
+  "1378375": {
+    "source": "Skills Needed to Become a Cybersecurity Professional",
+    "title": "Skills Needed to Become a Cybersecurity Professional",
+    "format": "Talk",
+    "description": "What it takes to become a cybersecurity professional beyond the technical side: the balance of hard and soft skills, and why no one is fully prepared before their first job. Seven years of experience, from college and 42 Yerevan through cybersecurity sprints and research teams to the job market.",
+    "sourceHash": "32bf425c8121c7df",
+    "lockedAt": "2026-11-12"
+  },
+  "1341264": {
+    "source": "Staying Human in the Age of AI: Simple Adaptation Skills for Leaders and Teams",
+    "title": "Staying Human in the Age of AI: Simple Adaptation Skills for Leaders and Teams",
+    "format": "Workshop",
+    "description": "We talk a lot about what AI can do, and less about what happens to us as we try to keep up. An interactive workshop built on four simple steps: slow down, notice what you feel, examine what you think, and choose what matters, through short exercises and conversations about your own responses to AI-driven change.",
+    "sourceHash": "ccdd756cd433d6ae",
+    "lockedAt": "2026-11-12"
+  },
+  "1326414": {
+    "source": "Stranger Shaders: Turning the App Upside Down [WORKSHOP]",
+    "title": "Stranger Shaders: Turning the App Upside Down",
+    "format": "Workshop",
+    "description": "Shader effects look like magic and are surprisingly easy, until the screen contains a video. Starting from an effect shipped in the Drinkit app, build an AGSL shader in about 20 lines, see why video breaks it through the Android rendering pipeline (SurfaceFlinger, and why SurfaceView is a hole in the hierarchy), and compare three fixes with real performance numbers.",
+    "sourceHash": "057059b41e3b392d",
+    "lockedAt": "2026-11-12"
+  },
+  "1326413": {
+    "source": "The New Bottleneck: How AI Changed Mobile Development",
+    "title": "The New Bottleneck: How AI Changed Mobile Development",
+    "format": "Talk",
+    "description": "AI agents write code faster than we can read it, yet teams do not ship faster: the bottleneck has moved to verification, and on mobile that is the hardest part. A practical toolkit: agent rules in the repo, linters and architecture tests that gate the merge, tests as acceptance criteria, and an agent that verifies the app on a real device through the accessibility tree, demoed live. Android first, with a Flutter version of every technique.",
+    "sourceHash": "f9970dff32e4dddb",
+    "lockedAt": "2026-11-12"
+  },
+  "1349046": {
+    "source": "The Web After the AI Revolution: How WebMCP, Gemma 4, and On-Device Runtimes Redefine the Browser",
+    "title": "The Web After the AI Revolution: How WebMCP, Gemma 4 and On-Device Runtimes Redefine the Browser",
+    "format": "Talk",
+    "description": "Agents now drive over half of web traffic, and the browser is becoming the runtime for AI. WebMCP, the emerging standard for web apps to expose typed tools directly to agents; open models like Gemma 4 running on-device through LiteRT, WebNN and WebGPU; and interactive MCP apps that put live UI inside the reasoning loop. With live demos across browser tabs and local inference.",
+    "sourceHash": "58bb37231f5f5af9",
+    "lockedAt": "2026-11-12"
+  },
+  "1354745": {
+    "source": "TypeScript's New Chapter: Go Fast or Go Rust?",
+    "title": "TypeScript's New Chapter: Go Fast or Go Rust?",
+    "format": "Talk",
+    "description": "TypeScript is getting 10x faster, with parallel type-checking and smarter memory use. What made that possible, what has changed, and how to decide whether you should migrate.",
+    "sourceHash": "52dd4a88fae7e992",
+    "lockedAt": "2026-11-12"
+  },
+  "1350602": {
+    "source": "UI Without a Release: What Remote Compose Can and Can't Do Today",
+    "title": "UI Without a Release: What Remote Compose Can and Can't Do Today",
+    "format": "Talk",
+    "description": "Remote Compose is a new androidx library that turns UI into a document: written in Kotlin, captured into a compact binary, rendered by a player, and shipped without an app release. What you can build today, navigation, data updates and fallbacks, how far community players on iOS, desktop and web go, and the honest trade-offs: alpha status, a small component set and runtime pitfalls.",
+    "sourceHash": "b45a69e78baf924a",
+    "lockedAt": "2026-11-12"
+  },
+  "1339323": {
+    "source": "What Building with Agents Taught Me About Communication",
+    "title": "What Building with Agents Taught Me About Communication",
+    "format": "Talk",
+    "description": "Building a Gemini-powered support assistant, the hard part was not the model. Every wrong output traced back to an instruction that seemed clear but was not. Real prompt failures, why they broke, and how fixing them for an LLM changed how specs, tickets and messages get written for people, plus a simple framework for instructions that assume nothing.",
+    "sourceHash": "50e3d399cd81363a",
+    "lockedAt": "2026-11-12"
+  },
+  "1379530": {
+    "source": "What Your Business Says vs. What Your Users Hear",
+    "title": "What Your Business Says vs. What Your Users Hear",
+    "format": "Talk",
+    "description": "How do users think, feel and behave when they use a product, and how can design communicate with them without relying on words? The psychology behind user behaviour: what users expect, what motivates them, what confuses them, and how visual hierarchy, interaction, feedback and content build trust and reduce friction.",
+    "sourceHash": "07efe4da44010a7a",
+    "lockedAt": "2026-11-12"
+  },
+  "1376807": {
+    "source": "Where physical AI gets stuck, and why that's Armenia's opening",
+    "title": "Where Physical AI Gets Stuck, and Why That's Armenia's Opening",
+    "format": "Talk",
+    "description": "Physical AI companies raised about $48 billion in 2026, yet only a few thousand humanoid robots were sold last year. From a humanoid robot project for a pharmaceutical client: hardware that breaks, training data recorded by hand, and roles without job titles yet. Then why Armenia, which teaches robotics in kindergartens but has few robotics companies, has a real opening, and practical first steps into robotics, including for people who do not code.",
+    "sourceHash": "50d3c3761f4d8070",
+    "lockedAt": "2026-11-12"
+  }
+}

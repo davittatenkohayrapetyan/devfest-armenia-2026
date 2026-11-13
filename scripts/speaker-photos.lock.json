@@ -31,6 +31,22 @@
     ],
     "lockedAt": "2026-10-17"
   },
+  "4b510743-11a4-4288-90f2-960ca91d9cc1": {
+    "name": "Anahit Sukiasyan",
+    "file": "assets/speakers/4b510743-11a4-4288-90f2-960ca91d9cc1.jpg",
+    "crop": [
+      102,
+      21,
+      230
+    ],
+    "face": [
+      160,
+      56,
+      115,
+      115
+    ],
+    "lockedAt": "2026-11-12"
+  },
   "8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3": {
     "name": "Ankur Roy",
     "file": "assets/speakers/8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3.jpg",
@@ -128,6 +144,22 @@
     ],
     "lockedAt": "2026-11-04"
   },
+  "919f1380-f9b7-40ce-97a9-545be75734ae": {
+    "name": "Daniele Mario Areddu",
+    "file": "assets/speakers/919f1380-f9b7-40ce-97a9-545be75734ae.jpg",
+    "crop": [
+      35,
+      15,
+      344
+    ],
+    "face": [
+      121,
+      67,
+      172,
+      172
+    ],
+    "lockedAt": "2026-11-12"
+  },
   "75f479eb-c660-4511-8445-8ead525d09f1": {
     "name": "Davit Siradeghyan",
     "file": "assets/speakers/75f479eb-c660-4511-8445-8ead525d09f1.jpg",
@@ -175,6 +207,38 @@
       242
     ],
     "lockedAt": "2026-10-17"
+  },
+  "e3906fb8-6843-4593-adc5-d655fb872c74": {
+    "name": "Harutyun Margaryan",
+    "file": "assets/speakers/e3906fb8-6843-4593-adc5-d655fb872c74.jpg",
+    "crop": [
+      0,
+      0,
+      400
+    ],
+    "face": [
+      43,
+      41,
+      311,
+      311
+    ],
+    "lockedAt": "2026-11-12"
+  },
+  "1490ea64-7f42-4a1a-bbba-c229be5e928e": {
+    "name": "Iskander Sharipov",
+    "file": "assets/speakers/1490ea64-7f42-4a1a-bbba-c229be5e928e.jpg",
+    "crop": [
+      32,
+      11,
+      290
+    ],
+    "face": [
+      105,
+      55,
+      145,
+      145
+    ],
+    "lockedAt": "2026-11-12"
   },
   "4f850d61-b54a-4e83-895b-043292dd29d3": {
     "name": "Kenneth Christiansen",

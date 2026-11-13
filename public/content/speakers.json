@@ -3,7 +3,7 @@
     "id": "9db1befa-deda-4676-a470-49cb8b6d9bab",
     "fullName": "Aleksandr Kondaurov",
     "tagLine": "Senior Fullstack Engineer · TypeScript, Serverless, Open Source",
-    "bio": "Aleksandr is a senior backend/fullstack engineer with about 15 years in software development, focused on TypeScript, Node.js and AWS serverless architecture. He comes from a strong functional programming background (5 years of Scala with ZIO, now Effect-TS) and builds LLM-based and agentic systems on top of modern AI APIs. He maintains open-source projects including effortless-aws, an infrastructure-from-code framework for AWS, and a set of packages under the @effect-ak npm scope. Based in Yerevan.",
+    "bio": "Backend and fullstack engineer with about 15 years in software, focused on TypeScript, Node.js and serverless. Builds LLM-based and agentic systems and maintains open-source projects including effortless-aws. Based in Yerevan.",
     "profilePicture": "assets/speakers/9db1befa-deda-4676-a470-49cb8b6d9bab.jpg",
     "links": [
       {
@@ -12,13 +12,18 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1362275",
+        "name": "Serverless for AI Apps: Build More, Pay Less"
+      }
+    ]
   },
   {
     "id": "ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147",
     "fullName": "Ali (Aran) Kazemi",
-    "tagLine": "EU AI Alliance Member | Founder & Principal AI Systems Architect at EIP-Technologies",
-    "bio": "Ali (Aran) Kazemi is the Founder and Principal Systems Architect at EIP-Technologies, an active Member and Advisor of the EU AI Alliance, and an IBM-Certified Generative AI Developer and Generative AI Engineer. He specializes in designing high-assurance, high-frequency distributed systems and is the architect behind the Enterprise Agent Engine (EAE) and EIP-LABS. Through the EU AI Alliance, Ali introduced CrisisAI, a pioneering hybrid intelligence (AI and ML) framework recognized as an official best practice on the European Union portal, and he actively contributes to critical EU initiatives focused on AI-driven emergency and disaster management. Applying rigorous engineering standards to artificial intelligence, he works on solving the structural bottlenecks of modern AI platforms, enabling enterprise data independence, hardware-level optimization, pure Go microkernels, and providing cloud providers and public-sector institutions with carrier-grade, secure, air-gapped agent infrastructure.",
+    "tagLine": "Founder & Principal AI Systems Architect, EIP-Technologies",
+    "bio": "Founder and principal systems architect at EIP-Technologies and a member of the EU AI Alliance. Designs high-assurance distributed systems, is the architect behind the Enterprise Agent Engine, and introduced CrisisAI, a hybrid AI framework for emergency management recognised as a best practice on the EU portal.",
     "profilePicture": "assets/speakers/ff6d0ca2-3d5f-40a6-85c0-cec37e6b2147.jpg",
     "links": [
       {
@@ -32,13 +37,38 @@
         "linkType": "Sessionize"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1342063",
+        "name": "Building a High-Assurance AgentOS: Performant, Secure, Flexible Agentic AI Infrastructure in Go"
+      }
+    ]
+  },
+  {
+    "id": "4b510743-11a4-4288-90f2-960ca91d9cc1",
+    "fullName": "Anahit Sukiasyan",
+    "tagLine": "Atlassian Admin & Creator · Atlassian Community Champion, Yerevan",
+    "bio": "Atlassian Admin & Creator and the Atlassian Community Champion in Yerevan, with a background in service management and digital transformation. Brings professionals together to share knowledge, and creates educational content on technology and professional growth.",
+    "profilePicture": "assets/speakers/4b510743-11a4-4288-90f2-960ca91d9cc1.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/anahitsukiasyan/",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": [
+      {
+        "id": "1381156",
+        "name": "Beyond Networking: Building Tech Communities That Actually Create Value"
+      }
+    ]
   },
   {
     "id": "8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3",
     "fullName": "Ankur Roy",
-    "tagLine": "Solutions Architect at Online Partner AB | Google Developer Expert in Cloud",
-    "bio": "I am a Solutions Architect at Online Partner AB and a Cloud GDE. I have worked on several projects involving Google Cloud services and Google Workspace along with multiple other technology stacks and platforms.",
+    "tagLine": "Solutions Architect, Online Partner AB · Google Developer Expert, Cloud",
+    "bio": "Solutions architect at Online Partner AB and a Google Developer Expert in Cloud, working on projects across Google Cloud, Google Workspace and other platforms.",
     "profilePicture": "assets/speakers/8ca460b2-bb7b-4e0a-bc41-7a7ddcb2dda3.jpg",
     "links": [
       {
@@ -62,22 +92,32 @@
         "linkType": "Sessionize"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1337987",
+        "name": "Antigravity CLI: Use Your AI in the CLI for Maximum Control and Effectiveness"
+      }
+    ]
   },
   {
     "id": "ba8de9c7-f2d2-458a-b678-9270ab8def5d",
     "fullName": "Arman Gyulbudaghyan",
-    "tagLine": "Staff DevOps Engineer",
-    "bio": "Staff DevOps Engineer and Head of DevOps at Grid Dynamics",
+    "tagLine": "Head of DevOps, Grid Dynamics",
+    "bio": "Staff DevOps engineer and Head of DevOps at Grid Dynamics.",
     "profilePicture": "assets/speakers/ba8de9c7-f2d2-458a-b678-9270ab8def5d.jpg",
     "links": [],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1325974",
+        "name": "GKE 2026"
+      }
+    ]
   },
   {
     "id": "b3a2e3aa-4e66-41dc-83a9-8209803c914f",
     "fullName": "Armen Vardanyan",
-    "tagLine": "Google Developer Expert for Angular, Front-End Team Lead",
-    "bio": "Front End Team Lead working with Angular for 6+ years, GDE for Angular, technical writer, mentor, speaker.",
+    "tagLine": "Front-End Team Lead · Google Developer Expert, Angular",
+    "bio": "Front-end team lead who has worked with Angular for over six years. Google Developer Expert for Angular, technical writer, mentor and speaker.",
     "profilePicture": "assets/speakers/b3a2e3aa-4e66-41dc-83a9-8209803c914f.jpg",
     "links": [
       {
@@ -101,13 +141,18 @@
         "linkType": "Blog"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1371419",
+        "name": "From LLMs to Your Web App: Building Agentic Frontends with Google ADK, AG-UI, A2UI and Angular"
+      }
+    ]
   },
   {
     "id": "4b993823-524f-4bed-a0c0-facb42f54089",
     "fullName": "Arsen Mazmanyan",
     "tagLine": "PixiJS Game Developer, Kendoo Games",
-    "bio": "HTML5 Game Developer with 6 years of experience, mainly focused on 2D Game Development",
+    "bio": "HTML5 game developer with six years of experience, focused on 2D games.",
     "profilePicture": "assets/speakers/4b993823-524f-4bed-a0c0-facb42f54089.jpg",
     "links": [
       {
@@ -116,13 +161,18 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1378802",
+        "name": "From Game Idea to Deployment"
+      }
+    ]
   },
   {
     "id": "d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19",
     "fullName": "Artem Viter",
     "tagLine": "Senior Software Engineer",
-    "bio": "I’ve been building mobile apps since 2012. I started with Android, then picked up iOS, Kotlin Multiplatform and React Native along the way. Today I work on a crypto wallet with millions of users. Outside of work, I’m into backend and AI: I’m building my own AI product in Go and Python, with RAG search and an agent harness, and exploring how to build software with coding agents.",
+    "bio": "Has built mobile apps since 2012, across Android, iOS, Kotlin Multiplatform and React Native, and now works on a crypto wallet with millions of users. Outside work, builds an AI product in Go and Python and explores building software with coding agents.",
     "profilePicture": "assets/speakers/d82d2d7f-0adf-49ec-83bc-f8fa77b5ae19.jpg",
     "links": [
       {
@@ -131,13 +181,18 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1350602",
+        "name": "UI Without a Release: What Remote Compose Can and Can't Do Today"
+      }
+    ]
   },
   {
     "id": "5ee7b9bb-2ac2-448a-9810-e0656c083f7e",
     "fullName": "Azat Davliatshin",
-    "tagLine": "Software Architect & Tech Lead",
-    "bio": "Software architect and tech lead at Quantori, writing JavaScript for over ten years. Lately digging into how sessions and tokens cross trust boundaries -- between browser contexts and between agents. Maintainer of next-auth-bridge, an open-source reference implementation of cross-context session handoff for Auth.js and Better Auth, and author of an IETF Internet-Draft analysing proposed attenuating delegation tokens for AI agents.",
+    "tagLine": "Software Architect & Tech Lead, Quantori",
+    "bio": "Software architect and tech lead at Quantori, writing JavaScript for over ten years. Maintains next-auth-bridge, an open-source reference for cross-context session handoff, and wrote an IETF Internet-Draft on delegation tokens for AI agents.",
     "profilePicture": "assets/speakers/5ee7b9bb-2ac2-448a-9810-e0656c083f7e.jpg",
     "links": [
       {
@@ -151,13 +206,58 @@
         "linkType": "Sessionize"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1378097",
+        "name": "A Bridge the Token Never Crosses: Single Sign-On Inside an Iframe After Third-Party Cookies"
+      }
+    ]
+  },
+  {
+    "id": "919f1380-f9b7-40ce-97a9-545be75734ae",
+    "fullName": "Daniele Mario Areddu",
+    "tagLine": "Backend & AI Developer, Global Technologies Italia · Community Lead, Velletri.dev",
+    "bio": "Backend and AI developer at Global Technologies Italia and a computer science student at the University of Calabria. Has given around 30 talks across Europe, the US and Central Asia on AI agents, RAG and cloud-to-edge architectures, and founded the Velletri.dev community.",
+    "profilePicture": "assets/speakers/919f1380-f9b7-40ce-97a9-545be75734ae.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://it.linkedin.com/in/daniele-mario-areddu-67729b260",
+        "linkType": "LinkedIn"
+      },
+      {
+        "title": "Instagram",
+        "url": "https://www.instagram.com/danieleareddu_/",
+        "linkType": "Instagram"
+      },
+      {
+        "title": "Blog",
+        "url": "https://www.linkedin.com/in/daniele-mario-areddu/",
+        "linkType": "Blog"
+      },
+      {
+        "title": "Company Website",
+        "url": "https://globaltechnologies.ai/",
+        "linkType": "Company_Website"
+      },
+      {
+        "title": "Sessionize",
+        "url": "https://sessionize.com/daniele-mario-areddu",
+        "linkType": "Sessionize"
+      }
+    ],
+    "sessions": [
+      {
+        "id": "1340713",
+        "name": "From Cloud to Edge: Building Autonomous AI Agents with Gemini, ADK and On-Device AI"
+      }
+    ]
   },
   {
     "id": "75f479eb-c660-4511-8445-8ead525d09f1",
     "fullName": "Davit Siradeghyan",
-    "tagLine": "Engineering Manager at Softr",
-    "bio": "Davit Siradeghyan is an Engineering Manager and entrepreneur with over 16 years of experience building software and leading engineering teams across fintech, SaaS, and mobile technology.\r\n\r\nHe currently leads a distributed engineering team at Softr, where he combines hands-on software development with engineering leadership to build products used by more than one million users. Throughout his career, Davit has worked across the full software stack—from high-performance C++ trading systems and native mobile applications to modern cloud platforms and AI-powered products.\r\n\r\nBeyond his day job, Davit is the founder of GoBuild Technologies, where he explores how AI is reshaping software development, product creation, and entrepreneurship. He is passionate about helping engineers and engineering leaders leverage AI to build better products, move faster, and create greater impact.\r\n\r\nA frequent speaker at technology conferences and community events, Davit shares practical insights on engineering leadership, distributed teams, software architecture, and the future of AI-powered software development.",
+    "tagLine": "Engineering Manager, Softr",
+    "bio": "Engineering manager with over 16 years in fintech, SaaS and mobile, leading a distributed team at Softr that builds products used by more than a million people. Founder of GoBuild Technologies, exploring how AI is reshaping software development.",
     "profilePicture": "assets/speakers/75f479eb-c660-4511-8445-8ead525d09f1.jpg",
     "links": [
       {
@@ -166,13 +266,18 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1329366",
+        "name": "From Writing Code to Building Products"
+      }
+    ]
   },
   {
     "id": "24806d60-f727-4328-9942-68684ecca775",
     "fullName": "Gabriel Preda",
-    "tagLine": "Principal Data Scientist at Endava, AI & Cloud AI GDE, 2 x Kaggle Grandmaster",
-    "bio": "Survived PhD in Computational Electromagnetics, while working as a researcher, applied 25 years ago what will be called now Machine Learning to solve ill-posed inverse problems in NDT, worked for long time in Software Development, with positions from developer to senior manager or programme manager, started few years ago to dive into Data Science, currently working as a Principal Data Scientist at Endava. Author with Packt of a book on Kaggle Notebooks (data analytics, machine learning, generative AI), 2x Kaggle Grandmaster, GDE for AI and Kaggle.",
+    "tagLine": "Principal Data Scientist, Endava · AI & Cloud AI GDE · 2x Kaggle Grandmaster",
+    "bio": "Principal data scientist at Endava, with a PhD in computational electromagnetics and a long career in software development. Two-time Kaggle Grandmaster, Google Developer Expert, and author of a Packt book on Kaggle notebooks.",
     "profilePicture": "assets/speakers/24806d60-f727-4328-9942-68684ecca775.jpg",
     "links": [
       {
@@ -181,13 +286,18 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1338006",
+        "name": "Fine-Tuning Gemma 4 E2B with Unsloth and LoRA for Computer Vision Tasks"
+      }
+    ]
   },
   {
     "id": "12c176ed-9104-4a50-b1de-4f453342ab20",
     "fullName": "Goran Minov",
-    "tagLine": "Regional Technical Strategist @ Okta | Google Developer Expert (GDE) in Google Cloud: Cloud AI",
-    "bio": "Goran is a Google Developer Expert (GDE) in Cloud AI, Cloud AI & Cyber Security Architect, and 8x Google Cloud Certified Professional, holding key credentials including Google Cloud Professional Cloud Architect, DevOps Engineer, and Database Engineer.\r\n\r\nCurrently, he serves as a Senior Technical Account Manager at Okta, helping enterprises automate and secure their identity infrastructure. His passion lies in architecting secure machine learning workflows, deploying autonomous applications via the Gemini Enterprise Agent Platform, and ensuring multi-agent systems are governed by strict Secure-by-Design and Zero Trust principles.",
+    "tagLine": "Regional Technical Strategist, Okta · Google Developer Expert, Cloud AI",
+    "bio": "Google Developer Expert in Cloud AI, cloud AI and cybersecurity architect, and eight times Google Cloud certified. At Okta, helps enterprises automate and secure their identity infrastructure, with a focus on secure ML workflows and Zero Trust multi-agent systems.",
     "profilePicture": "assets/speakers/12c176ed-9104-4a50-b1de-4f453342ab20.jpg",
     "links": [
       {
@@ -211,13 +321,62 @@
         "linkType": "Sessionize"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1362615",
+        "name": "Autonomous Remediation with CodeMender and Google Cloud"
+      },
+      {
+        "id": "1362616",
+        "name": "Building Stateful Agentic Apps with the Gemini Interactions API"
+      }
+    ]
+  },
+  {
+    "id": "e3906fb8-6843-4593-adc5-d655fb872c74",
+    "fullName": "Harutyun Margaryan",
+    "tagLine": "Head of Enterprise Architecture, Ameriabank",
+    "bio": "Head of Enterprise Architecture at Ameriabank, with a background in engineering, architecture and system design at global companies and startups. Enthusiast of complex systems, systems theory and complexity science.",
+    "profilePicture": "assets/speakers/e3906fb8-6843-4593-adc5-d655fb872c74.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/harutyun-margaryan",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": [
+      {
+        "id": "1382132",
+        "name": "Enterprise Adopts AI, or AI Adopts the Enterprise"
+      }
+    ]
+  },
+  {
+    "id": "1490ea64-7f42-4a1a-bbba-c229be5e928e",
+    "fullName": "Iskander Sharipov",
+    "tagLine": "Solo Indie Game Developer",
+    "bio": "Former compiler engineer, now a solo indie game developer working with custom engines and libraries. Has published two games on Steam, with a third in active development.",
+    "profilePicture": "assets/speakers/1490ea64-7f42-4a1a-bbba-c229be5e928e.jpg",
+    "links": [
+      {
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/in/quasilyte/",
+        "linkType": "LinkedIn"
+      }
+    ],
+    "sessions": [
+      {
+        "id": "1373825",
+        "name": "Rollback the Entire World State in an Instance"
+      }
+    ]
   },
   {
     "id": "4f850d61-b54a-4e83-895b-043292dd29d3",
     "fullName": "Kenneth Christiansen",
-    "tagLine": "Web Platform Architect and Principal Engineer at Intel Corporation, W3C Technical Architecture Group alumni",
-    "bio": "Kenneth Rohde Christiansen is principal engineer in the Intel Web Platform Engineering team. In his role, Kenneth leads multiple efforts making sure that the web platform works in Intel’s favor, by becoming a real application development platform, driving Windows and Chrome OS usage, while working best on Intel and exposing the full potential of our hardware capabilities to developers. Since joining Intel in 2011, Kenneth has shaped our approach to working with external browser vendors and the web community, leading to many success stories in landing Intel specific features and optimization in Chromium based browsers such as Google Chrome and Microsoft Edge. Some of these features and inventions have been industry shaping, such as Progressive Web Apps, which is becoming one of the main ways to create desktop applications. He is a multi-term elected member of the W3C (World Wide Web Consortium) Technical Architecture Group, growing Intel’s influence inside the most important standardization group of the web platform. Apart from that he is also a Microsoft Most Values Professional in Developer Tooling and Google Developer Experts in Web Technology. Kenneth holds a MSc degree in Software Engineering from the University of Groningen, the Netherlands and a BSc degree in Software Engineering and Math from the University of Copenhagen.",
+    "tagLine": "Principal Engineer, Intel · W3C TAG alumnus",
+    "bio": "Principal engineer in Intel's Web Platform Engineering team, working with browser vendors to make the web a real application platform, including the rise of Progressive Web Apps. Multi-term elected member of the W3C Technical Architecture Group and a Google Developer Expert in Web Technologies.",
     "profilePicture": "assets/speakers/4f850d61-b54a-4e83-895b-043292dd29d3.jpg",
     "links": [
       {
@@ -241,13 +400,18 @@
         "linkType": "Sessionize"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1349046",
+        "name": "The Web After the AI Revolution: How WebMCP, Gemma 4 and On-Device Runtimes Redefine the Browser"
+      }
+    ]
   },
   {
     "id": "76de9ed8-afd1-499b-be1c-8cafae9585fe",
     "fullName": "Kevork Sulahian",
-    "tagLine": "Staff ML Engineer & AAAI author",
-    "bio": "ML team lead and published researcher with a passion for building useful AI systems and helping teams deliver them well.",
+    "tagLine": "Staff ML Engineer & AAAI Author",
+    "bio": "ML team lead and published researcher who builds useful AI systems and helps teams deliver them well.",
     "profilePicture": "assets/speakers/76de9ed8-afd1-499b-be1c-8cafae9585fe.jpg",
     "links": [
       {
@@ -261,13 +425,18 @@
         "linkType": "Sessionize"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1363880",
+        "name": "Building Richer Data for Physical AI"
+      }
+    ]
   },
   {
     "id": "8b52910b-edcd-42d4-b415-57fffcb06ead",
     "fullName": "Liana Darbinyan",
-    "tagLine": "Cybersecurity Engineer | Security Infrastructure, Application Security & Threat Detection",
-    "bio": "Liana Darbinyan is a cybersecurity professional working across security infrastructure, application and API security, threat detection, and security operations. Her hands-on experience includes designing and implementing security solutions involving WAFs, firewalls, SIEM platforms, DDoS protection, network security, vulnerability management, and security monitoring.\r\n\r\nWith a background in Data Science, she is particularly interested in the intersection of cybersecurity, AI, and data-driven security — and in understanding how emerging technologies change both the way we build systems and the way we need to defend them.\r\n\r\nLiana is also an active member of the cybersecurity community and has contributed through technical talks, workshops, cybersecurity trainings, and international events. She focuses on making security practical and understandable, connecting real-world attack scenarios with the decisions developers and security professionals make when building and protecting modern applications.",
+    "tagLine": "Cybersecurity Engineer · Application Security & Threat Detection",
+    "bio": "Cybersecurity professional working across security infrastructure, application and API security, threat detection and security operations. With a background in data science, focuses on where security meets AI, and on making security practical for developers.",
     "profilePicture": "assets/speakers/8b52910b-edcd-42d4-b415-57fffcb06ead.jpg",
     "links": [
       {
@@ -276,13 +445,18 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1335588",
+        "name": "AI Wrote the Code. Who Owns the Security?"
+      }
+    ]
   },
   {
     "id": "f1f13b29-7398-4d81-8c82-02bedfe50871",
     "fullName": "Mariam Grigoryan",
-    "tagLine": "Grid Dynamics - Delivery Manager",
-    "bio": "I’m Mariam Grigoryan, a Delivery Manager at a global engineering services company in Yerevan. I lead client projects from scope to delivery, most recently a project training a humanoid robot for a pharmaceutical company.",
+    "tagLine": "Delivery Manager, Grid Dynamics",
+    "bio": "Delivery manager in Yerevan, leading client projects from scope to delivery, most recently training a humanoid robot for a pharmaceutical company.",
     "profilePicture": "assets/speakers/f1f13b29-7398-4d81-8c82-02bedfe50871.jpg",
     "links": [
       {
@@ -291,13 +465,18 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1376807",
+        "name": "Where Physical AI Gets Stuck, and Why That's Armenia's Opening"
+      }
+    ]
   },
   {
     "id": "8ef48870-8f85-4450-b385-6695da4c180f",
     "fullName": "Mariia Khachaturova",
-    "tagLine": "Align technologies, Jr. Application Security Engineer",
-    "bio": "My journey started from 42 where I really got a real picture of what programming and tech world is, after college showed the worst parts of it.\r\nAfter studying there for 1.5 years I landed my first job in a local company where I was a Cybersecurity specialist intern and where I got the best opportunity to deepen my knowledge in how applications and big systems are built and supported. \r\nNow I'm working in security in healthcare, navigating and communicating with tens of teams and supporting the whole system on SAST behalf.",
+    "tagLine": "Junior Application Security Engineer, Align Technology",
+    "bio": "Application security engineer in healthcare, supporting dozens of teams on static application security testing. Started at 42 Yerevan, then joined a local company as a cybersecurity intern.",
     "profilePicture": "assets/speakers/8ef48870-8f85-4450-b385-6695da4c180f.jpg",
     "links": [
       {
@@ -306,13 +485,18 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1378375",
+        "name": "Skills Needed to Become a Cybersecurity Professional"
+      }
+    ]
   },
   {
     "id": "1f2ba26b-921a-4b3a-ba24-1e8208f935b8",
     "fullName": "Max Kachinkin",
     "tagLine": "Android Tech Lead, Dodo Brands",
-    "bio": "Android Tech Lead, Dodo Brands\r\n\r\nI have over 10 years of experience in Android development and currently work as an Android Tech Lead at Dodo Brands. I led the development of Dodo Pizza (with 9 million MAU across 20 countries) and am now working on another project, Drinkit, a new digital coffee shop network by Dodo Brands.\r\n\r\n- I run a Telegram channel on mobile development, \"Mobile Fiction\"\r\n- I speak at conferences such as Mobius and Codefest.\r\n- I write articles on platforms like Habr, Medium (ProAndroidDev, BetterProgramming), HackerNoon.\r\n- I teach Android development in the Android Professional course at OTUS.\r\n- I created an Android Architecture course for GeekBrains Online School.\r\n- I participate in the program committee for the Android Podlodka Crew conference.\r\n- I also engage in various community activities, such as conducting an open interview, DevZen podcast.",
+    "bio": "Android developer for over ten years and tech lead at Dodo Brands, who led Dodo Pizza (9 million MAU across 20 countries) and now works on Drinkit. Runs the Mobile Fiction Telegram channel, teaches Android development, and speaks at conferences such as Mobius and Codefest.",
     "profilePicture": "assets/speakers/1f2ba26b-921a-4b3a-ba24-1e8208f935b8.jpg",
     "links": [
       {
@@ -341,13 +525,22 @@
         "linkType": "Sessionize"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1326414",
+        "name": "Stranger Shaders: Turning the App Upside Down"
+      },
+      {
+        "id": "1326413",
+        "name": "The New Bottleneck: How AI Changed Mobile Development"
+      }
+    ]
   },
   {
     "id": "7e81baea-59e0-4d19-947e-5efb5644b2e9",
     "fullName": "Milena Janoyan",
-    "tagLine": "Founder of MJ Studio",
-    "bio": "Milena Janoyan is a software engineer, startup strategist, and founder focused on helping early-stage founders turn ideas into validated products and scalable businesses. With over 6 years of experience in software development, she has worked across product development, backend engineering, and startup growth, building solutions for clients across Europe and the United States.\r\n\r\nAlongside her technical background, Milena works closely with founders on market validation, product strategy, and go-to-market planning, bridging the gap between technology and business. She recently completed her Bachelor's thesis on the impact of Generative AI on software startups, combining academic research with insights from startup founders and technology professionals.\r\n\r\nOriginally from Northern Armenia, Milena is passionate about innovation, entrepreneurship, and empowering the next generation of women in technology. Through her work, she advocates for practical use of AI, founder-driven growth, and building products that solve real-world problems.",
+    "tagLine": "Founder, MJ Studio",
+    "bio": "Software engineer and founder of MJ Studio, helping early-stage founders turn ideas into validated products, with over six years across product, backend engineering and startup growth. Recently completed a bachelor's thesis on the impact of generative AI on software startups.",
     "profilePicture": "assets/speakers/7e81baea-59e0-4d19-947e-5efb5644b2e9.jpg",
     "links": [
       {
@@ -361,13 +554,18 @@
         "linkType": "Sessionize"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1378277",
+        "name": "Faster, Not Better: The Real Impact of AI on Building Software"
+      }
+    ]
   },
   {
     "id": "f579b865-8a53-4718-98e3-f8a52a93d8cd",
     "fullName": "Mohammed Buallay",
-    "tagLine": "Data science",
-    "bio": "Mohammed Buallay, data enthusiast looking for hidden patterns in data. My mission is to empower individuals and companies with the power of artificial intelligence.",
+    "tagLine": "Data Science",
+    "bio": "Data enthusiast looking for hidden patterns in data, on a mission to help people and companies put artificial intelligence to work.",
     "profilePicture": "assets/speakers/f579b865-8a53-4718-98e3-f8a52a93d8cd.jpg",
     "links": [
       {
@@ -396,13 +594,18 @@
         "linkType": "Company_Website"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1339323",
+        "name": "What Building with Agents Taught Me About Communication"
+      }
+    ]
   },
   {
     "id": "fcd40625-d41f-45f8-8b4b-fc510bb96d07",
     "fullName": "Natasha Arefyeva",
-    "tagLine": "PCC ICF Certified Coach, 15+ years in IT",
-    "bio": "Natasha Arefyeva has spent over 15 years in tech — from developer to Chief Product Officer.\r\nNow an PCC ICF coach (Erickson Coaching International, Canada) and team coach, she helps people and teams reconnect with clarity, trust, and purpose.\r\nHer work focuses on building honest, open communication and processes that make teams stronger from the inside out.",
+    "tagLine": "ICF PCC Coach · 15+ years in IT",
+    "bio": "Spent over 15 years in tech, from developer to Chief Product Officer. Now an ICF PCC coach and team coach, helping people and teams build honest communication, clarity and trust.",
     "profilePicture": "assets/speakers/fcd40625-d41f-45f8-8b4b-fc510bb96d07.jpg",
     "links": [
       {
@@ -411,13 +614,18 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1341264",
+        "name": "Staying Human in the Age of AI: Simple Adaptation Skills for Leaders and Teams"
+      }
+    ]
   },
   {
     "id": "019c6fb9-e890-4df3-9f5f-092e7a16bce2",
     "fullName": "Pavel Elizarov",
-    "tagLine": "ex-Lead ML Engineer at Glam AI",
-    "bio": "Pavel Elizarov is a Machine Learning Engineer with experience building and operating production recommendation systems. Previously, as Lead Machine Learning Engineer at Glam AI, he designed and implemented a near-real-time personalisation pipeline, owning its architecture, event processing, model training and serving, deployment, and monitoring. Earlier, at VKontakte, he worked on visual-content features for story recommendations using CLIP embeddings and content clustering. His work focuses on connecting machine learning models with the data pipelines and serving infrastructure needed to make them useful in live products.",
+    "tagLine": "Former Lead ML Engineer, Glam AI",
+    "bio": "Machine learning engineer who builds production recommendation systems. At Glam AI, designed and ran a near-real-time personalisation pipeline end to end; earlier, at VKontakte, worked on visual features for story recommendations.",
     "profilePicture": "assets/speakers/019c6fb9-e890-4df3-9f5f-092e7a16bce2.jpg",
     "links": [
       {
@@ -426,13 +634,18 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1369533",
+        "name": "Building Near-Real-Time Recommendations from Fresh User Signals"
+      }
+    ]
   },
   {
     "id": "695c0a43-6758-4801-bb70-bb1e447b4df2",
     "fullName": "Seda Sahakyan",
     "tagLine": "Product Designer",
-    "bio": "Seda Sahakyan is a Product Designer based in Yerevan, Armenia. Over more than 5 years she has designed products across web3, gaming, streaming, fintech and e-commerce, and has built design systems from scratch. She loves building experiences for an innovative world and making new technology easy to use for the people it’s made for. She also teaches UX/UI design and is building a community for people who want to learn it.",
+    "bio": "Product designer in Yerevan with over five years across web3, gaming, streaming, fintech and e-commerce, including design systems built from scratch. Also teaches UX/UI design and is building a community for people learning it.",
     "profilePicture": "assets/speakers/695c0a43-6758-4801-bb70-bb1e447b4df2.jpg",
     "links": [
       {
@@ -441,13 +654,18 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1379530",
+        "name": "What Your Business Says vs. What Your Users Hear"
+      }
+    ]
   },
   {
     "id": "28278ce1-a2f8-4d26-a2da-1b7a7628365a",
     "fullName": "Sergei Tolmachev",
     "tagLine": "CTO, Axmit",
-    "bio": "I'm CTO at Axmit, a software studio. Since 2015, we've built web and mobile apps for startups and growing businesses in logistics, fintech, healthcare, and SaaS.\r\n\r\nMost of my time goes into business matters and software architecture.\r\n\r\nBut I still get my hands dirty with code - mostly Go, Node.js, TypeScript, databases, and DevOps.\r\n\r\nThese days, I also spend a lot of time making AI coding agents actually useful on real projects.",
+    "bio": "CTO at Axmit, a software studio building web and mobile apps since 2015 for logistics, fintech, healthcare and SaaS. Still hands-on with Go, Node.js, TypeScript, databases and DevOps, and works on making AI coding agents useful on real projects.",
     "profilePicture": "assets/speakers/28278ce1-a2f8-4d26-a2da-1b7a7628365a.jpg",
     "links": [
       {
@@ -456,13 +674,18 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1363221",
+        "name": "Offline-First Mobile Apps: Sync Conflicts, Lost Data and How to Avoid Them"
+      }
+    ]
   },
   {
     "id": "5ec4275d-42ed-41ca-bbf2-305f258dc0b0",
     "fullName": "Vadim Patsev",
-    "tagLine": "Lead AI Agents Engineer at Yandex Armenia",
-    "bio": "Vadim Patsev leads the DeepAgent team at Yandex Armenia, building a multi-agent system that plans a search across many sources and assembles one coherent answer. Before that he worked on Yandex Delivery routing optimization solution, Mail and Disk. Outside Yandex he was part of a self-driving car racing project and worked on an automated blood-analysis system. He previously spoke at PyCon about Python and robotics, and still builds robots for fun.",
+    "tagLine": "Lead AI Agents Engineer, Yandex Armenia",
+    "bio": "Leads the DeepAgent team at Yandex Armenia, building a multi-agent system that plans a search across many sources and assembles one answer. Previously worked on Yandex Delivery routing, Mail and Disk, and on a self-driving car racing project. Still builds robots for fun.",
     "profilePicture": "assets/speakers/5ec4275d-42ed-41ca-bbf2-305f258dc0b0.jpg",
     "links": [
       {
@@ -476,13 +699,18 @@
         "linkType": "Sessionize"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1352973",
+        "name": "Self-Improving Agents"
+      }
+    ]
   },
   {
     "id": "379f5371-846b-4d51-b2c6-172545486b5e",
     "fullName": "Vadim Sofin",
-    "tagLine": "Senior Software Engineer at EPAM",
-    "bio": "A software engineer with 7+ years of experience. Previously worked at Huawei RRI and Yandex. My background is in systems programming, compilers, and backend development. At EPAM, I currently work on the AI DIAL platform and develop agentic AI tooling. In my free time, I lead the R&D project I'll be presenting at DevFest.",
+    "tagLine": "Senior Software Engineer, EPAM",
+    "bio": "Software engineer with over seven years of experience, previously at Huawei and Yandex, with a background in systems programming, compilers and backend. Works on the AI DIAL platform and agentic tooling at EPAM, and leads the R&D project behind this talk.",
     "profilePicture": "assets/speakers/379f5371-846b-4d51-b2c6-172545486b5e.jpg",
     "links": [
       {
@@ -491,22 +719,32 @@
         "linkType": "LinkedIn"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1368726",
+        "name": "Agents and Knowledge Graphs: Building an AI Interviewer"
+      }
+    ]
   },
   {
     "id": "d34d0e0e-8d93-405e-9a29-441cad6541ef",
     "fullName": "Vasilii Nikitin",
-    "tagLine": "Software engineer · high-load data services (Python, Erlang, ClickHouse) · interested in mobile app security & reverse engineering · Yerevan",
-    "bio": "Vasily Nikitin is a software engineer based in Yerevan. He works on high-load data services in Python, Erlang and ClickHouse, and has a long-standing interest in mobile application security and reverse engineering. He follows public vulnerability research and bug bounty disclosures and enjoys turning them into practical, defensive lessons for developers.",
+    "tagLine": "Software Engineer · Mobile Security",
+    "bio": "Software engineer in Yerevan working on high-load data services in Python, Erlang and ClickHouse. Has a long-standing interest in mobile security and reverse engineering, and turns public vulnerability research into practical lessons for developers.",
     "profilePicture": "assets/speakers/d34d0e0e-8d93-405e-9a29-441cad6541ef.jpg",
     "links": [],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1353091",
+        "name": "One Click to Your Account: What Public Mobile Bug Bounty Reports Teach App Developers"
+      }
+    ]
   },
   {
     "id": "4f4a4f3f-0751-41f1-b1ad-d4edd8cd09c5",
     "fullName": "Viktoriia Akhmatova",
-    "tagLine": "Jack of All Trades",
-    "bio": "Full-stack software engineer with 6+ years of experience building production web applications, backend services, and Web3 products.\r\n \r\nEven though my primary focus is frontend, my background also spans backend, cloud infrastructure, and smart contracts. I enjoy working across the stack and choosing the right tools for the problem rather than specializing in a single technology.",
+    "tagLine": "Full-Stack Software Engineer",
+    "bio": "Full-stack engineer with over six years building production web apps, backend services and Web3 products. Frontend-focused, with experience across backend, cloud infrastructure and smart contracts.",
     "profilePicture": "assets/speakers/4f4a4f3f-0751-41f1-b1ad-d4edd8cd09c5.jpg",
     "links": [
       {
@@ -525,6 +763,11 @@
         "linkType": "Sessionize"
       }
     ],
-    "sessions": []
+    "sessions": [
+      {
+        "id": "1354745",
+        "name": "TypeScript's New Chapter: Go Fast or Go Rust?"
+      }
+    ]
   }
 ]
