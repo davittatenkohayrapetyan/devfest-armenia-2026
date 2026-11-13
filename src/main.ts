@@ -375,8 +375,9 @@ function agenda(
   sessions: Session[],
   people: Map<string, Speaker>,
   casts: Map<string, SessionCast>,
-  workshopNote = "",
+  options: EventContent["agenda"] = {},
 ): string {
+  const workshopNote = options.workshopNote ?? "";
   // Only while there is a workshop to bring a laptop to.
   const note =
     workshopNote && sessions.some((s) => s.format === "Workshop")
@@ -386,7 +387,12 @@ function agenda(
          </p>`
       : "";
   const talks = sessions;
-  const scheduled = talks.filter((s) => s.startsAt && s.endsAt && s.room);
+  // An all-day block (registration) runs behind the whole day instead of sitting in a slot.
+  // Its band ends when the `until` session starts; both must be scheduled or it is drawn normally.
+  const bandOf = sessions.find((s) => s.id === options.allDay?.session && s.startsAt);
+  const bandUntil = sessions.find((s) => s.id === options.allDay?.until && s.startsAt);
+  const band = bandOf && bandUntil && bandUntil.startsAt! > bandOf.startsAt! ? bandOf : undefined;
+  const scheduled = talks.filter((s) => s.startsAt && s.endsAt && s.room && s !== band);
   const shell = (body: string, lead: string) => `
 <section id="agenda" class="py-20" style="background:var(--surface-alt)">
   <div class="wrap">
@@ -420,7 +426,8 @@ function agenda(
   // A block is drawn at most an hour tall. The card states the real time; drawing a three-hour
   // afterparty to scale would add half a screen of empty grid to the bottom of the day.
   const drawnEnd = (s: Session) => Math.min(minutes(s.endsAt!), minutes(s.startsAt!) + 60);
-  const first = Math.floor(Math.min(...scheduled.map((s) => minutes(s.startsAt!))) / 30) * 30;
+  const starts = [...scheduled, ...(band ? [band] : [])].map((s) => minutes(s.startsAt!));
+  const first = Math.floor(Math.min(...starts) / 30) * 30;
   const last = Math.ceil(Math.max(...scheduled.map(drawnEnd)) / 30) * 30;
   const rowOf = (mins: number) => (mins - first) / SLOT + 2; // row 1 is the room header
 
@@ -436,6 +443,16 @@ function agenda(
       `<div class="agenda-mark" style="grid-row:${rowOf(m)}"><span>${clockOf(m)}</span></div>
        <div class="agenda-line" style="grid-row:${rowOf(m)}"></div>`,
     );
+  const backdrop = band
+    ? `<div class="agenda-band" style="grid-column:2 / -1;grid-row:${rowOf(minutes(band.startsAt!))} / ${rowOf(minutes(bandUntil!.startsAt!))}">
+         <div class="session session--service session--band" id="session-${esc(band.id)}">
+           <div class="session-head">
+             <span class="session-meta"><span class="session-time">${clock(band.startsAt!)}–${clock(bandUntil!.startsAt!)}</span></span>
+             <span class="session-title">${esc(band.title)}</span>
+           </div>
+         </div>
+       </div>`
+    : "";
   const cards = scheduled
     .map((s) => {
       const i = col.get(s.roomId)!;
@@ -449,7 +466,7 @@ function agenda(
 
   return shell(
     `<div class="agenda-grid mt-8" style="--rooms:${rooms.length};--rows:${(last - first) / SLOT}">
-       ${header}${marks.join("")}${cards}
+       ${header}${backdrop}${marks.join("")}${cards}
      </div>`,
     `Saturday 21 November, ${rooms.length} rooms in parallel. Times are Yerevan time. Open a talk for the details and the speaker.`,
   );
@@ -723,7 +740,7 @@ async function render() {
       callForSpeakers(event),
       about(event),
       speakers(speakerList, event),
-      agenda(sessionList, people, casts, event.agenda?.workshopNote),
+      agenda(sessionList, people, casts, event.agenda),
       organizers(organizerList),
       partners(partnerData.partners, partnerData.contactUrl),
       venue(event),

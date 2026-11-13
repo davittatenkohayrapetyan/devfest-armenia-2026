@@ -740,6 +740,36 @@ main:focus { outline: none; }
   }
 }
 
+/* All-day registration: a band behind every room from 09:00 until closing. Painted before the
+   half-hour lines and the cards, so both sit on top of it; its own surface is half-transparent so
+   the day's grid still reads through. On phones it is simply the first card in the list. */
+@media (min-width: 1024px) {
+  .agenda-band {
+    position: relative;
+    z-index: 0;
+    padding-block: 3px;
+    pointer-events: none;
+  }
+  .agenda-band .session--band {
+    position: relative;
+    isolation: isolate;
+    height: 100%;
+    background:
+      linear-gradient(var(--df-blue) 0 25%, var(--df-red) 25% 50%, var(--df-yellow) 50% 75%, var(--df-green) 75% 100%)
+        left / 4px 100% no-repeat;
+    box-shadow: inset 0 0 0 1px var(--rule);
+  }
+  .agenda-band .session--band::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 4px;
+    z-index: -1;
+    border-radius: 0 0.75rem 0.75rem 0;
+    background: var(--surface);
+    opacity: 0.45;
+  }
+}
+
 /* "Bring your laptop" above the agenda. Pastel yellow, the same as the Workshop badge it refers
    to, with fixed dark ink: the pastel does not change with the theme, so the text cannot either. */
 .agenda-note {

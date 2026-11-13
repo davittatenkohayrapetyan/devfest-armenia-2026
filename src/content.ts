@@ -98,7 +98,11 @@ export type EventContent = {
   };
   speakers: { noteWhileCfpOpen: string };
   /** Shown above the agenda while it contains at least one workshop. */
-  agenda?: { workshopNote?: string };
+  agenda?: {
+    workshopNote?: string;
+    /** A session drawn as a background band behind every room, until `until` starts. */
+    allDay?: { session: string; until: string };
+  };
   /** GDG Yerevan's own channels, rendered as follow buttons in the footer. */
   social: SocialLink[];
   about: {

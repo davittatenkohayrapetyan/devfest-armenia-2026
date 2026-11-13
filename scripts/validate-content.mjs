@@ -26,6 +26,12 @@ if (event) {
     errors.push("event.json: missing speakers.noteWhileCfpOpen");
   if (event.agenda?.workshopNote !== undefined && typeof event.agenda.workshopNote !== "string")
     errors.push("event.json: agenda.workshopNote must be a string");
+  const allDay = event.agenda?.allDay;
+  if (allDay) {
+    const ids = new Set((JSON.parse(readFileSync("public/content/sessions.json", "utf8")) ?? []).map((s) => s.id));
+    for (const k of ["session", "until"])
+      if (!ids.has(allDay[k])) errors.push(`event.json: agenda.allDay.${k} "${allDay[k]}" is not in sessions.json`);
+  }
   if (!Array.isArray(event.social)) errors.push("event.json: social must be an array");
   else
     event.social.forEach((s, i) => {

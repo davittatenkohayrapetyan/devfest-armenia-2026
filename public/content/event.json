@@ -69,7 +69,12 @@
     "noteWhileCfpOpen": "First speakers announced. More are added as sessions are accepted, while the call for speakers is open."
   },
   "agenda": {
-    "workshopNote": "Joining a workshop? Bring your laptop, charged. Workshops are hands-on, and each one is marked Workshop below."
+    "workshopNote": "Joining a workshop? Bring your laptop, charged. Workshops are hands-on, and each one is marked Workshop below.",
+    "allDay": {
+      "_note": "Drawn as a background band behind every room, from the session's start until the `until` session starts. Ids are Sessionize session ids: Registration full day, until Closing.",
+      "session": "9ae12578-ec70-49e5-8ec0-56c3ccba11ba",
+      "until": "d26cc26b-30dc-4af6-89b0-80b7bd3a25a5"
+    }
   },
   "startsAt": "2026-11-21T09:30:00+04:00",
   "social": [
