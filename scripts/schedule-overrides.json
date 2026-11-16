@@ -1,0 +1,16 @@
+{
+  "_note": "Programme decisions the site applies on top of Sessionize at every sync. `withdrawn` drops a talk; a speaker left with no talks drops off the site too. A move puts `session` into the time and room of `slotOf`, read from Sessionize. When Sessionize itself reflects a decision, the sync reports the entry as stale: delete it then.",
+  "withdrawn": [
+    {
+      "session": "1335588",
+      "note": "AI Wrote the Code. Who Owns the Security? — Liana Darbinyan. Withdrawn 16 Nov 2026, Davit's call."
+    }
+  ],
+  "moves": [
+    {
+      "session": "1376807",
+      "slotOf": "1335588",
+      "note": "Where Physical AI Gets Stuck — Mariam Grigoryan. Moved from Hall 114W 13:30 into Liana's slot, Hall 113W 15:20. 16 Nov 2026."
+    }
+  ]
+}

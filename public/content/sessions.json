@@ -268,23 +268,6 @@
     ]
   },
   {
-    "id": "1376807",
-    "title": "Where Physical AI Gets Stuck, and Why That's Armenia's Opening",
-    "description": "Physical AI companies raised about $48 billion in 2026, yet only a few thousand humanoid robots were sold last year. From a humanoid robot project for a pharmaceutical client: hardware that breaks, training data recorded by hand, and roles without job titles yet. Then why Armenia, which teaches robotics in kindergartens but has few robotics companies, has a real opening, and practical first steps into robotics, including for people who do not code.",
-    "format": "Talk",
-    "url": null,
-    "startsAt": "2026-11-21T13:30:00",
-    "endsAt": "2026-11-21T14:10:00",
-    "roomId": 89726,
-    "room": "Hall 114W",
-    "roomSort": 0,
-    "isServiceSession": false,
-    "isPlenumSession": false,
-    "speakers": [
-      "f1f13b29-7398-4d81-8c82-02bedfe50871"
-    ]
-  },
-  {
     "id": "ac7e3df5-772a-4279-91c9-d20fb43e061c",
     "title": "DevFest Armenia 2026 — Education & AI Panel",
     "description": "🎙 Moderator\nMane Vardanyan — American University of Armenia (AUA)\n\nPanelists:\n\nHabet Madoyan — AUA Akian College of Science and Engineering\n\nArman Gyulbudaghyan — Trainer at BDG, also joining DevFest as a speaker\n\nNerses Srapionyan — Academic Director at ML School Armenia (Yandex)\n\nAsya Sepkhanyan — Senior Digital Skills Development Specialist at Ameriabank\n\nMariam Aleksanyan — Learning Design Manager at Teach For Armenia\n\nA little about our discussion:\n\nWe'll explore how education needs to evolve in the age of AI — from schools and universities to professional training programs, and how we can prepare future specialists with skills that go beyond entry-level knowledge.",
@@ -351,9 +334,9 @@
     ]
   },
   {
-    "id": "1335588",
-    "title": "AI Wrote the Code. Who Owns the Security?",
-    "description": "AI can generate auth flows, APIs and whole features in minutes, but working code is not secure code. This session takes an AI-built application and attacks it live: authorization flaws, insecure API behaviour, input manipulation and exposed functionality. You leave with a practical workflow for AI-assisted code: vibe, verify, attack, fix, retest, ship.",
+    "id": "1376807",
+    "title": "Where Physical AI Gets Stuck, and Why That's Armenia's Opening",
+    "description": "Physical AI companies raised about $48 billion in 2026, yet only a few thousand humanoid robots were sold last year. From a humanoid robot project for a pharmaceutical client: hardware that breaks, training data recorded by hand, and roles without job titles yet. Then why Armenia, which teaches robotics in kindergartens but has few robotics companies, has a real opening, and practical first steps into robotics, including for people who do not code.",
     "format": "Talk",
     "url": null,
     "startsAt": "2026-11-21T15:20:00",
@@ -364,7 +347,7 @@
     "isServiceSession": false,
     "isPlenumSession": false,
     "speakers": [
-      "8b52910b-edcd-42d4-b415-57fffcb06ead"
+      "f1f13b29-7398-4d81-8c82-02bedfe50871"
     ]
   },
   {

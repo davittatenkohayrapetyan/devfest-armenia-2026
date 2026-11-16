@@ -41,11 +41,51 @@ if (data.speakers.length === 0) die("upstream returned zero speakers");
 
 const sessions = new Map((data.sessions ?? []).map((s) => [String(s.id), s]));
 
+// Programme decisions taken after Sessionize was last edited: a withdrawn talk, a talk moved into
+// another's slot. Kept in the repo so a re-sync cannot quietly undo them. A move names the slot
+// it takes (`slotOf`), so the time and room still come from Sessionize rather than being typed.
+// Once Sessionize itself reflects a decision, the entry is reported as stale — delete it then.
+const OVERRIDES = "scripts/schedule-overrides.json";
+const overrides = existsSync(OVERRIDES) ? JSON.parse(readFileSync(OVERRIDES, "utf8")) : {};
+const withdrawn = new Set((overrides.withdrawn ?? []).map((w) => String(w.session)));
+const stale = [];
+for (const id of withdrawn) if (!sessions.has(id)) stale.push(`withdrawn ${id}: no longer in Sessionize`);
+for (const m of overrides.moves ?? []) {
+  const talk = sessions.get(String(m.session));
+  const slot = sessions.get(String(m.slotOf));
+  if (!talk || !slot) {
+    stale.push(`move ${m.session} → slot of ${m.slotOf}: ${!talk ? "talk" : "slot"} not in Sessionize`);
+    continue;
+  }
+  if (!slot.startsAt) die(`move ${m.session}: the slot of ${m.slotOf} has no time yet`);
+  if (talk.startsAt === slot.startsAt && talk.roomId === slot.roomId) {
+    stale.push(`move ${m.session}: Sessionize already has it in that slot`);
+    continue;
+  }
+  sessions.set(String(m.session), { ...talk, startsAt: slot.startsAt, endsAt: slot.endsAt, roomId: slot.roomId });
+}
+for (const id of withdrawn) sessions.delete(id);
+data.sessions = (data.sessions ?? []).map((s) => sessions.get(String(s.id))).filter(Boolean);
+
+// Two talks in one room at once means an override and Sessionize now disagree. Stop.
+const byRoom = new Map();
+for (const s of data.sessions.filter((x) => x.startsAt && x.roomId != null)) {
+  const list = byRoom.get(s.roomId) ?? [];
+  for (const o of list)
+    if (s.startsAt < o.endsAt && o.startsAt < s.endsAt) die(`sessions ${o.id} and ${s.id} overlap in room ${s.roomId}`);
+  byRoom.set(s.roomId, [...list, s]);
+}
+
 // Keep only speakers whose sessions are all Accepted. The endpoint appears to return accepted
 // entries only — assert it rather than trust it, and say so when something is dropped.
 const kept = [];
 for (const sp of data.speakers) {
-  const theirs = (sp.sessions ?? []).map((id) => sessions.get(String(id))).filter(Boolean);
+  const ids = (sp.sessions ?? []).map(String);
+  if (ids.length > 0 && ids.every((id) => withdrawn.has(id))) {
+    console.log(`  skipped ${sp.fullName} — withdrawn (${OVERRIDES})`);
+    continue;
+  }
+  const theirs = ids.map((id) => sessions.get(id)).filter(Boolean);
   const rejected = theirs.filter((s) => s.status !== "Accepted");
   if (theirs.length > 0 && rejected.length === theirs.length) {
     console.log(`  skipped ${sp.fullName} — no accepted sessions`);
@@ -246,5 +286,9 @@ if (unwritten.length) {
 if (drifted.length) {
   console.log(`\nChanged on Sessionize since the text was locked — locked text kept, review it:`);
   for (const d of drifted) console.log(`  ${d}`);
+}
+if (stale.length) {
+  console.log(`\nStale entries in ${OVERRIDES} — Sessionize has caught up, delete them:`);
+  for (const s of stale) console.log(`  ${s}`);
 }
 console.log("Review the diff, then run the three checks before committing.");

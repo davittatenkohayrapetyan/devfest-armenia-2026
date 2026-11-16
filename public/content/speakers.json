@@ -433,26 +433,6 @@
     ]
   },
   {
-    "id": "8b52910b-edcd-42d4-b415-57fffcb06ead",
-    "fullName": "Liana Darbinyan",
-    "tagLine": "Cybersecurity Engineer · Application Security & Threat Detection",
-    "bio": "Cybersecurity professional working across security infrastructure, application and API security, threat detection and security operations. With a background in data science, focuses on where security meets AI, and on making security practical for developers.",
-    "profilePicture": "assets/speakers/8b52910b-edcd-42d4-b415-57fffcb06ead.jpg",
-    "links": [
-      {
-        "title": "LinkedIn",
-        "url": "https://www.linkedin.com/in/lianadarbinyan/",
-        "linkType": "LinkedIn"
-      }
-    ],
-    "sessions": [
-      {
-        "id": "1335588",
-        "name": "AI Wrote the Code. Who Owns the Security?"
-      }
-    ]
-  },
-  {
     "id": "f1f13b29-7398-4d81-8c82-02bedfe50871",
     "fullName": "Mariam Grigoryan",
     "tagLine": "Delivery Manager, Grid Dynamics",

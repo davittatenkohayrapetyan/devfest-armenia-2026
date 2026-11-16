@@ -542,6 +542,24 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-11-16 · DF-51, DF-28 · Claude Code
+Davit's call: **Liana Darbinyan's talk is withdrawn** ("AI Wrote the Code. Who Owns the
+Security?", Hall 113W 15:20). She is off the speaker list and the agenda. **Mariam Grigoryan's
+"Where Physical AI Gets Stuck" moves into that slot**, from Hall 114W 13:30–14:10, which is now
+empty.
+
+Sessionize still had the old programme when this was done, so the decision lives in the repo:
+`scripts/schedule-overrides.json`, applied by `sync-speakers.mjs` on every run. A hand edit to
+`sessions.json` would have been undone by the next sync. `withdrawn` drops a talk, and a speaker
+left with no talks drops with it. A move names the slot it takes (`slotOf`), so the time and room
+are still read from Sessionize, not typed in. The sync now refuses to write two talks into one
+room at once, and reports an override as stale once Sessionize reflects it. If Davit updates
+Sessionize to match, delete the entries then.
+
+Liana's portrait was removed from `public/assets/speakers` and from the photo lock and face file,
+so it does not ship in the deploy build. Her edited text stays in `speaker-text.lock.json`, which
+is harmless and saves rewriting if she returns.
+
 ### 2026-11-12 · DF-51, DF-28, DF-50, DF-54 · Claude Code
 At Davit's request: talks, schedule and agenda published from Sessionize in one pass.
 
