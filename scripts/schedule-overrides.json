@@ -1,5 +1,5 @@
 {
-  "_note": "Programme decisions the site applies on top of Sessionize at every sync. `withdrawn` drops a talk; a speaker left with no talks drops off the site too. A move puts `session` into the time and room of `slotOf`, read from Sessionize. When Sessionize itself reflects a decision, the sync reports the entry as stale: delete it then.",
+  "_note": "Programme decisions the site applies on top of Sessionize at every sync. `withdrawn` drops a talk; a speaker left with no talks drops off the site too. A move puts `session` into the time and room of `slotOf`, read from Sessionize. A shift retimes `session` in its own room from `from` to `to`, keeping its length; the sync stops if Sessionize no longer has it at `from`. When Sessionize itself reflects a decision, the sync reports the entry as stale: delete it then.",
   "withdrawn": [
     {
       "session": "1335588",
@@ -11,6 +11,32 @@
       "session": "1376807",
       "slotOf": "1335588",
       "note": "Where Physical AI Gets Stuck — Mariam Grigoryan. Moved from Hall 114W 13:30 into Liana's slot, Hall 113W 15:20. 16 Nov 2026."
+    }
+  ],
+  "shifts": [
+    {
+      "session": "1350602",
+      "from": "11:10",
+      "to": "11:00",
+      "note": "UI Without a Release — Artem Viter. Hall 113W ten minutes earlier, so the room's morning ends at 13:40 when the panel starts. 16 Nov 2026."
+    },
+    {
+      "session": "1325974",
+      "from": "11:50",
+      "to": "11:40",
+      "note": "GKE 2026 — Arman Gyulbudaghyan. Hall 113W ten minutes earlier, so the room's morning ends at 13:40 when the panel starts. 16 Nov 2026."
+    },
+    {
+      "session": "1379530",
+      "from": "12:30",
+      "to": "12:20",
+      "note": "What Your Business Says vs. What Your Users Hear — Seda Sahakyan. Hall 113W ten minutes earlier, so the room's morning ends at 13:40 when the panel starts. 16 Nov 2026."
+    },
+    {
+      "session": "1363221",
+      "from": "13:10",
+      "to": "13:00",
+      "note": "Offline-First Mobile Apps — Sergei Tolmachev. Hall 113W ten minutes earlier, so the room's morning ends at 13:40 when the panel starts. 16 Nov 2026."
     }
   ]
 }

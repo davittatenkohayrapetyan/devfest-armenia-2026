@@ -64,6 +64,36 @@ for (const m of overrides.moves ?? []) {
   }
   sessions.set(String(m.session), { ...talk, startsAt: slot.startsAt, endsAt: slot.endsAt, roomId: slot.roomId });
 }
+// A shift retimes a talk in its own room, keeping its length. `from` is where Sessionize had it
+// when the decision was taken: if Sessionize has since moved it anywhere else, stop rather than
+// shift the wrong time.
+const hhmm = (iso) => iso.slice(11, 16);
+const plusMinutes = (iso, mins) => {
+  const total = Number(iso.slice(11, 13)) * 60 + Number(iso.slice(14, 16)) + mins;
+  return `${iso.slice(0, 11)}${String(Math.floor(total / 60)).padStart(2, "0")}:${String(total % 60).padStart(2, "0")}${iso.slice(16)}`;
+};
+for (const sh of overrides.shifts ?? []) {
+  const talk = sessions.get(String(sh.session));
+  if (!talk) {
+    stale.push(`shift ${sh.session}: not in Sessionize`);
+    continue;
+  }
+  if (!talk.startsAt) die(`shift ${sh.session}: Sessionize has no time for it`);
+  if (hhmm(talk.startsAt) === sh.to) {
+    stale.push(`shift ${sh.session}: Sessionize already starts it at ${sh.to}`);
+    continue;
+  }
+  if (hhmm(talk.startsAt) !== sh.from)
+    die(`shift ${sh.session}: expected Sessionize to start it at ${sh.from}, found ${hhmm(talk.startsAt)}. Review ${OVERRIDES}`);
+  const [fh, fm] = sh.from.split(":").map(Number);
+  const [th, tm] = sh.to.split(":").map(Number);
+  const delta = th * 60 + tm - (fh * 60 + fm);
+  sessions.set(String(sh.session), {
+    ...talk,
+    startsAt: plusMinutes(talk.startsAt, delta),
+    endsAt: plusMinutes(talk.endsAt, delta),
+  });
+}
 for (const id of withdrawn) sessions.delete(id);
 data.sessions = (data.sessions ?? []).map((s) => sessions.get(String(s.id))).filter(Boolean);
 

@@ -69,8 +69,8 @@
     "description": "Remote Compose is a new androidx library that turns UI into a document: written in Kotlin, captured into a compact binary, rendered by a player, and shipped without an app release. What you can build today, navigation, data updates and fallbacks, how far community players on iOS, desktop and web go, and the honest trade-offs: alpha status, a small component set and runtime pitfalls.",
     "format": "Talk",
     "url": null,
-    "startsAt": "2026-11-21T11:10:00",
-    "endsAt": "2026-11-21T11:50:00",
+    "startsAt": "2026-11-21T11:00:00",
+    "endsAt": "2026-11-21T11:40:00",
     "roomId": 89727,
     "room": "Hall 113W",
     "roomSort": 1,
@@ -137,8 +137,8 @@
     "description": "GKE workloads, optimizations and best practices, AI on GKE, and “predictive” autoscaling.",
     "format": "Talk",
     "url": null,
-    "startsAt": "2026-11-21T11:50:00",
-    "endsAt": "2026-11-21T12:30:00",
+    "startsAt": "2026-11-21T11:40:00",
+    "endsAt": "2026-11-21T12:20:00",
     "roomId": 89727,
     "room": "Hall 113W",
     "roomSort": 1,
@@ -166,6 +166,23 @@
     ]
   },
   {
+    "id": "1379530",
+    "title": "What Your Business Says vs. What Your Users Hear",
+    "description": "How do users think, feel and behave when they use a product, and how can design communicate with them without relying on words? The psychology behind user behaviour: what users expect, what motivates them, what confuses them, and how visual hierarchy, interaction, feedback and content build trust and reduce friction.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T12:20:00",
+    "endsAt": "2026-11-21T13:00:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "695c0a43-6758-4801-bb70-bb1e447b4df2"
+    ]
+  },
+  {
     "id": "1368726",
     "title": "Agents and Knowledge Graphs: Building an AI Interviewer",
     "description": "How do you reliably find the gaps in what you know? An EPAM R&D project builds a knowledge graph for a domain, one node per concept, and an AI agent walks the graph to run an interview, then maps strengths and gaps back onto it. How it was built, the problems along the way, and the lessons learned.",
@@ -180,23 +197,6 @@
     "isPlenumSession": false,
     "speakers": [
       "379f5371-846b-4d51-b2c6-172545486b5e"
-    ]
-  },
-  {
-    "id": "1379530",
-    "title": "What Your Business Says vs. What Your Users Hear",
-    "description": "How do users think, feel and behave when they use a product, and how can design communicate with them without relying on words? The psychology behind user behaviour: what users expect, what motivates them, what confuses them, and how visual hierarchy, interaction, feedback and content build trust and reduce friction.",
-    "format": "Talk",
-    "url": null,
-    "startsAt": "2026-11-21T12:30:00",
-    "endsAt": "2026-11-21T13:10:00",
-    "roomId": 89727,
-    "room": "Hall 113W",
-    "roomSort": 1,
-    "isServiceSession": false,
-    "isPlenumSession": false,
-    "speakers": [
-      "695c0a43-6758-4801-bb70-bb1e447b4df2"
     ]
   },
   {
@@ -234,6 +234,23 @@
     ]
   },
   {
+    "id": "1363221",
+    "title": "Offline-First Mobile Apps: Sync Conflicts, Lost Data and How to Avoid Them",
+    "description": "A dispatcher closed an order while the driver, offline, was still delivering it, and when the phone reconnected the driver's data was gone. Lessons from building offline mode for a React Native driver app at Axmit: event time versus sync time, the app and the web editing the same order, retries that duplicate or lose data, and the priority rules that decide who wins a conflict.",
+    "format": "Talk",
+    "url": null,
+    "startsAt": "2026-11-21T13:00:00",
+    "endsAt": "2026-11-21T13:40:00",
+    "roomId": 89727,
+    "room": "Hall 113W",
+    "roomSort": 1,
+    "isServiceSession": false,
+    "isPlenumSession": false,
+    "speakers": [
+      "28278ce1-a2f8-4d26-a2da-1b7a7628365a"
+    ]
+  },
+  {
     "id": "1382132",
     "title": "Enterprise Adopts AI, or AI Adopts the Enterprise",
     "description": "What large-scale AI adoption looks like inside an enterprise: the challenges every enterprise is likely to face, and an architecture that helps smooth the process and bring clarity.",
@@ -248,23 +265,6 @@
     "isPlenumSession": false,
     "speakers": [
       "e3906fb8-6843-4593-adc5-d655fb872c74"
-    ]
-  },
-  {
-    "id": "1363221",
-    "title": "Offline-First Mobile Apps: Sync Conflicts, Lost Data and How to Avoid Them",
-    "description": "A dispatcher closed an order while the driver, offline, was still delivering it, and when the phone reconnected the driver's data was gone. Lessons from building offline mode for a React Native driver app at Axmit: event time versus sync time, the app and the web editing the same order, retries that duplicate or lose data, and the priority rules that decide who wins a conflict.",
-    "format": "Talk",
-    "url": null,
-    "startsAt": "2026-11-21T13:10:00",
-    "endsAt": "2026-11-21T13:50:00",
-    "roomId": 89727,
-    "room": "Hall 113W",
-    "roomSort": 1,
-    "isServiceSession": false,
-    "isPlenumSession": false,
-    "speakers": [
-      "28278ce1-a2f8-4d26-a2da-1b7a7628365a"
     ]
   },
   {

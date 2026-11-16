@@ -542,6 +542,15 @@ go well.
 
 Newest first. Format: `### YYYY-MM-DD · DF-XX · author`
 
+### 2026-11-16 · DF-28 · Claude Code
+Davit's call: Hall 113W's four morning talks start **ten minutes earlier**, so the room's morning
+ends at 13:40 when the Education & AI Panel starts. UI Without a Release is now 11:00, GKE 2026
+11:40, What Your Business Says 12:20, and Offline-First Mobile Apps 13:00–13:40. Sessionize still
+has 11:10 / 11:50 / 12:30 / 13:10, so these are `shifts` in `scripts/schedule-overrides.json`.
+Each entry names the start Sessionize had (`from`) and the new one (`to`), and keeps the talk's
+length. The sync stops if Sessionize has since moved a talk anywhere else, and reports the entry as
+stale once Sessionize shows `to`.
+
 ### 2026-11-16 · DF-51, DF-28 · Claude Code
 Davit's call: **Liana Darbinyan's talk is withdrawn** ("AI Wrote the Code. Who Owns the
 Security?", Hall 113W 15:20). She is off the speaker list and the agenda. **Mariam Grigoryan's
